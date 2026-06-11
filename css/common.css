@@ -212,3 +212,38 @@ section {
   height: 1px;
   overflow: hidden;
 }
+
+/* 필터 버튼 */
+.filter-btn {
+  border-radius: 100px;
+  padding: 8px 12px;
+  background-color: var(--white-1);
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+/* 필터 버튼 */
+
+/* 상품 카드요소 */
+
+/* 텍스트 박스 */
+.text-box {
+  padding: 0px 0px 0px 10px;
+}
+
+/* 텍스트 박스 */
+
+/* 상품 카드요소 */
+
+/* 헤더 */
+.header {
+  position: sticky;
+  top: 0;
+  background-color: var(--white-1);
+}
+/* 헤더 */
+
+/* 푸터 */
+.footer {
+  background-color: var(--white-2);
+}
+/* 푸터 */
