@@ -1,0 +1,214 @@
+:root {
+  /* Color styles */
+  --primary: rgba(23, 41, 236, 1);
+  --secondary: rgba(238, 241, 252, 1);
+  --sale: rgba(255, 51, 0, 1);
+  --gray-1: rgba(55, 65, 81, 1);
+  --gray-2: rgba(107, 114, 128, 1);
+  --gray-3: rgba(156, 163, 175, 1);
+  --gray-4: rgba(169, 175, 190, 1);
+  --white-1: rgba(255, 255, 255, 1);
+  --white-2: rgba(239, 239, 239, 1);
+  --black-1: rgba(0, 0, 0, 1);
+  --black-2: rgba(17, 24, 39, 1);
+  --radius-color: rgba(222, 222, 222, 1);
+
+  /* Layout */
+  --base-font: 12px;
+  --base-unit: 27px;
+
+  /* Text-size styles */
+  --heading--l: 56px;
+  --heading--m: 48px;
+  --heading--s: 40px;
+  --title--x-l: 38px;
+  --title--l: 36px;
+  --title--m: 34px;
+  --title--s: 32px;
+  --title--x-s: 30px;
+  --sub-title--l: 26px;
+  --sub-title--m: 24px;
+  --sub-title--s: 22px;
+  --large: 20px;
+  --medium: 18px;
+  --normal: 16px;
+  --small: 14px;
+
+  /* 레디우스 */
+  --radius-s: 5px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 15px;
+}
+
+/* 타이포그래피 */
+
+.text-heading-l {
+  font-size: var(--heading--l);
+  line-height: 62px;
+  font-weight: 700;
+}
+
+.text-heading-m {
+  font-size: var(--heading--m);
+  line-height: 52px;
+  font-weight: 700;
+}
+
+.text-heading-s {
+  font-size: var(--heading--s);
+  line-height: 44px;
+  font-weight: 700;
+}
+
+.text-title-xl {
+  font-size: var(--title--x-l);
+  line-height: auto;
+  font-weight: 700;
+}
+
+.text-title-l {
+  font-size: var(--title--l);
+  line-height: auto;
+  font-weight: 700;
+}
+
+.text-title-m {
+  font-size: var(--title--m);
+  line-height: auto;
+  font-weight: 700;
+}
+
+.text-title-s {
+  font-size: var(--title--s);
+  line-height: auto;
+  font-weight: 700;
+}
+
+.text-title-xs {
+  font-size: var(--title--x-s);
+  line-height: auto;
+  font-weight: 700;
+}
+
+.text-subtitle-xl {
+  font-size: var(--sub-title--l);
+  line-height: 32px;
+  font-weight: 700;
+}
+
+.text-subtitle-l {
+  font-size: var(--sub-title--l);
+  line-height: var(--base-unit);
+}
+
+.text-subtitle-m {
+  font-size: var(--sub-title--m);
+  line-height: var(--base-unit);
+  font-weight: 600;
+}
+
+.text-subtitle-s {
+  font-size: var(--sub-title--s);
+  line-height: var(--base-unit);
+  font-weight: 600;
+}
+
+.text-subtitle-xs {
+  font-size: var(--large);
+  line-height: var(--base-unit);
+  font-weight: 600;
+}
+
+.text-large-b {
+  font-size: var(--large);
+  line-height: var(--base-unit);
+  font-weight: 700;
+}
+
+.text-large-r {
+  font-size: var(--large);
+  line-height: var(--base-unit);
+  font-weight: 400;
+}
+
+.text-medium-b {
+  font-size: var(--medium);
+  line-height: var(--base-unit);
+  font-weight: 700;
+}
+
+.text-medium-r {
+  font-size: var(--medium);
+  line-height: var(--base-unit);
+  font-weight: 400;
+}
+
+.text-normal-b {
+  font-size: var(--normal);
+  line-height: var(--base-unit);
+  font-weight: 700;
+}
+
+.text-normal-r {
+  font-size: var(--normal);
+  line-height: var(--base-unit);
+  font-weight: 400;
+}
+
+.text-small-b {
+  font-size: var(--small);
+  line-height: var(--base-unit);
+  font-weight: 700;
+}
+
+.text-small-m {
+  font-size: var(--small);
+  line-height: var(--base-unit);
+  font-weight: 500;
+}
+
+.text-small-r {
+  font-size: var(--small);
+  line-height: var(--base-unit);
+  font-weight: 400;
+}
+
+body {
+  font-family: "Pretendard", sans-serif;
+
+  color: var(--black-1);
+
+  overscroll-behavior-y: none;
+}
+/* 레이아웃 */
+
+/* 컨테이너 */
+.container {
+  width: 100%;
+  max-width: 402px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* 버튼 */
+a {
+  cursor: pointer;
+}
+button {
+  cursor: pointer;
+}
+
+/* 섹션 */
+section {
+  padding: 24px 0;
+}
+
+.hidden {
+  position: absolute;
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
