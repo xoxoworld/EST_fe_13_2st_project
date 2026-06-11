@@ -1,0 +1,1406 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Base reset: product 페이지에서 브라우저 기본 여백/버튼 스타일을 통제합니다. */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  padding-bottom: 118px;
+  background: var(--white-1);
+  color: var(--black-2);
+  font-size: 12px;
+  letter-spacing: 0;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  appearance: none;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.product-header,
+.product-footer {
+  min-height: 0;
+}
+
+/* Layout shell: common.css의 section/container 기본값을 product 전용 레이아웃에 맞게 보정합니다. */
+.product-page section,
+.bottom-buy-section {
+  padding: 0;
+}
+
+.layout {
+  width: 100%;
+}
+
+/* 모바일/태블릿은 DOM 위치와 별개로 order 값으로 노출 순서를 제어합니다. */
+.contents-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Product visual: 대표 상품 이미지와 모바일 이미지 카운터입니다. */
+.visual-section {
+  order: 1;
+}
+
+/* 대표 이미지는 상품 상세 첫 화면을 채우는 영역입니다. */
+.visual-wrap {
+  position: relative;
+  height: 396px;
+  overflow: hidden;
+  background: #f2f2f2;
+}
+
+.visual-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(1.08);
+}
+.visual-p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+/* 모바일에서는 썸네일 대신 현재 이미지 순번만 표시합니다. */
+.visual-count {
+  position: absolute;
+  right: 17px;
+  bottom: 17px;
+  margin: 0;
+  color: var(--black-1);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.thumb-section {
+  order: 2;
+  display: none;
+}
+
+/* Purchase summary panel: 상품명, 배송 배지, 후기/찜 메타, 컬러 옵션, 가격 영역입니다. */
+.side-panel {
+  order: 3;
+}
+
+/* 모바일/태블릿 상품 정보 블록이며, 1272px부터 오른쪽 sticky 패널이 됩니다. */
+.summary-wrap {
+  padding-top: 28px;
+  padding-bottom: 22px;
+}
+
+.ship-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  margin: 0 0 16px;
+  padding: 0 9px;
+  border-radius: var(--radius-s);
+  background: var(--gray-1);
+  color: var(--white-1);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 5%;
+}
+
+/* 브랜드명 경로와 상품명 영역입니다. */
+.brand-path {
+  margin: 0 0 15px;
+  color: var(--gray-1);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.summary-wrap h1 {
+  margin: 0 0 14px;
+  color: var(--black-1);
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 17px;
+  color: var(--gray-2);
+  font-size: 13px;
+}
+.meta-row .material-symbols-outlined,
+.meta-row .material-icons {
+  font-size: 14px;
+  position: relative;
+  top: 1px;
+}
+
+.review-icon {
+  width: 13px;
+  height: 13px;
+  background: var(--black-2);
+}
+
+/* 컬러 옵션은 실제 상품 썸네일 이미지를 사용합니다. */
+.color-block {
+  margin-top: 39px;
+}
+
+.color-block h2,
+.rounz-only-wrap h3,
+.related-wrap h2,
+.review-wrap h2,
+.qna-head h2,
+.purchase-wrap > h2 {
+  margin: 0;
+  color: var(--black-1);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.color-list {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.color-chip {
+  display: grid;
+  place-items: center;
+  width: 49px;
+  height: 49px;
+  border: 1px solid transparent;
+  background: #f5f5f5;
+}
+
+.color-chip:hover {
+  border-color: var(--primary);
+}
+
+.color-chip img {
+  width: 43px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.price {
+  margin: 31px 0 0;
+  color: var(--black-1);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+  text-align: right;
+}
+
+/* ROUNZ-only banners: 가상 피팅/내 얼굴에 써보기 프로모션 영역입니다. */
+.rounz-only-wrap {
+  padding-bottom: 29px;
+}
+
+.rounz-only-wrap h3 {
+  margin-bottom: 12px;
+}
+
+/* 두 배너가 동일한 높이와 배경을 공유합니다. */
+.face-banner,
+.fit-banner {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  background: var(--secondary);
+}
+
+.face-banner {
+  padding: 0 12px;
+}
+
+/* 좌우 이동 화살표 영역입니다. 실제 슬라이더가 붙어도 폭이 흔들리지 않게 고정합니다. */
+.face-banner button {
+  width: 24px;
+  color: var(--gray-3);
+  font-size: 20px;
+}
+
+.face-banner img {
+  width: 54px;
+  height: 54px;
+  margin: 0 15px 0 3px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--white-1);
+}
+
+/* 배너 제목/설명 텍스트 영역입니다. */
+.face-banner p,
+.fit-banner p {
+  flex: 1;
+  margin: 0;
+}
+
+.face-banner strong,
+.fit-banner strong {
+  display: block;
+  color: var(--black-2);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.face-banner span,
+.fit-banner span {
+  display: block;
+  margin-top: 5px;
+  color: var(--black-2);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.fit-banner {
+  gap: 22px;
+  margin-top: 20px;
+  padding-left: 70px;
+}
+
+/* 가상 피팅 아이콘은 이미지 파일 없이 CSS 도형으로 구성합니다. */
+.fit-icon {
+  position: relative;
+  width: 54px;
+  height: 42px;
+}
+
+.fit-icon::before {
+  position: absolute;
+  inset: 4px;
+  border: 3px solid #315cf4;
+  border-radius: 50%;
+  box-shadow:
+    22px 0 0 -3px var(--secondary),
+    22px 0 0 0 #315cf4;
+  content: "";
+}
+
+.fit-icon::after {
+  position: absolute;
+  inset: 0;
+  border: 3px solid #315cf4;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  content: "";
+}
+
+.tabs-section {
+  order: 4;
+}
+
+/* Detail tabs: 상세정보/후기/문의/구매정보 앵커 탭입니다. */
+.tabs-wrap {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 54px;
+  margin-top: 20px;
+}
+
+/* 네 개 탭은 같은 폭을 사용해 모바일에서도 탭 폭이 일정합니다. */
+.tabs-wrap a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--black-1);
+  text-decoration: none;
+}
+
+.tabs-wrap a.active {
+  border-bottom: 3px solid var(--black-1);
+}
+
+.detail-section {
+  order: 5;
+}
+
+/* Detail content: 공식 인증, 브랜드 소개, 상품 스펙 이미지를 포함합니다. */
+.official-card {
+  position: relative;
+  min-height: 153px;
+  overflow: hidden;
+  background: var(--black-1);
+}
+
+/* 공식 인증 카드 내부 여백입니다. 워터마크와 본문이 겹치지 않게 왼쪽 여백을 둡니다. */
+.official-card > div {
+  padding: 36px 16px 30px 32px;
+}
+
+/* 검은 영역 왼쪽의 세로 ROUNZ 워터마크입니다. */
+.side-word {
+  position: absolute;
+  left: -20px;
+  bottom: 8px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.1);
+  font-size: 53px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  transform: rotate(-90deg);
+  transform-origin: left bottom;
+}
+
+.official-card h2 {
+  margin: 0 0 14px;
+  color: var(--white-1);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.official-card p:not(.side-word) {
+  margin: 0;
+  color: var(--white-1);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.brand-card > div {
+  padding-top: 33px;
+  text-align: center;
+}
+
+/* 브랜드명, 영문명, 소개 카피를 가운데 정렬하는 영역입니다. */
+.brand-card h2 {
+  margin: 0 0 4px;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.brand-card p {
+  margin: 0 0 20px;
+  color: var(--gray-2);
+  font-size: 12px;
+}
+
+.brand-card strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+/* 브랜드 소개 하단의 2열 이미지 콜라주입니다. */
+.brand-collage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+  padding: 34px 10px 47px;
+}
+
+.brand-photo {
+  position: relative;
+  height: 165px;
+  margin: 0;
+  overflow: hidden;
+  background: #eee;
+}
+
+/* 큰 사진과 작은 사진 높이를 다르게 해서 Figma의 비대칭 배치를 만듭니다. */
+.brand-photo.large {
+  height: 230px;
+}
+
+.brand-photo:nth-child(3) {
+  margin-top: -8px;
+}
+
+.brand-photo:nth-child(4) {
+  margin-top: -48px;
+}
+
+/* 콜라주 이미지는 카드 영역을 꽉 채우도록 cover 처리합니다. */
+.brand-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.brand-photo figcaption {
+  position: absolute;
+  left: 8px;
+  bottom: 10px;
+  color: var(--white-1);
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.brand-photo figcaption.bottom {
+  right: 8px;
+  left: auto;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 28px;
+  text-align: right;
+}
+
+/* 상품 스펙 영역은 중앙 정렬된 제목과 표/이미지 조합입니다. */
+.spec-card > div {
+  padding: 0 16px 37px;
+  text-align: center;
+}
+
+.spec-card h2 {
+  margin: 0 0 14px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.spec-note {
+  margin: 0 0 24px;
+  font-size: 11px;
+}
+
+/* PRODUCT INFO 표는 dt/dd를 한 줄 grid로 맞춰 모바일에서도 줄맞춤을 유지합니다. */
+.spec-table {
+  margin: 0;
+  border-top: 1px solid var(--black-1);
+  text-align: left;
+}
+
+.spec-table div {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  min-height: 38px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* 첫 칸은 항목명, 두 번째 칸은 상세값입니다. */
+.spec-table dt,
+.spec-table dd {
+  margin: 0;
+  padding: 11px 4px;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.spec-table dt {
+  font-weight: 800;
+}
+
+.size-img {
+  width: 100%;
+  margin: 24px auto 17px;
+}
+
+/* 도수 렌즈 가능 여부와 무게감을 좌우 2분할로 보여줍니다. */
+.option-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--black-1);
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.option-table > div {
+  padding: 10px 0 8px;
+}
+
+.option-table > div:first-child {
+  border-right: 1px solid #e5e7eb;
+}
+
+.option-table h3 {
+  margin: 0 0 10px;
+  padding-left: 4px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.option-table small {
+  color: #555;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.option-table p {
+  position: relative;
+  margin: 0 0 9px;
+  padding-left: 18px;
+  color: #555;
+  font-size: 12px;
+}
+
+/* 회색/파란 사각형 상태 표시입니다. .on만 파란색으로 강조합니다. */
+.option-table p::before {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 10px;
+  height: 10px;
+  background: #f0f0f0;
+  content: "";
+}
+
+.option-table p.on::before {
+  background: #1473ff;
+}
+
+/* Related products: 비슷한 상품 가로 리스트입니다. */
+.related-section {
+  order: 6;
+}
+
+.related-wrap {
+  padding-top: 19px;
+  padding-bottom: 40px;
+}
+
+.related-wrap h2 {
+  margin-bottom: 15px;
+}
+
+.related-list {
+  display: flex;
+  gap: 16px;
+  overflow: hidden;
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--black-1);
+}
+
+/* 모바일/태블릿에서는 카드가 가로로 흘러가고, 데스크톱에서는 grid로 전환됩니다. */
+.related-list article {
+  flex: 0 0 122px;
+  min-width: 0;
+}
+
+.related-list img {
+  width: 122px;
+  height: 122px;
+  border-radius: 8px;
+  background: #f3f3f3;
+  object-fit: contain;
+}
+
+.related-list h3 {
+  margin: 14px 0 8px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.related-list p {
+  display: -webkit-box;
+  overflow: hidden;
+  min-height: 36px;
+  margin: 0 0 6px;
+  color: var(--gray-1);
+  font-size: 12px;
+  line-height: 1.5;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.related-list strong {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/* Reviews: 후기 필터, 후기 목록, 페이지네이션 영역입니다. */
+.review-section {
+  order: 7;
+}
+
+.review-wrap {
+  padding-bottom: 38px;
+}
+
+.review-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 28px 0 26px;
+}
+
+.review-tools label {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 12px;
+}
+
+/* 사진 후기 토글은 실제 input 없이 시각 상태만 표시하는 정적 UI입니다. */
+.review-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.review-toggle input {
+  display: none;
+}
+
+.toggle {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  transition: 0.2s;
+}
+
+.toggle::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: 0.2s;
+}
+
+/* 체크된 상태 */
+.review-toggle input:checked + .toggle {
+  background: var(--primary);
+}
+
+.review-toggle input:checked + .toggle::after {
+  left: 18px;
+}
+
+.review-tools button,
+.qna-head button {
+  height: 24px;
+  min-width: 58px;
+  border-radius: 2px;
+  background: #f1f4ff;
+  color: var(--black-2);
+}
+
+.review-tools button {
+  font-size: 10px;
+}
+
+/* 후기 아이템은 본문과 사진 썸네일의 2컬럼 구조입니다. */
+.review-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-card {
+  display: grid;
+  grid-template-columns: 106px 1fr 88px;
+  align-items: center;
+  gap: 16px;
+  min-height: 110px;
+  padding: 18px 0;
+  border-bottom: 1px solid #aab2c0;
+}
+
+.review-card:first-child {
+  padding-top: 0;
+}
+
+.review-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 88px;
+}
+
+.stars {
+  margin: 0;
+  color: var(--primary);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+.review-meta span {
+  color: var(--gray-2);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.review-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 88px;
+}
+
+.review-content h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.review-content p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.review-card img {
+  width: 88px;
+  height: 88px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+  margin-top: 27px;
+  color: #8a94a6;
+  font-size: 14px;
+}
+
+.pager button {
+  color: #596578;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.pager b {
+  color: var(--black-1);
+  font-weight: 500;
+}
+
+/* Q&A: 상품 문의 목록과 문의하기 버튼 영역입니다. */
+.qna-section {
+  order: 8;
+}
+
+.qna-wrap {
+  padding-bottom: 40px;
+}
+
+.qna-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.qna-head button {
+  width: 88px;
+  height: 27px;
+}
+
+.qna-desc {
+  margin: 26px 0 34px;
+  color: var(--gray-2);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.qna-list {
+  margin: 0;
+  padding: 0;
+}
+
+/* 문의 목록은 잠금 아이콘, 제목, 작성자/날짜, 답변상태 4칸으로 고정합니다. */
+.qna-list li {
+  display: grid;
+  grid-template-columns: 20px 1fr 102px 54px;
+  align-items: center;
+  min-height: 83px;
+  border-bottom: 1px solid #aab2c0;
+  font-size: 12px;
+}
+
+/* 잠금 아이콘도 CSS 도형으로 구현합니다. */
+
+.qna-list strong {
+  font-size: 13px;
+  font-weight: 800;
+}
+.qna-list p {
+  color: var(--primary);
+  font-size: 16px;
+}
+
+.qna-list em,
+.qna-list b {
+  color: var(--gray-1);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* Purchase info: 배송/교환/반품/A/S 안내 본문입니다. */
+.purchase-section {
+  order: 9;
+}
+
+.purchase-wrap {
+  padding-top: 10px;
+  padding-bottom: 36px;
+}
+
+.purchase-wrap > h2 {
+  margin-bottom: 35px;
+}
+
+.purchase-wrap article {
+  margin-bottom: 38px;
+}
+
+/* 구매 정보는 긴 안내 문구가 많아 line-height를 넉넉하게 둡니다. */
+.purchase-wrap h3 {
+  margin: 0 0 20px;
+  color: var(--black-1);
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.purchase-wrap h4 {
+  margin: 0 0 21px;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.65;
+}
+
+.purchase-wrap p {
+  margin: 0 0 8px;
+  color: var(--gray-1);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* 배송 안내 표는 첫 열 고정 폭, 두 번째 열 유동 폭 구조입니다. */
+.purchase-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid #aab2c0;
+  color: var(--black-2);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.purchase-wrap th {
+  height: 32px;
+  border-bottom: 1px solid #aab2c0;
+  font-weight: 800;
+  text-align: left;
+}
+
+.purchase-wrap td {
+  padding: 18px 0;
+  border-bottom: 1px solid #aab2c0;
+  vertical-align: top;
+}
+
+.purchase-wrap td:first-child {
+  width: 108px;
+  color: var(--black-1);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Bottom buy bar: 모바일/태블릿에서 고정 노출되는 장바구니/바로구매 버튼입니다. */
+.bottom-buy-section {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 30;
+  margin: 0 auto;
+}
+
+.bottom-buy-wrap {
+  padding: 10px 16px 16px;
+  border-radius: 12px 12px 0 0;
+  background: var(--white-1);
+  box-shadow: 0 -7px 22px rgba(0, 0, 0, 0.25);
+}
+
+/* iOS 하단 시트처럼 보이는 작은 핸들입니다. */
+.home-indicator {
+  display: block;
+  width: 62px;
+  height: 3px;
+  margin: 0 auto 15px;
+  border-radius: 999px;
+  background: #d6d6d6;
+}
+
+.bottom-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 180px));
+  justify-content: center;
+  gap: 10px;
+}
+
+/* 버튼은 동일 크기, 장바구니 outline / 바로구매 filled 조합입니다. */
+.bottom-buttons button {
+  height: 58px;
+  border: 1px solid var(--primary);
+  border-radius: 7px;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.cart-btn {
+  color: var(--primary);
+  background: var(--white-1);
+}
+
+.buy-btn {
+  color: var(--white-1);
+  background: var(--primary);
+}
+
+/* Tablet layout: 768px 디자인 기준으로 이미지 높이, 여백, 리스트 크기를 확장합니다. */
+@media (min-width: 768px) {
+  body {
+    padding-bottom: 118px;
+    font-size: 13px;
+  }
+
+  /* 태블릿은 768px 고정 캔버스 안에서 모바일 구조를 유지하되 여백을 넓힙니다. */
+  .product-page .container {
+    max-width: none;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  .layout {
+    width: 768px;
+    margin: 0 auto;
+  }
+
+  .visual-wrap {
+    height: 700px;
+  }
+
+  /* aside는 아직 오른쪽 컬럼이 아니라 썸네일 아래 상품정보 블록으로 동작합니다. */
+  .side-panel .summary-wrap {
+    padding: 28px 30px 24px;
+  }
+
+  .ship-badge {
+    height: 22px;
+    font-size: 10px;
+  }
+
+  .summary-wrap h2 {
+    font-size: var(--medium-b);
+  }
+
+  .color-block {
+    margin-top: 36px;
+  }
+
+  .price {
+    font-size: 20px;
+  }
+
+  .side-panel .rounz-only-wrap {
+    padding: 0 30px 30px;
+  }
+
+  .face-banner,
+  .fit-banner {
+    height: 80px;
+  }
+
+  .tabs-wrap {
+    height: 56px;
+  }
+
+  .official-card > div {
+    padding-left: 56px;
+  }
+
+  .brand-card > div {
+    padding-top: 44px;
+  }
+
+  .brand-collage {
+    gap: 22px 28px;
+    padding: 40px 46px 56px;
+  }
+
+  /* 상세 브랜드 이미지는 태블릿에서 더 크게 보여 세로 스케일을 맞춥니다. */
+  .brand-photo {
+    height: 235px;
+  }
+
+  .brand-photo.large {
+    height: 320px;
+  }
+
+  .spec-card > div {
+    padding-right: 52px;
+    padding-left: 52px;
+  }
+
+  .related-list {
+    gap: 18px;
+  }
+
+  .related-list article {
+    flex-basis: 180px;
+  }
+
+  .related-list img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .review-list article {
+    grid-template-columns: 1fr 108px;
+    min-height: 142px;
+  }
+
+  .review-list img {
+    width: 108px;
+    height: 108px;
+  }
+
+  .qna-list li {
+    grid-template-columns: 24px 1fr 150px 80px;
+    font-size: 13px;
+  }
+
+  .purchase-wrap td:first-child {
+    width: 150px;
+  }
+
+  /* 태블릿 하단 구매 버튼은 모바일보다 좌우 여백과 버튼 사이 간격이 큽니다. */
+  .bottom-buy-wrap {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  .bottom-buttons {
+    grid-template-columns: repeat(2, minmax(0, 340px));
+    gap: 28px;
+  }
+}
+
+/* Desktop layout: 1272px 디자인 기준으로 좌측 상세 영역과 우측 sticky 구매 패널을 배치합니다. */
+@media (min-width: 1272px) {
+  body {
+    padding-bottom: 0;
+    font-size: 14px;
+  }
+
+  /* 데스크톱은 common container 폭을 쓰지 않고 Figma의 1272px 캔버스에 직접 맞춥니다. */
+  .product-page .container {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .layout {
+    width: 1272px;
+    margin: 0 auto;
+    padding-top: 30px;
+  }
+
+  .contents-wrap {
+    display: grid;
+    grid-template-columns: 948px 300px;
+    column-gap: 24px;
+    align-items: start;
+  }
+
+  /* 좌측 컬럼에는 상품 이미지/상세 콘텐츠를, 우측 컬럼에는 구매 패널을 고정합니다. */
+  .visual-section,
+  .thumb-section,
+  .tabs-section,
+  .detail-section,
+  .related-section,
+  .review-section,
+  .qna-section,
+  .purchase-section {
+    grid-column: 1;
+  }
+
+  .visual-section {
+    grid-row: 1;
+  }
+
+  .thumb-section {
+    grid-row: 2;
+  }
+
+  .side-panel {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    justify-self: end;
+    align-self: start;
+  }
+
+  /* 데스크톱 대표 이미지는 948x702, 아래에는 5개 썸네일을 노출합니다. */
+  .visual-wrap {
+    width: 948px;
+    height: 702px;
+  }
+
+  .visual-count {
+    display: none;
+  }
+
+  .thumb-section {
+    display: block;
+  }
+
+  /* 썸네일은 대표 이미지 하단의 5열 고정 리스트입니다. */
+  .thumb-wrap {
+    display: grid;
+    grid-template-columns: repeat(5, 170px);
+    gap: 24px;
+    height: 143px;
+    padding-top: 27px;
+  }
+
+  .thumb {
+    width: 170px;
+    height: 116px;
+    overflow: hidden;
+    border: 1px solid transparent;
+    background: #f4f4f4;
+  }
+
+  .thumb.active {
+    border-color: var(--black-1);
+  }
+
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .side-panel {
+    position: sticky;
+    top: 30px;
+    width: 300px;
+  }
+
+  /* 오른쪽 구매 패널은 폭이 좁아서 컬러칩/텍스트 크기를 데스크톱 시안에 맞게 줄입니다. */
+  .side-panel .summary-wrap {
+    padding: 0;
+  }
+
+  .ship-badge {
+    height: 24px;
+    margin-bottom: 16px;
+    padding: 0 12px;
+    font-size: 11px;
+  }
+
+  .brand-path {
+    font-size: 12px;
+  }
+
+  .summary-wrap h1 {
+    width: 242px;
+    font-size: 18px;
+  }
+
+  .meta-row {
+    margin-bottom: 28px;
+    font-size: 12px;
+  }
+
+  .color-block {
+    margin-top: 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .color-block h2 {
+    font-size: 14px;
+  }
+
+  .color-chip {
+    width: 34px;
+    height: 34px;
+  }
+
+  .color-chip img {
+    width: 30px;
+    height: 20px;
+  }
+
+  .price {
+    margin: 22px 0 18px;
+    font-size: 18px;
+  }
+
+  .side-panel .rounz-only-wrap {
+    padding: 42px 0 0;
+  }
+
+  /* 우측 프로모션 배너는 300px 패널 안에 맞는 작은 배너 형태로 전환합니다. */
+  .side-panel .rounz-only-wrap h3 {
+    font-size: 14px;
+  }
+
+  .face-banner,
+  .fit-banner {
+    height: 92px;
+  }
+
+  .face-banner {
+    padding: 0 10px;
+  }
+
+  .face-banner img {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+  }
+
+  .face-banner strong,
+  .fit-banner strong {
+    font-size: 13px;
+  }
+
+  .face-banner span,
+  .fit-banner span {
+    font-size: 11px;
+  }
+
+  .fit-banner {
+    gap: 12px;
+    padding-left: 14px;
+  }
+
+  .tabs-wrap {
+    height: 75px;
+    border-top: 0;
+  }
+
+  /* 데스크톱 탭은 Figma처럼 상단 border로 활성 상태를 표현합니다. */
+  .tabs-wrap a {
+    font-size: 14px;
+  }
+
+  .tabs-wrap a.active {
+    border-bottom: 2px solid var(--black-1);
+  }
+
+  .official-card {
+    min-height: 180px;
+  }
+
+  .official-card > div {
+    padding-left: 64px;
+  }
+
+  .brand-card > div {
+    padding-top: 54px;
+  }
+
+  .brand-collage {
+    gap: 24px;
+    padding: 48px 80px 70px;
+  }
+
+  /* 데스크톱 상세 이미지는 좌측 948px 영역에서 더 큰 콜라주로 표시합니다. */
+  .brand-photo {
+    height: 280px;
+  }
+
+  .brand-photo.large {
+    height: 380px;
+  }
+
+  .spec-card > div,
+  .related-wrap,
+  .review-wrap,
+  .qna-wrap,
+  .purchase-wrap {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .spec-card > div {
+    padding-bottom: 64px;
+  }
+
+  .related-wrap {
+    padding-top: 64px;
+  }
+
+  .related-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    overflow: visible;
+  }
+
+  /* 데스크톱에서는 비슷한 상품을 스크롤이 아닌 3열 grid로 보여줍니다. */
+  .related-list article {
+    min-width: 0;
+  }
+
+  .related-list img {
+    width: 100%;
+    height: 270px;
+  }
+
+  .review-wrap,
+  .qna-wrap,
+  .purchase-wrap {
+    padding-top: 64px;
+  }
+
+  /* 데스크톱 본문 섹션들은 좌측 컬럼 폭 전체를 사용하므로 모바일 padding을 제거합니다. */
+  .review-list article {
+    grid-template-columns: 1fr 99px;
+    min-height: 157px;
+    padding: 24px 0;
+  }
+
+  .review-list img {
+    width: 99px;
+    height: 99px;
+  }
+
+  .review-copy h3 {
+    margin-left: 108px;
+  }
+
+  .qna-list li {
+    grid-template-columns: 28px 1fr 160px 80px;
+    height: 64px;
+    min-height: 64px;
+  }
+
+  .purchase-wrap {
+    padding-bottom: 120px;
+  }
+
+  .purchase-wrap p,
+  .purchase-wrap table {
+    font-size: 13px;
+  }
+
+  .purchase-wrap td:first-child {
+    width: 180px;
+  }
+
+  .bottom-buy-section {
+    display: none;
+  }
+}
