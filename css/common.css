@@ -1,3 +1,8 @@
+@import url("normalize.css");
+@import url("reset.css");
+@import url("flex-utility.css");
+
+/* 아래부터 common.css의 기존 스타일 작성 */
 :root {
   /* Color styles */
   --primary: rgba(23, 41, 236, 1);
