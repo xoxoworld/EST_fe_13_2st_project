@@ -175,6 +175,11 @@
   font-weight: 400;
 }
 
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: "Pretendard", sans-serif;
   -webkit-font-smoothing: antialiased; /* 글꼴 외곽선 정밀도 향상 */
@@ -190,7 +195,7 @@ body {
   width: 100%;
   max-width: 402px;
   margin: 0 auto;
-  padding: 16px;
+  padding: 0 16px;
 }
 
 /* 버튼 */
@@ -198,6 +203,7 @@ a {
   cursor: pointer;
 }
 button {
+  all: unset;
   cursor: pointer;
 }
 
@@ -238,9 +244,111 @@ section {
 /* 헤더 */
 .header {
   position: sticky;
+  height: 46px;
   top: 0;
   background-color: var(--white-1);
 }
+.search-form {
+    display: none;
+}
+
+.header-container{
+  width: 100%;
+}
+.header-logo a,
+.header-logo svg {
+  display: block;
+}
+.header-btn {
+  width: 24px;
+  height: 24px;
+}
+/* web검색바 */
+.search-box {
+  width: 220px;
+  height: 36px;
+  border-bottom: 1px solid var(--black-2);
+}
+
+.search-input {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: var(--small);
+  color: var(--black-2);
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+/* 검색바 */
+
+/* 헤더 반응형 */
+@media (min-width: 768px) {
+  .header {
+  max-width: 768px;
+  margin-inline: auto;
+  padding-inline: 0;
+  }
+
+  .header-container {
+    max-width: 648px; 
+    margin: 0 auto;
+  }
+  .search-form {
+    display: none;
+  }
+}
+
+@media (min-width: 1272px) {
+ .header {
+  max-width: 100%;
+  height: 65px;
+  margin-inline: auto;
+  padding-inline: 0;
+  }
+
+  .header-container { 
+    max-width: 1272px;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  .header-logo a svg {
+    width: 110px;
+    height: 44px;
+  }
+
+  .search-form {
+    display: flex;
+  }
+  
+  .header-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .header-btn-search{
+    display: none;
+  }
+  
+  .header-btn-account svg,
+  .header-btn-cart svg,
+  .header-btn-menu svg {
+    width: 37px;
+    height: 37px;
+  }
+
+  .header-btn-search-form svg {
+    width: 28px;
+    height: 28px;
+  }
+   
+}
+/* 헤더 반응형 */
 /* 헤더 */
 
 /* 푸터 */
