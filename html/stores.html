@@ -238,7 +238,7 @@
         </div>
       </section>
 
-      <section class="store-detail-layer" id="store-detail" aria-hidden="true">
+      <section class="store-detail-layer is-open" id="store-detail" aria-hidden="true">
         <button class="store-detail-dim" type="button" aria-label="닫기"></button>
         <article
           class="store-detail-panel"
@@ -247,39 +247,110 @@
           aria-labelledby="store-detail-title"
         >
           <div class="detail-handle" aria-hidden="true"></div>
-          <button class="detail-close" type="button" aria-label="닫기"></button>
 
           <div class="detail-image">
-            <img src="../assets/images/store_2.webp" alt="라운즈 강남역점" />
+            <div class="detail-map-placeholder" aria-label="지도 영역">
+              <span class="material-icons" aria-hidden="true">location_on</span>
+              <p>지도 영역</p>
+            </div>
+            <img
+              class="detail-store-photo"
+              src="../assets/images/store_2.webp"
+              alt="라운즈 강남역점"
+            />
           </div>
 
           <div class="detail-content">
-            <p class="detail-label">라운즈 안경원</p>
-            <h2 id="store-detail-title">라운즈 강남역점</h2>
-            <p class="detail-station">(강남역 4번출구 365, 우성아파트 사거리)</p>
+            <input
+              class="detail-tab-input"
+              type="radio"
+              name="store-detail-tab"
+              id="store-tab-info"
+              checked
+            />
+            <input
+              class="detail-tab-input"
+              type="radio"
+              name="store-detail-tab"
+              id="store-tab-review"
+            />
 
-            <dl class="detail-info">
-              <div>
-                <dt>주소</dt>
-                <dd>서울특별시 강남구 역삼로 109 1층 (강남역 4번 출구)</dd>
-              </div>
-              <div>
-                <dt>전화</dt>
-                <dd><a href="tel:02-3454-1006">02-3454-1006</a></dd>
-              </div>
-              <div>
-                <dt>영업시간</dt>
-                <dd>매일 10:00 - 20:00</dd>
-              </div>
-              <div>
-                <dt>서비스</dt>
-                <dd>피팅, 시력검사, 렌즈 상담, 방문 수령</dd>
-              </div>
-            </dl>
+            <div class="detail-tabs" role="tablist" aria-label="지점 상세 보기">
+              <label for="store-tab-info" class="detail-tab detail-tab-info" role="tab"
+                >지점정보</label
+              >
+              <label for="store-tab-review" class="detail-tab detail-tab-review" role="tab"
+                >지점후기</label
+              >
+            </div>
 
-            <div class="detail-actions">
-              <a class="detail-outline" href="tel:02-3454-1006">전화하기</a>
-              <a class="detail-primary" href="#">길찾기</a>
+            <div class="detail-pane detail-pane-info">
+              <h2 id="store-detail-title">라운즈 강남역점</h2>
+
+              <dl class="detail-info">
+                <div>
+                  <dt>주소</dt>
+                  <dd>서울특별시 강남구 역삼로 109 1층 (강남역 4번 출구)</dd>
+                </div>
+                <div>
+                  <dt>가는 방법</dt>
+                  <dd>강남역 4번 출구에서 도보 5분, 우성아파트 사거리 방향</dd>
+                </div>
+                <div>
+                  <dt>전화</dt>
+                  <dd><a href="tel:02-3454-1006">02-3454-1006</a></dd>
+                </div>
+              </dl>
+
+              <div class="detail-actions">
+                <a class="detail-outline" href="tel:02-3454-1006">전화하기</a>
+                <a class="detail-primary" href="#">길찾기</a>
+              </div>
+            </div>
+
+            <div class="detail-pane detail-pane-review">
+              <h2 class="review-title">지점후기</h2>
+              <div class="review-list">
+                <article class="review-card">
+                  <div class="review-meta">
+                    <div class="review-meta-line">
+                      <strong>김라운</strong>
+                      <p class="stars">★★★★★</p>
+                    </div>
+                    <span>2026.06.02</span>
+                  </div>
+                  <div class="review-content">
+                    <h3>꼼꼼하게 추천해줘서 좋았어요.</h3>
+                    <p>직원분이 얼굴형에 맞는 안경을 꼼꼼하게 추천해줘서 좋았어요.</p>
+                  </div>
+                </article>
+                <article class="review-card">
+                  <div class="review-meta">
+                    <div class="review-meta-line">
+                      <strong>오오렌즈</strong>
+                      <p class="stars">★★★★★</p>
+                    </div>
+                    <span>2026.05.28</span>
+                  </div>
+                  <div class="review-content">
+                    <h3>빠르고 친절했습니다.</h3>
+                    <p>검안부터 피팅까지 빠르고 친절했습니다. 매장도 깔끔해요.</p>
+                  </div>
+                </article>
+                <article class="review-card">
+                  <div class="review-meta">
+                    <div class="review-meta-line">
+                      <strong>강남방문</strong>
+                      <p class="stars">★★★★★</p>
+                    </div>
+                    <span>2026.05.19</span>
+                  </div>
+                  <div class="review-content">
+                    <h3>대기 시간이 짧아서 편했습니다.</h3>
+                    <p>예약하고 방문하니 대기 시간이 짧아서 편했습니다.</p>
+                  </div>
+                </article>
+              </div>
             </div>
           </div>
         </article>
