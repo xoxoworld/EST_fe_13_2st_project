@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>ROUNZ 회원가입</title>
+
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <h1>공통 부품 컴포넌트</h1>
+    </header>
+
+    <main class="auth-wrapper">
+      <!-- 1단계: 약관 동의 -->
+      <div class="step-section active">
+        <h2>서비스 약관에 동의 해주세요!</h2>
+        <ul class="agree-list" id="terms-list">
+          <!-- 반복문으로 생성됨 -->
+        </ul>
+        <button class="primary-btn next-btn">다음</button>
+      </div>
+
+      <!-- 2단계: 이메일 입력 -->
+      <div class="step-section">
+        <h2>라운즈에서 사용할<br />이메일을 입력 해주세요.</h2>
+        <div class="input-row">
+          <input type="text" id="useremail" placeholder="example@gmail.com" />
+          <button class="sub-action-btn">중복확인</button>
+        </div>
+        <button class="primary-btn next-btn">다음</button>
+      </div>
+
+      <!-- 3단계: 인증코드 입력 -->
+      <div class="step-section">
+        <h2>인증코드를 입력 해주세요.</h2>
+        <div class="otp-group">
+          <input value="0" aria-label="첫 번째 숫자" />
+          <input value="0" aria-label="두 번째 숫자" />
+          <input value="0" aria-label="세 번째 숫자" />
+          <input value="0" aria-label="네 번째 숫자" />
+          <input value="0" aria-label="다섯 번째 숫자" />
+          <input value="0" aria-label="여섯 번째 숫자" />
+        </div>
+        <div class="timer-row">
+          <strong>03:00 남음</strong>
+          <button class="sub-action-btn" style="background: none">재전송</button>
+        </div>
+        <button class="primary-btn next-btn">인증하기</button>
+      </div>
+
+      <!-- 4단계: 비밀번호 설정 -->
+      <div class="step-section">
+        <h2>비밀번호를 입력 해주세요.</h2>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px">
+          <input type="password" placeholder="비밀번호 입력" />
+          <input type="password" placeholder="비밀번호 확인" />
+        </div>
+        <button class="primary-btn next-btn">설정 완료</button>
+      </div>
+
+      <!-- 5단계: 가입 완료 -->
+      <div class="step-section">
+        <h2>가입을 축하합니다!</h2>
+        <p>이제 모든 서비스 기능을 자유롭게 이용하실 수 있습니다.</p>
+        <button class="primary-btn">쇼핑 시작하기</button>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <h3>공통 부품 컴포넌트</h3>
+    </footer>
+
+    <script>
+      // 1. 약관 리스트 동적 생성
+      const termsData = [
+        "모두 동의합니다.",
+        "[필수] 만 14세 이상입니다.",
+        "[필수] 이용약관 동의",
+        "[필수] 개인정보 수집 및 이용",
+        "[선택] 마케팅 목적 개인정보 수집 및 이용",
+        "[선택] 광고성 정보 수신",
+      ];
+      const termsList = document.getElementById("terms-list");
+      termsList.innerHTML = termsData
+        .map(text => `<li><label><input type="checkbox" /> ${text}</label><span></span></li>`)
+        .join("");
+
+      // 2. 단계별 화면 전환 로직
+      const steps = document.querySelectorAll(".step-section");
+      const nextBtns = document.querySelectorAll(".next-btn");
+      let currentStep = 0;
+
+      nextBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          steps[currentStep].classList.remove("active");
+          currentStep++;
+          if (steps[currentStep]) steps[currentStep].classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>

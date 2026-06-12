@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>ROUNZ 회원가입</title>
+
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <h1>공통 부품 컴포넌트</h1>
+    </header>
+
+    <main class="auth-wrapper">
+      <section>
+        <div class="login-header">
+          <h2 class="logo">ROUNZ</h2>
+          <p>세상에 없던 안경 쇼핑</p>
+        </div>
+
+        <div style="margin-bottom: 24px">
+          <h2 class="text-subtitle-xl">로그인</h2>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px">
+          <input type="text" id="useremail" placeholder="이메일 (example@gmail.com)" />
+          <input type="password" id="userpassword" placeholder="비밀번호 입력" />
+        </div>
+
+        <button class="primary-btn">로그인</button>
+
+        <nav class="text-links" aria-label="계정 메뉴">
+          <a href="#">아이디 찾기</a>
+          <a href="#">비밀번호 찾기</a>
+          <a href="signup.html">회원가입</a>
+        </nav>
+
+        <div class="divider"><span>또는</span></div>
+
+        <div class="social-group" id="social-container">
+          <!-- 반복문 사용 가능한가? -->
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <h3>공통 부품 컴포넌트</h3>
+    </footer>
+
+    <script>
+      const socialData = [
+        { className: "kakao", label: "카카오 로그인", content: "" },
+        { className: "naver", label: "네이버 로그인", content: "N" },
+        { className: "google", label: "구글 로그인", content: "G" },
+      ];
+
+      const socialContainer = document.getElementById("social-container");
+      socialContainer.innerHTML = socialData
+        .map(
+          item => `
+        <button class="social ${item.className}" aria-label="${item.label}">${item.content}</button>
+      `,
+        )
+        .join("");
+    </script>
+  </body>
+</html>
