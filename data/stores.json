@@ -1,0 +1,708 @@
+{
+  "locationStores": [
+    {
+      "id": 1,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/Gangnam_Rounz.jpeg",
+      "mapUrl": "http://naver.me/GmagtjxS",
+      "name": "라운즈 강남역점",
+      "type": "(강남역 4번출구 365m, 우성아파트사거리)",
+      "address": "서울특별시 강남구 역삼로 109 1층 (강남역 4번 출구)",
+      "phone": "02-3454-1006"
+    },
+    {
+      "id": 2,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/Pangyo_Rounz2.jpg",
+      "mapUrl": "http://naver.me/5fEx5tJ6",
+      "name": "라운즈 판교점",
+      "type": "(신분당선,경강선 판교역 1번 출구에서 264m)",
+      "address": "경기도 성남시 분당구 판교역로 192번길 12 1층 (판교역 1번 출구)",
+      "phone": "031-8061-0782"
+    },
+    {
+      "id": 3,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/886.jpg",
+      "mapUrl": "https://naver.me/5wWI2jWm",
+      "name": "라운즈 검단법조타운점",
+      "type": "(인천1호선 아라역 6번 출구에서 788m)",
+      "address": "인천광역시 서구 서로3로 104 101호 (당하동 사거리 파리바게뜨 건물 1층)",
+      "phone": "032-710-3339"
+    },
+    {
+      "id": 4,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/20260308_crop.jpg",
+      "mapUrl": "https://naver.me/FgE4Y2aZ",
+      "name": "라운즈 광주고산점",
+      "type": "(고산하늘초등학교 옆 / 더샵 오포센트리체 정문 옆)",
+      "address": "경기도 광주시 태봉로 226 스카이타워 112호",
+      "phone": "031-8027-8757"
+    },
+    {
+      "id": 5,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/1210.jpg",
+      "mapUrl": "https://naver.me/xktZVCh5",
+      "name": "라운즈 광주충장로점",
+      "type": "(1호선 문화전당역 3번 출구에서 199m, 충장로 우체국사거리 앞)",
+      "address": "광주광역시 동구 충장로 95-2",
+      "phone": "062-716-1400"
+    },
+    {
+      "id": 6,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/443.jpg",
+      "mapUrl": "https://naver.me/FJiP0nBA",
+      "name": "라운즈 교보문고 강남점",
+      "type": "(신논현역 8,9번 출구)",
+      "address": "서울특별시 서초구 강남대로 465 교보타워 지하 1층",
+      "phone": "02-3478-0142"
+    },
+    {
+      "id": 7,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/887.jpg",
+      "mapUrl": "https://naver.me/GPFVDi3K",
+      "name": "라운즈 교보문고 천안점",
+      "type": "(천안 신세계백화점 3층 교보문고안)",
+      "address": "충청남도 천안시 동남구 만남로 43 신세계백화점 3층",
+      "phone": "041-553-9871"
+    },
+    {
+      "id": 8,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/1174.jpg",
+      "mapUrl": "https://naver.me/G2EcMn4g",
+      "name": "라운즈 남위례역점",
+      "type": "(8호선 남위례역 3번 출구에서 158m)",
+      "address": "경기도 성남시 수정구 위례광장로 21-9 위례우남역KCC웰츠타워 (남위례역 3번 출구)",
+      "phone": "031-697-8688"
+    },
+    {
+      "id": 9,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/1196.jpg",
+      "mapUrl": "https://map.naver.com/p/entry/place/2095173325?placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202508111015&locale=ko&svcName=map_pcv5&c=17.41,0,0,0,dh",
+      "name": "라운즈 대구영남대점",
+      "type": "(경산시청에서 자인방면 우측 태왕드림하이츠 큰길가 맞은편으로 찾아오세요!)",
+      "address": "경상북도 경산시 원효로 134",
+      "phone": "053-818-9990"
+    },
+    {
+      "id": 10,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/1176.jpg",
+      "mapUrl": "https://naver.me/GZZUbe2f",
+      "name": "라운즈 동탄목동점",
+      "type": "(동탄2시도시호반베르디움22단지/현대힐스테이트동탄)",
+      "address": "경기도 화성시 동탄순환대로 400 (뚜레쥬르 동탄목동점 옆)",
+      "phone": "031-377-5145"
+    },
+    {
+      "id": 11,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/1040.jpg",
+      "mapUrl": "https://naver.me/5oEMxx4G",
+      "name": "라운즈 동탄역점",
+      "type": "(GTX-A동탄역 2번 출구에서 630m)",
+      "address": "경기도 화성시 동탄역로 102 앨리스빌 1057호 (동탄역 2번 출구)",
+      "phone": "031-375-8566"
+    },
+    {
+      "id": 12,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/1209.jpg",
+      "mapUrl": "https://naver.me/x5mFMyLF",
+      "name": "라운즈 렌즈미 아주대삼거리점",
+      "type": "(예스프라자 1층, 아주대삼거리 버거킹,수원종합동물병원 옆)",
+      "address": "경기도 수원시 영통구 중부대로 259",
+      "phone": "010-3467-9977"
+    },
+    {
+      "id": 13,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/1195.jpg",
+      "mapUrl": "https://naver.me/5wNNPVw9",
+      "name": "라운즈 렌즈미 엔터식스 상봉점",
+      "type": "(경의중앙선,경춘선 망우역 1번 출구에서 283m)",
+      "address": "서울특별시 중랑구 망우로 353 엔터식스 1층",
+      "phone": "02-6224-6025"
+    },
+    {
+      "id": 14,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/16.png",
+      "mapUrl": "https://naver.me/GCvdi2uS",
+      "name": "라운즈 렌즈베리 광명소하점",
+      "type": "(광명소하 이마트 앞 사거리 청학프라자 1층)",
+      "address": "경기도 광명시 소하로 88",
+      "phone": "02-898-2002"
+    },
+    {
+      "id": 15,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/1228.jpg",
+      "mapUrl": "https://naver.me/Ftoupoke",
+      "name": "라운즈 방배점",
+      "type": "(7호선 내방역 함지박사거리 BMW서비스센터 바로옆)",
+      "address": "서울특별시 서초구 방배로 212",
+      "phone": "010-3218-0220"
+    },
+    {
+      "id": 16,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/1223.jpg",
+      "mapUrl": "https://naver.me/xCj63hdb",
+      "name": "라운즈 서울역 게이트웨이타워점",
+      "type": "(서울역11번출구, DB손해보험사옥)",
+      "address": "서울특별시 용산구 후암로 107 게이트웨이타워 지하 2층",
+      "phone": "010-8050-8338"
+    },
+    {
+      "id": 17,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/1192.jpg",
+      "mapUrl": "https://naver.me/FjCM1WSg",
+      "name": "라운즈 성남시청점",
+      "type": "(성남시청앞, 수인분당선 야탑역 4번 출구에서 731m)",
+      "address": "경기도 성남시 중원구 성남대로 993 (야탑역 4번 출구, 성남시청 건너편)",
+      "phone": "031-697-8898"
+    },
+    {
+      "id": 18,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/715.jpg",
+      "mapUrl": "https://naver.me/5xjks5y6",
+      "name": "라운즈 세종나성점",
+      "type": "(나릿재마을 3단지 상가주차장 1층)",
+      "address": "세종특별자치시 나성동 국세청로 45 A동 113호 (카페 스테이 인터뷰 건너편)",
+      "phone": "044-715-5105"
+    },
+    {
+      "id": 19,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/1198.jpg",
+      "mapUrl": "https://naver.me/502i4KU7",
+      "name": "라운즈 아브뉴프랑 광교점",
+      "type": "(광교역 아브뉴프랑 지하1층 다이소 옆)",
+      "address": "경기도 수원시 영통구 센트럴타운로 85 아브뉴프랑 지하 1층 Ab11호",
+      "phone": "031-212-1599"
+    },
+    {
+      "id": 20,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/1218.jpg",
+      "mapUrl": "https://naver.me/GplTzYNM",
+      "name": "라운즈 안양범계점",
+      "type": "(범계사거리 아크로베스티뉴APT, 범계역7번출 도보3분)",
+      "address": "경기도 안양시 동안구 시민대로 138 뜨레모아타워 105호",
+      "phone": "031-360-0050"
+    },
+    {
+      "id": 21,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/716.jpg",
+      "mapUrl": "https://naver.me/GgWZC3lT",
+      "name": "라운즈 염창역점",
+      "type": "(9호선 염창역 2번출구 바로 앞)",
+      "address": "서울특별시 강서구 공항대로 629 1층 102호 (염창역 2번출구)",
+      "phone": "02-3664-4859"
+    },
+    {
+      "id": 22,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/1175.jpg",
+      "mapUrl": "https://naver.me/GBFsNrBn",
+      "name": "라운즈 이수역점",
+      "type": "(4호선,7호선 이수역 7번 출구에서 16m)",
+      "address": "서울특별시 동작구 동작대로 89 골든시네마타워 (이수역 7번 출구)",
+      "phone": "010-4284-7799"
+    },
+    {
+      "id": 23,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/1199.jpg",
+      "mapUrl": "https://naver.me/xAADQBmT",
+      "name": "라운즈 코엑스마곡점",
+      "type": "(마곡나루역 1번출구)",
+      "address": "서울시 강서구 마곡중앙로 143 지하 2층",
+      "phone": "02-2261-6771"
+    },
+    {
+      "id": 24,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/heVihvIg.jpg",
+      "mapUrl": "https://naver.me/FlZQuOtz",
+      "name": "라운즈 포항남구점",
+      "type": "(서문사거리, 오천 서희스타힐스 아파트)",
+      "address": "경상북도 포항시 남구 오천읍 충무로 5",
+      "phone": "054-291-2265"
+    }
+  ],
+  "partnerStores": [
+    {
+      "id": 1,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/722.jpeg",
+      "mapUrl": "https://naver.me/5CzKXaFQ",
+      "name": "글라스박스 남대문",
+      "type": "(4호선 회현역 5번 출구에서 214m)",
+      "address": "서울특별시 중구 남대문시장4길 2-3 (남대문역)",
+      "phone": "02-776-6063"
+    },
+    {
+      "id": 2,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/795.jpg",
+      "mapUrl": "https://naver.me/5HSrbCuY",
+      "name": "글라스박스 여수여천",
+      "type": "(쌍봉로사거리 파리바게트 옆)",
+      "address": "전라남도 여수시 쌍봉로 48",
+      "phone": "061-682-2066"
+    },
+    {
+      "id": 3,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/249.jpg",
+      "mapUrl": "https://naver.me/xfa5ZeLq",
+      "name": "글라스박스 용인수지",
+      "type": "(신분당선 수지구청역 1번 출구에서 89m)",
+      "address": "경기도 용인시 수지구 문정로 15 평온프라자 104호",
+      "phone": "031-261-1515"
+    },
+    {
+      "id": 4,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/578.jpg",
+      "mapUrl": "http://naver.me/xgaspv5S",
+      "name": "글라스박스 울산교보",
+      "type": "(울산 남구 삼산동 업스퀘어 지하1층 핫트랙스)",
+      "address": "울산광역시 남구 화합로 185 업스퀘어 지하 1층",
+      "phone": "070-5151-1111"
+    },
+    {
+      "id": 5,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/252.jpg",
+      "mapUrl": "https://naver.me/5U1mXjYj",
+      "name": "글라스박스 이천아미리",
+      "type": "(SK하이닉스사거리 )",
+      "address": "경기도 이천시 부발읍 경충대로 2096-4 닉스타임 106호",
+      "phone": "031-635-0707"
+    },
+    {
+      "id": 6,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/529.jpg",
+      "mapUrl": "https://naver.me/x35ilIld",
+      "name": "글라스박스 인천작전",
+      "type": "(작전동 까치말사거리 앞)",
+      "address": "인천광역시 계양구 장제로 708 한샘프라자",
+      "phone": "032-541-3367"
+    },
+    {
+      "id": 7,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/683.jpeg",
+      "mapUrl": "https://naver.me/5JJ9lJLD",
+      "name": "글라스박스 광양중동",
+      "type": "(중마동 소방서 앞 , 팻마트 옆)",
+      "address": "전라남도 광양시 중마중앙로 106",
+      "phone": "061-795-5725"
+    },
+    {
+      "id": 8,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/801.jpg",
+      "mapUrl": "https://naver.me/FHYICfpH",
+      "name": "글라스박스 광진자양",
+      "type": "(7호선 자양역 1번 출구에서 610m)",
+      "address": "서울특별시 광진구 뚝섬로 558",
+      "phone": "02-444-1434"
+    },
+    {
+      "id": 9,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/glassbox%20dongseongro.jpg",
+      "mapUrl": "https://naver.me/FYuV75mC",
+      "name": "글라스박스 대구동성로",
+      "type": "(1호선 중앙로역 2번 출구에서 171m)",
+      "address": "대구광역시 중구 국채보상로 586 교보생명빌딩 지하 1층",
+      "phone": "053-254-4454"
+    },
+    {
+      "id": 10,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/687.jpg",
+      "mapUrl": "https://naver.me/FQaF8KiL",
+      "name": "글라스박스 목포하당",
+      "type": "(부영2단지 파리바게트 사거리)",
+      "address": "전라남도 목포시 옥암로 42",
+      "phone": "061-287-6234"
+    },
+    {
+      "id": 11,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/789-1.jpg",
+      "mapUrl": "https://naver.me/5wfuyYy3",
+      "name": "글라스박스 부천위브",
+      "type": "(7호선 신중동역 2번 출구에서 135m)",
+      "address": "경기도 부천시 원미구 신흥로 190",
+      "phone": "032-348-1001"
+    },
+    {
+      "id": 12,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/786-1.jpg",
+      "mapUrl": "https://naver.me/FbRjRDzU",
+      "name": "글라스박스 서대문명지",
+      "type": "(명지대학교 교회앞)",
+      "address": "서울특별시 서대문구 가좌로 113",
+      "phone": "02-302-7061"
+    },
+    {
+      "id": 13,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/694.jpeg",
+      "mapUrl": "https://naver.me/GXEp2nQ6",
+      "name": "글라스박스 서초양재",
+      "type": "(신분당선 양재시민의숲역 3번 출구에서 824m)",
+      "address": "서울특별시 서초구 동산로 73 양재동 SUN빌딩",
+      "phone": "02-3462-5655"
+    },
+    {
+      "id": 14,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/690.jpg",
+      "mapUrl": "https://naver.me/Gi9BsBhu",
+      "name": "글라스박스 성남태평",
+      "type": "(수인분당선 태평역 2번 출구에서 714m)",
+      "address": "경기도 성남시 수정구 수정로 137-1",
+      "phone": "031-623-5252"
+    },
+    {
+      "id": 15,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/791.jpg",
+      "mapUrl": "https://naver.me/5B1kfrFE",
+      "name": "글라스박스 성북정릉",
+      "type": "(우이신설선 북한산보국문역 1번 출구에서 52m)",
+      "address": "서울특별시 성북구 보국문로 80 1층",
+      "phone": "02-910-9001"
+    },
+    {
+      "id": 16,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/681.jpg",
+      "mapUrl": "https://naver.me/G4rRBT3M",
+      "name": "글라스박스 송파가락",
+      "type": "(38가락시장역 4번 출구에서 303m)",
+      "address": "서울특별시 송파구 송파대로28길 27",
+      "phone": "02-3012-6234"
+    },
+    {
+      "id": 17,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/692.jpg",
+      "mapUrl": "https://naver.me/Ft8kD31R",
+      "name": "글라스박스 시흥능곡",
+      "type": "(서해선 시흥능곡역 2번 출구에서 369m)",
+      "address": "경기도 시흥시 능곡로 178",
+      "phone": "031-405-5555"
+    },
+    {
+      "id": 18,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/793.jpg",
+      "mapUrl": "https://naver.me/F9ViupFf",
+      "name": "글라스박스 안성연지",
+      "type": "(금산 로터리 버스정류장 맞은편)",
+      "address": "경기도 안성시 중앙로371번길 80",
+      "phone": "031-676-7725"
+    },
+    {
+      "id": 19,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/627.jpg",
+      "mapUrl": "https://naver.me/GY2VN9H7",
+      "name": "글라스박스 울산대",
+      "type": "(울산대학교 정문앞)",
+      "address": "울산광역시 남구 대학로 84-1",
+      "phone": "052-221-6238"
+    },
+    {
+      "id": 20,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/696.jpg",
+      "mapUrl": "https://naver.me/Gi9eexA2",
+      "name": "글라스박스 인천가좌",
+      "type": "(인천2서부여성회관역 2번 출구에서 538m)",
+      "address": "인천광역시 서구 가정로 146-1",
+      "phone": "032-579-5408"
+    },
+    {
+      "id": 21,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/797.jpg",
+      "mapUrl": "https://naver.me/Goz3I2yh",
+      "name": "글라스박스 인천검단",
+      "type": "(인천2호선 완정역 1번 출구에서 303m)",
+      "address": "인천광역시 서구 완정로 19 무광프라자 107, 108호",
+      "phone": "032-568-2116"
+    },
+    {
+      "id": 22,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/698.jpg",
+      "mapUrl": "https://naver.me/GbE2dkCG",
+      "name": "글라스박스 인천산곡",
+      "type": "(7호선 산곡역 3번 출구에서 451m)",
+      "address": "인천광역시 부평구 마장로 287 한양아파트상가 108호",
+      "phone": "032-508-0002"
+    },
+    {
+      "id": 23,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/699.jpg",
+      "mapUrl": "https://naver.me/Ft8yqGuQ",
+      "name": "글라스박스 인천삼산",
+      "type": "(7굴포천역 8번 출구에서 458m)",
+      "address": "인천광역시 부평구 체육관로 38 세원빌딩 105호",
+      "phone": "032-514-2221"
+    },
+    {
+      "id": 24,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/700.jpeg",
+      "mapUrl": "https://naver.me/5eGnelyW",
+      "name": "글라스박스 일산위시티",
+      "type": "(풍산 트윈시티2)",
+      "address": "경기도 고양시 일산동구 위시티로 81 풍산트윈시티2동 106호 글라스박스안경 렌즈미 위시티점",
+      "phone": "031-968-4909"
+    },
+    {
+      "id": 25,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/780.jpg",
+      "mapUrl": "https://naver.me/FRDok9K9",
+      "name": "글라스박스 천안신부동",
+      "type": "(고속버스터미널 맞은편 아홉가지약속치과 옆)",
+      "address": "충남 천안시 동남구 만남로 18 휴먼빌딩",
+      "phone": "041-567-1110"
+    },
+    {
+      "id": 26,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/710.jpg",
+      "mapUrl": "https://naver.me/FYufJD2m",
+      "name": "글라스박스 청주사창",
+      "type": "(사창사거리 )",
+      "address": "충청북도 청주시 서원구 사직대로 109",
+      "phone": "043-263-6234"
+    },
+    {
+      "id": 27,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/703.jpeg",
+      "mapUrl": "https://naver.me/FPZfeVGq",
+      "name": "글라스박스 충주성서",
+      "type": "(성서 젊은의 거리 입구)",
+      "address": "충청북도 충주시 성서1길 50 현대타운상가 가-4",
+      "phone": "043-845-1313"
+    },
+    {
+      "id": 28,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/804.jpg",
+      "mapUrl": "https://naver.me/5B1ZbGse",
+      "name": "글라스박스 파주문산",
+      "type": "(문산초등학교 앞)",
+      "address": "경기도 파주시 문산읍 사임당로 65-16",
+      "phone": "031-954-0090"
+    },
+    {
+      "id": 29,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/785-1.jpg",
+      "mapUrl": "https://naver.me/xjeLmdky",
+      "name": "글라스박스 화성동탄",
+      "type": "(동탄 예당마을사거리)",
+      "address": "경기도 화성시 동탄원천로 163 위너스타빌딩 106호",
+      "phone": "031-8015-0304"
+    },
+    {
+      "id": 30,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/108.jpg",
+      "mapUrl": "http://naver.me/GC2CtBwg",
+      "name": "1001안경 수원아주대",
+      "type": "",
+      "address": "경기도 수원시 영통구 아주로 18 준영빌딩 1층",
+      "phone": "031-211-4001"
+    },
+    {
+      "id": 31,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/639.jpg",
+      "mapUrl": "http://naver.me/GTga7HDM",
+      "name": "1001안경 전남도청",
+      "type": "",
+      "address": "전라남도 무안군 삼향읍 남악4로 86 한양에드가 109호,110호",
+      "phone": "061-282-8522"
+    },
+    {
+      "id": 32,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/4.jpg",
+      "mapUrl": "http://naver.me/FBwfHs7Y",
+      "name": "1001안경 춘천중앙",
+      "type": "",
+      "address": "강원도 춘천시 중앙로 68 그랜드메디컬타워 1층",
+      "phone": "033-256-7374"
+    },
+    {
+      "id": 33,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/664.jpg",
+      "mapUrl": "https://naver.me/5snboX0Y",
+      "name": "bd안경 계룡엄사",
+      "type": "",
+      "address": "충청남도 계룡시 엄사면 엄사중앙로 96",
+      "phone": "042-841-1051"
+    },
+    {
+      "id": 34,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/638.jpg",
+      "mapUrl": "https://naver.me/5cwfeqtG",
+      "name": "E안경 목포죽동",
+      "type": "",
+      "address": "전라남도 목포시 영산로59번길 30",
+      "phone": "061-245-4422"
+    },
+    {
+      "id": 35,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/650.jpg",
+      "mapUrl": "http://naver.me/5aVb2nwY",
+      "name": "E안경 전남해남",
+      "type": "",
+      "address": "전라남도 해남군 해남읍 남부순환로 2",
+      "phone": "061-532-0993"
+    },
+    {
+      "id": 36,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/309.jpg",
+      "mapUrl": "https://naver.me/FGoEgGab",
+      "name": "갤러리안경 화성동탄",
+      "type": "",
+      "address": "경기도 화성시 동탄중심상가2길 7 씨티플러스 1층",
+      "phone": "031-8003-2100"
+    },
+    {
+      "id": 37,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/2.jpg",
+      "mapUrl": "http://naver.me/5KZGtnmw",
+      "name": "고안경 원주단계",
+      "type": "",
+      "address": "강원도 원주시 원문로 93",
+      "phone": "010-4490-5005"
+    },
+    {
+      "id": 38,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/634.jpg",
+      "mapUrl": "https://naver.me/xQOF4L4X",
+      "name": "공팔공안경 목포상동",
+      "type": "",
+      "address": "전라남도 목포시 비파로51번길 39",
+      "phone": "061-283-4134"
+    },
+    {
+      "id": 39,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/640.jpg",
+      "mapUrl": "http://naver.me/xIhNVYOL",
+      "name": "굿아이안경 순천조례",
+      "type": "",
+      "address": "전라남도 순천시 조례 2길 4 그랜드파크 1층",
+      "phone": "061-723-5678"
+    },
+    {
+      "id": 40,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/15.jpg",
+      "mapUrl": "http://naver.me/GAnCTMpP",
+      "name": "그랑프리안경 광명사거리",
+      "type": "",
+      "address": "경기도 광명시 광명로 886",
+      "phone": "02-3666-5001"
+    },
+    {
+      "id": 41,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/InchenoSeogu_Glassdoctor%20InchenoGeomam.jpg",
+      "mapUrl": "https://naver.me/G8UhenOi",
+      "name": "글라스닥터안경 인천검암",
+      "type": "(검암역 2번 출구)",
+      "address": "인천광역시 서구 승학로 498 서해프라자 1층",
+      "phone": "032-566-3200"
+    },
+    {
+      "id": 42,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/670.jpg",
+      "mapUrl": "https://naver.me/GAiBUxjW",
+      "name": "글라스리안경 아산탕정",
+      "type": "",
+      "address": "충청남도 아산시 탕정면 한들물빛5로 33, 1층 106~107호",
+      "phone": "041-532-9932"
+    },
+    {
+      "id": 43,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/737.jpg",
+      "mapUrl": "https://naver.me/5G5xs8B5",
+      "name": "글라스미안경 광주신창",
+      "type": "",
+      "address": "광주광역시 광산구 신창로 118",
+      "phone": "062-954-0087"
+    },
+    {
+      "id": 44,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/SeoulDongjak_Glassme%20Shindeabang.jpg",
+      "mapUrl": "http://naver.me/GDcDKmMG",
+      "name": "글라스미안경 동작신대방",
+      "type": "(신대방삼거리역 2번 출구)",
+      "address": "서울특별시 동작구 보라매로 113 코스모빌딩 106호",
+      "phone": "02-822-1101"
+    },
+    {
+      "id": 45,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/898.jpeg",
+      "mapUrl": "https://naver.me/Frl1eW6n",
+      "name": "글라스스토리 평택현촌",
+      "type": "(용이동 한국마트 앞)",
+      "address": "경기도 평택시 현촌4길 6 1층",
+      "phone": "031-654-5599"
+    },
+    {
+      "id": 46,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/393.jpg",
+      "mapUrl": "https://naver.me/xv0ASgLl",
+      "name": "글라스온안경 광주상무",
+      "type": "",
+      "address": "광주광역시 서구 상무중앙로 71",
+      "phone": "062-375-2443"
+    },
+    {
+      "id": 47,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/380.jpg",
+      "mapUrl": "https://naver.me/GxOg3pxF",
+      "name": "글라스온안경 광주충장로",
+      "type": "",
+      "address": "광주광역시 동구 중앙로160번길 7",
+      "phone": "062-223-8921"
+    },
+    {
+      "id": 48,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/588.jpg",
+      "mapUrl": "http://naver.me/FFvkfjRN",
+      "name": "글라스월드안경 인천계산",
+      "type": "(경인교대입구역 1번 출구)",
+      "address": "인천광역시 계양구 계양대로 210 정빌딩 1층",
+      "phone": "032-541-5844"
+    },
+    {
+      "id": 49,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/897.jpeg",
+      "mapUrl": "https://naver.me/5OnkmxeB",
+      "name": "글라스톡안경 안성공도",
+      "type": "(목구멍삼겹살집 주변)",
+      "address": "경기도 안성시 공도읍 진사길 7 104호",
+      "phone": "031-655-0811"
+    },
+    {
+      "id": 50,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/896.jpeg",
+      "mapUrl": "https://naver.me/xtHIUgzq",
+      "name": "내마음에든안경 명지대",
+      "type": "(서울 명지대학교 정문앞)",
+      "address": "서울특별시 서대문구 증가로 150 DMC2차 IPARK상가 100동 B314호",
+      "phone": "02-6409-1237"
+    },
+    {
+      "id": 51,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/433.jpg",
+      "mapUrl": "https://naver.me/5uc6g8B6",
+      "name": "노글라스안경 대전전민",
+      "type": "",
+      "address": "대전광역시 유성구 유성대로 1756 1층",
+      "phone": "042-863-0079"
+    },
+    {
+      "id": 52,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/414.jpg",
+      "mapUrl": "https://naver.me/501ifGDs",
+      "name": "눈빛안경 대전용전",
+      "type": "",
+      "address": "대전광역시 동구 동서대로 1629-6",
+      "phone": "042-639-5051"
+    },
+    {
+      "id": 53,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/JunnamSoncheon_Nuneanun.jpg",
+      "mapUrl": "http://naver.me/xC6B3HRJ",
+      "name": "눈에눈안경 순천오천",
+      "type": "",
+      "address": "전라남도 순천시 오천3길 32",
+      "phone": "061-741-5527"
+    },
+    {
+      "id": 54,
+      "thumbnail": "https://image.rounz.com/newrounz/offline/partner/388.jpg",
+      "mapUrl": "https://naver.me/G87B9YbG",
+      "name": "더봄안경 광주신창",
+      "type": "",
+      "address": "광주광역시 광산구 신창로 70 경원빌딩 1층",
+      "phone": "062-955-1013"
+    }
+  ]
+}
