@@ -39,9 +39,12 @@ main > section {
   color: var(--gray-2);
 }
 
-.store-hero h1 {
+.store-hero h2 {
   margin: 0;
   line-height: 36px;
+}
+.store-hero strong {
+  color: var(--primary);
 }
 
 .store-visual {
@@ -111,7 +114,7 @@ main > section {
   font-size: 14px;
   line-height: 20px;
 }
-.info-card br {
+.info-card p br {
   display: none;
 }
 .info-card .info-card-sub {
@@ -161,16 +164,18 @@ main > section {
 }
 
 .reservation a {
+  width: 100px;
+  height: 35px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex: 0 0 100px;
-  height: 35px;
-  border-radius: var(--radius-s);
+  border-radius: var(--radius-lg);
   background: var(--primary);
   color: var(--white-1);
   font-size: 16px;
   font-weight: 700;
+  line-height: 20px;
 }
 
 .store-list-section {
@@ -178,8 +183,10 @@ main > section {
 }
 
 .list-controls {
+  max-width: 370px;
+  width: 100%;
+  margin: 0 auto 20px;
   gap: 16px;
-  margin-bottom: 20px;
 }
 
 .store-tabs {
@@ -197,7 +204,7 @@ main > section {
   background: var(--secondary);
   color: var(--gray-1);
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .store-tabs .active {
@@ -209,36 +216,30 @@ main > section {
 .select-group {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 5px;
   width: 139px;
   height: 25px;
 }
 
 .select-group button {
   position: relative;
+  background: var(--secondary);
   color: var(--gray-1);
   font-size: 11px;
-  text-align: left;
-}
-
-.select-group button::after {
-  content: "";
-  position: absolute;
-  top: 9px;
-  right: 3px;
-  width: 6px;
-  height: 6px;
-  border-right: 1px solid var(--gray-1);
-  border-bottom: 1px solid var(--gray-1);
-  transform: rotate(45deg);
+  text-align: center;
+  border-radius: 4px;
 }
 
 .store-grid {
   display: grid;
   grid-template-columns: 1fr;
+  justify-items: center;
   gap: 20px;
 }
 
 .store-card {
+  width: 370px;
+  height: 360px;
   overflow: hidden;
   border: 1px solid var(--radius-color);
   border-radius: var(--radius-xl);
@@ -248,27 +249,18 @@ main > section {
 
 .store-card > img {
   width: 100%;
-  aspect-ratio: 370 / 189;
+  height: 190px;
+  aspect-ratio: 370 / 190;
   object-fit: cover;
 }
 
 .store-card-body {
-  min-height: 167px;
-  padding: 14px 16px 16px;
-}
-
-.store-card h2 {
-  margin: 0;
-  font-size: 20px;
-  line-height: 27px;
-}
-
-.store-card p {
-  margin: 0;
+  height: 170px;
+  padding: 16px 16px;
 }
 
 .station {
-  color: var(--gray-2);
+  color: var(--gray-3);
   font-size: 12px;
   line-height: 27px;
 }
@@ -278,9 +270,8 @@ main > section {
   font-size: 14px;
   line-height: 22px;
 }
-
 .contact-row {
-  margin-top: 3px;
+  padding-top: 20px;
 }
 
 .contact-row > a {
@@ -290,58 +281,20 @@ main > section {
 }
 
 .contact-row div {
-  gap: 12px;
+  gap: 10px;
 }
-
-.contact-icon {
-  position: relative;
-  width: 16px;
-  height: 27px;
-}
-
-.contact-icon::before,
-.contact-icon::after {
-  content: "";
-  position: absolute;
-}
-
-.contact-icon.call::before {
-  top: 6px;
-  left: 4px;
-  width: 8px;
-  height: 13px;
-  border: 2px solid var(--gray-3);
-  border-radius: 3px;
-  transform: rotate(-18deg);
-}
-
-.contact-icon.map::before {
-  top: 5px;
-  left: 3px;
-  width: 10px;
-  height: 14px;
-  border: 2px solid var(--gray-3);
-  border-radius: 7px 7px 7px 0;
-  transform: rotate(-45deg);
-}
-
-.contact-icon.map::after {
-  top: 9px;
-  left: 7px;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: var(--gray-3);
+.contact-row .material-icons {
+  font-size: 18px;
+  color: var(--gray-3);
+  line-height: 20px;
 }
 
 .more-button {
-  width: 100%;
+  width: 370px;
   height: 48px;
   margin-top: 20px;
   border: 1px solid var(--radius-color);
-  border-radius: var(--radius-s);
-  font-size: 14px;
-  line-height: 27px;
+  border-radius: 100px;
 }
 
 .store-detail-layer {
@@ -521,7 +474,7 @@ main > section {
     font-size: 16px;
   }
 
-  .store-hero h1 {
+  .store-hero h2 {
     font-size: 36px;
     line-height: 43px;
   }
@@ -577,7 +530,6 @@ main > section {
   }
 
   .reservation {
-    height: 96px;
     padding: 0 calc((100% - 708px) / 2);
     justify-content: space-between;
     gap: 0;
@@ -591,8 +543,9 @@ main > section {
   }
 
   .reservation a {
-    flex-basis: 120px;
-    height: 42px;
+    width: 120px;
+    height: 40px;
+
     font-size: 17px;
   }
 
@@ -601,17 +554,23 @@ main > section {
   }
 
   .list-controls {
-    margin-bottom: 24px;
+    max-width: 708px;
+    width: 100%;
+    margin: 0 auto 24px;
   }
 
   .store-tabs {
-    grid-template-columns: 104px 110px;
-    width: 214px;
-    height: 36px;
+    grid-template-columns: 1fr 1fr;
+    width: 105px;
+    height: 35px;
+    gap: 8px;
   }
 
   .store-tabs button {
-    font-size: 15px;
+    font-size: 16px;
+    line-height: 20px;
+    width: 105px;
+    height: 35px;
   }
 
   .select-group {
@@ -625,30 +584,13 @@ main > section {
 
   .store-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
+    gap: 20px;
   }
 
   .store-card {
-    border-radius: 15px;
+    width: 340px;
+    height: 360px;
   }
-
-  .store-card-body {
-    min-height: 172px;
-    padding: 16px 16px 18px;
-  }
-
-  .store-card h2 {
-    font-size: 20px;
-  }
-
-  .address {
-    line-height: 23px;
-  }
-
-  .more-button {
-    margin-top: 24px;
-  }
-
   .store-detail-panel {
     right: 30px;
     left: 30px;
@@ -714,7 +656,7 @@ main > section {
     line-height: 27px;
   }
 
-  .store-hero h1 {
+  .store-hero h2 {
     font-size: 48px;
     line-height: 58px;
   }
@@ -788,18 +730,17 @@ main > section {
   }
 
   .reservation {
-    height: 110px;
     padding: 0 calc((100% - 1272px) / 2);
   }
 
   .reservation p {
-    font-size: var(--sub-title--l);
+    font-size: var(--sub-title--m);
   }
 
   .reservation a {
-    flex-basis: 140px;
+    width: 162px;
     height: 46px;
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .store-list-section {
@@ -808,17 +749,22 @@ main > section {
   }
 
   .list-controls {
-    margin-bottom: 28px;
+    max-width: 1272px;
+    width: 100%;
+    margin: 0 auto 28px;
   }
 
   .store-tabs {
-    grid-template-columns: 112px 118px;
+    grid-template-columns: 1fr 1fr;
     width: 230px;
     height: 40px;
+    gap: 16px;
   }
 
   .store-tabs button {
-    font-size: 16px;
+    font-size: 20px;
+    width: 144px;
+    height: 47px;
   }
 
   .select-group {
@@ -827,21 +773,30 @@ main > section {
   }
 
   .select-group button {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .store-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 27px;
   }
-
+  .store-card {
+    width: 400px;
+    height: 340px;
+  }
   .store-card-body {
-    min-height: 176px;
-    padding: 18px 16px 20px;
+    height: 150px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .store-card h2 {
     font-size: 20px;
+  }
+  .contact-row {
+    padding-top: 10px;
   }
 
   .more-button {
