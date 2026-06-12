@@ -80,20 +80,22 @@
                     <button class="material-icons" type="button" aria-label="이전">
                       arrow_back_ios
                     </button>
-                    <img src="" alt="" />
-                    <p>
-                      <strong class="text-small-b">내 얼굴에 마음껏 써보기</strong
-                      ><span>6,000여 개의 아이웨어를<br />실시간으로 무제한 써봐요.</span>
-                    </p>
+                    <div class="face-banner-content">
+                      <img src="../assets/icons/bg_detail_benefit_1.png" alt="rounz_banner_1" />
+                      <p>
+                        <strong class="text-small-b">내 얼굴에 마음껏 써보기</strong
+                        ><span>6,000여 개의 아이웨어를 <br />실시간으로 무제한 써봐요.</span>
+                      </p>
+                    </div>
                     <button class="material-icons" type="button" aria-label="다음">
                       arrow_forward_ios
                     </button>
                   </div>
                   <div class="fit-banner">
-                    <span class="fit-icon"></span>
+                    <img src="../assets/icons/product_banner_1.png" alt="rounz_banner_1" />
                     <p>
-                      <strong class="text-small-b">실시간 가상 피팅</strong
-                      ><span>지금 바로 경험해보세요</span>
+                      <strong class="text-small-b">실시간 가상 피팅 </strong
+                      ><span class="text-small-b">지금 바로 경험해보세요</span>
                     </p>
                   </div>
                 </div>
@@ -452,7 +454,26 @@
 
     <section class="bottom-buy-section" aria-label="구매 버튼">
       <div class="bottom-buy-wrap">
-        <span class="home-indicator"></span>
+        <button class="bottom-sheet-handle" type="button" aria-label="구매 옵션 열기">
+          <span class="home-indicator"></span>
+        </button>
+
+        <div class="bottom-buy-panel">
+          <div class="buy-product-box">
+            <strong class="product-name">제품명</strong>
+
+            <div class="buy-info-row">
+              <div class="quantity-control">
+                <button type="button">-</button>
+                <span>1</span>
+                <button type="button">+</button>
+              </div>
+
+              <strong class="total-price">000,000원</strong>
+            </div>
+          </div>
+        </div>
+
         <div class="bottom-buttons">
           <button class="cart-btn" type="button">장바구니</button>
           <button class="buy-btn" type="button">바로구매</button>
