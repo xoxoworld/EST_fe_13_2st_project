@@ -82,64 +82,63 @@ main > section {
   gap: 20px;
   padding: 27px 16px;
 }
-
 .info-card {
   position: relative;
-  min-height: 250px;
-  padding: 20px;
-  overflow: hidden;
+  height: 250px;
+  max-width: 370px;
+  padding: 20px 30px;
   border-radius: var(--radius-lg);
   background: var(--secondary);
+  margin: 0 auto;
 }
-
-.info-card h2 {
-  margin: 0 0 28px;
+.info-card > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 10px;
+}
+.info-card h3 {
+  margin: 0;
   font-size: 20px;
   line-height: 27px;
 }
 
 .info-card p {
-  width: min(222px, 100%);
+  width: min(260px, 100%);
   margin: 0;
   color: var(--gray-1);
   font-size: 14px;
   line-height: 20px;
 }
-
-.info-card ul {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  left: 20px;
-  margin: 0;
-  padding: 0;
+.info-card .info-card-sub {
+  width: 100%;
   color: var(--gray-2);
   font-size: 12px;
-  line-height: 20px;
-  list-style: none;
-}
-
-.info-card li::before {
-  content: "* ";
+  line-height: 22px;
 }
 
 .info-card > img {
   position: absolute;
   top: 20px;
-  right: 20px;
+  right: 30px;
+
   width: 54px;
   height: 54px;
 }
 
 .info-card a {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  left: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 27px;
+
+  width: 100%;
+  height: 62px;
+
+  border: 1px solid var(--gray-3);
+  border-radius: var(--radius-lg);
+  background: var(--white-1);
+
   font-size: 18px;
   font-weight: 700;
 }
@@ -532,41 +531,39 @@ main > section {
   }
 
   .info-banners {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 40px 0;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 30px 27px;
   }
 
   .info-card {
-    min-height: 250px;
-    padding: 28px 32px;
+    width: 220px;
+    height: 260px;
+    padding: 20px 18px;
   }
 
-  .info-card h2 {
-    margin-bottom: 28px;
-    font-size: 22px;
-    line-height: 30px;
+  .info-card h3 {
+    font-size: var(--normal);
+    line-height: 20px;
   }
 
   .info-card p {
-    width: 430px;
-    font-size: 15px;
-    line-height: 24px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
   }
 
-  .info-card ul {
-    right: 32px;
-    bottom: 28px;
-    left: 32px;
-    font-size: 13px;
-    line-height: 22px;
+  .info-card .info-card-sub {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -2%;
   }
 
   .info-card > img {
-    top: 28px;
-    right: 32px;
-    width: 70px;
-    height: 70px;
+    top: 20px;
+    right: 18px;
+    width: 40px;
+    height: 40px;
   }
 
   .info-card a {
@@ -746,11 +743,11 @@ main > section {
 
   .info-card {
     min-height: 300px;
-    padding: 30px;
+    padding: 20px 30px;
     border-radius: 10px;
   }
 
-  .info-card h2 {
+  .info-card h3 {
     margin-bottom: 34px;
     font-size: 24px;
     line-height: 32px;
@@ -778,9 +775,7 @@ main > section {
   }
 
   .info-card a {
-    right: 30px;
-    bottom: 30px;
-    left: 30px;
+    margin: 10px auto;
     font-size: 18px;
   }
 
