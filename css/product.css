@@ -218,39 +218,67 @@ img {
 }
 
 /* 두 배너가 동일한 높이와 배경을 공유합니다. */
-.face-banner,
+.face-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  padding: 0 12px;
+  background: var(--secondary);
+}
 .fit-banner {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 80px;
-  background: var(--secondary);
-}
-
-.face-banner {
   padding: 0 12px;
+  background: var(--secondary);
 }
 
 /* 좌우 이동 화살표 영역입니다. 실제 슬라이더가 붙어도 폭이 흔들리지 않게 고정합니다. */
 .face-banner button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
   width: 24px;
   color: var(--gray-3);
   font-size: 20px;
 }
 
+.face-banner button:first-child {
+  left: 12px;
+}
+
+.face-banner button:last-child {
+  right: 12px;
+}
+.face-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  transform: translateX(-8px);
+}
+
 .face-banner img {
   width: 54px;
   height: 54px;
-  margin: 0 15px 0 3px;
+  margin: 0;
   border-radius: 50%;
   object-fit: cover;
   background: var(--white-1);
 }
+.fit-banner img {
+  width: 60px;
+  transform: translateY(-3px);
+}
 
 /* 배너 제목/설명 텍스트 영역입니다. */
-.face-banner p,
-.fit-banner p {
-  flex: 1;
+.face-banner p {
   margin: 0;
+  flex: 0 0 auto;
 }
 
 .face-banner strong,
@@ -262,19 +290,22 @@ img {
   line-height: 1.35;
 }
 
-.face-banner span,
+.face-banner span {
+  display: block;
+  margin-top: 2px;
+  color: var(--gray-1);
+  line-height: 1.4;
+}
 .fit-banner span {
   display: block;
   margin-top: 5px;
   color: var(--black-2);
-  font-size: 11px;
   line-height: 1.5;
 }
 
 .fit-banner {
   gap: 22px;
   margin-top: 20px;
-  padding-left: 70px;
 }
 
 /* 가상 피팅 아이콘은 이미지 파일 없이 CSS 도형으로 구성합니다. */
@@ -919,25 +950,84 @@ img {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 30;
-  margin: 0 auto;
+  z-index: 100;
 }
 
 .bottom-buy-wrap {
-  padding: 10px 16px 16px;
-  border-radius: 12px 12px 0 0;
+  margin: 0 auto;
+  padding: 18px 20px 20px;
+  border-radius: 28px 28px 0 0;
   background: var(--white-1);
-  box-shadow: 0 -7px 22px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.18);
 }
 
-/* iOS 하단 시트처럼 보이는 작은 핸들입니다. */
+.bottom-sheet-handle {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 18px;
+}
+
 .home-indicator {
   display: block;
-  width: 62px;
-  height: 3px;
-  margin: 0 auto 15px;
+  width: 78px;
+  height: 6px;
   border-radius: 999px;
-  background: #d6d6d6;
+  background: #d9d9d9;
+}
+
+.bottom-buy-panel {
+  display: none;
+  margin-bottom: 16px;
+}
+
+.bottom-buy-section.open .bottom-buy-panel {
+  display: block;
+}
+
+.buy-product-box {
+  padding: 18px;
+  border-radius: 8px;
+  background: var(--secondary);
+}
+
+.product-name {
+  display: block;
+  margin-bottom: 28px;
+  color: var(--black-2);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.buy-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quantity-control {
+  display: flex;
+  height: 32px;
+  border: 1px solid #aab2c0;
+}
+
+.quantity-control button,
+.quantity-control span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  border-right: 1px solid #aab2c0;
+  font-size: 18px;
+}
+
+.quantity-control button:last-child {
+  border-right: 0;
+}
+
+.total-price {
+  font-size: 24px;
+  font-weight: 800;
 }
 
 .bottom-buttons {
@@ -947,16 +1037,15 @@ img {
   gap: 10px;
 }
 
-/* 버튼은 동일 크기, 장바구니 outline / 바로구매 filled 조합입니다. */
 .bottom-buttons button {
   height: 58px;
-  border: 1px solid var(--primary);
-  border-radius: 7px;
-  font-size: 17px;
+  border-radius: 8px;
+  font-size: 18px;
   font-weight: 800;
 }
 
 .cart-btn {
+  border: 1px solid var(--primary);
   color: var(--primary);
   background: var(--white-1);
 }
@@ -1019,6 +1108,35 @@ img {
   .fit-banner {
     height: 80px;
   }
+  .face-banner p {
+    display: block;
+    margin: 0;
+  }
+
+  .face-banner strong,
+  .fit-banner strong {
+    flex-shrink: 0;
+  }
+
+  .face-banner span br {
+    display: none;
+  }
+  .fit-banner p {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+  }
+  /* 배너 글씨 크기 */
+  .face-banner-content strong {
+    font-size: 16px;
+  }
+  .face-banner-content span {
+    font-size: 12px;
+  }
+  .fit-banner p strong,
+  .fit-banner p span {
+    font-size: var(--large);
+  }
 
   .tabs-wrap {
     height: 56px;
@@ -1065,8 +1183,15 @@ img {
   }
 
   .review-list article {
-    grid-template-columns: 1fr 108px;
+    grid-template-columns: 124px 1fr 108px;
+    gap: 22px;
     min-height: 142px;
+    padding: 22px 0;
+  }
+
+  .review-meta,
+  .review-content {
+    height: 108px;
   }
 
   .review-list img {
@@ -1257,32 +1382,47 @@ img {
 
   .face-banner,
   .fit-banner {
-    height: 92px;
-  }
-
-  .face-banner {
-    padding: 0 10px;
+    height: 80px;
+    padding: 0 12px;
   }
 
   .face-banner img {
+    width: 54px;
+    height: 54px;
+    margin: 0;
+  }
+
+  .fit-banner img {
     width: 60px;
-    height: 60px;
-    margin-right: 10px;
   }
 
   .face-banner strong,
-  .fit-banner strong {
-    font-size: 13px;
+  .fit-banner strong,
+  .face-banner-content strong {
+    font-size: 14px;
   }
 
   .face-banner span,
-  .fit-banner span {
-    font-size: 11px;
+  .fit-banner span,
+  .face-banner-content span {
+    font-size: 12px;
+  }
+  .face-banner span br {
+    display: block;
   }
 
   .fit-banner {
-    gap: 12px;
-    padding-left: 14px;
+    gap: 22px;
+  }
+
+  .fit-banner p {
+    display: block;
+  }
+
+  .fit-banner p strong,
+  .fit-banner p span {
+    font-size: 16px;
+    line-height: 20px;
   }
 
   .tabs-wrap {
@@ -1367,18 +1507,20 @@ img {
 
   /* 데스크톱 본문 섹션들은 좌측 컬럼 폭 전체를 사용하므로 모바일 padding을 제거합니다. */
   .review-list article {
-    grid-template-columns: 1fr 99px;
+    grid-template-columns: 124px 1fr 99px;
+    gap: 22px;
     min-height: 157px;
     padding: 24px 0;
+  }
+
+  .review-meta,
+  .review-content {
+    height: 99px;
   }
 
   .review-list img {
     width: 99px;
     height: 99px;
-  }
-
-  .review-copy h3 {
-    margin-left: 108px;
   }
 
   .qna-list li {
