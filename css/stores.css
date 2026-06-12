@@ -178,6 +178,158 @@ main > section {
   line-height: 20px;
 }
 
+.reservation-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: none;
+}
+
+.reservation-layer:target {
+  display: block;
+}
+
+.reservation-dim {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.reservation-panel {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-height: calc(100dvh - 32px);
+  margin: 0;
+  overflow: auto;
+  border-radius: 20px 20px 0 0;
+  background: var(--white-1);
+}
+
+.reservation-handle {
+  width: 64px;
+  height: 4px;
+  margin: 12px auto 16px;
+  border-radius: 999px;
+  background: var(--black-2);
+}
+
+.reservation-close {
+  position: absolute;
+  top: 18px;
+  right: 16px;
+  z-index: 2;
+  width: 28px;
+  height: 28px;
+}
+
+.reservation-close::before,
+.reservation-close::after {
+  content: "";
+  position: absolute;
+  top: 13px;
+  left: 5px;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--black-2);
+}
+
+.reservation-close::before {
+  transform: rotate(45deg);
+}
+
+.reservation-close::after {
+  transform: rotate(-45deg);
+}
+
+.reservation-modal-content {
+  padding: 0 16px 28px;
+}
+
+.reservation-modal-label {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  margin: 0 0 10px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: var(--secondary);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.reservation-modal-content h2 {
+  margin: 0;
+  color: var(--black-2);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.reservation-modal-desc {
+  margin: 6px 0 22px;
+  color: var(--gray-2);
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.reservation-form {
+  display: grid;
+  gap: 14px;
+}
+
+.reservation-form label {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.reservation-form span {
+  color: var(--gray-1);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.reservation-form input,
+.reservation-form select {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--radius-color);
+  border-radius: var(--radius-s);
+  background: var(--white-1);
+  color: var(--black-2);
+  font: inherit;
+  font-size: 14px;
+}
+
+.reservation-form input::placeholder {
+  color: var(--gray-3);
+}
+
+.reservation-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.reservation-form button {
+  height: 52px;
+  margin-top: 8px;
+  border-radius: var(--radius-s);
+  background: var(--primary);
+  color: var(--white-1);
+  font-size: 15px;
+  font-weight: 700;
+}
+
 .store-list-section {
   padding: 27px 16px;
 }
@@ -676,6 +828,29 @@ main > section {
     font-size: 17px;
   }
 
+  .reservation-panel {
+    right: 30px;
+    left: 30px;
+    max-width: 708px;
+    max-height: calc(100dvh - 60px);
+    margin: 0 auto;
+  }
+
+  .reservation-handle {
+    width: 80px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+
+  .reservation-close {
+    top: 22px;
+    right: 24px;
+  }
+
+  .reservation-modal-content {
+    padding: 0 30px 34px;
+  }
+
   .store-list-section {
     padding: 40px 0 60px;
   }
@@ -863,6 +1038,55 @@ main > section {
     width: 162px;
     height: 46px;
     font-size: 20px;
+  }
+
+  .reservation-panel {
+    top: 50%;
+    right: auto;
+    bottom: auto;
+    left: 50%;
+    width: 560px;
+    max-width: calc(100vw - 80px);
+    max-height: calc(100vh - 80px);
+    border-radius: 12px;
+    transform: translate(-50%, -50%);
+  }
+
+  .reservation-handle {
+    display: none;
+  }
+
+  .reservation-close {
+    top: 22px;
+    right: 22px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .reservation-close::before,
+  .reservation-close::after {
+    top: 15px;
+    left: 6px;
+    width: 20px;
+  }
+
+  .reservation-modal-content {
+    padding: 52px 46px 46px;
+  }
+
+  .reservation-modal-label {
+    height: 26px;
+    margin-bottom: 12px;
+    font-size: 13px;
+  }
+
+  .reservation-modal-content h2 {
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  .reservation-modal-desc {
+    margin-bottom: 26px;
   }
 
   .store-list-section {

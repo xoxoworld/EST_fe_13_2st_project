@@ -80,7 +80,60 @@
 
       <section class="reservation d-flex align-items-center justify-content-center g-20">
         <p>원하는 날짜와 시간을 선택하여 <br />편안하게 방문하세요</p>
-        <a href="#">예약하기</a>
+        <a href="#reservation-modal">예약하기</a>
+      </section>
+
+      <section class="reservation-layer" id="reservation-modal" aria-hidden="true">
+        <a class="reservation-dim" href="#" aria-label="닫기"></a>
+        <article class="reservation-panel" role="dialog" aria-modal="true" aria-labelledby="reservation-title">
+          <div class="reservation-handle" aria-hidden="true"></div>
+          <a class="reservation-close" href="#" aria-label="닫기"></a>
+
+          <div class="reservation-modal-content">
+            <p class="reservation-modal-label">방문 예약</p>
+            <h2 id="reservation-title">라운즈 안경원 예약</h2>
+            <p class="reservation-modal-desc">방문할 지점과 날짜, 시간을 선택해 주세요.</p>
+
+            <form class="reservation-form" action="#">
+              <label>
+                <span>방문 지점</span>
+                <select>
+                  <option>라운즈 강남역점</option>
+                  <option>라운즈 판교점</option>
+                  <option>라운즈 검암법조타운점</option>
+                </select>
+              </label>
+
+              <div class="reservation-form-row">
+                <label>
+                  <span>예약 날짜</span>
+                  <input type="date" />
+                </label>
+                <label>
+                  <span>예약 시간</span>
+                  <select>
+                    <option>10:00</option>
+                    <option>11:00</option>
+                    <option>14:00</option>
+                    <option>16:00</option>
+                  </select>
+                </label>
+              </div>
+
+              <label>
+                <span>예약자 이름</span>
+                <input type="text" placeholder="이름을 입력해 주세요" />
+              </label>
+
+              <label>
+                <span>연락처</span>
+                <input type="tel" placeholder="010-0000-0000" />
+              </label>
+
+              <button type="button">예약 신청하기</button>
+            </form>
+          </div>
+        </article>
       </section>
 
       <section class="store-list-section">
@@ -238,7 +291,7 @@
         </div>
       </section>
 
-      <section class="store-detail-layer is-open" id="store-detail" aria-hidden="true">
+      <section class="store-detail-layer" id="store-detail" aria-hidden="true">
         <button class="store-detail-dim" type="button" aria-label="닫기"></button>
         <article
           class="store-detail-panel"
