@@ -33,8 +33,8 @@
 
 역할에 맞춰 개별 브랜치를 생성하고 협업을 진행 중입니다.
 
-- **이성희** (GitHub: @xoxoworld / Branch: `sunghee`)
-- **이시원** (GitHub: @isnow-x / Branch: `siwon`)
+- **성희** (GitHub: @xoxoworld / Branch: `sunghee`)
+- **시원** (GitHub: @isnow-x / Branch: `siwon`)
 - **정민** (Branch: `jeongmin`)
 - **소호** (Branch: `soho`)
 - **소영** (Branch: `soyoung`)
