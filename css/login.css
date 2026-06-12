@@ -1,0 +1,65 @@
+/* [신규] 로그인 화면 전용 레이아웃 (로고 배정, 링크 메뉴 등) */
+
+@import url("sign.css"); /* 공통 폼 스타일을 불러옵니다 */
+
+/* 로고 섹션 스타일 */
+.login-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.login-header h2.logo {
+  font-size: var(--heading--m);
+  color: var(--black-1);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.login-header p {
+  font-size: var(--normal);
+  color: var(--gray-2);
+}
+
+/* 하단 계정 메뉴 링크 (아이디/비밀번호 찾기, 회원가입) */
+.text-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.text-links a {
+  font-size: var(--small);
+  color: var(--gray-2);
+  text-decoration: none;
+}
+
+/* 중간 구분선 구분자 클래스 (.text-links 사이 바 가 필요한 경우) */
+.text-links a:not(:last-child)::after {
+  content: "|";
+  margin-left: 16px;
+  color: var(--radius-color);
+  font-weight: 300;
+}
+
+/* "또는" 구분선 스타일 */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--gray-3);
+  font-size: var(--small);
+  margin: 24px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid var(--radius-color);
+}
+
+.divider span {
+  padding: 0 12px;
+}

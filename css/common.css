@@ -1,6 +1,9 @@
 @import url("normalize.css");
 @import url("reset.css");
 @import url("flex-utility.css");
+@import url("normalize.css");
+@import url("reset.css");
+@import url("flex-utility.css");
 :root {
   /* Color styles */
   --primary: rgba(23, 41, 236, 1);
