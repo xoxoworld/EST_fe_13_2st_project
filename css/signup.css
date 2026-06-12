@@ -1,0 +1,113 @@
+/* [신규] 회원가입 화면 전용 레이아웃 (단계별 섹션 숨김/보여주기, 인증 타이머 등) */
+
+@import url("sign.css"); /* 공통 폼 스타일을 불러옵니다 */
+
+/* 회원가입 단계별 컨테이너 (실제 구현 시 JavaScript로 클래스 제어하여 노출) */
+.step-section {
+  display: none; /* 기본은 숨김 */
+  flex-direction: column;
+  gap: 24px;
+}
+
+.step-section.active {
+  display: flex; /* 활성화된 단계만 보여줌 */
+}
+
+.step-section h2 {
+  font-size: var(--sub-title--m);
+  line-height: 32px;
+  font-weight: 700;
+  color: var(--black-2);
+}
+
+/* 1단계: 약관 동의 리스트 스타일 */
+.agree-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.agree-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--white-2);
+}
+
+/* 첫 번째 큰 '모두 동의합니다'는 상단에 강조선 추가 */
+.agree-list li:first-child {
+  border-bottom: 2px solid var(--radius-color);
+  padding-bottom: 16px;
+  font-weight: 700;
+}
+
+.agree-list label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--normal);
+  color: var(--gray-1);
+  cursor: pointer;
+}
+
+/* 커스텀 체크박스 혹은 기본 체크박스 크기 조정 */
+.agree-list input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--primary); /* 메인 브랜드 컬러 적용 */
+}
+
+/* 2단계: 이메일 중복확인 레이아웃 행 */
+.input-row {
+  display: flex;
+  gap: 8px;
+}
+
+.input-row input {
+  flex: 1;
+}
+
+.sub-action-btn {
+  height: 48px;
+  padding: 0 16px;
+  background-color: var(--secondary);
+  color: var(--primary);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--small);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* 3단계: OTP 인증코드 격자 그리드 배치 */
+.otp-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.otp-group input {
+  width: 48px;
+  height: 56px;
+  text-align: center;
+  font-size: var(--sub-title--m);
+  font-weight: 700;
+  border: 1px solid var(--radius-color);
+  border-radius: var(--radius-sm);
+}
+
+/* 타이머 및 재전송 행 */
+.timer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--small);
+}
+
+.timer-row strong {
+  color: var(--sale); /* 공통 컬러의 sale(빨간색계열) 변수 적용 */
+}
