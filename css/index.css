@@ -173,7 +173,7 @@
 
 /* Web */
 @media (min-width: 1272px) {
-   .banner {
+  .banner {
     max-width: none;
     width: 100%;
     height: 950px;
@@ -224,5 +224,499 @@
   }
   .banner-text-box .link {
     display: none;
+  }
+}
+
+/* 카테고리 섹션 */
+.category {
+  padding: 24px 0;
+  background-color: #fff;
+}
+
+.category__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.category__item {
+  min-height: 100px;
+  padding: 0 12px;
+  border-radius: 10px;
+  background-color: #eef0f8;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.category-card__icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.category-card__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.category-card__name {
+  font-size: var(--normal);
+  margin: 0px 0px 4px 0px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.category-card__description {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #6c7284;
+  word-break: keep-all;
+}
+@media (min-width: 768px) {
+  .category {
+    padding: 80px 0 0 0;
+  }
+  .category__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .category__item {
+    min-height: 100px;
+    padding: 0 20px;
+    border-radius: 10px;
+    background-color: #eef0f8;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .category-card__name {
+    margin: 0 0 8px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .category-card__description {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #6c7284;
+    word-break: keep-all;
+  }
+  .category-card__icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .category__item {
+    min-height: 140px;
+  }
+}
+
+@media (min-width: 1272px) {
+  .category__list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .category__item {
+    min-height: 100px;
+    padding: 0 20px;
+    border-radius: 10px;
+    background-color: #eef0f8;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .category-card__name {
+    margin: 0 0 8px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .category-card__description {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #6c7284;
+    word-break: keep-all;
+  }
+  .category-card__icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .category__item {
+    min-height: 140px;
+  }
+}
+
+/* Timesale section */
+.timesale {
+  padding: 24px 0;
+  background-color: #ffffff;
+}
+
+.timesale__container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.timesale__header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 16px;
+}
+
+.timesale__label {
+  display: inline-block;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #1729ec;
+}
+
+.timesale__timer {
+  margin: 0;
+  font-size: 75px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.timesale__content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 16px;
+}
+
+.timesale__figure {
+  margin: 0;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.timesale__image-web {
+  position: relative;
+  display: none;
+}
+.timesale__image {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.timesale__more-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  border-radius: 100px;
+  border: 1px solid var(--gray-3);
+  font-weight: 400;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.timesale__more-button a {
+  color: var(--black-2);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .timesale {
+    padding: 120px 0;
+  }
+  .timesale__container {
+    gap: 20px;
+  }
+
+  .timesale__header {
+    padding: 0;
+  }
+
+  .timesale__content {
+    display: flex;
+    padding: 0;
+  }
+
+  .timesale__label {
+    font-size: 24px;
+  }
+  .timesale__timer {
+    font-size: 90px;
+  }
+  .timesale__image,
+  .timesale__more-button {
+    display: none;
+  }
+  .timesale__image-web {
+    display: flex;
+  }
+}
+
+@media (min-width: 1272px) {
+  .timesale {
+    padding: 120px 0;
+  }
+  .timesale__container {
+    max-width: 1272px;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .timesale__header,
+  .timesale__content {
+    padding: 0;
+  }
+
+  .timesale__label {
+    font-size: 24px;
+  }
+  .timesale__timer {
+    font-size: 90px;
+  }
+
+  .timesale__image,
+  .timesale__more-button {
+    display: none;
+  }
+  .timesale__image-web {
+    display: block;
+  }
+}
+
+/* Jenny Collection Section */
+.jenny-collection {
+  padding: 32px 0;
+  background-color: #ffffff;
+}
+
+.jenny-collection__container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.jenny-collection__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.jenny-collection__title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.jenny-collection__highlight {
+  color: #1729ec;
+}
+
+.jenny-collection__more-link {
+  font-size: 12px;
+  font-weight: 400;
+  color: #6c7284;
+  text-decoration: none;
+}
+
+.jenny-collection__more-link:hover {
+  color: #1729ec;
+}
+
+.jenny-collection__figure {
+  margin: 0;
+  padding: 0 16px;
+}
+
+.jenny-collection__banner-img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.jenny-collection__products {
+  padding: 0 16px;
+}
+
+.jenny-collection__swiper {
+  overflow: hidden;
+}
+
+.jenny-collection__wrapper {
+  display: flex;
+}
+
+.swiper-slide {
+  width: 100%;
+}
+
+.jenny-collection__slide-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.jenny-collection__product-item {
+  margin: 0;
+  width: 124px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.product-card__figure {
+  margin: 0;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+}
+
+.product-card__img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.product-card__content {
+  padding: 12px 0;
+}
+
+.product-card__brand {
+  margin: 0 0 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.product-card__name {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #6c7284;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.product-card__price {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.product-card__price span {
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  .jenny-collection {
+    padding: 48px 0;
+  }
+
+  .jenny-collection__container {
+    gap: 24px;
+  }
+
+  .jenny-collection__header {
+    padding: 0;
+  }
+
+  .jenny-collection__title {
+    font-size: 28px;
+  }
+
+  .jenny-collection__figure {
+    padding: 0;
+  }
+
+  .jenny-collection__products {
+    padding: 0;
+  }
+
+  .jenny-collection__slide-list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .product-card__brand {
+    font-size: 14px;
+  }
+
+  .product-card__name {
+    font-size: 14px;
+  }
+
+  .product-card__price {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1272px) {
+  .jenny-collection {
+    padding: 56px 0;
+  }
+
+  .jenny-collection__container {
+    max-width: 1272px;
+    margin: 0 auto;
+    gap: 32px;
+  }
+
+  .jenny-contents {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .jenny-collection__header {
+    padding: 0 20px;
+  }
+
+  .jenny-collection__title {
+    font-size: 32px;
+  }
+
+  .jenny-collection__figure {
+    padding: 0 20px;
+    width: 624px;
+  }
+
+  .jenny-collection__products {
+    padding: 0 20px;
+  }
+
+  .jenny-collection__slide-list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
   }
 }
