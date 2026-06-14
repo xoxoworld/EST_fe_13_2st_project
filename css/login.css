@@ -1,65 +1,188 @@
-/* [신규] 로그인 화면 전용 레이아웃 (로고 배정, 링크 메뉴 등) */
-
-@import url("sign.css"); /* 공통 폼 스타일을 불러옵니다 */
-
-/* 로고 섹션 스타일 */
-.login-header {
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-.login-header h2.logo {
-  font-size: var(--heading--m);
-  color: var(--black-1);
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.login-header p {
-  font-size: var(--normal);
-  color: var(--gray-2);
-}
-
-/* 하단 계정 메뉴 링크 (아이디/비밀번호 찾기, 회원가입) */
-.text-links {
+/* 기본 폼 레이아웃 설정 */
+.auth-wrapper {
+  width: 100%; /* 화면이 좁아질 때는 유연하게 100% 채움 */
+  max-width: 402px; /* 화면이 아무리 커져도 최대 가로폭은 402px로 제한 (중앙 핏 유지) */
+  margin: 0 auto; /* 가로 공간이 남을 때 좌우 여백을 등분하여 화면 정중앙 배치 */
+  padding: 40px 16px; /* 모바일 기기 양끝에 콘텐츠가 딱 붙지 않도록 좌우 16px 안전 패딩 부여 */
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* 내부 요소들을 위에서 아래로 차례대로 나열 */
+  box-sizing: border-box; /* 패딩이 너비에 합산되어 박스가 터지는 현상 방지 */
+}
+
+/* 입력 필드 공통 스타일 */
+input[type="text"],
+input[type="password"] {
+  width: 100%; /* 부모 너비에 꽉 맞춤 */
+  height: 48px; /* 타이핑하기 가장 쾌적한 48px 표준 높이 지정 */
+  padding: 0 16px; /* 글씨가 시작하고 끝나는 지점의 좌우 안쪽 여백 공간 */
+  border: 1px solid var(--radius-color); /* 부드러운 회색조 테두리선 */
+  border-radius: var(--radius-md); /* 모서리를 둥글게 깎음 */
+  font-size: var(--normal); /* 표준 본문 글씨 크기 반영 */
+  color: var(--black-2); /* 사용자가 입력할 폰트 컬러 */
+  box-sizing: border-box;
+  transition: border-color 0.2s ease; /* 마우스를 클릭했을 때 테두리 색상이 0.2초 동안 부드럽게 변하도록 처리 */
+}
+
+/* 사용자가 입력창을 마우스로 클릭하여 활성화(Focus)했을 때의 스타일 */
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none; /* 브라우저 기본 파란색 외곽선 제거 */
+  border-color: var(--primary); /* 브랜드 포인트 메인 컬러로 테두리색을 변경하여 집중도 향상 */
+}
+
+input::placeholder {
+  color: var(--gray-3); /* 연한 회색으로 처리하여 유저 입력값과 명확히 구분 */
+}
+
+/* 메인 브랜드 버튼 스타일 */
+.primary-btn {
+  width: 100%; /* 가로폭 꽉 채움 */
+  height: 52px; /* 일반 인풋창보다 살짝 두껍게 만들어 터치 편의성 제공 */
+  background-color: var(--primary); /* 브랜드 메인 포인트 컬러 채움 */
+  color: var(--white-1); /* 어두운 버튼 배경과 대비되는 선명한 흰색 글씨 */
+  border: none; /* 기본 테두리 제거 */
+  border-radius: var(--radius-md); /* 모서리 라운드 일치 */
+  font-size: var(--normal);
+  font-weight: 700; /* 글씨를 두껍게 다져 시선 고정 */
+  display: flex; /* 버튼 내부 글씨를 중앙 정렬하기 위한 flexbox 적용 */
+  align-items: center; /* 수직 중앙 정렬 */
+  justify-content: center; /* 가로 중앙 정렬 */
+  transition: background-color 0.2s ease; /* 호버/비활성화 시 색상 변화 부드럽게 연결 */
+  cursor: pointer; /* 마우스 올리면 손가락 포인터 노출 */
+}
+
+/* 유효성 검사를 통과하지 못해 버튼이 잠겼을 때(:disabled)의 예외 스타일 */
+.primary-btn:disabled {
+  background-color: var(--gray-3); /* 먹통이 된 느낌을 주는 어두운 회색으로 배경 변경 */
+  cursor: not-allowed; /* 마우스 포인터를 '금지(🚫)' 아이콘으로 변경하여 클릭 불가능함을 안내 */
+}
+
+/* 소셜 로그인 컴포넌트 */
+.social-group {
+  display: flex; /* 버튼들을 가로로 나란히 정렬 */
+  justify-content: center; /* 전체 소셜 버튼 묶음을 정중앙에 배치 */
+  gap: 16px; /* 버튼과 버튼 사이의 가로 여백 간격 */
+  margin: 24px 0; /* 위아래 다른 컴포넌트와의 세로 거리 확보 */
+}
+
+/* 소셜 버튼 개별 동그라미 틀 */
+.social {
+  width: 48px; /* 완벽한 정원(Circle)을 만들기 위한 동일 가로폭 */
+  height: 48px; /* 완벽한 정원(Circle)을 만들기 위한 동일 세로폭 */
+  border-radius: 50%; /* 반지름 50%를 깎아 사각형 박스를 동그라미로 변경 */
+  border: none;
+  display: flex; /* 내부 브랜드 로고 아이콘 이미지를 정중앙 배치 */
   align-items: center;
-  gap: 16px;
-  margin-top: 8px;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0; /* 패딩 초기화 */
+  overflow: hidden; /* 혹시 사각형 로고 이미지가 원형 테두리 밖으로 빠져나오면 커팅 */
+  background-color: transparent; /* 배경색은 각 브랜드 고유 색상을 쓰기 위해 투명화 */
+}
+
+/* 버튼 안의 로고 이미지 비율 맞춤 */
+.social img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 원형 틀 안에 구겨짐 없이 꽉 차게 이미지 비율 조정 */
+}
+
+/* 카카오톡 로그인 배경색 */
+.social.kakao {
+  background-color: #fee500; /* 카카오 공식 옐로우 컬러 */
+}
+
+/* 네이버 로그인 배경색 */
+.social.naver {
+  background-color: #03c75a; /* 네이버 공식 그린 컬러 */
+}
+
+/* 구글 로그인 배경색 및 테두리 */
+.social.google {
+  background-color: var(--white-1); /* 구글은 기본 바탕이 흰색이므로 흰색 지정 */
+  border: 1px solid var(--radius-color); /* 배경이 묻히지 않도록 연한 경계선 테두리 마감 추가 */
+}
+
+/* 서비스 로고 및 소개 문구 영역 */
+.login-header {
+  text-align: center; /* 로고와 문구를 모두 화면 한가운데 정렬 */
+  margin-bottom: 40px; /* 인풋 입력창들이 시작되기 전 널찍한 여백 배정 */
+}
+
+/* 대형 브랜드 로고 서체 */
+.login-header .logo {
+  font-size: 32px; /* 큼직하게 브랜드 네임 노출 */
+  font-weight: 800; /* 아주 두껍게 처리하여 로고 느낌 극대화 */
+  letter-spacing: -0.5px;
+  margin-bottom: 8px; /* 바로 아래 서브 카피 문구와의 간격 */
+  color: var(--black-2, #1c1b1f);
+}
+
+/* "세상에 없던 안경 쇼핑" 서브 카피 멘트 */
+.login-header p {
+  font-size: 14px;
+  color: var(--gray-2, #767676); /* 살짝 연한 톤으로 로고와 시각적 계층 분리 */
+}
+
+/* 서브 타이틀 '로그인' 텍스트 */
+.text-subtitle-xl {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--black-2, #1c1b1f);
+}
+
+/* 아이디 찾기 | 비밀번호 찾기 | 회원가입 링크 중앙 정렬 */
+.text-links {
+  display: flex !important; /* 가로로 나란히 정렬 */
+  justify-content: center !important; /* 세 메뉴 묶음을 가로 정중앙 배치 */
+  align-items: center !important;
+  gap: 12px !important; /* 링크 간의 가로 간격 */
+  margin: 24px 0 !important; /* 상하 요소와의 레이아웃 간격 */
+  font-size: 13px !important; /* 부담스럽지 않은 작은 크기 지정 */
 }
 
 .text-links a {
-  font-size: var(--small);
-  color: var(--gray-2);
-  text-decoration: none;
+  color: var(--gray-2, #767676);
+  text-decoration: none; /* 링크 밑에 생기는 기본 밑줄 제거 */
 }
 
-/* 중간 구분선 구분자 클래스 (.text-links 사이 바 가 필요한 경우) */
+/* 링크 사이에 얇은 벽 생성 (선택 사항) */
 .text-links a:not(:last-child)::after {
-  content: "|";
-  margin-left: 16px;
-  color: var(--radius-color);
-  font-weight: 300;
+  content: "|"; /* 마지막 링크(회원가입)를 제외한 앞 두 메뉴 오른쪽에 벽 생성 */
+  margin-left: 12px; /* 글씨와 벽 사이의 간격 균등 분할 */
+  color: var(--radius-color, #dbdbdb); /* 은은한 선 컬러 매칭 */
 }
 
-/* "또는" 구분선 스타일 */
+/* "또는" 구분선 완벽 구현 */
 .divider {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: var(--gray-3);
-  font-size: var(--small);
-  margin: 24px 0;
+  display: flex !important; /* 좌측 선, 가운데 '또는', 우측 선을 한 줄로 정렬 */
+  align-items: center !important; /* 선과 글자의 높이를 정확히 수평 일치 시킴 */
+  text-align: center !important;
+  margin: 24px 0 !important;
+  color: var(--gray-3, #999) !important; /* '또는' 서체 색상 */
+  font-size: 13px !important;
 }
 
+/* 가상 선택자를 활용하여 '또는' 양옆의 실제 테두리 선 구현 */
 .divider::before,
 .divider::after {
-  content: "";
-  flex: 1;
-  border-bottom: 1px solid var(--radius-color);
+  content: "" !important; /* 빈 영역 생성 */
+  flex: 1 !important; /* 좌/우 가상 박스가 남는 가로 공간을 똑같이 반반씩 쪼개 가짐 (선 늘어남 구현) */
+  border-bottom: 1px solid var(--radius-color, #e5e5e5) !important; /* 하단 테두리를 1px 깔아 실선 효과 연출 */
 }
 
+/* '또는' 글자 좌우 확보 */
 .divider span {
-  padding: 0 12px;
+  padding: 0 12px !important; /* 양옆 실선이 글자와 겹쳐서 깨지지 않도록 좌우 12px 안전 여백 확보 */
+}
+
+/* 소셜 로그인 컨테이너 강제 가로 정렬 및 중앙 정렬 */
+#social-container {
+  display: flex !important;
+  flex-direction: row !important; /* 무조건 가로 정렬 */
+  justify-content: center !important; /* 소셜 버튼들을 무조건 정중앙 조준 */
+  gap: 16px !important;
+  margin-top: 16px !important;
+  width: 100% !important;
 }
