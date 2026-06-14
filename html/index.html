@@ -4,6 +4,101 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>o</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/flex-utility.css" />
   </head>
-  <body></body>
+  <body>
+    <section class="banner" aria-label="프로모션 배너">
+      <div class="container banner-carousel swiper banner-swiper" role="region" aria-roledescription="carousel" aria-label="주요 프로모션 슬라이드">
+        <div class="banner-viewport swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="/assets/img/배너이미지1.jpg" alt="" />
+            <figcaption class="banner-text-box">
+              <p class="banner-badge">최대 71% 할인</p>
+              <h2 class="banner-title">스포츠 선글라스 최저가 특가</h2>
+              <p class="banner-description">지금 가장 좋은 혜택으로 준비하세요!</p>
+              <a href="#" class="link">자세히보기</a>
+              <div class="banner-btn-box">
+                <button class="banner-btn banner__btn--primary" aria-label="전제품보기 페이지로 이동">
+                  <span class="banner-btn-icon" aria-hidden="true">→</span>
+                  <span class="banner-btn-text text-medium-r">가상피팅 시작하기</span>
+                </button>
+                <button class="banner-btn banner__btn--secondary" aria-label="자세히 보기">
+                  <span class="banner-btn-text text-medium-r">자세히 보기</span>
+                  <span class="banner-btn-icon" aria-hidden="true">→</span>
+                </button>
+              </div>
+            </figcaption>
+          </div>
+
+          <div class="swiper-slide">
+            <img src="/assets/img/배너이미지2.jpg" alt="" />
+            <figcaption class="banner-text-box">
+              <h2 class="banner-description">세상에 없던 안경 쇼핑,<br />실시간 가상피팅으로 완성하는 나만의 안경</h2>
+              <a href="#" class="link">자세히보기</a>
+              <div class="banner-btn-box">
+                  <button class="banner-btn banner__btn--primary" aria-label="전제품보기 페이지로 이동">
+                    <span class="banner-btn-icon" aria-hidden="true">→</span>
+                    <span class="banner-btn-text text-medium-r">가상피팅 시작하기</span>
+                  </button>
+                  <button class="banner-btn banner__btn--secondary" aria-label="자세히 보기">
+                    <span class="banner-btn-text text-medium-r">자세히 보기</span>
+                    <span class="banner-btn-icon" aria-hidden="true">→</span>
+                  </button>
+              </div>
+            </figcaption>
+          </div>
+
+          <div class="swiper-slide">
+            <img src="/assets/img/배너이미지1.jpg" alt="" />
+            <figcaption class="banner-text-box">
+              <p class="banner-badge">6월 한정 특별 혜택</p>
+              <h2 class="banner-title">여름 선글라스 특가전</h2>
+              <p class="banner-description">6월 한정 특별 혜택 지금 바로 확인해보세요</p>
+              
+              <div class="banner-btn-box">
+                <button class="banner-btn banner__btn--primary" aria-label="전제품보기 페이지로 이동">
+                  <span class="banner-btn-icon" aria-hidden="true">→</span>
+                  <span class="banner-btn-text text-medium-r">가상피팅 시작하기</span>
+                </button>
+                <button class="banner-btn banner__btn--secondary" aria-label="자세히 보기">
+                  <span class="banner-btn-text text-medium-r">자세히 보기</span>
+                  <span class="banner-btn-icon" aria-hidden="true">→</span>
+                </button>
+              </div>
+            </figcaption>
+          </div>     
+        </div>
+
+        
+
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <div class="banner__pagination" aria-label="슬라이드 네비게이션">
+          <button
+            class="banner__pagination-btn banner__pagination-btn--active"
+            type="button"
+            aria-label="슬라이드 1로 이동"
+            aria-pressed="true"
+          ></button>
+          <button
+            class="banner__pagination-btn"
+            type="button"
+            aria-label="슬라이드 2로 이동"
+            aria-pressed="false"
+          ></button>
+          <button
+            class="banner__pagination-btn"
+            type="button"
+            aria-label="슬라이드 3로 이동"
+            aria-pressed="false"
+          ></button>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
