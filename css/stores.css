@@ -437,6 +437,18 @@ main > section {
 .contact-row div {
   gap: 10px;
 }
+
+.contact-icon .material-icons {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .contact-row .material-icons {
   font-size: 18px;
   color: var(--gray-3);
