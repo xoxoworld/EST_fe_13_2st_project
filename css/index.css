@@ -26,6 +26,7 @@
   object-fit: cover;
 }
 
+
 /* =========================
    Text Overlay
 ========================= */
@@ -511,8 +512,7 @@
   margin: 0;
   padding: 0 16px 16px;
 }
-
-.jenny-collection__banner-img {
+.jenny-collection__figure video {
   width: 100%;
   display: block;
   border-radius: 10px;
