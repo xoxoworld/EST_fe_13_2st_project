@@ -1,254 +1,352 @@
-/* 회원가입 모달창 스타일 레이아웃 */
-.auth-wrapper {
-  margin: auto !important; /* 상하좌우 중앙 정렬 */
-  padding: 0 !important; /* 내부 기본 여백 리셋 */
-  box-sizing: border-box; /* border와 padding을 가로/세로 크기에 포함시켜 크기 뒤틀림 방지 */
-  background-color: transparent !important; /* 흰색 배경을 투명하게 */
-  border: none !important; /* 테두리 선 삭제 */
-  border-radius: var(--radius-lg); /* 모달 모서리를 둥글게 깎음 */
-  box-shadow: none !important; /* 박스 그림자 삭제 */
-  overflow: visible !important; /* 박스를 없앴으므로 overflow 해제 */
-  display: flex; /* 자식 요소(단계별 화면)들을 정렬하기 위해 flexbox 레이아웃 적용 */
-  flex-direction: column; /* 콘텐츠를 위에서 아래로 세로 배치 */
-
-  /* 기본 사양 및 모바일 해상도 적용 (요청 명세서 픽셀 완벽 반영) */
-  width: 354px !important; /* 화면폭 402px 이하 환경에서의 가로 고정 크기 */
-  min-height: 507px !important; /* 화면폭 402px 이하 환경에서의 세로 고정 크기 */
-  height: auto !important; /* 고정 높이 해제 */
+/* 💡 가로 스크롤 방지: 화면 폭을 초과하는 요소가 있어도 잘려서 스크롤이 생기지 않도록 처리 */
+html,
+body {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
 }
 
-/* 태블릿 구간 반응형 미디어 쿼리 (화면폭 768px 이상 환경) */
-@media (min-width: 768px) {
-  .auth-wrapper {
-    width: 480px !important; /* 태블릿 사양에 맞춰 가로폭을 좀 더 넓게 확장 */
-    min-height: 507px !important; /* 세로 높이는 모바일과 동일하게 유지 */
-    height: auto !important; /* 고정 높이 해제 */
-  }
-}
-
-/* 데스크탑 구간 반응형 미디어 쿼리 (화면폭 1272px 이상 환경) */
-@media (min-width: 1272px) {
-  .auth-wrapper {
-    width: 560px !important; /* 데스크탑(1920px 기준) 시안에 맞춘 정사각형 가로 크기 */
-    min-height: 560px !important; /* 데스크탑(1920px 기준) 시안에 맞춘 정사각형 세로 크기 */
-    height: auto !important; /* 고정 높이 해제 */
-  }
-}
-
-/* 각 단계별 섹션 내부 여백 및 스크롤 설정 */
-.step-section {
-  display: none; /* 기본 상태: 화면에서 완전히 숨김 */
-  flex-direction: column; /* 내부 요소들을 세로 정렬 */
-  flex-grow: 1;
-  min-height: 0;
-  padding: 40px 32px; /* 디자인 시안에 맞춘 내부 상하좌우 안전 여백 공간 확보 */
-  box-sizing: border-box; /* 패딩이 더해져도 전체 크기가 뚫고 나가지 않도록 제한 */
-  overflow-y: auto; /* 작은 화면에서 글씨나 인풋이 많아지면 모달 안에서만 세로 스크롤 생성 */
-  justify-content: flex-start; /* 내부 요소를 상단부터 차례대로 정렬 */
-}
-
-/* 자바스크립트가 .active 클래스를 붙여주는 순간 화면에 부드럽게 등장 */
-.step-section.active {
-  display: flex; /* 숨겨져 있던 섹션을 flex 레이아웃으로 화면에 노출 */
-}
-
-/* 각 단계별 제목 스타일 자잘한 조정 */
-.step-section h2 {
-  font-size: 20px; /* 가독성을 높인 큼직한 타이틀 크기 */
-  font-weight: 700; /* 굵은 볼드체 강조 */
-  line-height: 1.4; /* 줄간격을 넓혀 타이틀이 두 줄이 되어도 답답하지 않게 조절 */
-  letter-spacing: -0.5px; /* 자간을 좁혀 세련된 폰트 핏 구현 */
-  margin-bottom: 24px; /* 밑에 나오는 인풋이나 리스트와의 간격 벌림 */
-  color: var(--black-2); /* 공통 블랙 컬러 반영 */
-  text-align: center !important; /* 글씨 정중앙 배치 */
-}
-
-/* .primary-btn 스타일 완벽 강제 연동 */
-.step-section .primary-btn {
+#app-container {
+  min-height: 100vh !important;
+  background-color: #ffffff !important; /* 💡 반투명 제거 및 흰색 처리 */
   display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 100% !important;
-
-  /* 버튼 형태 강제 고정 */
-  min-height: 52px !important;
-  height: 52px !important;
-  flex-shrink: 0 !important;
-
-  /* 색상 및 외형 설정 (7번 로그인 버튼 사양 이식) */
-  background-color: var(--primary) !important; /* 메인 브랜드 컬러 */
-  color: var(--white-1) !important; /* 텍스트 흰색 고정 */
-  border: none !important;
-  border-radius: var(--radius-md) !important; /* 라운드 코너 */
-  font-weight: 700 !important;
-  text-decoration: none !important;
-  cursor: pointer !important;
-
-  /* ⭐ 마법의 코드: 남는 모든 상단 여백을 마진으로 흡수하여 버튼을 맨 밑으로 밀어냄 */
-  margin-top: auto !important;
-
-  /* 폰트 스타일 */
-  font-size: var(--normal) !important;
-  font-weight: 700 !important;
-  text-decoration: none !important; /* 5단계 <a> 태그 밑줄 방지 */
-
-  /* 
-  레이아웃 밀림 방지
-  margin-top: auto !important; 버튼이 무조건 화면 최하단에 안착하도록 밀어냄
-  cursor: pointer !important;
-  flex-shrink: 0 !important; 공간이 부족해도 버튼이 위아래로 찌그러지지 않음 
-  */
-}
-
-/* 버튼이 완전히 비활성화(disabled) 되었을 때의 색상 덮어쓰기 방어 */
-.step-section .primary-btn:disabled {
-  background-color: var(--gray-3) !important; /* 비활성화 회색 박스 */
-  color: var(--white-1) !important;
-  cursor: not-allowed !important;
-}
-
-/* 약관 리스트 스타일 개선 */
-.agree-list {
-  list-style: none; /* UL 태그 특유의 점(•) 마커 제거 */
-  padding: 0; /* 기본 여백 초기화 */
-  margin: 0 !important; /* 고정 여백을 지워야 버튼이 바닥까지 꽉 채워 밀림 */
-  display: flex; /* 리스트 아이템들의 정렬 제어 */
-  flex-direction: column; /* 위에서 아래로 한 줄씩 배치 */
-  gap: 12px; /* 체크박스 줄과 줄 사이의 세로 간격을 일정하게 띄움 */
-}
-
-/* 이메일 입력창 영역 폭 강제 조정 */
-.input-row {
-  display: flex !important; /* 인풋창과 우측 버튼을 가로(가로정렬)로 배치 */
-  width: 100% !important; /* 부모 너비를 가득 채움 */
-  gap: 8px !important; /* 인풋창과 버튼 사이의 가로 여백 */
-  margin-bottom: 32px !important; /* 하단 요소와의 여백 */
-  box-sizing: border-box;
-}
-
-/* 가로폭 연동 방어 코드 */
-.input-row input[type="text"] {
-  flex: 1 !important; /* 남는 가로 공간을 인풋창이 혼자 다 채우도록 설정 */
-  min-width: 0 !important; /* flex 아이템이 가로로 터지는 현상 방지 */
-}
-
-/* 서브 액션 버튼 (중복확인 등) */
-.sub-action-btn {
-  height: 48px; /* 인풋창과 높이를 일치시켜 일체감 부여 */
-  padding: 0 16px; /* 버튼 글자 좌우 여백 */
-  background-color: var(--white-2); /* 부드러운 회색조 배경색 */
-  border: 1px solid var(--radius-color); /* 테두리 경계선 */
-  border-radius: var(--radius-md); /* 라운드 처리 */
-  font-size: 13px; /* 본문 텍스트보다 살짝 작은 크기 적용 */
-  white-space: nowrap; /* 화면이 좁아져도 버튼 안의 글자가 아래로 줄바꿈되는 현상 차단 */
-}
-
-/* 서브 액션 버튼 마우스 호버 효과 */
-.sub-action-btn:hover {
-  background-color: #eee; /* 마우스를 올리면 살짝 어두워져 클릭 가능한 상태임을 시각화 */
-}
-
-/* 인증번호 OTP 6자리 입력칸 (402px 안에서 안 터지도록 계산) */
-.otp-group {
-  display: flex !important; /* 6개의 인풋 박스를 가로로 나란히 배치 */
-  justify-content: space-between !important; /* 좌우 공간에 맞춰 6개의 박스를 일정한 간격으로 등분 분할 */
-  gap: 6px !important; /* 박스 사이의 미세한 간격 격자 지정 */
-  width: 100% !important; /* 전체 가로폭 가득 채움 */
-  margin-bottom: 12px; /* 하단 타이머 행과의 간격 */
-  box-sizing: border-box;
-}
-
-/* 6자리 입력칸 개별 박스 스타일 */
-.otp-group input {
-  flex: 1 !important; /* 6칸 모두 정확히 동일한 비율(1:1:1:1:1:1)로 너비를 나눠 가짐 */
-  min-width: 0 !important; /* 브라우저 기본 너비 속성을 무시하고 좁은 공간에 억지로 핏하게 맞춤 */
-  height: 52px !important; /* 숫자가 시원하게 보일 수 있는 넉넉한 높이 */
-  padding: 0 !important; /* 내부 여백을 없애 글자가 무조건 정중앙에 오도록 설계 */
-  text-align: center !important; /* 입력되는 숫자가 박스 정중앙에 조준되도록 설정 */
-  font-size: 18px !important; /* 인증번호 숫자를 굵고 큼직하게 강조 */
-  font-weight: 700 !important;
-  border: 1px solid var(--radius-color) !important;
-  border-radius: var(--radius-md) !important;
-  box-sizing: border-box;
-}
-
-/* 타이머 로직 한 줄 정렬 */
-.timer-row {
-  display: flex !important; /* '03:00 남음' 안내와 '재전송' 버튼을 가로 정렬 */
-  justify-content: space-between !important; /* 안내 텍스트는 왼쪽 끝, 재전송 버튼은 오른쪽 끝으로 양 갈래 밀착 정렬 */
-  align-items: center !important; /* 상하 수직 정렬 기준 중앙 배치 */
-  width: 100% !important;
-  margin-bottom: 32px !important;
-  font-size: var(--small); /* 일반 글씨보다 한 단계 작은 서브 서체 크기 적용 */
-}
-
-/* 회원가입 완료 화면 중앙 정렬 보정 */
-.step-section:last-of-type {
-  text-align: center !important; /* 아이콘, 타이틀, 설명글을 모두 가로 정중앙 정렬 */
-  padding: 40px 0 !important; /* 좌우 여백을 풀어서 넓은 개방감 부여 */
-}
-
-/* 가입 축하 문구 간격 조정 */
-.step-section:last-of-type h2 {
-  margin-bottom: 12px !important; /* 안내 본문 서체와의 결합도를 위해 하단 간격을 좁힘 */
-}
-
-/* 서브 안내 멘트 스타일 */
-.step-section:last-of-type p {
-  font-size: 14px; /* 설명글 크기 */
-  color: var(--gray-2); /* 은은한 회색조 폰트 컬러로 시선 분산 완화 */
-  line-height: 1.5; /* 줄간격 보정 */
-  margin-bottom: 40px !important;
-}
-
-/* 마지막 5단계 가입 완료 화면의 불필요한 패딩 리셋 */
-.step-section:last-of-type {
+  flex-direction: column !important; /* 💡 상하 레이아웃 배치 */
   padding: 0 !important;
-}
-
-/* 가입 완료 문구 밑의 주황색 여백 박살내기 */
-.step-section:last-of-type p {
-  margin-bottom: 0 !important;
-}
-
-/* 모든 primary-btn의 가로 크기를 부모 상자에 맞게 강제 일치 */
-.step-section .primary-btn {
-  width: 100% !important;
   box-sizing: border-box !important;
-  margin-top: 40px !important; /* 문구와 버튼 사이 간격을 40px로 쫀득하게 밀착 */
+  overflow-x: hidden !important; /* 💡 내부 요소가 넘쳐도 가로 스크롤 차단 */
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
-/* 부모 상자 가로폭을 기기별 버튼 크기(290/416/496)로 강제 고정 */
+/* 💡 베이스 헤더/푸터 차단 해제 및 정상 노출 */
+.header,
+.footer {
+  display: flex !important;
+}
+
+/* 💡 중앙 컨텐츠 배치용 래퍼 */
+.main-layout {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 40px 20px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
 .auth-wrapper {
-  width: 290px !important; /* 모바일 크기 고정 */
+  margin: 0 auto !important;
+  padding: 40px 24px !important;
+  box-sizing: border-box !important;
+  background-color: var(--white-1, #ffffff) !important;
+  border-radius: var(--radius-lg, 12px) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  max-width: 354px !important;
+  height: auto !important;
   min-height: auto !important;
 }
 
 @media (min-width: 768px) {
   .auth-wrapper {
-    width: 416px !important; /* 태블릿 크기 고정 */
+    max-width: 480px !important;
   }
 }
 
-@media (min-width: 1272px) {
+@media (min-width: 1024px) {
   .auth-wrapper {
-    width: 496px !important; /* 데스크탑 크기 고정 */
+    max-width: 560px !important;
   }
 }
 
-/* 부모 상자 자체를 화면 중앙에 정렬하고 자식들을 가로 중앙으로 정렬 */
-.auth-wrapper {
-  margin: 100px auto !important; /* 좌우 마진을 auto로 주어 수평 중앙 배치 */
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important; /* 💥 자식인 .step-section들을 가로 정중앙으로 정렬 */
+.step-section h2 {
+  text-align: center !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: var(--black-2, #111) !important;
+  margin-bottom: 24px !important;
+  line-height: 1.3 !important;
+  width: 100% !important;
 }
 
-/* 녹색 박스가 왼쪽으로 쏠리지 않고 부모 너비를 100% 꽉 채우도록 수정 */
 .step-section {
   width: 100% !important;
+  height: auto !important;
+  min-height: auto !important;
+  display: none !important;
+  flex-direction: column !important;
   box-sizing: border-box !important;
+}
 
-  /* 내부 텍스트 및 인풋 요소들도 완벽히 가로 중앙정렬 */
+.step-section.active {
+  display: flex !important;
+}
+
+.step-section:last-of-type.active {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
   align-items: center !important;
+  text-align: center !important;
+  height: auto !important;
+  min-height: auto !important;
+  padding: 10px 0 !important;
+}
+
+.step-section:last-of-type h2 {
+  text-align: center !important;
+  width: 100% !important;
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+}
+
+.step-section:last-of-type p {
+  text-align: center !important;
+  width: 100% !important;
+  font-size: 14px !important;
+  color: var(--gray-2, #767676) !important;
+  line-height: 1.5 !important;
+  margin-bottom: 24px !important;
+  word-break: keep-all !important;
+}
+
+.step-section:last-of-type .primary-btn {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  width: 100% !important;
+  height: 52px !important;
+  margin-top: 0 !important;
+  box-sizing: border-box !important;
+}
+
+#terms-list {
+  width: 100% !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 32px 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+#terms-list li {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+#terms-list li label {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  font-size: 14px !important;
+  color: var(--gray-1, #374151) !important;
+  line-height: 1.4 !important;
+  cursor: pointer !important;
+}
+
+#terms-list li:first-child {
+  padding-bottom: 14px !important;
+  border-bottom: 1px solid var(--radius-color, #dedede) !important;
+  margin-bottom: 6px !important;
+}
+#terms-list li:first-child label {
+  font-weight: 700 !important;
+  color: var(--black-1, #000) !important;
+}
+
+#terms-list input[type="checkbox"] {
+  width: 18px !important;
+  height: 18px !important;
+  margin-top: 1px !important;
+  flex-shrink: 0 !important;
+}
+
+.input-row {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  margin-bottom: 24px !important;
+  position: relative !important;
+}
+
+.input-row input,
+.step-section input[type="password"] {
+  width: 100% !important;
+  height: 48px !important;
+  padding: 0 16px !important;
+  border: 1.5px solid #a0a0a0 !important;
+  border-radius: var(--radius-md, 8px) !important;
+  box-sizing: border-box !important;
+  font-size: 15px !important;
+}
+
+.step-section input[type="password"] {
+  margin-bottom: 12px !important;
+}
+.step-section input[type="password"]:last-of-type {
+  margin-bottom: 24px !important;
+}
+
+.input-row #useremail {
+  padding-right: 94px !important;
+}
+
+.input-row .sub-action-btn {
+  position: absolute !important;
+  right: 8px !important;
+  top: 8px !important;
+  width: auto !important;
+  height: 32px !important;
+  padding: 0 12px !important;
+  background-color: var(--white-2, #efefef) !important;
+  border: 1px solid var(--radius-color, #dedede) !important;
+  border-radius: var(--radius-md, 8px) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: var(--black-2, #111) !important;
+  cursor: pointer !important;
+  z-index: 999 !important;
+}
+
+.otp-group {
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  width: 100% !important;
+  margin-bottom: 16px !important;
+  box-sizing: border-box !important;
+}
+
+.otp-group input {
+  flex: 1 !important;
+  min-width: 0 !important;
+  height: 52px !important;
+  text-align: center !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  border: 1.5px solid #a0a0a0 !important;
+  border-radius: var(--radius-md, 8px) !important;
+  box-sizing: border-box !important;
+}
+
+.timer-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  margin-bottom: 32px !important;
+}
+
+.timer-text {
+  color: var(--sale, #ff3300) !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+}
+
+.timer-row .sub-action-btn {
+  position: static !important;
+  height: 32px !important;
+  padding: 0 12px !important;
+  background-color: var(--white-2, #efefef) !important;
+  border: 1px solid var(--radius-color, #dedede) !important;
+  border-radius: var(--radius-md, 8px) !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+}
+
+.next-btn {
+  margin-top: auto !important;
+}
+
+/* 1. 헤더 가로폭 전체 확장 및 중앙 배치 */
+.header {
+  width: 100% !important;
+  max-width: 100% !important;
+  justify-content: center !important; /* 내부 컨테이너를 가로 중앙으로 */
+  padding: 0 20px !important;
+  box-sizing: border-box !important;
+}
+
+/* 헤더 내부 요소를 양 끝으로 찢지 않고 가운데로 모으기 (중복 정의 통합본) */
+.header-container {
+  width: auto !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important; /* 💡 양끝 정렬 대신 가운데 정렬 */
+  align-items: center !important;
+  gap: 30px !important; /* 💡 정중앙에 모인 로고와 메뉴/아이콘들 사이의 여백 */
+  flex-wrap: wrap !important; /* 💡 화면이 좁을 때 줄바꿈으로 가로 넘침 방지 */
+  box-sizing: border-box !important;
+}
+
+/* 태블릿이나 데스크탑 등 넓은 화면에서도 헤더가 가운데 정렬을 유지하도록 보정 */
+@media (min-width: 768px) {
+  .header-container {
+    gap: 60px !important; /* 화면이 넓어지면 중앙 아이콘들 간격을 조금 더 넓혀 가시성 확보 */
+  }
+}
+
+/* 2. 푸터 가로폭 확장 및 중앙 배치 */
+.footer {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  background-color: #f9f9f9; /* 푸터 배경색 유지 */
+  padding: 40px 20px !important;
+  box-sizing: border-box !important;
+}
+
+/* 푸터 내부 글씨와 요소를 전부 정중앙 정렬(Center)로 통일 (중복 정의 통합본) */
+.footer-inner {
+  width: 100% !important;
+  max-width: 1200px !important; /* 헤더와 동일한 본문 맥스폭 지정 */
+  margin: 0 auto !important; /* 좌우 마진 오토로 센터 정렬 */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important; /* 💡 내부 요소 전체를 가로축 기준으로 가운데로 */
+  text-align: center !important; /* 💡 상호명, 주소 등 모든 텍스트 문단을 가운데 정렬 */
+}
+
+/* 푸터 하단 블록: 좌측 글씨와 우측 SNS 대신 위아래 중앙 대칭 배치로 통일 (중복 정의 통합본) */
+.footer-bottom {
+  display: flex !important;
+  flex-direction: column !important; /* 💡 양옆으로 찢어지는 배치를 위아래 수직 배치로 변경 */
+  align-items: center !important; /* 💡 가로축 정중앙 정렬 */
+  gap: 20px !important;
+  width: 100% !important;
+}
+
+/* 푸터 내 주소록 글씨 정렬 보정 */
+.address-text {
+  text-align: center !important; /* 💡 줄바꿈되는 주소 텍스트들도 한 줄씩 가운데 정렬 */
+  line-height: 1.8 !important;
+}
+
+/* SNS 아이콘들도 푸터의 정중앙 하단에 예쁘게 나란히 오도록 정렬 */
+.social-links {
+  display: flex !important;
+  justify-content: center !important; /* 💡 아이콘들을 가로 가운데로 밀집 */
+  align-items: center !important;
+  padding: 0 !important;
+  margin: 10px 0 0 0 !important; /* 위쪽 텍스트와의 적절한 거리 확보 */
+  list-style: none !important;
+}
+
+/* 회사 정보 글씨 중앙 정렬 */
+.company-info {
+  text-align: center !important;
+}
+
+/* 데스크탑 반응형일 때도 푸터 내부 배치는 중앙 정렬 유지 */
+@media (min-width: 1020px) {
+  .footer-bottom {
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
 }

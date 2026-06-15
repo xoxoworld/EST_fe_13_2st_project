@@ -97,106 +97,82 @@
         </div>
       </header>
 
-      <main class="auth-wrapper">
-        <div class="step-section active">
-          <h2>서비스 약관에 동의 해주세요!</h2>
-
-          <ul class="agree-list" id="terms-list"></ul>
-
-          <button class="primary-btn next-btn" id="step1-next" disabled>다음</button>
-        </div>
-
-        <div class="step-section">
-          <h2>라운즈에서 사용할 이메일을 입력 해주세요.</h2>
-
-          <div class="input-row">
-            <input type="text" id="useremail" placeholder="example@gmail.com" />
-
-            <button class="sub-action-btn">중복확인</button>
+      <!-- 💡 [수정] 메인 레이아웃 클래스 부여 및 flex-grow-1 추가 -->
+      <main class="main-layout flex-grow-1">
+        <section class="auth-wrapper">
+          <div class="step-section active">
+            <h2>서비스 약관에 동의 해주세요!</h2>
+            <ul class="agree-list" id="terms-list"></ul>
+            <button class="primary-btn next-btn" id="step1-next" disabled>다음</button>
           </div>
 
-          <button class="primary-btn next-btn">다음</button>
-        </div>
-
-        <div class="step-section">
-          <h2>인증코드를 입력 해주세요.</h2>
-
-          <div class="otp-group">
-            <input type="text" maxlength="1" placeholder="0" aria-label="첫 번째 숫자" />
-
-            <input type="text" maxlength="1" placeholder="0" aria-label="두 번째 숫자" />
-
-            <input type="text" maxlength="1" placeholder="0" aria-label="세 번째 숫자" />
-
-            <input type="text" maxlength="1" placeholder="0" aria-label="네 번째 숫자" />
-
-            <input type="text" maxlength="1" placeholder="0" aria-label="다섯 번째 숫자" />
-
-            <input type="text" maxlength="1" placeholder="0" aria-label="여섯 번째 숫자" />
+          <div class="step-section">
+            <h2>라운즈에서 사용할 이메일을 입력 해주세요.</h2>
+            <div class="input-row">
+              <input type="text" id="useremail" placeholder="example@gmail.com" />
+              <button class="sub-action-btn">중복확인</button>
+            </div>
+            <button class="primary-btn next-btn">다음</button>
           </div>
 
-          <div class="timer-row">
-            <strong>03:00 남음</strong>
-
-            <button class="sub-action-btn" style="background: none">재전송</button>
+          <div class="step-section">
+            <h2>인증코드를 입력 해주세요.</h2>
+            <div class="otp-group">
+              <input type="text" maxlength="1" placeholder="0" aria-label="첫 번째 숫자" />
+              <input type="text" maxlength="1" placeholder="0" aria-label="두 번째 숫자" />
+              <input type="text" maxlength="1" placeholder="0" aria-label="세 번째 숫자" />
+              <input type="text" maxlength="1" placeholder="0" aria-label="네 번째 숫자" />
+              <input type="text" maxlength="1" placeholder="0" aria-label="다섯 번째 숫자" />
+              <input type="text" maxlength="1" placeholder="0" aria-label="여섯 번째 숫자" />
+            </div>
+            <div class="timer-row">
+              <span id="timer" class="timer-text">03:00</span>
+              <button id="resend-btn" class="sub-action-btn">재전송</button>
+            </div>
+            <button class="primary-btn next-btn" id="step3-next">인증하기</button>
           </div>
 
-          <button class="primary-btn next-btn">인증하기</button>
-        </div>
-
-        <div class="step-section">
-          <h2>비밀번호를 입력 해주세요.</h2>
-
-          <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px">
-            <input type="password" placeholder="비밀번호 입력" />
-
-            <input type="password" placeholder="비밀번호 확인" />
+          <div class="step-section">
+            <h2>비밀번호를 입력 해주세요.</h2>
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px">
+              <input type="password" placeholder="비밀번호 입력" />
+              <input type="password" placeholder="비밀번호 확인" />
+            </div>
+            <button class="primary-btn next-btn">설정 완료</button>
           </div>
 
-          <button class="primary-btn next-btn">설정 완료</button>
-        </div>
-
-        <div class="step-section">
-          <h2>가입을 축하합니다!</h2>
-
-          <p>이제 모든 service 기능을 자유롭게 이용하실 수 있습니다.</p>
-
-          <a href="index.html" class="primary-btn"> 쇼핑 시작하기 </a>
-        </div>
+          <div class="step-section">
+            <h2>가입을 축하합니다!</h2>
+            <p>이제 모든 service 기능을 자유롭게 이용하실 수 있습니다.</p>
+            <a href="index.html" class="primary-btn"> 쇼핑 시작하기 </a>
+          </div>
+        </section>
       </main>
 
       <footer class="footer">
         <div class="footer-inner">
           <div class="footer-top">
             <a href="#" class="store-link">라운즈 플래그십 스토어</a>
-
             <span class="vertical-bar">|</span>
-
             <a href="#" class="store-link">라운즈 파트너 안경원</a>
           </div>
 
           <div class="footer-bottom">
             <div class="company-info">
               <h2 class="footer-logo">ROUNZ</h2>
-
               <address class="address-text">
                 상호명 : 주식회사 라운즈 | 대표 : 홍길동<br />
                 사업자등록번호 : 123-45-67890 | 통신판매업 신고 : 2024-서울강남-0000호<br />
                 사업자 주소 : 서울특별시 강남구 테헤란로 |
-
                 <span class="policy-bold">개인정보처리방침</span>
               </address>
-
               <p class="copyright">&copy;ROUNZ</p>
             </div>
 
             <ul class="social-links">
               <li><img src="../assets/icons/bg_blog.png" alt="블로그" /></li>
-
               <li><img src="../assets/icons/bg_fb.png" alt="페이스북" /></li>
-
               <li><img src="../assets/icons/bg_insta.png" alt="인스타그램" /></li>
-
               <li><img src="../assets/icons/btn_kcp.png" alt="KCP" /></li>
             </ul>
           </div>
