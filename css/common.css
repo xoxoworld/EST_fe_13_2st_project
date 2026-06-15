@@ -384,6 +384,7 @@ section {
   display: flex;
   align-items: center;
   width: 100%;
+  border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   margin-bottom: 30px;
 }
@@ -397,13 +398,16 @@ section {
   transition: color 0.25s ease;
 }
 
+.footer-top .store-link:first-child {
+  border-right: 1px solid #ddd;
+}
+
 .footer-top .store-link:hover {
   color: var(--primary);
 }
 
 .footer-top .vertical-bar {
-  color: #ddd;
-  font-size: 14px;
+  display: none;
 }
 
 .footer-nav {
