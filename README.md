@@ -106,7 +106,7 @@
 | **성희** | 💻 팀원 / 기획/디자인/메인/푸터/상품비교 퍼블리싱       | `sunghee`   | [@xoxoworld](https://github.com/xoxoworld)                       |
 | **시원** | 💻 팀원 / 기획/디자인/상세/안경원 퍼블리싱              | `siwon`     | [@isnow-x](https://github.com/isnow-x)                           |
 | **소호** | 💻 팀원 / 기획/디자인/메인/헤더 퍼블리싱                | `soho`      | [@soho1109](https://github.com/soho1109)                         |
-| **소영** | 💻 팀원 / 기획/ 상품목록/장바구니 퍼블리싱              | `soyoung`   | [@s0y0ungk](https://github.com/s0y0ungk)                         |
+| **소영** | 💻 팀원 / 기획/디자인/상품목록/장바구니 퍼블리싱        | `soyoung`   | [@s0y0ungk](https://github.com/s0y0ungk)                         |
 
 ---
 
