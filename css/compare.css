@@ -387,6 +387,12 @@
     gap: 4px;
     width: 100%;
   }
+  .btn-buy {
+    flex-direction: row-reverse;
+  }
+  .btn-buy .btn-icon {
+    transform: rotate(180deg);
+  }
   .btn-icon {
     width: 12px;
     height: 12px;
