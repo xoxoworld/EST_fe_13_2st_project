@@ -104,6 +104,10 @@
   background: var(--secondary);
   color: var(--primary);
 }
+.banner__btn--primary .banner-btn-icon:hover {
+  background: var(--secondary);
+  color: var(--primary);
+}
 .banner__btn--secondary {
   border: 1px solid var(--white-1);
 }
