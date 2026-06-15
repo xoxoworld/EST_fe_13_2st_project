@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  /* outline: 1px solid red; */
+  outline: 1px solid red;
 }
 
 body {
@@ -10,8 +10,8 @@ body {
   color: var(--black-2);
   font-size: 12px;
   letter-spacing: 0;
-  padding: 16px;
-  margin: 0 auto;
+  padding: 0;
+  margin: 0;
 }
 
 /* nav */
@@ -79,7 +79,7 @@ body {
 .w-filter {
   gap: 23px;
   padding-top: 0;
-  padding-bottom: 0;
+  padding-bottom: 24px;
 }
 .w-filter > div:last-child {
   white-space: nowrap;
@@ -204,9 +204,12 @@ body {
   body {
     padding-bottom: 118px;
     font-size: 13px;
-    padding-right: 30px;
-    padding-left: 30px;
   }
+  .container {
+    max-width: 768px;
+    padding: 30px;
+  }
+
   .breadcrumb-home {
     font-size: var(--small);
     font-weight: 700;
@@ -303,13 +306,11 @@ body {
     font-weight: 400;
   }
 
-  /* 제품 리스트 */
   .sunglasses-page {
+    display: grid;
+    grid-template-columns: repeat(3, 220px);
     gap: 24px;
-  }
-  .product-list-card {
-    width: 220px;
-    height: 336px;
+    justify-content: start;
   }
   .product-list-brand,
   .product-list-price {
@@ -320,15 +321,23 @@ body {
     font-size: var(--small);
     font-weight: 500;
   }
-  .product-list-img {
+
+  .product-list-card {
+    width: 220px;
+    height: 346px;
+  }
+  .product-list-image {
     width: 220px;
     height: 220px;
+    overflow: hidden;
+    position: relative;
   }
-  .product-list-info {
-    width: 220px;
-    height: 106px;
-    gap: 4px;
+  .product-list-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
+
   .promotion-banner {
     width: 708px;
     height: 336px;
@@ -349,6 +358,11 @@ body {
   body {
     padding-bottom: 0;
   }
+  .container {
+    max-width: 1272px;
+    padding: 0;
+  }
+
   .sunglasses-page {
     flex: 1;
     display: grid;
