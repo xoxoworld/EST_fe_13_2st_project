@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>장바구니 페이지</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=favorite" />
+  <link rel="stylesheet" href="../css/common.css" />
+  <link rel="stylesheet" href="../css/flex-utility.css" />
+  <link rel="stylesheet" href="../css/cart.css" />
+</head>
+
+<body>
+  <header></header>
+
+  <main class="cart-page d-flex flex-column">
+    <h2 class="cart-title">장바구니</h2>
+
+    <!-- 장바구니 정보 -->
+    <section class="cart-summary d-flex flex-column">
+      <p class="cart-count">1개의 상품이 담겨 있습니다.</p>
+      <div class="cart-option d-flex justify-content-between align-items-center">
+        <label class="select-all d-flex align-items-center justify-content-between">
+          <input type="checkbox" />
+          <span>전체 선택 (1/1)</span>
+        </label>
+        <button type="button" class="select-delete-btn">
+          선택 삭제
+        </button>
+      </div>
+    </section>
+
+    <section class="cart-list">
+      <article class="cart-item d-flex flex-column">
+        <p class="brand-name">Ray-Ban</p>
+        <div class="cart-item-top d-flex justify-content-between align-items-center">
+          <label>
+            <input type="checkbox" />
+          </label>
+          <button type="button" class="delete-btn">
+            <span class="material-icons">close</span>
+          </button>
+        </div>
+
+        <!-- 이미지 + 상품명 -->
+        <div class="cart-item-content d-flex align-items-center">
+          <img src="../assets/images/productlist_1.webp" alt="레이벤 선글라스" class="product-image" />
+          <div class="product-info d-flex flex-column">
+            <p class="product-name">레이벤 선글라스</p>
+            <p class="product-code">RB4258F 601/71</p>
+          </div>
+        </div>
+
+        <!-- 옵션 -->
+        <label class="option-select">
+          <select>
+            <option>그레이 / 51mm</option>
+            <option>블랙 / 54mm</option>
+            <option>브라운 / 51mm</option>
+          </select>
+        </label>
+
+        <!-- 수량 + 가격 -->
+        <div class="product-bottom d-flex justify-content-between align-items-center">
+          <div class="quantity-box d-flex align-items-center">
+            <button type="button">
+              <span class="material-icons">remove</span>
+            </button>
+            <span class="quantity">1</span>
+            <button type="button">
+              <span class="material-icons">add</span>
+            </button>
+          </div>
+          <strong class="product-price">204,800원</strong>
+        </div>
+      </article>
+    </section>
+
+    <!-- 배너 -->
+    <section class="cart-banner">
+      <a href="#">
+        <img src="../assets/images/cart_banner.webp" alt="프로모션 배너" />
+      </a>
+    </section>
+
+    <!-- 주문 버튼 -->
+    <section class="cart-order">
+      <button type="button" class="order-btn">
+        주문하기
+      </button>
+    </section>
+
+    <!-- 함께 보면 좋은 상품 -->
+    <section class="recommend-section">
+      <div class="section-header d-flex justify-content-between">
+        <h3>함께 구매하면 좋은 상품</h3>
+        <a href="#" class="section-text">
+          전체보기
+        </a>
+      </div>
+      <div class="product-list">
+        <!-- 상품 카드 -->
+      </div>
+    </section>
+
+    <!-- 당신을 위한 컬렉션 -->
+    <section class="collection-section">
+      <div class="section-header d-flex justify-content-between">
+        <h3>당신을 위한 컬렉션</h3>
+        <a href="#" class="section-text">
+          전체보기
+        </a>
+      </div>
+      <div class="product-list">
+        <!-- 상품 카드 -->
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

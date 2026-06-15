@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상품 목록</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=favorite" />
+  <link rel="stylesheet" href="../css/common.css" />
+  <link rel="stylesheet" href="../css/flex-utility.css" />
+  <link rel="stylesheet" href="../css/productList.css" />
+</head>
+
+<body>
+  <header></header>
+  <main class="product-list-page">
+    <section class="breadcrumb-section">
+      <nav class="breadcrumb d-flex align-items-center">
+        <span class="material-icons home">home</span>
+        <span class="material-icons chevron_right">chevron_right</span>
+        <span class="breadcrumb-home">선글라스</span>
+      </nav>
+    </section>
+
+    <!-- 상위 배너 -->
+    <section class="promotion d-flex flex-column g-16">
+      <div class="promotion-text d-flex flex-column">
+        <h2 class="text-medium-b">선글라스</h2>
+        <div class="d-flex flex-column">
+          <p class="text-small-r">자외선으로부터 안전하게,</p>
+          <p class="text-small-r">스타일은 더 멋지게</p>
+        </div>
+      </div>
+      <div class="promotion-card d-flex">
+        <a href="#" class="w-card">
+          <img src="../assets/images/promotion-card_1.webp" alt="홍보 배너 이미지" />
+          <div class="card-text d-flex flex-column">
+            <p class="text-small-b">NEW</p>
+            <p class="card-sub-text text-small-m">2026 여름 신상 선글라스</p>
+            <div class="promotion-link d-flex align-items-center">
+              <span class="chevron_right">더보기</span>
+              <span class="material-icons chevron_right">
+                chevron_right
+              </span>
+            </div>
+          </div>
+        </a>
+        <a href="#" class="w-card">
+          <img src="../assets/images/promotion-card_3.webp" alt="홍보 배너 이미지" />
+          <div class="card-text d-flex flex-column">
+            <p class="text-small-b">BEST</p>
+            <p class="card-sub-text text-small-m">지금 많이 선택한 선글라스</p>
+            <div class="promotion-link d-flex align-items-center">
+              <span class="chevron_right">더보기</span>
+              <span class="material-icons chevron_right">
+                chevron_right
+              </span>
+            </div>
+          </div>
+        </a>
+        <a href="#" class="w-card">
+          <img src="../assets/images/promotion-card_2.webp" alt="홍보 배너 이미지" />
+          <div class="card-text d-flex flex-column">
+            <p class="text-small-b">AI</p>
+            <p class="card-sub-text text-small-m">내 얼굴에 맞는 선글라스</p>
+            <div class="promotion-link d-flex align-items-center">
+              <span class="chevron_right">더보기</span>
+              <span class="material-icons chevron_right">
+                chevron_right
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 왼쪽 필터 -->
+    <section class="product-layout">
+      <aside class="filter-sidebar d-flex">
+        <h3 class="filter-sidebar-title text-subtitle-m">필터</h3>
+
+        <!-- 카테고리 -->
+        <div class="filter-group category d-flex flex-column g-20">
+          <p class="filter-sub-title text-subtitle-xs">카테고리</p>
+          <ul class="filter-list text-small-r">
+            <li class="filter-item">
+              <label>
+                <input type="checkbox" value="all">
+                <span>전체</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <input type="checkbox" value="sunglasses">
+                <span>선글라스</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <input type="checkbox" value="glasses">
+                <span>안경</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <input type="checkbox" value="sports-goggles">
+                <span>스포츠 고글</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 성별 -->
+        <div class="filter-group gender d-flex flex-column g-20">
+          <p class="filter-sub-title text-subtitle-xs">성별</p>
+          <ul class="filter-list text-small-r">
+            <li class="filter-item">
+              <label>
+                <input type="checkbox" value="all">
+                <span>전체</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <input type="checkbox" value="female">
+                <span>여성</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <input type="checkbox" value="male">
+                <span>남성</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <input type="checkbox" value="unisex">
+                <span>공용</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 브랜드 -->
+        <div class="filter-group brand d-flex flex-column g-20">
+          <p class="filter-sub-title text-subtitle-xs">브랜드</p>
+          <input type="text" class="brand-search text-small-m" placeholder="브랜드 검색" />
+          <ul class="filter-list text-small-r">
+            <li class="filter-item">
+              <label>
+                <input type="checkbox">
+                <span>레이밴 (Ray-Ban)</span>
+                <span class="brand-count">(132)</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <input type="checkbox">
+                <span>오클리 (OAKLEY)</span>
+                <span class="brand-count">(122)</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <input type="checkbox">
+                <span>르스펙스 (LE SPECS)</span>
+                <span class="brand-count">(12)</span>
+              </label>
+            </li>
+
+            <!-- 더보기 누르면 나오는 리스트 -->
+            <li class="filter-item hidden-item">
+              <label>
+                <input type="checkbox">
+                <span>페이크미 (FAKEME)</span>
+                <span class="brand-count">(97)</span>
+              </label>
+            </li>
+            <li class="filter-item hidden-item">
+              <label>
+                <input type="checkbox">
+                <span>옐로우비 (YELLOW BEE)</span>
+                <span class="brand-count">(13)</span>
+              </label>
+            </li>
+          </ul>
+          <button type="button" class="f-more-btn text-small-m">더보기 +</button>
+        </div>
+
+        <!-- 프레임 형태 -->
+        <div class="filter-group frame-shape d-flex flex-column g-20">
+          <p class="filter-sub-title text-subtitle-xs">프레임 형태</p>
+          <ul class="filter-list text-small-r">
+            <li class="filter-item">
+              <label>
+                <img src="../assets/images/shape_1.webp" class="shape-img" alt="라운드 프레임">
+                <span>라운드</span>
+                <span class="brand-count">(378)</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <img src="../assets/images/shape_1.webp" class="shape-img" alt="스퀘어 프레임">
+                <span>스퀘어</span>
+                <span class="brand-count">(859)</span>
+              </label>
+            </li>
+
+            <!-- 더보기 누르면 나오는 리스트 -->
+            <li class="filter-item hidden-item">
+              <label>
+                <img src="../assets/images/shape_1.webp" class="shape-img" alt="하금테 프레임">
+                <span>하금테</span>
+                <span class="brand-count">(76)</span>
+              </label>
+            </li>
+            <li class="filter-item hidden-item">
+              <label>
+                <img src="../assets/images/shape_1.webp" class="shape-img" alt="고글 프레임">
+                <span>고글</span>
+                <span class="brand-count">(221)</span>
+              </label>
+            </li>
+            <li class="filter-item hidden-item">
+              <label>
+                <img src="../assets/images/shape_1.webp" class="shape-img" alt="믹스 프레임">
+                <span>믹스</span>
+                <span class="brand-count">(53)</span>
+              </label>
+            </li>
+            <li class="filter-item hidden-item">
+              <label>
+                <img src="../assets/images/shape_1.webp" class="shape-img" alt="보잉 프레임">
+                <span>보잉</span>
+                <span class="brand-count">(34)</span>
+              </label>
+            </li>
+            <li class="filter-item hidden-item">
+              <label>
+                <img src="../assets/images/shape_1.webp" class="shape-img" alt="캣아이 프레임">
+                <span>캣아이</span>
+                <span class="brand-count">(96)</span>
+              </label>
+            </li>
+            <li class="filter-item hidden-item">
+              <label>
+                <img src="../assets/images/shape_1.webp" class="shape-img" alt="기타 프레임">
+                <span>기타</span>
+                <span class="brand-count">(5)</span>
+              </label>
+            </li>
+          </ul>
+          <button type="button" class="f-more-btn text-small-m">더보기 +</button>
+        </div>
+
+        <!-- 가격대 -->
+        <div class="filter-group price-range d-flex flex-column g-20">
+          <p class="filter-sub-title text-subtitle-xs">
+            가격대
+          </p>
+          <input type="range" min="0" max="500000" value="200000">
+          <div class="price-label text-small-r">
+            <span>0원</span>
+            <span>200,000원</span>
+            <span>500,000원</span>
+          </div>
+        </div>
+
+        <!-- 렌즈 색상 -->
+        <div class="filter-group lens-color d-flex flex-column g-20">
+          <p class="filter-sub-title text-subtitle-xs">렌즈 색상</p>
+          <ul class="filter-list text-small-r">
+            <li class="filter-item">
+              <label>
+                <input type="checkbox">
+                <span>블랙</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <input type="checkbox">
+                <span>브라운</span>
+              </label>
+            </li>
+            <li class="filter-item">
+              <label>
+                <input type="checkbox">
+                <span>틴트</span>
+              </label>
+            </li>
+
+            <!-- 더보기 누르면 나오는 리스트 -->
+            <li class="filter-item hidden-item">
+              <label>
+                <input type="checkbox">
+                <span>미러</span>
+              </label>
+            </li>
+            <li class="filter-item hidden-item">
+              <label>
+                <input type="checkbox">
+                <span>변색</span>
+              </label>
+            </li>
+          </ul>
+          <button type="button" class="f-more-btn text-small-m">더보기 +</button>
+        </div>
+
+        <div class="ai-filter-card">
+          <div class="ai-filter-content d-flex flex-column">
+            <div class="ai-filter-text d-flex flex-column g-20">
+              <p class="text-subtitle-m">AI 추천필터</p>
+              <div class="text-large-r d-flex flex-column g-5">
+                <p>얼굴형과 스타일에 맞는</p>
+                <p>상품을 추천받아 보세요.</p>
+              </div>
+            </div>
+
+            <a href="#" class="ai-filter-link text-medium-b d-flex justify-content-center align-items-center">
+              AI 추천 받기 →
+            </a>
+          </div>
+        </div>
+      </aside>
+
+
+      <!-- 상품 리스트 -->
+      <div>
+        <!-- filter -->
+        <section class="w-filter">
+          <div class="w-filter-btn d-flex">
+            <button type="button" class="filter-btn" data-sort="all">ALL</button>
+            <button type="button" class="filter-btn" data-sort="popular">인기순</button>
+            <button type="button" class="filter-btn" data-sort="recommend">추천순</button>
+            <button type="button" class="filter-btn mobile-only" data-sort="price">가격순</button>
+            <button type="button" class="filter-btn tablet-only" data-sort="price-low">낮은 가격순</button>
+            <button type="button" class="filter-btn tablet-only" data-sort="price-high">높은 가격순</button>
+          </div>
+          <div>
+            <span class="w-filter-count">1,769개의 상품이 있습니다.</span>
+          </div>
+        </section>
+        <section class="sunglasses-page d-flex">
+          <article class="product-list-card">
+            <a href="#" class="product-list-link">
+              <div class="product-list-image">
+                <img class="product-list-img default-img" src="../assets/images/productlist_1.webp" alt="" />
+                <img class="product-list-img hover-img" src="../assets/images/productlist_hover_1.webp" alt="" />
+              </div>
+              <div class="product-list-info d-flex flex-column g-5">
+                <p class="product-list-brand text-small-b">RAY-BAN</p>
+                <p class="product-list-name">
+                  레이밴 선글라스 RB4258F 601/71
+                </p>
+                <p class="product-list-price text-small-b">
+                  204,800원
+                </p>
+              </div>
+            </a>
+          </article>
+          <article class="product-list-card">
+            <a href="#" class="product-list-link">
+              <div class="product-list-image">
+                <img class="product-list-img default-img" src="../assets/images/productlist_1.webp" alt="" />
+              </div>
+              <div class="product-list-info d-flex flex-column g-5">
+                <p class="product-list-brand text-small-b">RAY-BAN</p>
+                <p class="product-list-name">
+                  레이밴 선글라스 RB4258F 601/71
+                </p>
+                <p class="product-list-price text-small-b">
+                  204,800원
+                </p>
+              </div>
+            </a>
+          </article>
+          <article class="product-list-card">
+            <a href="#" class="product-list-link">
+              <div class="product-list-image">
+                <img class="product-list-img default-img" src="../assets/images/productlist_1.webp" alt="" />
+              </div>
+              <div class="product-list-info d-flex flex-column g-5">
+                <p class="product-list-brand text-small-b">RAY-BAN</p>
+                <p class="product-list-name">
+                  레이밴 선글라스 RB4258F 601/71
+                </p>
+                <p class="product-list-price text-small-b">
+                  204,800원
+                </p>
+              </div>
+            </a>
+          </article>
+          <article class="product-list-card">
+            <a href="#" class="product-list-link">
+              <div class="product-list-image">
+                <img class="product-list-img default-img" src="../assets/images/productlist_1.webp" alt="" />
+              </div>
+              <div class="product-list-info d-flex flex-column g-5">
+                <p class="product-list-brand text-small-b">RAY-BAN</p>
+                <p class="product-list-name">
+                  레이밴 선글라스 RB4258F 601/71
+                </p>
+                <p class="product-list-price text-small-b">
+                  204,800원
+                </p>
+              </div>
+            </a>
+          </article>
+          <article class="product-list-card">
+            <a href="#" class="product-list-link">
+              <div class="product-list-image">
+                <img class="product-list-img default-img" src="../assets/images/productlist_1.webp" alt="" />
+              </div>
+              <div class="product-list-info d-flex flex-column g-5">
+                <p class="product-list-brand text-small-b">RAY-BAN</p>
+                <p class="product-list-name">
+                  레이밴 선글라스 RB4258F 601/71
+                </p>
+                <p class="product-list-price text-small-b">
+                  204,800원
+                </p>
+              </div>
+            </a>
+          </article>
+          <article class="product-list-card">
+            <a href="#" class="product-list-link">
+              <div class="product-list-image">
+                <img class="product-list-img default-img" src="../assets/images/productlist_1.webp" alt="" />
+              </div>
+              <div class="product-list-info d-flex flex-column g-5">
+                <p class="product-list-brand text-small-b">RAY-BAN</p>
+                <p class="product-list-name">
+                  레이밴 선글라스 RB4258F 601/71
+                </p>
+                <p class="product-list-price text-small-b">
+                  204,800원
+                </p>
+              </div>
+            </a>
+          </article>
+          <article class="promotion-banner">
+            <a href="#">
+              <img src="../assets/images/promotion_banner_1.webp" alt="AI 추천 선글라스 프로모션 배너" />
+            </a>
+          </article>
+          <article class="product-list-card">
+            <a href="#" class="product-list-link">
+              <div class="product-list-image">
+                <img class="product-list-img default-img" src="../assets/images/productlist_1.webp" alt="" />
+              </div>
+              <div class="product-list-info d-flex flex-column g-5">
+                <p class="product-list-brand text-small-b">RAY-BAN</p>
+                <p class="product-list-name">
+                  레이밴 선글라스 RB4258F 601/71
+                </p>
+                <p class="product-list-price text-small-b">
+                  204,800원
+                </p>
+              </div>
+            </a>
+          </article>
+          <article class="product-list-card">
+            <a href="#" class="product-list-link">
+              <div class="product-list-image">
+                <img class="product-list-img default-img" src="../assets/images/productlist_1.webp" alt="" />
+              </div>
+              <div class="product-list-info d-flex flex-column g-5">
+                <p class="product-list-brand text-small-b">RAY-BAN</p>
+                <p class="product-list-name">
+                  레이밴 선글라스 RB4258F 601/71
+                </p>
+                <p class="product-list-price text-small-b">
+                  204,800원
+                </p>
+              </div>
+            </a>
+          </article>
+          <article class="product-list-card">
+            <a href="#" class="product-list-link">
+              <div class="product-list-image">
+                <img class="product-list-img default-img" src="../assets/images/productlist_1.webp" alt="" />
+              </div>
+              <div class="product-list-info d-flex flex-column g-5">
+                <p class="product-list-brand text-small-b">RAY-BAN</p>
+                <p class="product-list-name">
+                  레이밴 선글라스 RB4258F 601/71
+                </p>
+                <p class="product-list-price text-small-b">
+                  204,800원
+                </p>
+              </div>
+            </a>
+          </article>
+        </section>
+      </div>
+    </section>
+
+    <div class="more-wrap text-small-r">
+      <button type="button" class="more-btn">
+        더보기
+      </button>
+    </div>
+    <nav class="pagination">
+      <button type="button" class="page-btn prev-btn">
+        <span class="material-icons">chevron_left</span>
+      </button>
+      <div class="page-list">
+        <!-- JS 생성 -->
+      </div>
+      <button type="button" class="page-btn next-btn">
+        <span class="material-icons">chevron_right</span>
+      </button>
+    </nav>
+  </main>
+</body>
+
+</html>
