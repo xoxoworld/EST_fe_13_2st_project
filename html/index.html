@@ -13,12 +13,7 @@
   </head>
   <body>
     <section class="banner" aria-label="프로모션 배너">
-      <div
-        class="container banner-carousel swiper banner-swiper"
-        role="region"
-        aria-roledescription="carousel"
-        aria-label="주요 프로모션 슬라이드"
-      >
+      <div class="container banner-carousel swiper banner-swiper" role="region" aria-roledescription="carousel" aria-label="주요 프로모션 슬라이드">
         <div class="banner-viewport swiper-wrapper">
           <div class="swiper-slide">
             <img src="/assets/img/배너이미지1.jpg" alt="" />
@@ -245,7 +240,7 @@
                             alt="아리스타 보잉 RB6489 2500 58mm 레이밴 안경"
                           />
                         </figure>
-                        <div class="product-card-text-box">
+                        <div class="product-card-text-box d-flex flex-column">
                           <span class="product-card__brand text-small-b">RAY-BAN</span>
                           <p class="product-card__name">아리스타 보잉 RB6489 2500 58mm...</p>
                           <strong class="product-card__price">194,000<span>원</span></strong>
@@ -261,7 +256,7 @@
                             alt="버건디 캣아이 RB5449D 846 54mm 레이밴 안경"
                           />
                         </figure>
-                        <div class="product-card-text-box">
+                        <div class="product-card-text-box d-flex flex-column">
                           <span class="product-card__brand text-small-b">RAY-BAN</span>
                           <p class="product-card__name">아리스타 보잉 RB6489 2500 58mm...</p>
                           <strong class="product-card__price">194,000<span>원</span></strong>
@@ -277,7 +272,7 @@
                             alt="블랙 RB5449D 2000 54mm 레이밴 안경"
                           />
                         </figure>
-                        <div class="product-card-text-box">
+                        <div class="product-card-text-box d-flex flex-column">
                           <span class="product-card__brand text-small-b">RAY-BAN</span>
                           <p class="product-card__name">아리스타 보잉 RB6489 2500 58mm...</p>
                           <strong class="product-card__price">194,000<span>원</span></strong>
@@ -299,7 +294,7 @@
                             alt="아리스타 보잉 RB6489 2500 58mm 레이밴 안경"
                           />
                         </figure>
-                        <div class="product-card-text-box">
+                        <div class="product-card-text-box d-flex flex-column">
                           <span class="product-card__brand text-small-b">RAY-BAN</span>
                           <p class="product-card__name">아리스타 보잉 RB6489 2500 58mm...</p>
                           <strong class="product-card__price">194,000<span>원</span></strong>
@@ -315,7 +310,7 @@
                             alt="버건디 캣아이 RB5449D 846 54mm 레이밴 안경"
                           />
                         </figure>
-                        <div class="product-card-text-box">
+                        <div class="product-card-text-box d-flex flex-column">
                           <span class="product-card__brand text-small-b">RAY-BAN</span>
                           <p class="product-card__name">아리스타 보잉 RB6489 2500 58mm...</p>
                           <strong class="product-card__price">194,000<span>원</span></strong>
@@ -331,7 +326,7 @@
                             alt="블랙 RB5449D 2000 54mm 레이밴 안경"
                           />
                         </figure>
-                        <div class="product-card-text-box">
+                        <div class="product-card-text-box d-flex flex-column">
                           <span class="product-card__brand text-small-b">RAY-BAN</span>
                           <p class="product-card__name">아리스타 보잉 RB6489 2500 58mm...</p>
                           <strong class="product-card__price">194,000<span>원</span></strong>
@@ -359,12 +354,25 @@
           </a>
         </header>
 
-        <div class="best-product__filter">
-          <button class="filter-btn filter-btn--active">ALL</button>
-          <button class="filter-btn">선글라스</button>
-          <button class="filter-btn">스포츠고글</button>
-          <button class="filter-btn">블루라이트 차단</button>
+        <div class="filter-more-btn d-flex justify-content-between">
+          <div class="best-product__filter">
+            <button class="filter-btn filter-btn--active">ALL</button>
+            <button class="filter-btn">선글라스</button>
+            <button class="filter-btn">스포츠고글</button>
+            <button class="filter-btn">블루라이트 차단</button>
+          </div>
+          <button  class="more-web-btn d-flex justify-content-center align-items-center">
+            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+  <path d="M7.75 17V9.25H0V7.75H7.75V0H9.25V7.75H17V9.25H9.25V17H7.75Z" fill="white"/>
+  </svg></a>
+          </button>
         </div>
+
+        <div class="pagination-btn d-flex">
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+
         <div class="product-contents">
             <div class="product-swiper swiper">
               <div class="product-wrapper swiper-wrapper">

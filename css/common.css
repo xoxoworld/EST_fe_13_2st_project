@@ -346,6 +346,7 @@ button {
   object-fit: cover;
   display: block;
 }
+
 /* 상품 텍스트 박스 */
 .product-card-text-box {
   padding: 10px 0 0 6px;
@@ -377,6 +378,7 @@ button {
   font-weight: 400;
 }
 /* 상품 텍스트 박스 */
+
 /* 상품 카드 반응형 */
 @media (min-width: 768px) {
   .product-header h2 {
@@ -399,6 +401,10 @@ button {
     gap: 24px;
   }
 
+  .product-card-text-box {
+    gap: 4px;
+  }
+
   .product-product-item {
     width: 100%;
   }
@@ -415,16 +421,16 @@ button {
   }
 
   .product-card__brand {
-    font-size: 16px;
+    font-size: var(--normal);
+    font-weight: 700;
   }
 
   .product-card__name {
-    font-size: 14px;
-    line-height: 1.4;
+    font-size: var(--small);
   }
 
   .product-card__price {
-    font-size: 16px;
+    font-size: var(--normal);
   }
   .product-card__price span {
   font-size: var(--normal);
@@ -467,7 +473,7 @@ button {
   }
   .product-card__brand {
     font-size: var(--normal);
-    margin: 0;
+    font-weight: 700;
   }
 
   .product-card__name {
@@ -479,10 +485,23 @@ button {
   }
   .product-card__price span {
   font-size: var(--normal);
+  font-weight: 400;
   }
 }
 /* 상품 카드 반응형 */
 /* --------상품 카드요소--------- */
+
+/* web 더보기 btn */
+.more-web-btn {
+  width: 40px;
+  height: 40px;
+  background: var(--primary);
+}
+.more-web-btn a {
+  padding-top: 1px;
+  text-decoration: none;
+}
+/* web 더보기 btn */
 
 /* 헤더 */
 .header {

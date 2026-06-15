@@ -493,7 +493,6 @@
 /* Jenny Collection Section */
 .jenny-collection {
   padding: 28px 0;
-  background-color: #ffffff;
 }
 
 .jenny-collection__container {
@@ -598,6 +597,11 @@
 .best-product .container {
   padding: 24px 0;
 }
+/* 7번째 상품부터는 화면에 표시하지 않음 */
+.product-slide-list .product-product-item:nth-child(n+7) {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .best-product {
     padding: 0;
@@ -612,6 +616,9 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+  }
+  .product-slide-list .product-product-item:nth-child(n+5) {
+  display: none;
   }
 
   .best-product .more-button {
@@ -630,6 +637,9 @@
     gap: 27px;
     padding: 0;
   }
+  .product-slide-list .product-product-item:nth-child(n+1) {
+    display: list-item;
+  }
   .best-product .more-button {
     display: none;
   }
@@ -641,25 +651,3 @@
     gap: 24px;
   }
 }
-/* =========================
-   FILTER
-========================= */
-
-
-
-/* .filter-btn {
-  flex-shrink: 0;
-  height: 32px;
-  padding: 0 16px;
-  border-radius: 100px;
-  border: 1px solid var(--primary);
-  background: #fff;
-  color: var(--primary);
-  font-size: 12px;
-  font-weight: 500;
-} */
-
-/* .filter-btn--active {
-  background: var(--primary);
-  color: #fff;
-} */
