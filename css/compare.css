@@ -76,6 +76,7 @@
 }
 
 .dropdown-select-btn {
+  position: relative;
   width: 100%;
   height: 52px;
   border: 1px solid var(--primary);
@@ -85,12 +86,20 @@
   font-size: 15px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0 20px;
   border-radius: 6px;
   cursor: pointer;
   box-sizing: border-box;
   outline: none;
+}
+
+.dropdown-arrow {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
 /* Product Image Box */
@@ -272,6 +281,9 @@
     padding: 0 16px;
     font-size: 14px;
   }
+  .dropdown-arrow {
+    right: 16px;
+  }
   .compare-image-box {
     border-radius: 12px;
   }
@@ -313,6 +325,7 @@
   .dropdown-arrow {
     width: 12px;
     height: 12px;
+    right: 10px;
   }
   .compare-image-box {
     border-radius: 8px;
