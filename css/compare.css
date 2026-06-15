@@ -310,6 +310,14 @@
     font-size: 14px;
     gap: 6px;
   }
+  .btn-icon {
+    width: 14px;
+    height: 14px;
+  }
+  .btn-arrow {
+    width: 12px;
+    height: 12px;
+  }
 }
 
 @media (width <= 480px) {
