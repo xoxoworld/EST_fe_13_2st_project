@@ -7,6 +7,7 @@
 ## 🌟 프로젝트 소개 (Project Overview)
 
 안경을 사고 쓰는 즐거운 경험을 제공하는 **라운즈(ROUNZ)** 쇼핑몰을 고도화된 UI/UX로 재해석했습니다.
+
 - **반응형 웹 디자인**: 데스크톱, 태블릿, 모바일 기기 전체에서 매끄럽게 호환되는 HSL 기반 반응형 레이아웃 구현
 - **모듈화된 구조**: Vanilla CSS와 ES Modules(JavaScript)를 사용해 컴포넌트별 결합도와 가독성을 높인 독립적 파일 설계
 - **검증된 UI/UX**: 슬라이더, 캐러셀, 동적 지점 검색 필터, 아코디언 메뉴, 가상 피팅 모의 CTA 등 실감형 모바일-데스크톱 인터랙션 제공
@@ -16,6 +17,7 @@
 ## 🚀 핵심 기능 (Key Features)
 
 ### 1. 메인 매거진 & 브랜드 추천 (`index.html`)
+
 - **STYLE MAGAZINE**: 트렌디한 카드 형태 그리드로 썸네일 호버 시 줌인(Zoom-in) 애니메이션 제공
 - **NEW PRODUCT**: 브랜드 필터 칩을 클릭해 동적으로 상품 탐색 가능, 데스크톱/모바일별 가로 슬라이더 및 네비게이션 닷츠(Dots) 자동 조절
 - **AI CTA**: 스마트 가상 피팅 예약 유도 배너 탑재
@@ -23,10 +25,12 @@
 - **ROUNZ STORE**: 지역(시/도, 시/군/구) 필터링 UI 및 방문 예약/전화 걸기 다이렉트 액션 연동
 
 ### 2. 모델 비교하기 (`compare.html`)
+
 - **아이웨어 모델 다중 비교**: 3개 열(Column)에 브랜드별 셀렉트 박스와 제품 상세 카드 표출
 - **직관적 핀아웃**: 구입하기 및 더 알아보기 액션과 가상피팅/얼굴분석 부가 기능 연계
 
 ### 3. 유저 인터페이스 & 기타 페이지
+
 - **상품 목록 및 상세 (`productList.html`, `product.html`)**: 동적 목록화 및 아이웨어 상세 정보 상세 설계
 - **장바구니 (`cart.html`)**: 반응형 상품 체크, 가격 집계 처리
 - **회원 인증 (`login.html`, `signup.html`)**: 모던한 폼 필드와 유효성 검증 레이아웃
@@ -36,6 +40,7 @@
 ## 🛠️ 기술 스택 (Tech Stack)
 
 ### **Core**
+
 - **HTML5**: 시맨틱 웹 및 SEO 접근성 향상, 이미지 지연 로딩(`loading="lazy"`) 적용
 - **Vanilla CSS**: CSS Custom Properties(변수) 기반의 디자인 시스템화 (`common.css`)
   - 일관된 컬러 토큰, 미세 타이포그래피, 디자인 테마 관리
@@ -43,6 +48,7 @@
 - **JavaScript (ES6+)**: ES Modules 방식을 적용하여 페이지 단위 스크립트 모듈 분리 (`js/pages/`, `js/modules/`)
 
 ### **Data & Assets**
+
 - **JSON 데이터**: 모의 API용 상품 리스트(`products.json`) 및 전국 안경원 리스트(`stores.json`) 탑재
 - **Google Fonts & SVG**: 'Inter', 'Outfit', 'Noto Sans KR' 서체 적용 및 인라인/벡터 벡터 그래픽 최적화
 
@@ -94,13 +100,13 @@
 
 역할에 맞춰 개별 기능 브랜치를 활용하여 안정적인 협업을 진행하고 있습니다.
 
-| 이름 | 역할 | 담당 브랜치 | GitHub 링크 |
-| :--- | :--- | :--- | :--- |
-| **정민** | 👑 팀장 / 기획 & 총괄 | `jeongmin` | [@chittybb1357-commits](https://github.com/chittybb1357-commits) |
-| **성희** | 💻 팀원 / 메인 퍼블리싱 | `sunghee` | [@xoxoworld](https://github.com/xoxoworld) |
-| **시원** | 💻 팀원 / 기능 개발 | `siwon` | [@isnow-x](https://github.com/isnow-x) |
-| **소호** | 💻 팀원 / UI 디자인 & 퍼블리싱 | `soho` | [@soho1109](https://github.com/soho1109) |
-| **소영** | 💻 팀원 / 데이터 바인딩 | `soyoung` | [@s0y0ungk](https://github.com/s0y0ungk) |
+| 이름     | 역할                                                    | 담당 브랜치 | GitHub 링크                                                      |
+| :------- | :------------------------------------------------------ | :---------- | :--------------------------------------------------------------- |
+| **정민** | 👑 팀장 / 기획/디자인/로그인/회원가입/상품비교 퍼블리싱 | `jeongmin`  | [@chittybb1357-commits](https://github.com/chittybb1357-commits) |
+| **성희** | 💻 팀원 / 기획/디자인/메인/푸터/상품비교 퍼블리싱       | `sunghee`   | [@xoxoworld](https://github.com/xoxoworld)                       |
+| **시원** | 💻 팀원 / 기획/디자인/상세/안경원 퍼블리싱              | `siwon`     | [@isnow-x](https://github.com/isnow-x)                           |
+| **소호** | 💻 팀원 / 기획/디자인/메인/헤더 퍼블리싱                | `soho`      | [@soho1109](https://github.com/soho1109)                         |
+| **소영** | 💻 팀원 / 기획/ 상품목록/장바구니 퍼블리싱              | `soyoung`   | [@s0y0ungk](https://github.com/s0y0ungk)                         |
 
 ---
 
@@ -112,5 +118,3 @@
    ```bash
    git clone https://github.com/xoxoworld/EST_fe_13_2st_project.git
    ```
-2. **로컬 서버 실행 (추천)**:
-   JavaScript ES Modules를 사용하고 있으므로, CORS 이슈 방지를 위해 VS Code의 **Live Server** 확장 프로그램을 설치하여 `html/index.html`을 실행하는 것을 권장합니다.
