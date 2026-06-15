@@ -1,6 +1,9 @@
 @import url("normalize.css");
 @import url("reset.css");
 @import url("flex-utility.css");
+@import url("normalize.css");
+@import url("reset.css");
+@import url("flex-utility.css");
 :root {
   /* Color styles */
   --primary: rgba(23, 41, 236, 1);
@@ -384,17 +387,32 @@ section {
 
 .footer-top {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 20px;
-  padding-bottom: 20px;
+  width: 100%;
+  border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   margin-bottom: 30px;
 }
 
+.footer-top .store-link {
+  flex: 1;
+  text-align: center;
+  padding: 20px 0;
+  font-weight: 500;
+  font-size: 14px;
+  transition: color 0.25s ease;
+}
+
+.footer-top .store-link:first-child {
+  border-right: 1px solid #ddd;
+}
+
+.footer-top .store-link:hover {
+  color: var(--primary);
+}
+
 .footer-top .vertical-bar {
-  color: #ccc;
-  font-size: 10px;
+  display: none;
 }
 
 .footer-nav {
@@ -429,6 +447,10 @@ section {
   letter-spacing: 1px;
 }
 
+.footer-company-toggle {
+  display: none;
+}
+
 .address-text {
   font-style: normal;
   line-height: 1.8;
@@ -458,10 +480,7 @@ section {
   border-radius: 50%;
 }
 
-@media (min-width: 1020px) {
-  .footer-nav .nav-list {
-    flex-wrap: nowrap;
-  }
+@media (min-width: 768px) {
   .footer-bottom {
     flex-direction: row;
     justify-content: space-between;
