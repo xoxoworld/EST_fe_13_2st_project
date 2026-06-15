@@ -404,33 +404,6 @@
   
   /* Feature Row for Mobile */
   .feature-cta-row {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding-top: 30px;
-  }
-  .feature-card {
-    padding: 16px;
-    gap: 12px;
-  }
-  .feature-icon-box {
-    width: 56px;
-    height: 56px;
-  }
-  .feature-card:nth-child(1) .feature-icon-img {
-    width: 56px;
-    height: 38px;
-  }
-  .feature-card:nth-child(2) .feature-icon-img,
-  .feature-card:nth-child(3) .feature-icon-img,
-  .feature-card:nth-child(4) .feature-icon-img {
-    width: 56px;
-    height: 56px;
-  }
-  .feature-title {
-    font-size: 16px;
-    margin-bottom: 4px;
-  }
-  .feature-desc {
-    font-size: 12px;
+    display: none;
   }
 }
