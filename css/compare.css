@@ -67,10 +67,12 @@
   display: flex;
   flex-direction: column;
   background-color: var(--white-1);
+  align-items: center;
 }
 
 /* Dropdown Select Button */
 .select-dropdown-box {
+  max-width: 360px;
   width: 100%;
   margin-bottom: 24px;
 }
@@ -78,7 +80,7 @@
 .dropdown-select-btn {
   position: relative;
   width: 100%;
-  height: 52px;
+  height: 48px;
   border: 1px solid var(--primary);
   background-color: var(--white-1);
   color: var(--primary);
@@ -104,6 +106,7 @@
 
 /* Product Image Box */
 .compare-image-box {
+  max-width: 360px;
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 16px;
@@ -123,6 +126,8 @@
 
 /* Info Box */
 .compare-info-box {
+  max-width: 360px;
+  width: 100%;
   margin-bottom: 24px;
 }
 
@@ -153,6 +158,7 @@
 .compare-action-box {
   display: flex;
   gap: 12px;
+  max-width: 360px;
   width: 100%;
 }
 
