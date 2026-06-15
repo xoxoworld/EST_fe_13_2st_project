@@ -307,10 +307,6 @@ button {
   display: flex;
 }
 
-.swiper-slide {
-  width: 100%;
-}
-
 .product-slide-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -319,6 +315,10 @@ button {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.swiper-slide {
+  width: 100%;
 }
 
 .product-product-item {
@@ -393,12 +393,6 @@ button {
   /* 상품 */
   .product-contents {
     padding: 0;
-  }
-
-  .product-slide-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
   }
 
   .product-card-text-box {
@@ -492,7 +486,8 @@ button {
 /* --------상품 카드요소--------- */
 
 /* web 더보기 btn */
-.more-web-btn {
+.filter-more-btn .more-web-btn {
+  display: none;
   width: 40px;
   height: 40px;
   background: var(--primary);
