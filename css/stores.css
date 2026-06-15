@@ -410,12 +410,13 @@ main > section {
 .store-card-body {
   height: 170px;
   padding: 16px 16px;
+  gap: 2px;
 }
 
 .station {
   color: var(--gray-3);
   font-size: 12px;
-  line-height: 27px;
+  line-height: 22px;
 }
 
 .address {
@@ -424,7 +425,7 @@ main > section {
   line-height: 22px;
 }
 .contact-row {
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .contact-row > a {
@@ -436,6 +437,18 @@ main > section {
 .contact-row div {
   gap: 10px;
 }
+
+.contact-icon .material-icons {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .contact-row .material-icons {
   font-size: 18px;
   color: var(--gray-3);
@@ -1115,7 +1128,7 @@ main > section {
     font-size: 20px;
   }
   .contact-row {
-    padding-top: 10px;
+    padding-top: 5px;
   }
 
   .more-button {
