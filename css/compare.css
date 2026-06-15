@@ -201,7 +201,6 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  border-top: 1px solid #e5e7eb;
   padding-top: 60px;
 }
 
