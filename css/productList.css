@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  /* outline: 1px solid red; */
+  outline: 1px solid red;
 }
 
 body {
@@ -10,8 +10,8 @@ body {
   color: var(--black-2);
   font-size: 12px;
   letter-spacing: 0;
-  padding: 16px;
-  margin: 0 auto;
+  padding: 0;
+  margin: 0;
 }
 
 /* nav */

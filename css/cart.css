@@ -8,13 +8,9 @@ body {
   min-width: 320px;
   padding-bottom: 118px;
   letter-spacing: 0;
-  margin: 0;
-  padding: 0;
 }
 .container {
   width: 100%;
-  margin: 0 auto;
-  padding: 16px;
 }
 
 /* 제목 */
@@ -44,8 +40,12 @@ body {
 }
 
 .select-delete-btn {
-  font-size: 12px;
   color: var(--black-2);
+}
+.delete-btn {
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 
 /* 상품 */
@@ -194,9 +194,9 @@ button .material-icons {
 
   .cart-page {
     width: 100%;
-    padding: 30px;
   }
   .cart-layout {
+    display: flex;
     align-items: flex-start;
     gap: 40px;
   }
@@ -207,7 +207,7 @@ button .material-icons {
   .cart-right {
     display: flex;
     flex-direction: column;
-    width: 293px;
+    width: 375px;
     flex-shrink: 0;
   }
 
@@ -303,6 +303,7 @@ button .material-icons {
   }
 
   .cart-layout {
+    display: flex;
     gap: 80px;
     align-items: flex-start;
   }
@@ -329,9 +330,6 @@ button .material-icons {
   }
   .product-info p {
     font-size: var(--normal);
-  }
-  .delete-btn .close {
-    font-size: 30px;
   }
   .option-select select {
     height: 50px;
