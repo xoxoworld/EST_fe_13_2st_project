@@ -415,24 +415,8 @@
   display: block;
   object-fit: cover;
 }
-
-.timesale__more-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 48px;
-  border-radius: 100px;
-  border: 1px solid var(--gray-3);
-  font-weight: 400;
-  text-decoration: none;
-  background-color: transparent;
-}
-
-.timesale__more-button a {
-  color: var(--black-2);
-  font-size: 14px;
-  text-decoration: none;
+.timesale__image-wrap .arrow-right {
+  display: none;
 }
 
 @media (min-width: 768px) {
@@ -458,8 +442,10 @@
   .timesale__timer {
     font-size: 90px;
   }
-  .timesale__image,
-  .timesale__more-button {
+  .timesale__content .more-button {
+    display: none;
+  }
+  .timesale__image {
     display: none;
   }
   .timesale__image-web {
@@ -492,8 +478,11 @@
     font-size: 90px;
   }
 
-  .timesale__image,
-  .timesale__more-button {
+  .timesale__content .more-button {
+    display: none;
+  }
+
+  .timesale__image {
     display: none;
   }
   .timesale__image-web {
@@ -503,7 +492,7 @@
 
 /* Jenny Collection Section */
 .jenny-collection {
-  padding: 32px 0;
+  padding: 28px 0;
   background-color: #ffffff;
 }
 
@@ -513,34 +502,15 @@
   gap: 20px;
 }
 
-.jenny-collection__header {
+.product-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 16px;
-}
-
-.jenny-collection__title {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 700;
-  color: #111827;
-}
-
-.jenny-collection__more-link {
-  font-size: 12px;
-  font-weight: 400;
-  color: #6c7284;
-  text-decoration: none;
-}
-
-.jenny-collection__more-link:hover {
-  color: #1729ec;
 }
 
 .jenny-collection__figure {
   margin: 0;
-  padding: 0 16px;
+  padding: 0 16px 16px;
 }
 
 .jenny-collection__banner-img {
@@ -550,112 +520,25 @@
   object-fit: cover;
 }
 
-.jenny-collection__products {
-  padding: 16px 16px;
-}
-
-.jenny-collection__swiper {
-  overflow: hidden;
-}
-
-.jenny-collection__wrapper {
-  display: flex;
-}
-
-.swiper-slide {
-  width: 100%;
-}
-
-.jenny-collection__slide-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.jenny-collection__product-item {
-  margin: 0;
-  width: 100%;
-}
-
-.product-card {
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.product-card__figure {
-  margin: 0;
-  width: 100%;
-  border-radius: 10px;
-  overflow: hidden;
-  background-color: #f5f5f5;
-}
-
-.product-card__img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  display: block;
-}
-
-.product-card__content {
-  padding: 12px 0;
-}
-
-.product-card__brand {
-  margin: 0 0 4px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #111827;
-}
-
-.product-card__name {
-  margin: 0 0 8px;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.4;
-  color: #6c7284;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-}
-
-.product-card__price {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 700;
-  color: #111827;
-}
-
-.product-card__price span {
-  font-size: 12px;
-}
-
 @media (min-width: 768px) {
   .jenny-collection {
-    padding: 48px 0;
+    padding: 0;
+    margin: 80px auto;
   }
-
-  .jenny-collection__container {
-    gap: 24px;
-  }
-
-  .jenny-collection__header {
+  .jenny-collection .container {
     padding: 0;
   }
-
-  .jenny-collection__title {
-    font-size: 28px;
+  .jenny-contents {
+    padding: 0;
+  }
+  .jenny-collection__container {
+    gap: 24px;
   }
 
   /* 배너 */
   .jenny-collection__figure {
     padding: 0;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 
   .jenny-collection__banner-img {
@@ -663,57 +546,19 @@
     border-radius: 10px;
     display: block;
   }
-
-  /* 상품 */
-  .jenny-collection__products {
-    padding: 0;
-  }
-
-  .jenny-collection__slide-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-  }
-
-  .jenny-collection__product-item {
-    width: 100%;
-  }
-
-  .product-card__figure {
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
-  .product-card__img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
-  }
-
-  .product-card__brand {
-    font-size: 12px;
-  }
-
-  .product-card__name {
-    font-size: 12px;
-    line-height: 1.4;
-  }
-
-  .product-card__price {
-    font-size: 14px;
-  }
 }
 
 @media (min-width: 1272px) {
+  .jenny-collection {
+    margin: 120px auto;
+  }
   .jenny-collection__container {
     max-width: 1272px;
-    margin: 0 auto;
-    gap: 32px;
+    gap: 27px;
   }
-
   .jenny-contents {
     display: flex;
-    gap: 20px;
+    gap: 24px;
     align-items: flex-start;
   }
 
@@ -734,185 +579,87 @@
   }
 
   /* 오른쪽 상품영역 */
-  .jenny-collection__products {
+  .product-contents {
     flex: 1;
     padding: 0;
     min-width: 0;
   }
 
-  .jenny-collection__swiper {
-    width: 100%;
-  }
-
-  .jenny-collection__slide-list {
+  .product-slide-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-
-  .jenny-collection__product-item {
-    width: 100%;
-  }
-
-  .product-card__figure {
-    aspect-ratio: 1 / 1;
-  }
-
-  .product-card__img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    gap: 24px;
   }
 }
 
 /* =========================
    BEST PRODUCT
 ========================= */
-
-.best-product {
+.best-product .container {
   padding: 24px 0;
 }
+@media (min-width: 768px) {
+  .best-product {
+    padding: 0;
+    margin: 0 auto;
+  }
+  .best-product .container {
+    padding: 80px 0;
+    gap: 30px;
+  }
 
-.best-product__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+  .best-product .product-slide-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .best-product .more-button {
+    display: none;
+  }
 }
 
-.best-product__title {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--black-2);
-}
+@media (min-width: 1272px) {
+  .best-product {
+    max-width: 1272px;
+    margin: auto;
+    padding: 120px 0 120px 0;
+    gap: 27px;
+  }
+  .best-product .container {
+    gap: 27px;
+    padding: 0;
+  }
+  .best-product .more-button {
+    display: none;
+  }
 
-.best-product__more {
-  font-size: 14px;
-  color: var(--gray-2);
-  text-decoration: none;
+  /* 상품영역 */
+  .best-product .product-slide-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
 }
-
 /* =========================
    FILTER
 ========================= */
 
-.best-product__filter {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  margin-bottom: 20px;
 
-  scrollbar-width: none;
-}
 
-.best-product__filter::-webkit-scrollbar {
-  display: none;
-}
-
-.filter-btn {
+/* .filter-btn {
   flex-shrink: 0;
-
   height: 32px;
   padding: 0 16px;
-
   border-radius: 100px;
   border: 1px solid var(--primary);
-
   background: #fff;
   color: var(--primary);
-
   font-size: 12px;
   font-weight: 500;
-}
+} */
 
-.filter-btn--active {
+/* .filter-btn--active {
   background: var(--primary);
   color: #fff;
-}
-
-/* =========================
-   PRODUCT GRID
-========================= */
-
-.best-product__list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px 12px;
-
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.best-product__item {
-  min-width: 0;
-}
-
-.product-card {
-  display: flex;
-  flex-direction: column;
-}
-
-.product-card__figure {
-  margin: 0;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #f5f5f5;
-}
-
-.product-card__figure img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  display: block;
-}
-
-.product-card__content {
-  padding-top: 12px;
-}
-
-.product-card__brand {
-  margin: 0 0 8px;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--black-2);
-}
-
-.product-card__name {
-  margin: 0 0 12px;
-
-  font-size: 12px;
-  line-height: 1.5;
-  color: var(--gray-1);
-
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-.product-card__price {
-  margin: 0;
-
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--black-2);
-}
-
-/* =========================
-   LOAD MORE
-========================= */
-
-.best-product__load-more {
-  width: 100%;
-  height: 48px;
-
-  margin-top: 24px;
-
-  border: 1px solid var(--gray-3);
-  border-radius: 100px;
-
-  font-size: 14px;
-  font-weight: 500;
-}
+} */
