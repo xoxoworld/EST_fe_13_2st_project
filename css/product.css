@@ -108,8 +108,9 @@ img {
 .ship-badge {
   display: inline-flex;
   align-items: center;
-  height: 28px;
-  margin: 0 0 16px;
+  justify-content: center;
+  width: 64px;
+  height: 27px;
   padding: 0 9px;
   border-radius: var(--radius-s);
   background: var(--gray-1);
@@ -121,14 +122,12 @@ img {
 
 /* 브랜드명 경로와 상품명 영역입니다. */
 .brand-path {
-  margin: 0 0 15px;
   color: var(--gray-1);
   font-size: 14px;
   line-height: 1;
 }
 
-.summary-wrap h1 {
-  margin: 0 0 14px;
+.summary-wrap h2 {
   color: var(--black-1);
   font-size: 17px;
   font-weight: 800;
@@ -183,8 +182,8 @@ img {
 .color-chip {
   display: grid;
   place-items: center;
-  width: 49px;
-  height: 49px;
+  width: 50px;
+  height: 50px;
   border: 1px solid transparent;
   background: #f5f5f5;
 }
@@ -194,11 +193,11 @@ img {
 }
 
 .color-chip img {
-  width: 43px;
-  height: 28px;
-  object-fit: contain;
+  object-fit: cover;
 }
-
+.price-title {
+  display: none;
+}
 .price {
   margin: 31px 0 0;
   color: var(--black-1);
@@ -209,6 +208,10 @@ img {
 }
 
 /* ROUNZ-only banners: 가상 피팅/내 얼굴에 써보기 프로모션 영역입니다. */
+.desktop-buy-panel {
+  display: none;
+}
+
 .rounz-only-wrap {
   padding-bottom: 29px;
 }
@@ -895,23 +898,16 @@ img {
 /* 구매 정보는 긴 안내 문구가 많아 line-height를 넉넉하게 둡니다. */
 .purchase-wrap h3 {
   margin: 0 0 20px;
-  color: var(--black-1);
-  font-size: 17px;
-  font-weight: 800;
 }
 
 .purchase-wrap h4 {
   margin: 0 0 21px;
-  font-size: 15px;
-  font-weight: 800;
-  line-height: 1.65;
 }
 
 .purchase-wrap p {
-  margin: 0 0 8px;
   color: var(--gray-1);
   font-size: 12px;
-  line-height: 1.8;
+  line-height: 20px;
 }
 
 /* 배송 안내 표는 첫 열 고정 폭, 두 번째 열 유동 폭 구조입니다. */
@@ -920,7 +916,7 @@ img {
   border-collapse: collapse;
   border-top: 1px solid #aab2c0;
   color: var(--black-2);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.8;
 }
 
@@ -935,6 +931,9 @@ img {
   padding: 18px 0;
   border-bottom: 1px solid #aab2c0;
   vertical-align: top;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--gray-1);
 }
 
 .purchase-wrap td:first-child {
@@ -995,7 +994,7 @@ img {
   display: block;
   margin-bottom: 28px;
   color: var(--black-2);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
 }
 
@@ -1016,9 +1015,10 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
+  width: 33px;
   border-right: 1px solid #aab2c0;
-  font-size: 18px;
+  font-size: 14px;
+  background: var(--white-1);
 }
 
 .quantity-control button:last-child {
@@ -1026,7 +1026,7 @@ img {
 }
 
 .total-price {
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 800;
 }
 
@@ -1083,17 +1083,16 @@ img {
     padding: 28px 30px 24px;
   }
 
-  .ship-badge {
-    height: 22px;
-    font-size: 10px;
-  }
-
   .summary-wrap h2 {
-    font-size: var(--medium-b);
+    font-size: var(--medium);
   }
 
   .color-block {
-    margin-top: 36px;
+    margin-top: 30px;
+  }
+  .color-chip {
+    width: 60px;
+    height: 60px;
   }
 
   .price {
@@ -1208,6 +1207,12 @@ img {
     width: 150px;
   }
 
+  .purchase-wrap h2 {
+    font-size: var(--large);
+  }
+  .purchase-wrap h3 {
+    font-size: var(--medium);
+  }
   /* 태블릿 하단 구매 버튼은 모바일보다 좌우 여백과 버튼 사이 간격이 큽니다. */
   .bottom-buy-wrap {
     padding-right: 30px;
@@ -1325,18 +1330,11 @@ img {
     padding: 0;
   }
 
-  .ship-badge {
-    height: 24px;
-    margin-bottom: 16px;
-    padding: 0 12px;
-    font-size: 11px;
-  }
-
   .brand-path {
     font-size: 12px;
   }
 
-  .summary-wrap h1 {
+  .summary-wrap h2 {
     width: 242px;
     font-size: 18px;
   }
@@ -1357,18 +1355,51 @@ img {
   }
 
   .color-chip {
-    width: 34px;
-    height: 34px;
+    width: 70px;
+    height: 70px;
   }
 
-  .color-chip img {
-    width: 30px;
-    height: 20px;
+  .desktop-buy-panel {
+    display: block;
+    margin-top: 20px;
   }
 
+  .side-panel .buy-product-box {
+    padding: 18px 16px;
+    border-radius: 6px;
+  }
+
+  .side-panel .product-name {
+    margin-bottom: 22px;
+    color: var(--black-2);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .side-panel .quantity-control {
+    height: 28px;
+  }
+
+  .side-panel .quantity-control button,
+  .side-panel .quantity-control span {
+    width: 36px;
+    font-size: 14px;
+  }
+
+  .side-panel .total-price {
+    font-size: 16px;
+  }
+  .price-title {
+    display: block;
+  }
+  .total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   .price {
     margin: 22px 0 18px;
-    font-size: 18px;
+    font-size: 24px;
   }
 
   .side-panel .rounz-only-wrap {
@@ -1535,7 +1566,14 @@ img {
 
   .purchase-wrap p,
   .purchase-wrap table {
-    font-size: 13px;
+    font-size: 14px;
+  }
+
+  .purchase-wrap h2 {
+    font-size: var(--sub-title--m);
+  }
+  .purchase-wrap h3 {
+    font-size: var(--large);
   }
 
   .purchase-wrap td:first-child {
