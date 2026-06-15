@@ -165,7 +165,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   border-radius: 6px;
   text-decoration: none;
@@ -295,7 +295,7 @@
   }
   .compare-btn {
     height: 44px;
-    font-size: 13px;
+    font-size: 14px;
     gap: 6px;
   }
 }
@@ -357,7 +357,7 @@
   }
   .compare-btn {
     height: 32px;
-    font-size: 10px;
+    font-size: 12px;
     gap: 4px;
     width: 100%;
   }
