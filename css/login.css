@@ -1,188 +1,316 @@
-/* 기본 폼 레이아웃 설정 */
-.auth-wrapper {
-  width: 100%; /* 화면이 좁아질 때는 유연하게 100% 채움 */
-  max-width: 402px; /* 화면이 아무리 커져도 최대 가로폭은 402px로 제한 (중앙 핏 유지) */
-  margin: 0 auto; /* 가로 공간이 남을 때 좌우 여백을 등분하여 화면 정중앙 배치 */
-  padding: 40px 16px; /* 모바일 기기 양끝에 콘텐츠가 딱 붙지 않도록 좌우 16px 안전 패딩 부여 */
-  display: flex;
-  flex-direction: column; /* 내부 요소들을 위에서 아래로 차례대로 나열 */
-  box-sizing: border-box; /* 패딩이 너비에 합산되어 박스가 터지는 현상 방지 */
+/* 💡 가로 스크롤 방지: 화면 폭을 초과하는 요소가 있어도 잘려서 스크롤이 생기지 않도록 처리 */
+html,
+body {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
 }
 
-/* 입력 필드 공통 스타일 */
+#app-container {
+  min-height: 100vh !important;
+  background-color: #ffffff !important; /* 💡 반투명 배경 제거, 흰색 베이스 */
+  display: flex !important;
+  flex-direction: column !important; /* 💡 위에서 아래로 흐르는 표준 레이아웃 */
+  box-sizing: border-box !important;
+  overflow-x: hidden !important; /* 💡 내부 요소가 넘쳐도 가로 스크롤 차단 */
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* 💡 헤더와 푸터가 정상적으로 보이도록 복원 */
+.header,
+.footer {
+  display: flex !important;
+}
+
+/* 💡 1번 화면 전용 헤더 밑줄 가로선 스타일 */
+.header-underline {
+  width: 100%;
+  height: 1px;
+  background-color: #dedede;
+  flex-shrink: 0;
+}
+
+/* 💡 콘텐츠를 화면 중앙에 정렬하기 위한 메인 레이아웃 래퍼 */
+.main-layout {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 40px 20px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+.auth-wrapper {
+  margin: 0 auto !important;
+  padding: 40px 24px !important;
+  box-sizing: border-box !important;
+  background-color: var(--white-1, #ffffff) !important;
+  border-radius: var(--radius-lg, 12px) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important; /* 은은한 카드 스타일로 조절 */
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 354px !important;
+  height: auto !important;
+  min-height: 507px !important;
+}
+
+@media (min-width: 768px) {
+  .auth-wrapper {
+    max-width: 480px !important;
+    min-height: 507px !important;
+    padding: 40px 32px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .auth-wrapper {
+    max-width: 560px !important;
+    min-height: 560px !important;
+    padding: 50px 40px !important;
+  }
+}
+
+.login-section {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.input-group {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  margin-bottom: 20px !important;
+}
+
 input[type="text"],
 input[type="password"] {
-  width: 100%; /* 부모 너비에 꽉 맞춤 */
-  height: 48px; /* 타이핑하기 가장 쾌적한 48px 표준 높이 지정 */
-  padding: 0 16px; /* 글씨가 시작하고 끝나는 지점의 좌우 안쪽 여백 공간 */
-  border: 1px solid var(--radius-color); /* 부드러운 회색조 테두리선 */
-  border-radius: var(--radius-md); /* 모서리를 둥글게 깎음 */
-  font-size: var(--normal); /* 표준 본문 글씨 크기 반영 */
-  color: var(--black-2); /* 사용자가 입력할 폰트 컬러 */
-  box-sizing: border-box;
-  transition: border-color 0.2s ease; /* 마우스를 클릭했을 때 테두리 색상이 0.2초 동안 부드럽게 변하도록 처리 */
-}
-
-/* 사용자가 입력창을 마우스로 클릭하여 활성화(Focus)했을 때의 스타일 */
-input[type="text"]:focus,
-input[type="password"]:focus {
-  outline: none; /* 브라우저 기본 파란색 외곽선 제거 */
-  border-color: var(--primary); /* 브랜드 포인트 메인 컬러로 테두리색을 변경하여 집중도 향상 */
+  width: 100% !important;
+  height: 48px !important;
+  padding: 0 16px !important;
+  border: 1.5px solid #a0a0a0 !important;
+  border-radius: var(--radius-md, 8px) !important;
+  font-size: var(--small, 14px) !important;
+  color: var(--black-2, #111) !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  transition: border-color 0.2s ease !important;
 }
 
 input::placeholder {
-  color: var(--gray-3); /* 연한 회색으로 처리하여 유저 입력값과 명확히 구분 */
+  color: var(--gray-3, #999) !important;
 }
 
-/* 메인 브랜드 버튼 스타일 */
-.primary-btn {
-  width: 100%; /* 가로폭 꽉 채움 */
-  height: 52px; /* 일반 인풋창보다 살짝 두껍게 만들어 터치 편의성 제공 */
-  background-color: var(--primary); /* 브랜드 메인 포인트 컬러 채움 */
-  color: var(--white-1); /* 어두운 버튼 배경과 대비되는 선명한 흰색 글씨 */
-  border: none; /* 기본 테두리 제거 */
-  border-radius: var(--radius-md); /* 모서리 라운드 일치 */
-  font-size: var(--normal);
-  font-weight: 700; /* 글씨를 두껍게 다져 시선 고정 */
-  display: flex; /* 버튼 내부 글씨를 중앙 정렬하기 위한 flexbox 적용 */
-  align-items: center; /* 수직 중앙 정렬 */
-  justify-content: center; /* 가로 중앙 정렬 */
-  transition: background-color 0.2s ease; /* 호버/비활성화 시 색상 변화 부드럽게 연결 */
-  cursor: pointer; /* 마우스 올리면 손가락 포인터 노출 */
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: var(--primary-btn-bg, #6732e2) !important;
 }
 
-/* 유효성 검사를 통과하지 못해 버튼이 잠겼을 때(:disabled)의 예외 스타일 */
-.primary-btn:disabled {
-  background-color: var(--gray-3); /* 먹통이 된 느낌을 주는 어두운 회색으로 배경 변경 */
-  cursor: not-allowed; /* 마우스 포인터를 '금지(🚫)' 아이콘으로 변경하여 클릭 불가능함을 안내 */
-}
-
-/* 소셜 로그인 컴포넌트 */
-.social-group {
-  display: flex; /* 버튼들을 가로로 나란히 정렬 */
-  justify-content: center; /* 전체 소셜 버튼 묶음을 정중앙에 배치 */
-  gap: 16px; /* 버튼과 버튼 사이의 가로 여백 간격 */
-  margin: 24px 0; /* 위아래 다른 컴포넌트와의 세로 거리 확보 */
-}
-
-/* 소셜 버튼 개별 동그라미 틀 */
-.social {
-  width: 48px; /* 완벽한 정원(Circle)을 만들기 위한 동일 가로폭 */
-  height: 48px; /* 완벽한 정원(Circle)을 만들기 위한 동일 세로폭 */
-  border-radius: 50%; /* 반지름 50%를 깎아 사각형 박스를 동그라미로 변경 */
-  border: none;
-  display: flex; /* 내부 브랜드 로고 아이콘 이미지를 정중앙 배치 */
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding: 0; /* 패딩 초기화 */
-  overflow: hidden; /* 혹시 사각형 로고 이미지가 원형 테두리 밖으로 빠져나오면 커팅 */
-  background-color: transparent; /* 배경색은 각 브랜드 고유 색상을 쓰기 위해 투명화 */
-}
-
-/* 버튼 안의 로고 이미지 비율 맞춤 */
-.social img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 원형 틀 안에 구겨짐 없이 꽉 차게 이미지 비율 조정 */
-}
-
-/* 카카오톡 로그인 배경색 */
-.social.kakao {
-  background-color: #fee500; /* 카카오 공식 옐로우 컬러 */
-}
-
-/* 네이버 로그인 배경색 */
-.social.naver {
-  background-color: #03c75a; /* 네이버 공식 그린 컬러 */
-}
-
-/* 구글 로그인 배경색 및 테두리 */
-.social.google {
-  background-color: var(--white-1); /* 구글은 기본 바탕이 흰색이므로 흰색 지정 */
-  border: 1px solid var(--radius-color); /* 배경이 묻히지 않도록 연한 경계선 테두리 마감 추가 */
-}
-
-/* 서비스 로고 및 소개 문구 영역 */
 .login-header {
-  text-align: center; /* 로고와 문구를 모두 화면 한가운데 정렬 */
-  margin-bottom: 40px; /* 인풋 입력창들이 시작되기 전 널찍한 여백 배정 */
+  text-align: center !important;
+  width: 100% !important;
+  margin-bottom: 24px !important;
 }
 
-/* 대형 브랜드 로고 서체 */
 .login-header .logo {
-  font-size: 32px; /* 큼직하게 브랜드 네임 노출 */
-  font-weight: 800; /* 아주 두껍게 처리하여 로고 느낌 극대화 */
-  letter-spacing: -0.5px;
-  margin-bottom: 8px; /* 바로 아래 서브 카피 문구와의 간격 */
-  color: var(--black-2, #1c1b1f);
+  font-size: 28px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.5px !important;
+  margin-bottom: 4px !important;
+  color: var(--black-2, #1c1b1f) !important;
 }
 
-/* "세상에 없던 안경 쇼핑" 서브 카피 멘트 */
 .login-header p {
-  font-size: 14px;
-  color: var(--gray-2, #767676); /* 살짝 연한 톤으로 로고와 시각적 계층 분리 */
+  font-size: 13px !important;
+  color: var(--gray-2, #767676) !important;
+  margin: 0 !important;
 }
 
-/* 서브 타이틀 '로그인' 텍스트 */
-.text-subtitle-xl {
-  text-align: center;
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--black-2, #1c1b1f);
+.page-title-box {
+  width: 100% !important;
+  text-align: center !important;
+  margin-bottom: 16px !important;
 }
 
-/* 아이디 찾기 | 비밀번호 찾기 | 회원가입 링크 중앙 정렬 */
+.page-title-box .text-subtitle-xl {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: var(--black-2, #111) !important;
+  margin: 0 !important;
+}
+
 .text-links {
-  display: flex !important; /* 가로로 나란히 정렬 */
-  justify-content: center !important; /* 세 메뉴 묶음을 가로 정중앙 배치 */
+  display: flex !important;
+  justify-content: center !important;
   align-items: center !important;
-  gap: 12px !important; /* 링크 간의 가로 간격 */
-  margin: 24px 0 !important; /* 상하 요소와의 레이아웃 간격 */
-  font-size: 13px !important; /* 부담스럽지 않은 작은 크기 지정 */
+  gap: 12px !important;
+  width: 100% !important;
+  margin: 0 0 24px 0 !important;
+  font-size: var(--small, 14px) !important;
+}
+
+.text-links a:not(:last-child)::after {
+  content: "|" !important;
+  margin-left: 12px !important;
+  color: var(--radius-color, #dedede) !important;
+  pointer-events: none !important;
 }
 
 .text-links a {
-  color: var(--gray-2, #767676);
-  text-decoration: none; /* 링크 밑에 생기는 기본 밑줄 제거 */
+  color: var(--gray-2, #767676) !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
 }
 
-/* 링크 사이에 얇은 벽 생성 (선택 사항) */
-.text-links a:not(:last-child)::after {
-  content: "|"; /* 마지막 링크(회원가입)를 제외한 앞 두 메뉴 오른쪽에 벽 생성 */
-  margin-left: 12px; /* 글씨와 벽 사이의 간격 균등 분할 */
-  color: var(--radius-color, #dbdbdb); /* 은은한 선 컬러 매칭 */
+.text-links a:hover {
+  color: #6732e2 !important;
+  text-decoration: underline !important;
 }
 
-/* "또는" 구분선 완벽 구현 */
 .divider {
-  display: flex !important; /* 좌측 선, 가운데 '또는', 우측 선을 한 줄로 정렬 */
-  align-items: center !important; /* 선과 글자의 높이를 정확히 수평 일치 시킴 */
+  display: flex !important;
+  align-items: center !important;
   text-align: center !important;
-  margin: 24px 0 !important;
-  color: var(--gray-3, #999) !important; /* '또는' 서체 색상 */
-  font-size: 13px !important;
+  width: 100% !important;
+  margin: 16px 0 !important;
+  color: var(--gray-3, #999) !important;
+  font-size: var(--small, 14px) !important;
 }
 
-/* 가상 선택자를 활용하여 '또는' 양옆의 실제 테두리 선 구현 */
 .divider::before,
 .divider::after {
-  content: "" !important; /* 빈 영역 생성 */
-  flex: 1 !important; /* 좌/우 가상 박스가 남는 가로 공간을 똑같이 반반씩 쪼개 가짐 (선 늘어남 구현) */
-  border-bottom: 1px solid var(--radius-color, #e5e5e5) !important; /* 하단 테두리를 1px 깔아 실선 효과 연출 */
+  content: "" !important;
+  flex: 1 !important;
+  border-bottom: 1px solid var(--radius-color, #e5e5e5) !important;
 }
 
-/* '또는' 글자 좌우 확보 */
 .divider span {
-  padding: 0 12px !important; /* 양옆 실선이 글자와 겹쳐서 깨지지 않도록 좌우 12px 안전 여백 확보 */
+  padding: 0 12px !important;
 }
 
-/* 소셜 로그인 컨테이너 강제 가로 정렬 및 중앙 정렬 */
 #social-container {
   display: flex !important;
-  flex-direction: row !important; /* 무조건 가로 정렬 */
-  justify-content: center !important; /* 소셜 버튼들을 무조건 정중앙 조준 */
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
   gap: 16px !important;
-  margin-top: 16px !important;
+  margin: 8px 0 28px 0 !important;
   width: 100% !important;
+}
+
+.social {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background-color: transparent !important;
+  flex-shrink: 0 !important;
+}
+
+.social img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.social.kakao {
+  background-color: #fee500 !important;
+}
+.social.naver {
+  background-color: #03c75a !important;
+}
+.social.google {
+  background-color: var(--white-1, #ffffff) !important;
+  border: 1px solid var(--radius-color, #dedede) !important;
+}
+
+.primary-btn {
+  width: 100% !important;
+  height: 52px !important;
+  background: var(--primary-btn-bg, #6732e2) !important;
+  color: var(--primary-btn-color, #fff) !important;
+  border: none !important;
+  border-radius: var(--radius-md, 8px) !important;
+  font-size: var(--body--m, 16px) !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background-color 0.2s ease !important;
+  margin-top: auto !important;
+}
+
+.primary-btn:hover:not(:disabled) {
+  opacity: 0.9 !important;
+}
+
+.primary-btn:disabled {
+  background: var(--primary-btn-disabled-bg, #ccced2) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  cursor: not-allowed !important;
+}
+
+/* 1. 헤더 가로폭 전체 확장 및 중앙 배치 */
+.header {
+  width: 100% !important;
+  max-width: 100% !important;
+  justify-content: center !important; /* 내부 컨테이너를 가로 중앙으로 */
+  padding: 0 20px !important;
+  box-sizing: border-box !important;
+}
+
+.header-container {
+  width: 100% !important;
+  /* 기존 rounz 웹 규격에 맞춰 최대 너비 제한 (필요시 값 조절 가능) */
+  max-width: 1200px !important;
+  margin: 0 auto !important; /* 데스크탑에서 좌우 마진을 똑같이 나눠 가짐 */
+  display: flex !important;
+  justify-content: space-between !important; /* 양 끝 정렬 */
+  align-items: center !important;
+  flex-wrap: wrap !important; /* 💡 화면이 좁을 때 가로 넘침 방지 */
+  box-sizing: border-box !important;
+}
+
+/* 2. 푸터 가로폭 확장 및 중앙 배치 */
+.footer {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  background-color: #f9f9f9; /* 푸터 배경색 유지 */
+  padding: 40px 20px !important;
+  box-sizing: border-box !important;
+}
+
+.footer-inner {
+  width: 100% !important;
+  max-width: 1200px !important; /* 헤더와 동일한 본문 맥스폭 지정 */
+  margin: 0 auto !important; /* 좌우 마진 오토로 센터 정렬 */
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* 데스크탑 반응형일 때 푸터 내부 배치 정렬 */
+@media (min-width: 1020px) {
+  .footer-bottom {
+    display: flex !important;
+    justify-content: space-between !important; /* 회사정보는 왼쪽, SNS는 오른쪽 */
+    align-items: flex-start !important;
+    width: 100% !important;
+  }
 }
