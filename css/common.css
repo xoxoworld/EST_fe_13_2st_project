@@ -382,6 +382,7 @@ button {
 
 .product-card__price {
   font-size: var(--small);
+  font-weight: 700;
 }
 
 .product-card__price span {
