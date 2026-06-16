@@ -287,22 +287,32 @@ input[type="password"]:focus {
   box-sizing: border-box !important;
 }
 
-/* 2. 푸터 가로폭 확장 및 중앙 배치 */
+/* 푸터 전체 영역: 화면 전체 너비 */
 .footer {
-  width: 100% !important;
+  width: 100%;
   display: flex !important;
-  justify-content: center !important;
-  background-color: #f9f9f9; /* 푸터 배경색 유지 */
-  padding: 40px 20px !important;
-  box-sizing: border-box !important;
+  justify-content: center; /* 화면 가로 중앙 정렬 */
+  padding: 40px 0;
 }
 
+/* 핵심: 354px 박스 안에서 내용물을 센터로 맞춤 */
 .footer-inner {
-  width: 100% !important;
-  max-width: 1200px !important; /* 헤더와 동일한 본문 맥스폭 지정 */
-  margin: 0 auto !important; /* 좌우 마진 오토로 센터 정렬 */
-  display: flex !important;
-  flex-direction: column !important;
+  width: 100%;
+  max-width: 354px; /* 요청하신 354px 박스 규격 */
+  margin: 0 auto; /* 박스 자체를 중앙으로 */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 내부 요소를 가로 중앙 정렬 */
+  text-align: center; /* 텍스트 줄바꿈 시 중앙 정렬 */
+}
+
+/* 푸터 상단 버튼 (가로 정렬 유지) */
+.footer-top {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 /* 데스크탑 반응형일 때 푸터 내부 배치 정렬 */
