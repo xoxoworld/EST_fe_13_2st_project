@@ -685,6 +685,137 @@ button {
 /* 헤더 반응형 */
 /* 헤더 */
 
+/* 사이드바 */
+.sidebar {
+  position: fixed;
+  max-width: 402px;
+  top:0;
+  left:0;
+  width:480px;
+  height:100vh;
+  background: var(--white-1);
+  transform:translateX(-100%);
+  transition:.3s ease;
+  z-index:2000;
+}
+
+.sidebar.active{
+  transform:translateX(0);
+}
+
+/* 기존 헤더 위를 가림 */
+.header{
+  position:relative;
+  z-index:100;
+}
+
+/* 어두운 영역 */
+.sidebar-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.35);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  z-index:1500;
+}
+
+.sidebar-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+
+/* 사이드바 헤더 */
+.sidebar-header{
+  height:46px;
+  padding:0 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom: 10px solid var(--white-2);
+}
+
+.sidebar-logo img{
+  width:80px;
+}
+
+.sidebar-close{
+  border:0;
+  background:none;
+}
+
+/* 메뉴 */
+.sidebar-nav{
+  display: flex;
+  height: 100%;
+}
+.sidebar-menu-list-left {
+  width: 120px;
+  background-color: var(--white-2);
+}
+
+.sidebar-menu-list {
+  background-color: var(--white-2);
+  width: 100%;
+  height: auto;
+  display:flex;
+  flex-direction:column;
+}
+.sidebar-menu-list li:hover {
+  background-color: var(--white-1);
+}
+.sidebar-menu-list li.active {
+  background-color: var(--white-1);
+}
+.sidebar-menu-list-right li {
+  width: 282px;
+  height: 54px;
+  gap: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 30px;
+}
+.sidebar-menu-list-right .sidebar_event-img {
+  height: auto;
+  padding: 0 20px;
+  padding-top: 80px;
+}
+
+.sidebar-menu-list li {
+  width: 120px;
+  background-color: var(--white-2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 54px;
+}
+.sidebar-menu-list,
+.sidebar-menu-list-right a{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--medium);
+  font-weight:600;
+}
+
+/* 태블릿 */
+@media(min-width:624px){
+ .sidebar{
+   max-width:624px;
+ }
+}
+
+/* 웹 */
+@media(min-width:480px){
+ .sidebar{
+   max-width:480px;
+ }
+}
+
 /* 푸터 */
 .footer {
   display: flex;
