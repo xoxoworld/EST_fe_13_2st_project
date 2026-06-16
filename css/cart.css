@@ -59,6 +59,7 @@ body {
   gap: 20px;
 }
 .cart-item-content {
+  display: flex;
   gap: 10px;
   align-items: flex-start;
 }
