@@ -77,4 +77,216 @@ document.addEventListener('DOMContentLoaded', () => {
       addressText.classList.toggle('active');
     });
   }
+
+  // --- Store Lookup Section ---
+  const sidoBox = document.getElementById('sido-filter-box');
+  const sigunguBox = document.getElementById('sigungu-filter-box');
+  const sidoDropdown = document.getElementById('sido-dropdown');
+  const sigunguDropdown = document.getElementById('sigungu-dropdown');
+  const sidoListContainer = sidoDropdown?.querySelector('.filter-dropdown-list');
+  const sigunguListContainer = sigunguDropdown?.querySelector('.filter-dropdown-list');
+
+  // Store card detail elements
+  const storeNameElem = document.querySelector('.rounz-store .store-name');
+  const storeAddressElem = document.querySelector('.rounz-store .store-address');
+  const storeImgElem = document.querySelector('.rounz-store .store-detail-img');
+  const storePhoneElem = document.querySelector('.rounz-store .store-meta .meta-item:last-child');
+  const btnBooking = document.querySelector('.rounz-store .btn-booking');
+  const btnCall = document.querySelector('.rounz-store .btn-call');
+
+  if (sidoBox && sigunguBox && sidoListContainer && sigunguListContainer) {
+    let storesData = [];
+    let selectedSidoName = '';
+    let selectedSigunguName = '';
+    let uniqueSidoCounts = {};
+
+    // Helper to parse sido and sigungu full name from address
+    function parseRegion(address = '') {
+      const parts = address.trim().split(/\s+/);
+      const sido = parts[0] || '';
+      let sigungu = parts[1] || '';
+      if (parts[1]?.endsWith('시') && parts[2]?.endsWith('구')) {
+        sigungu = `${parts[1]} ${parts[2]}`;
+      }
+      return { sido, sigungu };
+    }
+
+    // Toggle dropdowns
+    sidoBox.addEventListener('click', (e) => {
+      e.stopPropagation();
+      sigunguBox.classList.remove('active');
+      sidoBox.classList.toggle('active');
+    });
+
+    sigunguBox.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!selectedSidoName) {
+        alert('시/도를 먼저 선택해주세요.');
+        return;
+      }
+      sidoBox.classList.remove('active');
+      sigunguBox.classList.toggle('active');
+    });
+
+    // Close on click outside
+    document.addEventListener('click', () => {
+      sidoBox.classList.remove('active');
+      sigunguBox.classList.remove('active');
+    });
+
+    // Fetch store data
+    fetch('../data/stores.json')
+      .then(res => res.json())
+      .then(data => {
+        // Combine both locationStores and partnerStores
+        storesData = [...(data.locationStores || []), ...(data.partnerStores || [])];
+        
+        // Calculate Sido counts
+        uniqueSidoCounts = {};
+        storesData.forEach(store => {
+          const { sido } = parseRegion(store.address);
+          if (sido) {
+            uniqueSidoCounts[sido] = (uniqueSidoCounts[sido] || 0) + 1;
+          }
+        });
+
+        // Set Sido placeholder text with counts
+        const sidoCountTotal = Object.keys(uniqueSidoCounts).length;
+        sidoBox.querySelector('.filter-placeholder').textContent = `시/도(${sidoCountTotal})`;
+
+        // Populate Sido list
+        renderSidoList();
+      })
+      .catch(err => console.error('Error loading store data:', err));
+
+    function renderSidoList() {
+      sidoListContainer.innerHTML = '';
+      Object.entries(uniqueSidoCounts)
+        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])) // Sort by count desc, then name asc
+        .forEach(([sidoName, count]) => {
+          const li = document.createElement('li');
+          li.className = 'filter-dropdown-item';
+          if (selectedSidoName === sidoName) {
+            li.classList.add('selected');
+          }
+          li.textContent = `${sidoName} (${count})`;
+          li.addEventListener('click', (e) => {
+            e.stopPropagation();
+            selectSido(sidoName, count);
+          });
+          sidoListContainer.appendChild(li);
+        });
+    }
+
+    function selectSido(sidoName, count) {
+      selectedSidoName = sidoName;
+      selectedSigunguName = '';
+      
+      // Update Sido placeholder and active state
+      sidoBox.querySelector('.filter-placeholder').textContent = `${sidoName} (${count})`;
+      sidoBox.classList.remove('active');
+      
+      // Reset Sigungu placeholder
+      sigunguBox.querySelector('.filter-placeholder').textContent = '시/군/구';
+
+      // Re-render Sido list to update selection styling
+      renderSidoList();
+
+      // Populate Sigungu list
+      const sigunguCounts = {};
+      storesData.forEach(store => {
+        const { sido, sigungu } = parseRegion(store.address);
+        if (sido === selectedSidoName && sigungu) {
+          sigunguCounts[sigungu] = (sigunguCounts[sigungu] || 0) + 1;
+        }
+      });
+
+      renderSigunguList(sigunguCounts);
+
+      // Automatically open the Sigungu dropdown
+      sigunguBox.classList.add('active');
+    }
+
+    function renderSigunguList(sigunguCounts) {
+      sigunguListContainer.innerHTML = '';
+      Object.entries(sigunguCounts)
+        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+        .forEach(([sigunguName, count]) => {
+          const li = document.createElement('li');
+          li.className = 'filter-dropdown-item';
+          li.textContent = `${sigunguName} (${count})`;
+          li.addEventListener('click', (e) => {
+            e.stopPropagation();
+            selectSigungu(sigunguName, count);
+          });
+          sigunguListContainer.appendChild(li);
+        });
+    }
+
+    function selectSigungu(sigunguName, count) {
+      selectedSigunguName = sigunguName;
+      sigunguBox.querySelector('.filter-placeholder').textContent = `${sigunguName} (${count})`;
+      sigunguBox.classList.remove('active');
+
+      // Update selection styling in Sigungu list
+      const items = sigunguListContainer.querySelectorAll('.filter-dropdown-item');
+      items.forEach(item => {
+        if (item.textContent.startsWith(sigunguName)) {
+          item.classList.add('selected');
+        } else {
+          item.classList.remove('selected');
+        }
+      });
+
+      // Filter and display matching store
+      const matchingStores = storesData.filter(store => {
+        const { sido, sigungu } = parseRegion(store.address);
+        return sido === selectedSidoName && sigungu === selectedSigunguName;
+      });
+
+      if (matchingStores.length > 0) {
+        updateStoreCard(matchingStores[0]);
+      }
+    }
+
+    function updateStoreCard(store) {
+      if (storeNameElem) storeNameElem.textContent = store.name;
+      
+      if (storeAddressElem) {
+        storeAddressElem.innerHTML = `
+          <span>${store.address}</span>
+          <span>${store.type || ''}</span>
+        `;
+      }
+      
+      if (storeImgElem) {
+        storeImgElem.src = store.thumbnail;
+        storeImgElem.alt = `${store.name} 매장 입구 전경`;
+      }
+      
+      if (storePhoneElem) {
+        storePhoneElem.innerHTML = `
+          <span class="material-icons">phone</span>
+          ${store.phone}
+        `;
+      }
+
+      // Update buttons
+      if (btnCall) {
+        btnCall.onclick = () => {
+          window.location.href = `tel:${store.phone}`;
+        };
+      }
+
+      if (btnBooking) {
+        btnBooking.onclick = () => {
+          if (store.mapUrl) {
+            window.open(store.mapUrl, '_blank');
+          } else {
+            alert(`${store.name} 예약 페이지로 연결할 수 없습니다.`);
+          }
+        };
+      }
+    }
+  }
 });

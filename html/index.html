@@ -1038,8 +1038,8 @@
 
           <!-- Filter Dropdowns -->
           <div class="rounz-store-filters">
-            <div class="store-filter-box" role="button" aria-haspopup="listbox">
-              <span class="filter-placeholder">시/도(24)</span>
+            <div class="store-filter-box" id="sido-filter-box" role="button" aria-haspopup="listbox" aria-expanded="false">
+              <span class="filter-placeholder">시/도</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -1049,8 +1049,12 @@
               >
                 <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="#111" />
               </svg>
+              <!-- Sido Dropdown Popup -->
+              <div class="filter-dropdown-menu" id="sido-dropdown">
+                <ul class="filter-dropdown-list"></ul>
+              </div>
             </div>
-            <div class="store-filter-box" role="button" aria-haspopup="listbox">
+            <div class="store-filter-box" id="sigungu-filter-box" role="button" aria-haspopup="listbox" aria-expanded="false">
               <span class="filter-placeholder">시/군/구</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -1061,6 +1065,10 @@
               >
                 <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="#111" />
               </svg>
+              <!-- Sigungu Dropdown Popup -->
+              <div class="filter-dropdown-menu" id="sigungu-dropdown">
+                <ul class="filter-dropdown-list"></ul>
+              </div>
             </div>
           </div>
 
