@@ -493,6 +493,7 @@ main > section {
   margin-top: 20px;
   border: 1px solid var(--radius-color);
   border-radius: 100px;
+  text-align: center;
 }
 
 .store-detail-layer {
