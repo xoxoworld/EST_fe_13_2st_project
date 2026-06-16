@@ -524,6 +524,7 @@ button {
   height: 46px;
   top: 0;
   background-color: var(--white-1);
+  z-index: 1000;
 }
 .search-form {
   display: none;
