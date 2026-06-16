@@ -206,6 +206,18 @@ body {
   margin: 0 auto;
   padding: 0 16px;
 }
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 1272px) {
+  .container {
+    max-width: 1272px;
+    margin: 0 auto;
+  }
+}
 
 /* 버튼 */
 a {
