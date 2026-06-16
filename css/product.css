@@ -1048,11 +1048,13 @@ img {
   border: 1px solid var(--primary);
   color: var(--primary);
   background: var(--white-1);
+  text-align: center;
 }
 
 .buy-btn {
   color: var(--white-1);
   background: var(--primary);
+  text-align: center;
 }
 
 /* Tablet layout: 768px 디자인 기준으로 이미지 높이, 여백, 리스트 크기를 확장합니다. */
