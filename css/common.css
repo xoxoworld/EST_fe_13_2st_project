@@ -704,10 +704,10 @@ button {
 }
 
 /* 기존 헤더 위를 가림 */
-.header{
+/* .header{
   position:relative;
   z-index:100;
-}
+} */
 
 /* 어두운 영역 */
 .sidebar-overlay{
