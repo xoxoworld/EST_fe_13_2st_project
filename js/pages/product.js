@@ -41,7 +41,8 @@ function createContent(data) {
     price = document.querySelector(".price"),
     totalPrices = document.querySelectorAll(".total-price"),
     mainImage = document.querySelector(".visual-wrap img"),
-    detailWrap = document.querySelector(".detail-wrap");
+    detailWrap = document.querySelector(".detail-wrap"),
+    thumbWrap = document.querySelector(".thumb-wrap");
 
   title.textContent = data.title;
   brand.textContent = data.brand;
@@ -56,6 +57,7 @@ function createContent(data) {
   mainImage.setAttribute("alt", data.title);
 
   renderDetailImages(detailWrap, data);
+  renderThumbImages(thumbWrap, data);
 }
 
 // 상세정보 이미지 render
@@ -70,15 +72,33 @@ function renderDetailImages(detailWrap, data) {
   detailWrap.replaceChildren(...detailImages);
 }
 
+function renderThumbImages(thumbWrap, data) {
+  const thumbImages = data.images.gallery.map((src, index) => {
+    const button = document.createElement("button");
+    const img = document.createElement("img");
+
+    button.classList.add("thumb");
+    if (index === 0) button.classList.add("active");
+    button.setAttribute("type", "button");
+    button.setAttribute("aria-label", `상품 이미지 ${index + 1}`);
+
+    img.setAttribute("src", src);
+    img.setAttribute("alt", "");
+
+    button.append(img);
+    return button;
+  });
+
+  thumbWrap.replaceChildren(...thumbImages);
+}
+
 fetchProduct();
 
 // 스와이퍼
-if (typeof Swiper !== "undefined") {
-  const swiper = new Swiper(".face-banner.swiper", {
-    loop: true,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
-}
+const swiper = new Swiper(".face-banner.swiper", {
+  loop: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});

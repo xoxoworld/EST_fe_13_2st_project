@@ -193,6 +193,9 @@ img {
   line-height: 1;
   text-align: right;
 }
+.side-panel .bottom-buttons {
+  display: none;
+}
 
 /* ROUNZ-only banners: 가상 피팅/내 얼굴에 써보기 프로모션 영역입니다. */
 .desktop-buy-panel {
@@ -303,6 +306,7 @@ img {
 .fit-banner strong {
   display: block;
   color: var(--black-2);
+  line-height: 20px;
 }
 
 .face-banner span {
@@ -896,6 +900,9 @@ img {
   .face-banner span br {
     display: none;
   }
+  .fit-banner span {
+    margin: 0;
+  }
   .fit-banner p {
     display: flex;
     align-items: baseline;
@@ -1152,6 +1159,15 @@ img {
     font-size: 24px;
   }
 
+  .side-panel .bottom-buttons {
+    display: flex;
+    gap: 6px;
+  }
+  .side-panel .bottom-buttons .cart-btn,
+  .side-panel .bottom-buttons .buy-btn {
+    width: 100%;
+  }
+
   .side-panel .rounz-only-wrap {
     padding: 42px 0 0;
   }
@@ -1178,9 +1194,9 @@ img {
   }
 
   .face-banner strong,
-  .fit-banner strong,
   .face-banner-content strong {
-    font-size: 14px;
+    width: 170px;
+    font-size: 12px;
     letter-spacing: -2%;
     line-height: 22px;
   }
@@ -1188,7 +1204,10 @@ img {
   .face-banner span,
   .fit-banner span,
   .face-banner-content span {
-    font-size: 12px;
+    font-size: 11px;
+  }
+  .fit-banner span {
+    margin-top: 5px;
   }
   .face-banner span br {
     display: block;
