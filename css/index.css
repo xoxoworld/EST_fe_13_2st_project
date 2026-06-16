@@ -26,7 +26,6 @@
   object-fit: cover;
 }
 
-
 /* =========================
    Text Overlay
 ========================= */
@@ -531,9 +530,9 @@
 .swiper-pagination-progressbar {
   background: var(--gray-4);
   width: 100%;
-  height: 2px;      /* 선의 두께 (얇고 길쭉하게) */
-  top: auto;            /* 기본 상단 고정을 해제하고 하단으로 내릴 때 사용 */
-  bottom: 0;            /* 슬라이드 영역 맨 하단에 딱 붙임 */
+  height: 2px; /* 선의 두께 (얇고 길쭉하게) */
+  top: auto; /* 기본 상단 고정을 해제하고 하단으로 내릴 때 사용 */
+  bottom: 0; /* 슬라이드 영역 맨 하단에 딱 붙임 */
 }
 
 /* 2. 현재 위치를 나타내는 채워지는 선 (사진의 진한 검은색 부분) */
@@ -620,7 +619,7 @@
   padding: 24px 0;
 }
 /* 7번째 상품부터는 화면에 표시하지 않음 */
-.product-slide-list .product-product-item:nth-child(n+7) {
+.product-slide-list .product-product-item:nth-child(n + 7) {
   display: none;
 }
 
@@ -639,8 +638,8 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
-  .product-slide-list .product-product-item:nth-child(n+5) {
-  display: none;
+  .product-slide-list .product-product-item:nth-child(n + 5) {
+    display: none;
   }
 
   .best-product .more-button {
@@ -659,7 +658,7 @@
     gap: 27px;
     padding: 0;
   }
-  .product-slide-list .product-product-item:nth-child(n+1) {
+  .product-slide-list .product-product-item:nth-child(n + 1) {
     display: list-item;
   }
   .best-product .more-button {
