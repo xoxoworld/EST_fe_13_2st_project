@@ -412,6 +412,8 @@
 
 .timesale__image-web {
   position: relative;
+  width: 732px;
+  height: 190px;
   display: none;
 }
 .timesale__image {
