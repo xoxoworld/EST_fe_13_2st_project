@@ -369,13 +369,6 @@ body {
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
   }
-  .product-list-page {
-    max-width: 1272px;
-    margin: 0 auto;
-    padding-right: 0;
-    padding-left: 0;
-  }
-
   .breadcrumb {
     gap: 10px;
   }
