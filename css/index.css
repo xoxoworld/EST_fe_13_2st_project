@@ -93,6 +93,10 @@
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.magazine-card:hover .card-image {
+  transform: scale(1.05);
+}
+
 .card-overlay {
   position: absolute;
   left: 0;
@@ -211,7 +215,7 @@
     .magazine-card .card-subtitle {
       font-size: 12px;
     }
-    .magazine-card-overlay {
+    .card-overlay {
       padding: 24px 20px;
     }
   }
