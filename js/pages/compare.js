@@ -122,7 +122,7 @@ function handleMore(productId) {
 
   if (!product) return;
 
-  window.location.href = product.detailUrl;
+  window.location.href = "./product.html";
 }
 
 // 이벤트

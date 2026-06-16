@@ -28,28 +28,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 유효성 검사 및 버튼 활성화
   const validateForm = () => {
-    // 필수 요소 중 하나라도 화면에 없으면 안전하게 함수 종료 (방어 코드)
     if (!emailInput || !passwordInput || !loginBtn) return;
 
-    // 사용자가 입력한 값에서 앞뒤 공백(스페이스바)을 제거한 순수 텍스트 추출
     const emailValue = emailInput.value.trim();
     const passwordValue = passwordInput.value.trim();
 
-    // 두 입력창 모두 최소 1글자 이상 입력되었을 때만 로그인 버튼을 활성화시킴
-    // 조건이 맞지 않으면 loginBtn.disabled = true 가 되어 CSS의 :disabled 스타일이 적용됨
-    loginBtn.disabled = !(emailValue.length > 0 && passwordValue.length > 0);
+    // 1. 이메일 형식 정규식 검사
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isEmailValid = emailRegex.test(emailValue);
+
+    // 2. 비밀번호 길이 검사 (8자 이상)
+    const isPasswordValid = passwordValue.length >= 8;
+
+    // 이메일 형식이 맞고, 비밀번호가 8자 이상일 때만 버튼 활성화
+    loginBtn.disabled = !(isEmailValid && isPasswordValid);
   };
 
-  // 이메일창과 비밀번호창에 사용자가 키보드로 값을 입력할 때마다('input' 이벤트) 실시간으로 검증 함수를 실행
+  // 입력 이벤트 연결 (유지)
   if (emailInput && passwordInput) {
     emailInput.addEventListener("input", validateForm);
     passwordInput.addEventListener("input", validateForm);
   }
 
-  // 로그인 클릭 시 (임시)
+  // 로그인 클릭 시 (유지)
   if (loginBtn) {
     loginBtn.addEventListener("click", () => {
-      // 추후 실제 서버와 연동하여 인증 절차를 거치는 코드가 들어갈 자리
       alert("로그인 시도");
     });
   }
