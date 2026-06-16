@@ -1,3 +1,5 @@
+﻿import { getFilteredStores, getSidoList, getSigunguList } from "../common.js";
+
 const storesGrid = document.querySelector(".store-grid");
 const storeDetailLayer = document.querySelector(".store-detail-layer");
 const moreButton = document.querySelector(".more-button");
@@ -5,8 +7,14 @@ const tabButtons = document.querySelectorAll(".store-tabs button");
 
 let storeData = null;
 let stores = [];
+let currentStores = [];
 let visibleCount = 9;
 const pageSize = 9;
+const regionSelects = document.querySelectorAll(".select-group select");
+const sidoSelect = regionSelects[0];
+const sigunguSelect = regionSelects[1];
+let selectedSido = "";
+let selectedSigungu = "";
 
 // 안경원 조회
 async function fetchStores() {
@@ -15,8 +23,10 @@ async function fetchStores() {
     const data = await res.json();
 
     storeData = data;
-    stores = storeData.locationStores;
+    currentStores = storeData.locationStores;
+    stores = getFilteredStores(currentStores, selectedSido, selectedSigungu);
 
+    renderFilterOptions();
     renderVisibleStores();
   } catch (error) {
     console.error(error);
@@ -66,7 +76,11 @@ tabButtons.forEach((button, index) => {
     button.classList.add("active");
 
     visibleCount = 9;
-    stores = index === 0 ? storeData.locationStores : storeData.partnerStores;
+    selectedSido = "";
+    selectedSigungu = "";
+    currentStores = index === 0 ? storeData.locationStores : storeData.partnerStores;
+    stores = getFilteredStores(currentStores, selectedSido, selectedSigungu);
+    renderFilterOptions();
     renderVisibleStores();
   });
 });
@@ -192,4 +206,58 @@ function storeDetail(store) {
 moreButton.addEventListener("click", () => {
   visibleCount += pageSize;
   renderVisibleStores();
+});
+
+// store 필터
+function renderFilterOptions() {
+  if (!sidoSelect || !sigunguSelect) return;
+
+  const sidoList = getSidoList(currentStores);
+  const sigunguList = getSigunguList(currentStores, selectedSido);
+
+  sidoSelect.innerHTML = [
+    `<option value="">시/도 선택</option>`,
+    ...sidoList.map(sido => `<option value="${sido}">${sido}</option>`),
+  ].join("");
+
+  sigunguSelect.innerHTML = [
+    `<option value="">시/군/구</option>`,
+    ...sigunguList.map(sigungu => `<option value="${sigungu}">${sigungu}</option>`),
+  ].join("");
+
+  sidoSelect.value = selectedSido;
+  sigunguSelect.value = selectedSigungu;
+}
+
+function applyStoreFilter() {
+  visibleCount = 9;
+  stores = getFilteredStores(currentStores, selectedSido, selectedSigungu);
+  renderVisibleStores();
+}
+
+sidoSelect?.addEventListener("change", event => {
+  selectedSido = event.target.value;
+  selectedSigungu = "";
+  renderFilterOptions();
+  applyStoreFilter();
+});
+
+sigunguSelect?.addEventListener("change", event => {
+  selectedSigungu = event.target.value;
+  applyStoreFilter();
+});
+
+// 스와이퍼, 페이지네이션
+const swiper = new Swiper(".swiper", {
+  loop: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  pagination: {
+    el: ".swiper-pagination",
+  },
+  autoplay: {
+    delay: 5000,
+  },
 });
