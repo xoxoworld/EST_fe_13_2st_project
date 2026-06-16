@@ -567,7 +567,7 @@
 
 @media (min-width: 1272px) {
   .jenny-collection {
-    margin: 120px auto;
+    margin: 0 auto 120px;
   }
   .jenny-collection__container {
     max-width: 1272px;
