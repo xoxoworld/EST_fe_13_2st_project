@@ -2344,11 +2344,11 @@
 .store-detail-card {
   display: flex;
   gap: 40px;
-  align-items: stretch;
+  align-items: center;
 }
 
 .store-detail-image-box {
-  width: 420px;
+  width: 432px;
   border-radius: 16px;
   overflow: hidden;
   aspect-ratio: 432 / 302;
@@ -2379,7 +2379,7 @@
 }
 
 .store-name {
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 800;
   color: var(--black-2);
   letter-spacing: -0.5px;
@@ -2387,7 +2387,7 @@
 
 .store-address {
   font-style: normal;
-  font-size: 16px;
+  font-size: 14px;
   color: var(--gray-1);
   line-height: 1.6;
   display: flex;
@@ -2397,10 +2397,10 @@
 }
 
 .store-phone {
-  font-size: 16px;
+  font-size: 14px;
   color: var(--gray-1);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.2px;
   width: fit-content;
 }
@@ -2413,19 +2413,20 @@
 .store-tag {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  color: var(--primary);
+  gap: 8px;
 }
 
 .tag-icon {
   display: flex;
   align-items: center;
+  color: var(--primary);
 }
 
 .tag-text {
   font-size: 14px;
   font-weight: 700;
   letter-spacing: -0.2px;
+  color: #374151;
 }
 
 .store-actions {
@@ -2479,7 +2480,7 @@
 /* Responsive Styles */
 @media (width <= 1024px) {
   .store-detail-image-box {
-    width: 420px;
+    width: 432px;
     max-width: 50%;
   }
 }
@@ -2546,13 +2547,13 @@
     display: flex;
     flex-direction: row;
     gap: 16px;
-    align-items: stretch;
+    align-items: center;
   }
   .store-detail-image-box {
     width: 42%;
     max-width: 42%;
-    aspect-ratio: 1 / 1;
-    border-radius: 12px;
+    aspect-ratio: 432 / 302;
+    border-radius: 16px;
   }
   .store-detail-info {
     width: 53%;
@@ -2563,31 +2564,31 @@
     gap: 8px;
   }
   .store-name {
-    font-size: 18px;
+    font-size: 20px;
   }
   .store-address {
-    font-size: 10px;
-    line-height: 1.4;
-    gap: 2px;
-  }
-  .store-phone {
-    font-size: 10px;
-  }
-  .store-tag {
+    font-size: 13px;
+    line-height: 1.5;
     gap: 4px;
   }
+  .store-phone {
+    font-size: 13px;
+  }
+  .store-tag {
+    gap: 8px;
+  }
   .tag-text {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .store-actions {
-    padding-top: 10px;
-    margin-top: 10px;
+    padding-top: 16px;
+    margin-top: 16px;
   }
   .action-btn {
-    font-size: 10px;
-    gap: 4px;
-    height: 32px;
+    font-size: 13px;
+    gap: 6px;
+    height: 38px;
   }
 }
 
@@ -4166,11 +4167,11 @@
 .store-detail-card {
   display: flex;
   gap: 40px;
-  align-items: stretch;
+  align-items: center;
 }
 
 .store-detail-image-box {
-  width: 420px;
+  width: 432px;
   border-radius: 16px;
   overflow: hidden;
   aspect-ratio: 432 / 302;
@@ -4201,7 +4202,7 @@
 }
 
 .store-name {
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 800;
   color: var(--black-2);
   letter-spacing: -0.5px;
@@ -4209,7 +4210,7 @@
 
 .store-address {
   font-style: normal;
-  font-size: 16px;
+  font-size: 14px;
   color: var(--gray-1);
   line-height: 1.6;
   display: flex;
@@ -4219,10 +4220,10 @@
 }
 
 .store-phone {
-  font-size: 16px;
+  font-size: 14px;
   color: var(--gray-1);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.2px;
   width: fit-content;
 }
@@ -4235,19 +4236,20 @@
 .store-tag {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  color: var(--primary);
+  gap: 8px;
 }
 
 .tag-icon {
   display: flex;
   align-items: center;
+  color: var(--primary);
 }
 
 .tag-text {
   font-size: 14px;
   font-weight: 700;
   letter-spacing: -0.2px;
+  color: #374151;
 }
 
 .store-actions {
@@ -4301,7 +4303,7 @@
 /* Responsive Styles */
 @media (width <= 1024px) {
   .store-detail-image-box {
-    width: 420px;
+    width: 432px;
     max-width: 50%;
   }
 }
@@ -4368,17 +4370,17 @@
     display: flex;
     flex-direction: row;
     gap: 16px;
-    align-items: stretch;
+    align-items: center;
   }
   .store-detail-image-box {
-    width: 42%;
-    max-width: 42%;
-    aspect-ratio: 1 / 1;
-    border-radius: 12px;
+    width: 432px;
+    max-width: 50%;
+    aspect-ratio: 432 / 302;
+    border-radius: 16px;
   }
   .store-detail-info {
-    width: 53%;
-    max-width: 53%;
+    flex: 1;
+    max-width: none;
     padding: 4px 0;
   }
   .product-slide-list .product-product-item:nth-child(n + 5) {
@@ -4388,33 +4390,33 @@
     gap: 8px;
   }
   .store-name {
-    font-size: 18px;
+    font-size: 34px;
   }
   .store-address {
-    font-size: 10px;
-    line-height: 1.4;
-    gap: 2px;
+    font-size: 14px;
+    line-height: 1.5;
+    gap: 4px;
   }
   .store-phone {
-    font-size: 10px;
+    font-size: 14px;
   }
   .product-slide-list .product-product-item:nth-child(n + 1) {
     display: list-item;
   }
   .store-tag {
-    gap: 4px;
+    gap: 8px;
   }
   .tag-text {
-    font-size: 10px;
+    font-size: 14px;
   }
 
   .store-actions {
-    padding-top: 10px;
-    margin-top: 10px;
+    padding-top: 16px;
+    margin-top: 16px;
   }
   .action-btn {
-    font-size: 10px;
-    gap: 4px;
-    height: 32px;
+    font-size: 16px;
+    gap: 8px;
+    height: 40px;
   }
 }

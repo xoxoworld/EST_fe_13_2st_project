@@ -90,9 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const storeNameElem = document.querySelector('.rounz-store .store-name');
   const storeAddressElem = document.querySelector('.rounz-store .store-address');
   const storeImgElem = document.querySelector('.rounz-store .store-detail-img');
-  const storePhoneElem = document.querySelector('.rounz-store .store-meta .meta-item:last-child');
-  const btnBooking = document.querySelector('.rounz-store .btn-booking');
-  const btnCall = document.querySelector('.rounz-store .btn-call');
+  const btnBooking = document.querySelector('.rounz-store .reserve-action');
+  const btnCall = document.querySelector('.rounz-store .call-action');
 
   if (sidoBox && sigunguBox && sidoListContainer && sigunguListContainer) {
     let storesData = [];
@@ -285,6 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
         storeAddressElem.innerHTML = `
           <span>${store.address}</span>
           <span>${store.type || ''}</span>
+          <a href="tel:${store.phone}" class="store-phone">${store.phone}</a>
         `;
       }
       
@@ -292,29 +292,25 @@ document.addEventListener('DOMContentLoaded', () => {
         storeImgElem.src = store.thumbnail;
         storeImgElem.alt = `${store.name} 매장 입구 전경`;
       }
-      
-      if (storePhoneElem) {
-        storePhoneElem.innerHTML = `
-          <span class="material-icons">phone</span>
-          ${store.phone}
-        `;
-      }
 
       // Update buttons
       if (btnCall) {
-        btnCall.onclick = () => {
-          window.location.href = `tel:${store.phone}`;
-        };
+        btnCall.href = `tel:${store.phone}`;
       }
 
       if (btnBooking) {
-        btnBooking.onclick = () => {
-          if (store.mapUrl) {
-            window.open(store.mapUrl, '_blank');
-          } else {
+        if (store.mapUrl) {
+          btnBooking.href = store.mapUrl;
+          btnBooking.target = '_blank';
+          btnBooking.onclick = null;
+        } else {
+          btnBooking.href = '#';
+          btnBooking.target = '_self';
+          btnBooking.onclick = (e) => {
+            e.preventDefault();
             alert(`${store.name} 예약 페이지로 연결할 수 없습니다.`);
-          }
-        };
+          };
+        }
       }
     }
   }
