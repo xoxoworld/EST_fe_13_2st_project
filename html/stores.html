@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>라운즈 안경원</title>
+    <meta name="description" content="라운즈 안경원" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=favorite"
+    />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/flex-utility.css" />
+    <link rel="stylesheet" href="../css/stores.css" />
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <section class="store-hero text-center">
+        <p class="text-small-m">세상에 없던 안경 쇼핑</p>
+        <h2 class="text-title-xs"><strong>라운즈</strong> 안경원</h2>
+      </section>
+
+      <section class="store-visual d-flex justify-content-center" aria-label="라운즈 안경원 이미지">
+        <img src="../assets/images/store_1.webp" alt="라운즈 안경원 매장" />
+        <div class="visual-dots" aria-hidden="true">
+          <span class="active"></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </section>
+
+      <section class="info-banners" aria-label="라운즈 안경원 안내">
+        <article class="info-card">
+          <div class="d-flex flex-column justify-content-between g-10">
+            <h3 class="text-large-b">어디서나 같은 가격&nbsp<br />즐거운 안경 쇼핑</h3>
+            <p>
+              라운즈 안경원은 온/오프라인 동일한 회원 혜택을 제공합니다.<br />1:1 렌즈 맞춤
+              컨설팅으로<br />
+              나에게 맞는 안경을 완성해 보세요.
+            </p>
+            <p class="info-card-sub">
+              * 라운즈에서 구매한 안경/선글라스 무료 피팅 서비스<br />
+              * 회원 할인 및 쿠폰 사용 가능
+            </p>
+          </div>
+          <img src="../assets/icons/store_banner_1.png" alt="" />
+        </article>
+
+        <article class="info-card">
+          <div class="d-flex flex-column justify-content-between g-10">
+            <h3 class="text-large-b">렌즈도 미리&nbsp<br />비교하고 고르기</h3>
+            <p>
+              이제 안경 렌즈도 가격부터 성능까지 미리 비교해 보세요!<br />자외선과 블루라이트 차단은
+              기본. 합리적인 가격대의<br />라운즈 렌즈를 소개합니다.
+            </p>
+            <a href="#">라운즈 렌즈 보러 가기</a>
+          </div>
+          <img src="../assets/icons/store_banner_2.png" alt="" />
+        </article>
+
+        <article class="info-card">
+          <div class="d-flex flex-column justify-content-between g-10">
+            <h3 class="text-large-b">가족까지 누리는&nbsp<br />스페셜 할인 혜택</h3>
+            <p>
+              라운즈 제휴 기업 임직원이라면 누구나!<br />가족과 함께 라운즈에서 특별 할인 혜택을
+              누리세요.
+            </p>
+            <a href="#">제휴 신청하고 혜택 받기</a>
+          </div>
+          <img src="../assets/icons/store_banner_3.png" alt="" />
+        </article>
+      </section>
+
+      <section class="reservation d-flex align-items-center justify-content-center g-20">
+        <p>원하는 날짜와 시간을 선택하여 <br />편안하게 방문하세요</p>
+        <a href="#reservation-modal">예약하기</a>
+      </section>
+
+      <section class="reservation-layer" id="reservation-modal" aria-hidden="true">
+        <a class="reservation-dim" href="#" aria-label="닫기"></a>
+        <article
+          class="reservation-panel"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="reservation-title"
+        >
+          <div class="reservation-handle" aria-hidden="true"></div>
+          <a class="reservation-close" href="#" aria-label="닫기"></a>
+
+          <div class="reservation-modal-content">
+            <h2 id="reservation-title">라운즈 안경원 예약</h2>
+            <p class="reservation-modal-desc">방문할 지점과 날짜, 시간을 선택해 주세요.</p>
+
+            <form class="reservation-form" action="#">
+              <label>
+                <span>방문 지점</span>
+                <select>
+                  <option>라운즈 강남역점</option>
+                  <option>라운즈 판교점</option>
+                  <option>라운즈 검암법조타운점</option>
+                </select>
+              </label>
+
+              <div class="reservation-form-row">
+                <label>
+                  <span>예약 날짜</span>
+                  <input type="date" />
+                </label>
+                <label>
+                  <span>예약 시간</span>
+                  <select>
+                    <option>10:00</option>
+                    <option>11:00</option>
+                    <option>14:00</option>
+                    <option>16:00</option>
+                  </select>
+                </label>
+              </div>
+
+              <label>
+                <span>예약자 이름</span>
+                <input type="text" placeholder="이름을 입력해 주세요" />
+              </label>
+
+              <label>
+                <span>연락처</span>
+                <input type="tel" placeholder="010-0000-0000" />
+              </label>
+
+              <button type="button">예약 신청하기</button>
+            </form>
+          </div>
+        </article>
+      </section>
+
+      <section class="store-list-section">
+        <div class="list-controls d-flex align-items-center justify-content-between">
+          <div class="store-tabs" role="tablist" aria-label="안경원 유형">
+            <button class="active rounz-store" type="button">라운즈 안경원</button>
+            <button type="button partner-store">파트너 안경원</button>
+          </div>
+          <div class="select-group">
+            <button type="button" class="material-icons">시/도 선택 keyboard_arrow_down</button>
+            <button type="button" class="material-icons">시/군/구 keyboard_arrow_down</button>
+          </div>
+        </div>
+
+        <div class="store-grid">
+          <!-- <article class="store-card" data-store-trigger>
+            <img src="../assets/images/store_2.webp" alt="라운즈 강남역점" />
+            <div class="store-card-body d-flex flex-column justify-content-center">
+              <h2 class="text-large-b">라운즈 강남역점</h2>
+              <p class="station">(강남역 4번출구 365, 우성아파트 사거리)</p>
+              <p class="address">서울특별시 강남구 역삼로 109 1층 (강남역 4번 출구)</p>
+              <div class="contact-row d-flex align-items-center justify-content-between">
+                <a href="tel:02-3454-1006">02-3454-1006</a>
+                <div class="d-flex">
+                  <button class="material-icons" type="button" aria-label="전화">call</button>
+                  <button class="material-icons" type="button" aria-label="지도">map</button>
+                </div>
+              </div>
+            </div>
+          </article> -->
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <button class="more-button text-small-r" type="button">더보기</button>
+        </div>
+      </section>
+
+      <section class="store-detail-layer" id="store-detail" aria-hidden="true">
+        <button class="store-detail-dim"></button>
+        <!-- <article
+          class="store-detail-panel"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="store-detail-title"
+        >
+          <div class="detail-handle" aria-hidden="true"></div>
+
+          <div class="detail-image">
+            <div class="detail-map-placeholder" aria-label="지도 영역">
+              <span class="material-icons" aria-hidden="true">location_on</span>
+              <p>지도 영역</p>
+            </div>
+            <img
+              class="detail-store-photo"
+              src="../assets/images/store_2.webp"
+              alt="라운즈 강남역점"
+            />
+          </div>
+
+          <div class="detail-content">
+            <input
+              class="detail-tab-input"
+              type="radio"
+              name="store-detail-tab"
+              id="store-tab-info"
+              checked
+            />
+            <input
+              class="detail-tab-input"
+              type="radio"
+              name="store-detail-tab"
+              id="store-tab-review"
+            />
+
+            <div class="detail-tabs" role="tablist" aria-label="지점 상세 보기">
+              <label for="store-tab-info" class="detail-tab detail-tab-info" role="tab"
+                >지점정보</label
+              >
+              <label for="store-tab-review" class="detail-tab detail-tab-review" role="tab"
+                >지점후기</label
+              >
+            </div>
+
+            <div class="detail-pane detail-pane-info">
+              <h2 id="store-detail-title">라운즈 강남역점</h2>
+
+              <dl class="detail-info">
+                <div>
+                  <dt>주소</dt>
+                  <dd>서울특별시 강남구 역삼로 109 1층 (강남역 4번 출구)</dd>
+                </div>
+                <div>
+                  <dt>가는 방법</dt>
+                  <dd>강남역 4번 출구에서 도보 5분, 우성아파트 사거리 방향</dd>
+                </div>
+                <div>
+                  <dt>전화</dt>
+                  <dd><a href="tel:02-3454-1006">02-3454-1006</a></dd>
+                </div>
+              </dl>
+            </div>
+
+            <div class="detail-pane detail-pane-review">
+              <h2 class="review-title">지점후기</h2>
+              <div class="review-list">
+                <article class="review-card">
+                  <div class="review-meta">
+                    <div class="review-meta-line">
+                      <strong>김라운</strong>
+                      <p class="stars">★★★★★</p>
+                    </div>
+                    <span>2026.06.02</span>
+                  </div>
+                  <div class="review-content">
+                    <h3>꼼꼼하게 추천해줘서 좋았어요.</h3>
+                    <p>직원분이 얼굴형에 맞는 안경을 꼼꼼하게 추천해줘서 좋았어요.</p>
+                  </div>
+                </article>
+                <article class="review-card">
+                  <div class="review-meta">
+                    <div class="review-meta-line">
+                      <strong>오오렌즈</strong>
+                      <p class="stars">★★★★★</p>
+                    </div>
+                    <span>2026.05.28</span>
+                  </div>
+                  <div class="review-content">
+                    <h3>빠르고 친절했습니다.</h3>
+                    <p>검안부터 피팅까지 빠르고 친절했습니다. 매장도 깔끔해요.</p>
+                  </div>
+                </article>
+                <article class="review-card">
+                  <div class="review-meta">
+                    <div class="review-meta-line">
+                      <strong>강남방문</strong>
+                      <p class="stars">★★★★★</p>
+                    </div>
+                    <span>2026.05.19</span>
+                  </div>
+                  <div class="review-content">
+                    <h3>대기 시간이 짧아서 편했습니다.</h3>
+                    <p>예약하고 방문하니 대기 시간이 짧아서 편했습니다.</p>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </article> -->
+      </section>
+    </main>
+    <footer></footer>
+    <script type="module" src="../js/pages/stores.js"></script>
+  </body>
+</html>

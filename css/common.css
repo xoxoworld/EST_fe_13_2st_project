@@ -1,3 +1,9 @@
+@import url("normalize.css");
+@import url("reset.css");
+@import url("flex-utility.css");
+@import url("normalize.css");
+@import url("reset.css");
+@import url("flex-utility.css");
 :root {
   /* Color styles */
   --primary: rgba(23, 41, 236, 1);
@@ -12,6 +18,11 @@
   --black-1: rgba(0, 0, 0, 1);
   --black-2: rgba(17, 24, 39, 1);
   --radius-color: rgba(222, 222, 222, 1);
+
+  /* Button styles */
+  --primary-btn-bg: linear-gradient(91.13deg, #6732e2 0%, #5561e5 100%);
+  --primary-btn-disabled-bg: rgba(156, 163, 175, 1); /* 표준 회색조 톤으로 보정 */
+  --primary-btn-color: rgba(255, 255, 255, 1);
 
   /* Layout */
   --base-font: 12px;
@@ -620,6 +631,164 @@ button {
 
 /* 푸터 */
 .footer {
-  background-color: var(--white-2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #f2f2f2;
+  font-size: 13px;
+  color: #666;
 }
-/* 푸터 */
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #555;
+}
+
+.footer-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.footer-top {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 30px;
+}
+
+.footer-top .store-link {
+  flex: 1;
+  text-align: center;
+  padding: 20px 0;
+  font-weight: 500;
+  font-size: 14px;
+  transition: color 0.25s ease;
+}
+
+.footer-top .store-link:first-child {
+  border-right: 1px solid #ddd;
+}
+
+.footer-top .store-link:hover {
+  color: var(--primary);
+}
+
+.footer-top .vertical-bar {
+  display: none;
+}
+
+.footer-nav {
+  margin-bottom: 40px;
+}
+
+.footer-nav .nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px 20px;
+}
+
+.policy-bold {
+  font-weight: 700;
+  color: #222;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 30px;
+}
+
+.footer-logo {
+  font-size: 24px;
+  font-weight: 900;
+  color: #111;
+  margin: 0 0 15px 0;
+  letter-spacing: 1px;
+}
+
+.footer-company-toggle {
+  display: none;
+}
+
+.address-text {
+  font-style: normal;
+  line-height: 1.8;
+  word-break: keep-all;
+}
+
+.address-text .bar {
+  margin: 0 8px;
+  color: #ccc;
+  font-size: 10px;
+}
+
+.copyright {
+  color: #999;
+  font-size: 12px;
+  margin-top: 15px;
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.social-links img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+@media (min-width: 768px) {
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
+    gap: 0;
+  }
+}
+
+.primary-btn {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: var(--radius-md, 6px);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 0.2s ease;
+
+  /* 위에서 정의한 변수 대입 */
+  background-color: var(--primary-btn-bg) !important;
+  color: var(--primary-btn-color) !important;
+}
+
+.primary-btn:hover:not(:disabled) {
+  /* 살짝 더 딥한 느낌을 주거나 투명도를 미세하게 조절할 때 활용 */
+  background-color: rgba(26, 26, 26, 1) !important;
+}
+
+/* 비활성화 상태일 때 */
+.primary-btn:disabled {
+  /* 위에서 정의한 비활성화 변수 대입 */
+  background-color: var(--primary-btn-disabled-bg) !important;
+  color: var(--primary-btn-color) !important;
+  cursor: not-allowed;
+}

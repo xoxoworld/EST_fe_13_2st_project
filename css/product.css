@@ -108,8 +108,9 @@ img {
 .ship-badge {
   display: inline-flex;
   align-items: center;
-  height: 28px;
-  margin: 0 0 16px;
+  justify-content: center;
+  width: 64px;
+  height: 27px;
   padding: 0 9px;
   border-radius: var(--radius-s);
   background: var(--gray-1);
@@ -121,14 +122,12 @@ img {
 
 /* 브랜드명 경로와 상품명 영역입니다. */
 .brand-path {
-  margin: 0 0 15px;
   color: var(--gray-1);
   font-size: 14px;
   line-height: 1;
 }
 
-.summary-wrap h1 {
-  margin: 0 0 14px;
+.summary-wrap h2 {
   color: var(--black-1);
   font-size: 17px;
   font-weight: 800;
@@ -183,8 +182,8 @@ img {
 .color-chip {
   display: grid;
   place-items: center;
-  width: 49px;
-  height: 49px;
+  width: 50px;
+  height: 50px;
   border: 1px solid transparent;
   background: #f5f5f5;
 }
@@ -194,11 +193,11 @@ img {
 }
 
 .color-chip img {
-  width: 43px;
-  height: 28px;
-  object-fit: contain;
+  object-fit: cover;
 }
-
+.price-title {
+  display: none;
+}
 .price {
   margin: 31px 0 0;
   color: var(--black-1);
@@ -209,6 +208,10 @@ img {
 }
 
 /* ROUNZ-only banners: 가상 피팅/내 얼굴에 써보기 프로모션 영역입니다. */
+.desktop-buy-panel {
+  display: none;
+}
+
 .rounz-only-wrap {
   padding-bottom: 29px;
 }
@@ -218,39 +221,67 @@ img {
 }
 
 /* 두 배너가 동일한 높이와 배경을 공유합니다. */
-.face-banner,
+.face-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  padding: 0 12px;
+  background: var(--secondary);
+}
 .fit-banner {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 80px;
-  background: var(--secondary);
-}
-
-.face-banner {
   padding: 0 12px;
+  background: var(--secondary);
 }
 
 /* 좌우 이동 화살표 영역입니다. 실제 슬라이더가 붙어도 폭이 흔들리지 않게 고정합니다. */
 .face-banner button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
   width: 24px;
   color: var(--gray-3);
   font-size: 20px;
 }
 
+.face-banner button:first-child {
+  left: 12px;
+}
+
+.face-banner button:last-child {
+  right: 12px;
+}
+.face-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  transform: translateX(-8px);
+}
+
 .face-banner img {
   width: 54px;
   height: 54px;
-  margin: 0 15px 0 3px;
+  margin: 0;
   border-radius: 50%;
   object-fit: cover;
   background: var(--white-1);
 }
+.fit-banner img {
+  width: 60px;
+  transform: translateY(-3px);
+}
 
 /* 배너 제목/설명 텍스트 영역입니다. */
-.face-banner p,
-.fit-banner p {
-  flex: 1;
+.face-banner p {
   margin: 0;
+  flex: 0 0 auto;
 }
 
 .face-banner strong,
@@ -262,19 +293,22 @@ img {
   line-height: 1.35;
 }
 
-.face-banner span,
+.face-banner span {
+  display: block;
+  margin-top: 2px;
+  color: var(--gray-1);
+  line-height: 1.4;
+}
 .fit-banner span {
   display: block;
   margin-top: 5px;
   color: var(--black-2);
-  font-size: 11px;
   line-height: 1.5;
 }
 
 .fit-banner {
   gap: 22px;
   margin-top: 20px;
-  padding-left: 70px;
 }
 
 /* 가상 피팅 아이콘은 이미지 파일 없이 CSS 도형으로 구성합니다. */
@@ -864,23 +898,16 @@ img {
 /* 구매 정보는 긴 안내 문구가 많아 line-height를 넉넉하게 둡니다. */
 .purchase-wrap h3 {
   margin: 0 0 20px;
-  color: var(--black-1);
-  font-size: 17px;
-  font-weight: 800;
 }
 
 .purchase-wrap h4 {
   margin: 0 0 21px;
-  font-size: 15px;
-  font-weight: 800;
-  line-height: 1.65;
 }
 
 .purchase-wrap p {
-  margin: 0 0 8px;
   color: var(--gray-1);
   font-size: 12px;
-  line-height: 1.8;
+  line-height: 20px;
 }
 
 /* 배송 안내 표는 첫 열 고정 폭, 두 번째 열 유동 폭 구조입니다. */
@@ -889,7 +916,7 @@ img {
   border-collapse: collapse;
   border-top: 1px solid #aab2c0;
   color: var(--black-2);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.8;
 }
 
@@ -904,6 +931,9 @@ img {
   padding: 18px 0;
   border-bottom: 1px solid #aab2c0;
   vertical-align: top;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--gray-1);
 }
 
 .purchase-wrap td:first-child {
@@ -919,25 +949,85 @@ img {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 30;
-  margin: 0 auto;
+  z-index: 100;
 }
 
 .bottom-buy-wrap {
-  padding: 10px 16px 16px;
-  border-radius: 12px 12px 0 0;
+  margin: 0 auto;
+  padding: 18px 20px 20px;
+  border-radius: 28px 28px 0 0;
   background: var(--white-1);
-  box-shadow: 0 -7px 22px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.18);
 }
 
-/* iOS 하단 시트처럼 보이는 작은 핸들입니다. */
+.bottom-sheet-handle {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 18px;
+}
+
 .home-indicator {
   display: block;
-  width: 62px;
-  height: 3px;
-  margin: 0 auto 15px;
+  width: 78px;
+  height: 6px;
   border-radius: 999px;
-  background: #d6d6d6;
+  background: #d9d9d9;
+}
+
+.bottom-buy-panel {
+  display: none;
+  margin-bottom: 16px;
+}
+
+.bottom-buy-section.open .bottom-buy-panel {
+  display: block;
+}
+
+.buy-product-box {
+  padding: 18px;
+  border-radius: 8px;
+  background: var(--secondary);
+}
+
+.product-name {
+  display: block;
+  margin-bottom: 28px;
+  color: var(--black-2);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.buy-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quantity-control {
+  display: flex;
+  height: 32px;
+  border: 1px solid #aab2c0;
+}
+
+.quantity-control button,
+.quantity-control span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 33px;
+  border-right: 1px solid #aab2c0;
+  font-size: 14px;
+  background: var(--white-1);
+}
+
+.quantity-control button:last-child {
+  border-right: 0;
+}
+
+.total-price {
+  font-size: 16px;
+  font-weight: 800;
 }
 
 .bottom-buttons {
@@ -947,16 +1037,15 @@ img {
   gap: 10px;
 }
 
-/* 버튼은 동일 크기, 장바구니 outline / 바로구매 filled 조합입니다. */
 .bottom-buttons button {
   height: 58px;
-  border: 1px solid var(--primary);
-  border-radius: 7px;
-  font-size: 17px;
+  border-radius: 8px;
+  font-size: 18px;
   font-weight: 800;
 }
 
 .cart-btn {
+  border: 1px solid var(--primary);
   color: var(--primary);
   background: var(--white-1);
 }
@@ -994,17 +1083,16 @@ img {
     padding: 28px 30px 24px;
   }
 
-  .ship-badge {
-    height: 22px;
-    font-size: 10px;
-  }
-
   .summary-wrap h2 {
-    font-size: var(--medium-b);
+    font-size: var(--medium);
   }
 
   .color-block {
-    margin-top: 36px;
+    margin-top: 30px;
+  }
+  .color-chip {
+    width: 60px;
+    height: 60px;
   }
 
   .price {
@@ -1018,6 +1106,35 @@ img {
   .face-banner,
   .fit-banner {
     height: 80px;
+  }
+  .face-banner p {
+    display: block;
+    margin: 0;
+  }
+
+  .face-banner strong,
+  .fit-banner strong {
+    flex-shrink: 0;
+  }
+
+  .face-banner span br {
+    display: none;
+  }
+  .fit-banner p {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+  }
+  /* 배너 글씨 크기 */
+  .face-banner-content strong {
+    font-size: 16px;
+  }
+  .face-banner-content span {
+    font-size: 12px;
+  }
+  .fit-banner p strong,
+  .fit-banner p span {
+    font-size: var(--large);
   }
 
   .tabs-wrap {
@@ -1065,8 +1182,15 @@ img {
   }
 
   .review-list article {
-    grid-template-columns: 1fr 108px;
+    grid-template-columns: 124px 1fr 108px;
+    gap: 22px;
     min-height: 142px;
+    padding: 22px 0;
+  }
+
+  .review-meta,
+  .review-content {
+    height: 108px;
   }
 
   .review-list img {
@@ -1083,6 +1207,12 @@ img {
     width: 150px;
   }
 
+  .purchase-wrap h2 {
+    font-size: var(--large);
+  }
+  .purchase-wrap h3 {
+    font-size: var(--medium);
+  }
   /* 태블릿 하단 구매 버튼은 모바일보다 좌우 여백과 버튼 사이 간격이 큽니다. */
   .bottom-buy-wrap {
     padding-right: 30px;
@@ -1200,18 +1330,11 @@ img {
     padding: 0;
   }
 
-  .ship-badge {
-    height: 24px;
-    margin-bottom: 16px;
-    padding: 0 12px;
-    font-size: 11px;
-  }
-
   .brand-path {
     font-size: 12px;
   }
 
-  .summary-wrap h1 {
+  .summary-wrap h2 {
     width: 242px;
     font-size: 18px;
   }
@@ -1232,18 +1355,51 @@ img {
   }
 
   .color-chip {
-    width: 34px;
-    height: 34px;
+    width: 70px;
+    height: 70px;
   }
 
-  .color-chip img {
-    width: 30px;
-    height: 20px;
+  .desktop-buy-panel {
+    display: block;
+    margin-top: 20px;
   }
 
+  .side-panel .buy-product-box {
+    padding: 18px 16px;
+    border-radius: 6px;
+  }
+
+  .side-panel .product-name {
+    margin-bottom: 22px;
+    color: var(--black-2);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .side-panel .quantity-control {
+    height: 28px;
+  }
+
+  .side-panel .quantity-control button,
+  .side-panel .quantity-control span {
+    width: 36px;
+    font-size: 14px;
+  }
+
+  .side-panel .total-price {
+    font-size: 16px;
+  }
+  .price-title {
+    display: block;
+  }
+  .total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   .price {
     margin: 22px 0 18px;
-    font-size: 18px;
+    font-size: 24px;
   }
 
   .side-panel .rounz-only-wrap {
@@ -1257,32 +1413,47 @@ img {
 
   .face-banner,
   .fit-banner {
-    height: 92px;
-  }
-
-  .face-banner {
-    padding: 0 10px;
+    height: 80px;
+    padding: 0 12px;
   }
 
   .face-banner img {
+    width: 54px;
+    height: 54px;
+    margin: 0;
+  }
+
+  .fit-banner img {
     width: 60px;
-    height: 60px;
-    margin-right: 10px;
   }
 
   .face-banner strong,
-  .fit-banner strong {
-    font-size: 13px;
+  .fit-banner strong,
+  .face-banner-content strong {
+    font-size: 14px;
   }
 
   .face-banner span,
-  .fit-banner span {
-    font-size: 11px;
+  .fit-banner span,
+  .face-banner-content span {
+    font-size: 12px;
+  }
+  .face-banner span br {
+    display: block;
   }
 
   .fit-banner {
-    gap: 12px;
-    padding-left: 14px;
+    gap: 22px;
+  }
+
+  .fit-banner p {
+    display: block;
+  }
+
+  .fit-banner p strong,
+  .fit-banner p span {
+    font-size: 16px;
+    line-height: 20px;
   }
 
   .tabs-wrap {
@@ -1367,18 +1538,20 @@ img {
 
   /* 데스크톱 본문 섹션들은 좌측 컬럼 폭 전체를 사용하므로 모바일 padding을 제거합니다. */
   .review-list article {
-    grid-template-columns: 1fr 99px;
+    grid-template-columns: 124px 1fr 99px;
+    gap: 22px;
     min-height: 157px;
     padding: 24px 0;
+  }
+
+  .review-meta,
+  .review-content {
+    height: 99px;
   }
 
   .review-list img {
     width: 99px;
     height: 99px;
-  }
-
-  .review-copy h3 {
-    margin-left: 108px;
   }
 
   .qna-list li {
@@ -1393,7 +1566,14 @@ img {
 
   .purchase-wrap p,
   .purchase-wrap table {
-    font-size: 13px;
+    font-size: 14px;
+  }
+
+  .purchase-wrap h2 {
+    font-size: var(--sub-title--m);
+  }
+  .purchase-wrap h3 {
+    font-size: var(--large);
   }
 
   .purchase-wrap td:first-child {

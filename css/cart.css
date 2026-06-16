@@ -1,0 +1,389 @@
+* {
+  box-sizing: border-box;
+  /* outline: 1px solid red; */
+  /* background: yellow; */
+}
+
+body {
+  min-width: 320px;
+  padding-bottom: 118px;
+  letter-spacing: 0;
+}
+.container {
+  width: 100%;
+}
+
+/* 제목 */
+.cart-title {
+  text-align: center;
+  font-size: var(--title--x-s);
+  font-weight: 700;
+}
+
+/* 장바구니 정보 */
+.cart-summary {
+  gap: 24px;
+}
+.cart-count {
+  font-size: 12px;
+  color: var(--gray-2);
+  border-bottom: 1px solid var(--radius-color);
+  padding-bottom: 10px;
+}
+.select-all {
+  gap: 10px;
+}
+.select-all span {
+  font-size: 12px;
+  color: var(--gray-2);
+  gap: 10px;
+}
+
+.select-delete-btn {
+  color: var(--black-2);
+}
+.delete-btn {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+/* 상품 */
+.cart-list {
+  border-top: 1px solid var(--radius-color);
+  border-bottom: 1px solid var(--radius-color);
+}
+
+.cart-item {
+  gap: 20px;
+}
+.cart-item-content {
+  gap: 10px;
+  align-items: flex-start;
+}
+.item-check {
+  width: 28px;
+  flex-shrink: 0;
+}
+.product-image {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+}
+.product-info {
+  flex: 1;
+}
+.brand-name {
+  font-size: var(--medium);
+  font-weight: 700;
+  color: var(--black-2);
+  border-bottom: 1px solid var(--radius-color);
+  padding-bottom: 10px;
+}
+.product-info p {
+  font-size: var(--small);
+  font-weight: 400;
+  color: var(--gray-1);
+  line-height: var(--base-unit);
+  margin: 0;
+}
+.option-select {
+  margin-left: 38px;
+  width: calc(100% - 38px);
+  position: relative;
+}
+.option-select select {
+  width: 100%;
+  height: 40px;
+  padding: 0 36px 0 10px;
+  font-size: 12px;
+  color: var(--gray-1);
+  background-color: var(--secondary);
+  border: none;
+  border-radius: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+/* 수량 */
+.product-bottom {
+  margin-left: 38px;
+  width: calc(100% - 38px);
+}
+.quantity-box {
+  border: 1px solid var(--gray-4);
+  border-radius: 4px;
+}
+.quantity-box button {
+  width: 27px;
+  height: 27px;
+}
+.quantity {
+  font-size: var(--small);
+  font-weight: 500;
+  color: var(--black-2);
+}
+.product-price {
+  font-size: var(--small);
+  font-weight: 700;
+  color: var(--black-2);
+}
+button .material-icons {
+  font-size: 10px;
+  color: var(--gray-1);
+}
+
+/* 배너 */
+.cart-banner,
+.cart-order {
+  width: 100%;
+}
+
+.cart-banner {
+  height: 76px;
+  position: relative;
+  margin-top: 40px;
+}
+.cart-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 주문하기 */
+.order-btn {
+  width: 100%;
+  height: 47px;
+  padding: 0 30px;
+  background: var(--primary);
+  color: var(--white-1);
+  border-radius: 10px;
+}
+
+/* 상품 리스트 */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+}
+.section-header h3 {
+  font-size: var(--sub-title--s);
+  font-weight: 700;
+}
+.section-text {
+  font-size: var(--small);
+  font-weight: 400;
+  color: var(--gray-2);
+}
+
+.cart-layout {
+  display: block;
+}
+.cart-right {
+  display: none;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .container {
+    max-width: 708px;
+    padding: 0;
+  }
+
+  .cart-page {
+    width: 100%;
+  }
+  .cart-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+  }
+  .cart-left {
+    flex: 1;
+    min-width: 0;
+  }
+  .cart-right {
+    display: flex;
+    flex-direction: column;
+    width: 375px;
+    flex-shrink: 0;
+  }
+
+  .cart-title {
+    font-size: var(--title--m);
+  }
+
+  /* 왼쪽 */
+  .cart-count,
+  .select-all span,
+  .select-delete-btn {
+    font-size: var(--small);
+  }
+  .brand-name {
+    font-size: var(--medium);
+  }
+  .delete-btn .material-icons {
+    font-size: 20px;
+  }
+  .product-info p {
+    font-size: var(--small);
+  }
+  .option-select {
+    font-size: var(--small);
+    font-weight: 400;
+  }
+
+  /* 오른쪽 */
+  .payment-summary,
+  .benefit-summary {
+    font-size: var(--sub-title--s);
+    font-weight: 700;
+    color: var(--black-2);
+  }
+  .payment-card,
+  .benefit-card {
+    min-height: 300px;
+    padding: 30px;
+    gap: 50px;
+    border-radius: 15px;
+    background: var(--secondary);
+  }
+  .payment-row,
+  .benefit-row {
+    color: var(--gray-1);
+    font-size: var(--small);
+    font-weight: 400;
+  }
+  .payment-total {
+    color: var(--gray-1);
+    font-size: var(--small);
+    font-weight: 400;
+    border-top: 1px solid var(--gray-4);
+    padding-top: 20px;
+  }
+  .payment-total strong {
+    color: var(--black-2);
+    font-size: var(--small);
+    font-weight: 700;
+  }
+  .benefit {
+    border-top: 1px solid var(--gray-4);
+    padding-top: 20px;
+  }
+  .benefit-box {
+    height: 40px;
+    background: var(--white-1);
+    font-size: var(--small);
+    font-weight: 700;
+    color: var(--black-2);
+  }
+  .cart-banner {
+    height: 100px;
+  }
+
+  .section-header {
+    font-size: var(--sub-title--l);
+  }
+  .section-text {
+    display: none;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1272px) {
+  body {
+    padding-bottom: 0;
+  }
+
+  .container {
+    max-width: 1272px;
+    padding: 0;
+  }
+
+  .cart-layout {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+  }
+
+  .cart-title {
+    font-size: var(--title--x-l);
+  }
+
+  .cart-count {
+    font-size: var(--medium);
+  }
+  .select-all span,
+  .select-delete-btn {
+    font-size: var(--normal);
+  }
+
+  /* 왼쪽 */
+  .cart-left {
+    flex: 1;
+    min-width: 0;
+  }
+  .brand-name {
+    font-size: var(--sub-title--l);
+  }
+  .product-info p {
+    font-size: var(--normal);
+  }
+  .option-select select {
+    height: 50px;
+    font-size: var(--normal);
+  }
+  .quantity-box button {
+    width: 40px;
+    height: 40px;
+  }
+  .product-price {
+    font-size: var(--large);
+  }
+
+  /* 배너 */
+  .cart-banner {
+    height: 150px;
+  }
+
+  /* 오른쪽 */
+  .cart-right {
+    display: flex;
+    flex-direction: column;
+    width: 552px;
+    flex-shrink: 0;
+  }
+  .payment-summary,
+  .benefit-summary {
+    font-size: var(--sub-title--l);
+  }
+  .payment-card,
+  .benefit-card {
+    font-size: var(--sub-title--m);
+  }
+  .payment-row,
+  .benefit-row,
+  .payment-total,
+  .payment-total strong,
+  .benefit-box {
+    font-size: var(--medium);
+  }
+  .benefit-box {
+    height: 50px;
+  }
+  .order-btn {
+    width: 100%;
+    height: 55px;
+    font-size: var(--sub-title--m);
+  }
+
+  .section-header h2 {
+    font-size: var(--title--l);
+  }
+
+  .product-list {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

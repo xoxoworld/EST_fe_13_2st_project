@@ -1,0 +1,590 @@
+* {
+  box-sizing: border-box;
+  outline: 1px solid red;
+}
+
+body {
+  min-width: 320px;
+  padding-bottom: 118px;
+  background: var(--white-1);
+  color: var(--black-2);
+  font-size: 12px;
+  letter-spacing: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* nav */
+.home,
+.breadcrumb-home {
+  color: var(--gray-1);
+  font-weight: 700;
+}
+.breadcrumb-home {
+  font-size: var(--base-font);
+}
+.breadcrumb .material-icons {
+  font-size: 20px;
+}
+.chevron_right {
+  color: var(--gray-4);
+}
+
+/* 상위 배너 */
+.promotion {
+  padding-top: 0;
+}
+.promotion-text p {
+  line-height: 16px;
+}
+.promotion-card {
+  gap: 5px;
+  overflow-x: hidden;
+}
+.w-card {
+  position: relative;
+  width: 120px;
+  height: 73px;
+  border: 1px solid var(--gray-3);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.w-card img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100px;
+  height: 100%;
+  object-fit: cover;
+}
+.card-text {
+  position: absolute;
+  z-index: 1;
+  gap: 18px;
+  left: 10px;
+}
+.card-text p:nth-child(2) {
+  display: none;
+}
+
+.chevron_right {
+  color: var(--gray-4);
+  font-size: var(--base-font);
+}
+
+/* filter */
+.w-filter {
+  gap: 23px;
+  padding-top: 0;
+  padding-bottom: 24px;
+}
+.w-filter > div:last-child {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.w-filter-btn {
+  gap: 5px;
+  font-size: 11px;
+}
+.filter-btn {
+  width: 53px;
+  height: 29px;
+  padding: 0;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.tablet-only {
+  display: none;
+}
+.w-filter-count {
+  font-size: 11px;
+}
+.filter-btn:hover {
+  background: var(--primary);
+  color: var(--white-1);
+}
+
+/* 왼쪽 필터 */
+.filter-sidebar {
+  display: none;
+}
+
+/* 상품 리스트 */
+.sunglasses-page {
+  padding-top: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.product-list-card {
+  width: 118px;
+}
+.product-list-image {
+  position: relative;
+  width: 118px;
+  height: 118px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+.product-list-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.default-img {
+  opacity: 1;
+}
+.hover-img {
+  opacity: 0;
+}
+.product-list-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.product-list-name {
+  font-size: 11px;
+  color: var(--gray-1);
+}
+.product-list-brand,
+.product-list-price {
+  color: var(--black-2);
+}
+.promotion-banner {
+  width: 370px;
+  height: 212px;
+  grid-column: 1 / -1;
+}
+.promotion-banner a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.promotion-banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 페이지네이션/더보기 */
+.pagination {
+  display: none;
+}
+.more-wrap {
+  display: block;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.more-btn {
+  width: 100%;
+  height: 48px;
+  border: 1px solid var(--gray-3);
+  border-radius: 999px;
+  background-color: var(--white-1);
+  color: var(--black-2);
+}
+.more-btn:hover {
+  background-color: var(--secondary);
+}
+.more-btn:active {
+  background-color: var(--primary);
+  color: var(--white-1);
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  body {
+    padding-bottom: 118px;
+    font-size: 13px;
+  }
+  .container {
+    max-width: 768px;
+    padding: 30px;
+  }
+
+  .breadcrumb-home {
+    font-size: var(--small);
+    font-weight: 700;
+  }
+  /* 상단배너 */
+  .promotion {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 31px;
+  }
+  .product-list-page {
+    max-width: none;
+  }
+  .promotion-text {
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .promotion-text h2 {
+    font-size: var(--title--m);
+    line-height: var(--base-unit);
+    font-weight: 600;
+  }
+  .promotion-text div {
+    gap: 5px;
+  }
+  .promotion-text p {
+    font-size: var(--normal);
+    font-weight: 400;
+  }
+  .promotion-link span {
+    font-size: var(--normal);
+    font-weight: 600;
+  }
+  .w-card {
+    width: 170px;
+    height: 103px;
+  }
+  .w-card img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+  }
+  .promotion-card {
+    gap: 5px;
+  }
+  .card-text {
+    top: 13px;
+    gap: 27px;
+  }
+  .card-text .text-small-b {
+    font-size: var(--normal);
+    line-height: var(--base-unit);
+  }
+  .mobile-only {
+    display: none;
+  }
+  .tablet-only {
+    display: block;
+  }
+
+  /* 위쪽 필터 */
+  .mobile-only {
+    display: none;
+  }
+  .tablet-only {
+    display: block;
+  }
+  .w-filter-btn {
+    gap: 10px;
+  }
+  .filter-btn {
+    border-radius: 999px;
+    font-size: var(--normal);
+    height: 39px;
+  }
+  .filter-btn[data-sort="all"] {
+    width: 59px;
+  }
+  .filter-btn[data-sort="recommend"],
+  .filter-btn[data-sort="popular"] {
+    width: 73px;
+  }
+  .filter-btn[data-sort="price-low"],
+  .filter-btn[data-sort="price-high"] {
+    width: 104px;
+  }
+  .w-filter-count {
+    font-size: var(--normal);
+    font-weight: 400;
+  }
+
+  .sunglasses-page {
+    display: grid;
+    grid-template-columns: repeat(3, 220px);
+    gap: 24px;
+    justify-content: start;
+  }
+  .product-list-brand,
+  .product-list-price {
+    font-size: var(--normal);
+    font-weight: 700;
+  }
+  .product-list-name {
+    font-size: var(--small);
+    font-weight: 500;
+  }
+
+  .product-list-card {
+    width: 220px;
+    height: 346px;
+  }
+  .product-list-image {
+    width: 220px;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+  }
+  .product-list-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .promotion-banner {
+    width: 708px;
+    height: 336px;
+  }
+  .more-wrap {
+    display: flex;
+    justify-content: center;
+  }
+  .more-btn {
+    width: 370px;
+    font-size: var(--normal);
+    font-weight: 500;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1272px) {
+  body {
+    padding-bottom: 0;
+  }
+  .container {
+    max-width: 1272px;
+    padding: 0;
+  }
+
+  .sunglasses-page {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .product-list-page {
+    max-width: 1272px;
+    margin: 0 auto;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .breadcrumb {
+    gap: 10px;
+  }
+
+  /* 위쪽 배너 */
+  .promotion-text {
+    font-size: var(--title--x-l);
+    font-weight: 700;
+    line-height: var(--base-unit);
+  }
+  .promotion-text p {
+    font-size: var(--medium);
+    line-height: var(--base-unit);
+  }
+  .promotion-card {
+    gap: 10px;
+  }
+  .card-sub-text {
+    display: block;
+  }
+
+  .w-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  .filter-sidebar {
+    width: 267px;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+  }
+  .w-card {
+    width: 330px;
+    height: 200px;
+  }
+
+  /* 왼쪽 필터 */
+  .product-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 37px;
+  }
+  .promotion {
+    gap: 76px;
+  }
+  .card-text {
+    top: 37px;
+  }
+  .card-text .text-small-b,
+  .promotion-link span {
+    font-size: var(--large);
+    font-weight: 700;
+  }
+  .card-text p:nth-child(2) {
+    display: block;
+    color: var(--gray-2);
+  }
+  .filter-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+    width: 13px;
+    height: 13px;
+    border: 1px solid var(--gray-3);
+    border-radius: 50%;
+    background-color: var(--white-1);
+    cursor: pointer;
+  }
+  .filter-item input[type="checkbox"]:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+  }
+  .filter-item input[type="checkbox"]:checked::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .f-more-btn {
+    width: 267px;
+    height: 47px;
+    border-bottom: 1px solid var(--gray-2);
+    color: var(--gray-2);
+  }
+  .brand-search {
+    height: 47px;
+    padding-left: 10px;
+    border: 1px solid var(--gray-4);
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .brand-count {
+    color: var(--gray-3);
+  }
+  .filter-item label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+  .filter-item label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  .filter-item input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  .brand-count {
+    margin-left: auto;
+    color: var(--gray-4);
+  }
+
+  /* 프레임 형태 */
+  .shape-img {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* 가격대 */
+  input[type="range"] {
+    appearance: none;
+    width: 100%;
+    height: 2px;
+    background: var(--primary);
+    border-radius: 999px;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #111827;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+  }
+  .price-labels span {
+    color: var(--gray-2);
+  }
+
+  /* ai추천 필터 */
+  .ai-filter-card {
+    background: var(--secondary);
+    width: 267px;
+    height: 244px;
+    padding: 30px;
+    border-radius: 15px;
+  }
+  .ai-filter-content {
+    gap: 30px;
+  }
+  .ai-filter-link {
+    width: 220px;
+    height: 47px;
+    border-radius: 50px;
+    background: var(--primary);
+    color: var(--white-1);
+  }
+  .ai-filter-text {
+    color: var(--gray-1);
+  }
+
+  /* 상품 리스트 */
+  .product-list-card {
+    width: 235px;
+    height: 361px;
+  }
+  .product-list-image {
+    width: 235px;
+    height: 235px;
+  }
+  .product-list-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .product-list-brand {
+    font-size: var(--normal);
+  }
+  .product-list-info {
+    width: 235px;
+    height: auto;
+    gap: 4px;
+  }
+  .promotion-banner {
+    grid-column: span 2;
+    width: 480px;
+    height: 374px;
+  }
+  .product-list-card:hover .default-img {
+    opacity: 0;
+  }
+  .product-list-card:hover .hover-img {
+    opacity: 1;
+  }
+
+  /* 페이지네이션 */
+  .pagination {
+    display: flex;
+  }
+  .more-wrap {
+    display: none;
+  }
+}

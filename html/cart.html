@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>장바구니 페이지</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=favorite" />
+  <link rel="stylesheet" href="../css/common.css" />
+  <link rel="stylesheet" href="../css/flex-utility.css" />
+  <link rel="stylesheet" href="../css/cart.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+  <header></header>
+
+  <main class="container cart-page d-flex flex-column g-10">
+    <h2 class="cart-title">장바구니</h2>
+    <div class="cart-layout">
+      <!-- 왼쪽 -->
+      <div class="cart-left">
+        <!-- 장바구니 정보 -->
+        <section class="cart-summary d-flex flex-column">
+          <p class="cart-count">1개의 상품이 담겨 있습니다.</p>
+          <div class="cart-option d-flex justify-content-between align-items-center">
+            <label class="select-all d-flex align-items-center">
+              <input type="checkbox" />
+              <span>전체 선택 (1/1)</span>
+            </label>
+            <div class="select-delete d-flex g-10">
+              <button type="button" class="select-delete-btn">
+                선택 삭제
+              </button>
+              <a
+                href="https://abr.ge/m6hu79?airbridge_referrer=airbridge%3Dtrue%26client_id%3D52b20d95-8c65-4e61-aafe-ce045c64daed%26event_uuid%3D3dd6ef12-2a3c-40f0-9d1d-4eb9ea3d62ca%26referrer_timestamp%3D1781505501482%26channel%3Dairbridge.websdk%26cta%3D1">
+                <img src="../assets/images/ai_iogo" alt="ai 로고">
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- 상품 -->
+        <section class="cart-list">
+          <article class="cart-item d-flex flex-column">
+            <p class="brand-name">Ray-Ban</p>
+            <div class="cart-item-content d-flex align-items-center">
+              <label class="item-check">
+                <input type="checkbox" />
+              </label>
+              <img src="../assets/images/productlist_1.webp" alt="레이벤 선글라스" class="product-image" />
+              <div class="product-info d-flex flex-column">
+                <p class="product-name">레이벤 선글라스</p>
+                <p class="product-code">RB4258F 601/71</p>
+              </div>
+              <button type="button" class="delete-btn">
+                <span class="material-icons close">close</span>
+              </button>
+            </div>
+
+            <!-- 옵션 -->
+            <label class="option-select">
+              <select>
+                <option>그레이 / 51mm</option>
+                <option>블랙 / 51mm</option>
+                <option>브라운 / 51mm</option>
+              </select>
+            </label>
+
+            <!-- 수량 + 가격 -->
+            <div class="product-bottom d-flex justify-content-between align-items-center">
+              <div class="quantity-box d-flex align-items-center">
+                <button type="button">
+                  <span class="material-icons">remove</span>
+                </button>
+                <span class="quantity">1</span>
+                <button type="button">
+                  <span class="material-icons">add</span>
+                </button>
+              </div>
+              <strong class="product-price">204,800원</strong>
+            </div>
+          </article>
+        </section>
+
+        <!-- 배너 -->
+        <section class="cart-banner swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="#">
+                <img src="../assets/images/cart_banner1.webp" alt="프로모션 배너1" />
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#">
+                <img src="../assets/images/cart_banner2.webp" alt="프로모션 배너2" />
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#">
+                <img src="../assets/images/cart_banner3.webp" alt="프로모션 배너3" />
+              </a>
+            </div>
+          </div>
+
+          <!-- 페이지네이션 -->
+          <div class="swiper-pagination"></div>
+        </section>
+      </div>
+
+      <!-- 오른쪽 -->
+      <aside class="cart-right">
+        <!-- 결제 예상 금액 -->
+        <section class="payment-summary d-flex flex-column g-10">
+          <h3>결제 예상 금액</h3>
+          <div class="payment-card d-flex flex-column">
+            <h4>전체 합계</h4>
+            <div class="d-flex flex-column g-10">
+              <div class="payment-row d-flex justify-content-between">
+                <span>제품 수</span>
+                <span>2개</span>
+              </div>
+              <div class="payment-row d-flex justify-content-between">
+                <span>제품 금액</span>
+                <span>204,800원</span>
+              </div>
+            </div>
+            <div class="payment-total d-flex justify-content-between">
+              <span>최종 결제 금액</span>
+              <strong>204,800원</strong>
+            </div>
+          </div>
+        </section>
+
+        <!-- 구매 예상 혜택 -->
+        <section class="benefit-summary  d-flex flex-column g-10">
+          <h3>구매 예상 혜택</h3>
+          <div class="benefit-card d-flex flex-column">
+            <h4>구매 후 예상 혜택</h4>
+            <button class="benefit-box d-flex justify-content-center align-items-center">
+              신한 카드 구매 시
+            </button>
+            <div class="benefit d-flex flex-column g-10">
+              <div class="benefit-row d-flex justify-content-center justify-content-between">
+                <span>결제 및 할인</span>
+                <span>10,000원</span>
+              </div>
+              <div class="benefit-row d-flex justify-content-between">
+                <span>멤버십 포인트 적립</span>
+                <span>100,000원</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 주문하기 -->
+        <section class="cart-order">
+          <a href="../html/login.html" class="order-btn d-flex justify-content-center align-items-center">
+            주문하기
+          </a>
+        </section>
+      </aside>
+    </div>
+
+    <!-- 함께 구매하면 좋은 상품 -->
+    <section class="recommend-section">
+      <div class="section-header d-flex justify-content-between">
+        <h2>함께 구매하면 좋은 상품</h2>
+        <a href="#" class="section-text">
+          전체보기
+        </a>
+      </div>
+      <div class="product-list">
+        <!-- 상품 카드 -->
+      </div>
+    </section>
+
+    <!-- 당신을 위한 컬렉션 -->
+    <section class="collection-section">
+      <div class="section-header d-flex justify-content-between">
+        <h2>당신을 위한 컬렉션</h2>
+        <a href="#" class="section-text">
+          전체보기
+        </a>
+      </div>
+      <div class="product-list">
+        <!-- 상품 카드 -->
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="../js/cart.js"></script>
+</body>
+
+</html>
