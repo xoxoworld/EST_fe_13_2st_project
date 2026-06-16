@@ -1936,6 +1936,7 @@
 }
 
 .about-us-container {
+  position: relative;
   max-width: 1272px;
   margin: 0 auto;
   padding: 0 24px;
@@ -1958,6 +1959,9 @@
 }
 
 .about-us-more-btn {
+  position: absolute;
+  top: -3px;
+  right: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2080,12 +2084,14 @@
   }
 
   .about-us-more-btn {
+    position: absolute;
+    top: 8px;
+    right: 24px;
     width: auto;
     height: auto;
     background-color: transparent;
     padding: 0;
     margin: 0;
-    align-self: center;
   }
   .about-us-more-btn:hover {
     background-color: transparent;
@@ -2122,6 +2128,11 @@
 @media (width <= 480px) {
   .about-us-container {
     padding: 0 16px;
+  }
+
+  .about-us-more-btn {
+    right: 16px;
+    top: 6px;
   }
 
   .about-us-more-btn .more-text {
