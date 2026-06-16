@@ -329,6 +329,7 @@ main > section {
   color: var(--white-1);
   font-size: 15px;
   font-weight: 700;
+  text-align: center;
 }
 
 .store-list-section {
@@ -348,6 +349,7 @@ main > section {
   width: 187px;
   height: 31px;
   border-radius: var(--radius-s);
+  text-align: center;
 }
 
 .store-tabs button {
