@@ -193,3 +193,15 @@ moreButton.addEventListener("click", () => {
   visibleCount += pageSize;
   renderVisibleStores();
 });
+
+// 스와이퍼, 페이지네이션
+const swiper = new Swiper(".swiper", {
+  loop: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  pagination: {
+    el: ".swiper-pagination",
+  },
+});

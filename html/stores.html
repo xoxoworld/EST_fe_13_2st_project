@@ -11,6 +11,9 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=favorite"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/flex-utility.css" />
     <link rel="stylesheet" href="../css/stores.css" />
@@ -23,17 +26,36 @@
         <h2 class="text-title-xs"><strong>라운즈</strong> 안경원</h2>
       </section>
 
-      <section class="store-visual d-flex justify-content-center" aria-label="라운즈 안경원 이미지">
-        <img src="../assets/images/store_1.webp" alt="라운즈 안경원 매장" />
-        <div class="visual-dots" aria-hidden="true">
-          <span class="active"></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+      <section
+        class="store-visual d-flex justify-content-center multiple-wrapper swiper"
+        aria-label="라운즈 안경원 이미지"
+      >
+        <div class="multiple-slider swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="../assets/images/store_1.webp" alt="라운즈 안경원 매장" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../assets/images/store_2.webp" alt="라운즈 안경원 매장" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../assets/images/store_3.webp" alt="라운즈 안경원 매장" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../assets/images/store_4.webp" alt="라운즈 안경원 매장" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../assets/images/store_5.webp" alt="라운즈 안경원 매장" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../assets/images/store_6.webp" alt="라운즈 안경원 매장" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../assets/images/store_7.webp" alt="라운즈 안경원 매장" />
+          </div>
         </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
       </section>
 
       <section class="info-banners" aria-label="라운즈 안경원 안내">
