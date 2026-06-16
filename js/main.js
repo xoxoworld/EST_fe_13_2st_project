@@ -163,7 +163,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Fetch store data
-    fetch('../data/stores.json')
+    const storesJsonPath = window.location.pathname.includes('/html/') ? '../data/stores.json' : 'data/stores.json';
+    fetch(storesJsonPath)
       .then(res => res.json())
       .then(data => {
         // Combine both locationStores and partnerStores
