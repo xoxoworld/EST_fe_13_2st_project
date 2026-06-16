@@ -71,13 +71,6 @@ img {
   object-fit: contain;
   transform: scale(1.08);
 }
-.visual-p {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-}
-
 /* 모바일에서는 썸네일 대신 현재 이미지 순번만 표시합니다. */
 .visual-count {
   position: absolute;
@@ -147,12 +140,6 @@ img {
   font-size: 14px;
   position: relative;
   top: 1px;
-}
-
-.review-icon {
-  width: 13px;
-  height: 13px;
-  background: var(--black-2);
 }
 
 /* 컬러 옵션은 실제 상품 썸네일 이미지를 사용합니다. */
@@ -228,6 +215,7 @@ img {
   justify-content: center;
   height: 80px;
   padding: 0 12px;
+  overflow: hidden;
   background: var(--secondary);
 }
 .fit-banner {
@@ -245,24 +233,51 @@ img {
   top: 50%;
   transform: translateY(-50%);
 
-  width: 24px;
+  width: 22px;
+  height: 22px;
+  margin-top: 0;
   color: var(--gray-3);
-  font-size: 20px;
+  font-size: 14px;
+  z-index: 2;
 }
 
-.face-banner button:first-child {
-  left: 12px;
+.face-banner .swiper-wrapper {
+  align-items: center;
+  height: 100%;
 }
 
-.face-banner button:last-child {
-  right: 12px;
+.face-banner .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 32px;
+  box-sizing: border-box;
+}
+
+.face-banner .swiper-button-prev,
+.face-banner .swiper-button-next {
+  --swiper-navigation-size: 14px;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  margin-top: 0;
+  transform: translateY(-50%);
+}
+
+.face-banner .swiper-button-prev {
+  left: 8px;
+}
+
+.face-banner .swiper-button-next {
+  right: 8px;
 }
 .face-banner-content {
   display: flex;
   align-items: center;
   gap: 12px;
   width: fit-content;
-  transform: translateX(-8px);
+  transform: none;
 }
 
 .face-banner img {
@@ -288,9 +303,6 @@ img {
 .fit-banner strong {
   display: block;
   color: var(--black-2);
-  font-size: 14px;
-  font-weight: 800;
-  line-height: 1.35;
 }
 
 .face-banner span {
@@ -312,32 +324,6 @@ img {
 }
 
 /* 가상 피팅 아이콘은 이미지 파일 없이 CSS 도형으로 구성합니다. */
-.fit-icon {
-  position: relative;
-  width: 54px;
-  height: 42px;
-}
-
-.fit-icon::before {
-  position: absolute;
-  inset: 4px;
-  border: 3px solid #315cf4;
-  border-radius: 50%;
-  box-shadow:
-    22px 0 0 -3px var(--secondary),
-    22px 0 0 0 #315cf4;
-  content: "";
-}
-
-.fit-icon::after {
-  position: absolute;
-  inset: 0;
-  border: 3px solid #315cf4;
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  content: "";
-}
-
 .tabs-section {
   order: 4;
 }
@@ -367,228 +353,16 @@ img {
   order: 5;
 }
 
-/* Detail content: 공식 인증, 브랜드 소개, 상품 스펙 이미지를 포함합니다. */
-.official-card {
-  position: relative;
-  min-height: 153px;
-  overflow: hidden;
-  background: var(--black-1);
-}
-
 /* 공식 인증 카드 내부 여백입니다. 워터마크와 본문이 겹치지 않게 왼쪽 여백을 둡니다. */
-.official-card > div {
-  padding: 36px 16px 30px 32px;
-}
-
 /* 검은 영역 왼쪽의 세로 ROUNZ 워터마크입니다. */
-.side-word {
-  position: absolute;
-  left: -20px;
-  bottom: 8px;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.1);
-  font-size: 53px;
-  font-weight: 900;
-  letter-spacing: 2px;
-  transform: rotate(-90deg);
-  transform-origin: left bottom;
-}
-
-.official-card h2 {
-  margin: 0 0 14px;
-  color: var(--white-1);
-  font-size: 20px;
-  font-weight: 800;
-}
-
-.official-card p:not(.side-word) {
-  margin: 0;
-  color: var(--white-1);
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.brand-card > div {
-  padding-top: 33px;
-  text-align: center;
-}
-
 /* 브랜드명, 영문명, 소개 카피를 가운데 정렬하는 영역입니다. */
-.brand-card h2 {
-  margin: 0 0 4px;
-  font-size: 22px;
-  font-weight: 800;
-}
-
-.brand-card p {
-  margin: 0 0 20px;
-  color: var(--gray-2);
-  font-size: 12px;
-}
-
-.brand-card strong {
-  display: block;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.55;
-}
-
 /* 브랜드 소개 하단의 2열 이미지 콜라주입니다. */
-.brand-collage {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px 24px;
-  padding: 34px 10px 47px;
-}
-
-.brand-photo {
-  position: relative;
-  height: 165px;
-  margin: 0;
-  overflow: hidden;
-  background: #eee;
-}
-
 /* 큰 사진과 작은 사진 높이를 다르게 해서 Figma의 비대칭 배치를 만듭니다. */
-.brand-photo.large {
-  height: 230px;
-}
-
-.brand-photo:nth-child(3) {
-  margin-top: -8px;
-}
-
-.brand-photo:nth-child(4) {
-  margin-top: -48px;
-}
-
 /* 콜라주 이미지는 카드 영역을 꽉 채우도록 cover 처리합니다. */
-.brand-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.brand-photo figcaption {
-  position: absolute;
-  left: 8px;
-  bottom: 10px;
-  color: var(--white-1);
-  font-size: 14px;
-  font-weight: 900;
-  line-height: 1.25;
-}
-
-.brand-photo figcaption.bottom {
-  right: 8px;
-  left: auto;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 28px;
-  text-align: right;
-}
-
 /* 상품 스펙 영역은 중앙 정렬된 제목과 표/이미지 조합입니다. */
-.spec-card > div {
-  padding: 0 16px 37px;
-  text-align: center;
-}
-
-.spec-card h2 {
-  margin: 0 0 14px;
-  font-size: 10px;
-  font-weight: 800;
-}
-
-.spec-note {
-  margin: 0 0 24px;
-  font-size: 11px;
-}
-
 /* PRODUCT INFO 표는 dt/dd를 한 줄 grid로 맞춰 모바일에서도 줄맞춤을 유지합니다. */
-.spec-table {
-  margin: 0;
-  border-top: 1px solid var(--black-1);
-  text-align: left;
-}
-
-.spec-table div {
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  min-height: 38px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
 /* 첫 칸은 항목명, 두 번째 칸은 상세값입니다. */
-.spec-table dt,
-.spec-table dd {
-  margin: 0;
-  padding: 11px 4px;
-  font-size: 12px;
-  line-height: 1.35;
-}
-
-.spec-table dt {
-  font-weight: 800;
-}
-
-.size-img {
-  width: 100%;
-  margin: 24px auto 17px;
-}
-
 /* 도수 렌즈 가능 여부와 무게감을 좌우 2분할로 보여줍니다. */
-.option-table {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-top: 1px solid var(--black-1);
-  border-bottom: 1px solid #e5e7eb;
-  text-align: left;
-}
-
-.option-table > div {
-  padding: 10px 0 8px;
-}
-
-.option-table > div:first-child {
-  border-right: 1px solid #e5e7eb;
-}
-
-.option-table h3 {
-  margin: 0 0 10px;
-  padding-left: 4px;
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.option-table small {
-  color: #555;
-  font-size: 10px;
-  font-weight: 400;
-}
-
-.option-table p {
-  position: relative;
-  margin: 0 0 9px;
-  padding-left: 18px;
-  color: #555;
-  font-size: 12px;
-}
-
-/* 회색/파란 사각형 상태 표시입니다. .on만 파란색으로 강조합니다. */
-.option-table p::before {
-  position: absolute;
-  top: 2px;
-  left: 4px;
-  width: 10px;
-  height: 10px;
-  background: #f0f0f0;
-  content: "";
-}
-
-.option-table p.on::before {
-  background: #1473ff;
-}
-
 /* Related products: 비슷한 상품 가로 리스트입니다. */
 .related-section {
   order: 6;
@@ -1143,33 +917,7 @@ img {
     height: 56px;
   }
 
-  .official-card > div {
-    padding-left: 56px;
-  }
-
-  .brand-card > div {
-    padding-top: 44px;
-  }
-
-  .brand-collage {
-    gap: 22px 28px;
-    padding: 40px 46px 56px;
-  }
-
   /* 상세 브랜드 이미지는 태블릿에서 더 크게 보여 세로 스케일을 맞춥니다. */
-  .brand-photo {
-    height: 235px;
-  }
-
-  .brand-photo.large {
-    height: 320px;
-  }
-
-  .spec-card > div {
-    padding-right: 52px;
-    padding-left: 52px;
-  }
-
   .related-list {
     gap: 18px;
   }
@@ -1433,6 +1181,8 @@ img {
   .fit-banner strong,
   .face-banner-content strong {
     font-size: 14px;
+    letter-spacing: -2%;
+    line-height: 22px;
   }
 
   .face-banner span,
@@ -1472,43 +1222,13 @@ img {
     border-bottom: 2px solid var(--black-1);
   }
 
-  .official-card {
-    min-height: 180px;
-  }
-
-  .official-card > div {
-    padding-left: 64px;
-  }
-
-  .brand-card > div {
-    padding-top: 54px;
-  }
-
-  .brand-collage {
-    gap: 24px;
-    padding: 48px 80px 70px;
-  }
-
   /* 데스크톱 상세 이미지는 좌측 948px 영역에서 더 큰 콜라주로 표시합니다. */
-  .brand-photo {
-    height: 280px;
-  }
-
-  .brand-photo.large {
-    height: 380px;
-  }
-
-  .spec-card > div,
   .related-wrap,
   .review-wrap,
   .qna-wrap,
   .purchase-wrap {
     padding-right: 0;
     padding-left: 0;
-  }
-
-  .spec-card > div {
-    padding-bottom: 64px;
   }
 
   .related-wrap {
