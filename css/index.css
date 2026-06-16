@@ -523,18 +523,22 @@
   object-fit: cover;
 }
 
+.jenny-contents .product-wrapper {
+  margin-bottom: 66px;
+}
+
 /* 1. 전체 프로그레스바의 배경선 (사진의 연한 회색 부분) */
 .swiper-pagination-progressbar {
-  background: red !important;
+  background: var(--gray-4);
   width: 100%;
-  height: 2px !important;      /* 선의 두께 (얇고 길쭉하게) */
-  top: auto !important;            /* 기본 상단 고정을 해제하고 하단으로 내릴 때 사용 */
-  bottom: 0 !important;            /* 슬라이드 영역 맨 하단에 딱 붙임 */
+  height: 2px;      /* 선의 두께 (얇고 길쭉하게) */
+  top: auto;            /* 기본 상단 고정을 해제하고 하단으로 내릴 때 사용 */
+  bottom: 0;            /* 슬라이드 영역 맨 하단에 딱 붙임 */
 }
 
 /* 2. 현재 위치를 나타내는 채워지는 선 (사진의 진한 검은색 부분) */
 .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-  background: #000000 !important; /* 움직이는 바의 색상 (검은색) */
+  background: var(--black-1); /* 움직이는 바의 색상 (검은색) */
 }
 
 @media (min-width: 768px) {
