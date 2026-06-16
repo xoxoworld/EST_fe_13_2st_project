@@ -2443,21 +2443,7 @@
   }
 }
 
-/* =========================
-   BEST PRODUCT
-.best-product .container {
-  padding: 24px 0;
-}
-/* 7번째 상품부터는 화면에 표시하지 않음 */
-.product-slide-list .product-product-item:nth-child(n + 7) {
-  display: none;
-}
-
 @media (min-width: 768px) {
-  .best-product {
-    padding: 0;
-    margin: 0 auto;
-  }
   .store-detail-card {
     display: flex;
     flex-direction: row;
