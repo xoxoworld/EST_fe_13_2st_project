@@ -409,12 +409,30 @@
   border-radius: 10px;
   overflow: hidden;
 }
-
-.timesale__image-web {
+.img-box {
   position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+.timesale__image-web {
+  display: block;
   width: 732px;
   height: 190px;
   display: none;
+}
+.img-box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.3s ease;
+  pointer-events: none;
+}
+.img-box:hover:after{
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .timesale__image {
   width: 100%;
@@ -650,7 +668,7 @@
   .best-product {
     max-width: 1272px;
     margin: auto;
-    padding: 120px 0 120px 0;
+    padding: 0 0 120px 0;
     gap: 27px;
   }
   .best-product .container {
