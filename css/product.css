@@ -990,7 +990,7 @@ img {
   background: var(--secondary);
 }
 
-.product-name {
+.product-size {
   display: block;
   margin-bottom: 28px;
   color: var(--black-2);
@@ -1369,7 +1369,7 @@ img {
     border-radius: 6px;
   }
 
-  .side-panel .product-name {
+  .side-panel .product-size {
     margin-bottom: 22px;
     color: var(--black-2);
     font-size: 14px;

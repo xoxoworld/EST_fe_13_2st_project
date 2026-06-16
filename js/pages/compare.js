@@ -40,12 +40,12 @@ let selectedEyewear = {
   2: 3,
 };
 
-// 가격 포맷팅 유틸리티
+// 가격 포맷팅
 function formatPrice(price) {
   return price.toLocaleString("ko-KR") + "원";
 }
 
-// 특정 컬럼 UI 렌더링
+// 컬럼 렌더링
 function renderColumn(columnIndex) {
   const productId = selectedEyewear[columnIndex];
   const product = eyewearData[productId];
@@ -53,6 +53,7 @@ function renderColumn(columnIndex) {
   if (!product) return;
 
   const column = document.querySelectorAll(".compare-column")[columnIndex];
+
   if (!column) return;
 
   column.querySelector(".compare-brand").textContent = product.brand;
@@ -65,48 +66,71 @@ function renderColumn(columnIndex) {
 
   column.querySelector(".dropdown-select-btn span").textContent = product.brand;
 
-  // 버튼 데이터 바인딩
+  // 버튼 데이터 저장
   const buyBtn = column.querySelector(".btn-buy");
   const moreBtn = column.querySelector(".btn-more");
 
   buyBtn.dataset.id = product.id;
   moreBtn.dataset.id = product.id;
+
+  // 상세페이지 경로 저장
   moreBtn.href = product.detailUrl;
 }
 
-// 전체 페이지 초기화
+// 전체 렌더링
 function renderComparePage() {
   Object.keys(selectedEyewear).forEach(index => {
     renderColumn(Number(index));
   });
 }
 
-// 드롭다운 변경 시 호출되는 함수
+// 상품 변경
 function changeEyewear(columnIndex, eyewearId) {
   selectedEyewear[columnIndex] = eyewearId;
   renderColumn(columnIndex);
 }
 
-// 장바구니 로직
+// 장바구니 추가
 function handleBuy(productId) {
-  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-  if (!cart.includes(productId)) {
-    cart.push(productId);
+  const product = eyewearData[productId];
+
+  if (!product) return;
+
+  let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+  const exists = cart.find(item => item.id === productId);
+
+  if (!exists) {
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      quantity: 1,
+    });
+
     localStorage.setItem("cart", JSON.stringify(cart));
   }
-  location.href = "./cart.html";
+  console.log("buy click", productId);
+  // 장바구니 페이지 이동
+  window.location.href = "./cart.html";
 }
 
-// 상세 페이지 이동
+// 상세페이지 이동
 function handleMore(productId) {
   const product = eyewearData[productId];
-  if (product) location.href = product.detailUrl;
+
+  if (!product) return;
+
+  window.location.href = "./product.html";
 }
 
-// 이벤트 바인딩
+// 이벤트
 function bindEvents() {
   document.querySelectorAll(".btn-buy").forEach(button => {
-    button.addEventListener("click", () => handleBuy(Number(button.dataset.id)));
+    button.addEventListener("click", () => {
+      handleBuy(Number(button.dataset.id));
+    });
   });
 
   document.querySelectorAll(".btn-more").forEach(button => {
@@ -117,7 +141,7 @@ function bindEvents() {
   });
 }
 
-// 초기화 실행
+// 실행
 document.addEventListener("DOMContentLoaded", () => {
   renderComparePage();
   bindEvents();

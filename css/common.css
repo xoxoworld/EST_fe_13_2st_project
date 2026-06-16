@@ -1,9 +1,7 @@
 @import url("normalize.css");
 @import url("reset.css");
 @import url("flex-utility.css");
-@import url("normalize.css");
-@import url("reset.css");
-@import url("flex-utility.css");
+
 :root {
   /* Color styles */
   --primary: rgba(23, 41, 236, 1);
@@ -249,7 +247,7 @@ button {
   color: var(--primary);
 }
 @media (min-width: 768px) {
-  .best-product__filter{
+  .best-product__filter {
     padding: 0;
   }
   .filter-btn {
@@ -258,7 +256,7 @@ button {
   }
 }
 @media (min-width: 1272px) {
-  .best-product .container .best-product__filter{
+  .best-product .container .best-product__filter {
     padding: 0;
   }
   .filter-btn {
@@ -382,6 +380,7 @@ button {
 
 .product-card__price {
   font-size: var(--small);
+  font-weight: 700;
 }
 
 .product-card__price span {
@@ -438,8 +437,8 @@ button {
     font-size: var(--normal);
   }
   .product-card__price span {
-  font-size: var(--normal);
-  font-weight: 400;
+    font-size: var(--normal);
+    font-weight: 400;
   }
 }
 @media (min-width: 1272px) {
@@ -489,8 +488,8 @@ button {
     font-size: var(--normal);
   }
   .product-card__price span {
-  font-size: var(--normal);
-  font-weight: 400;
+    font-size: var(--normal);
+    font-weight: 400;
   }
 }
 /* 상품 카드 반응형 */
@@ -527,10 +526,10 @@ button {
   background-color: var(--white-1);
 }
 .search-form {
-    display: none;
+  display: none;
 }
 
-.header-container{
+.header-container {
   width: 100%;
 }
 .header-logo a,
@@ -565,13 +564,13 @@ button {
 /* 헤더 반응형 */
 @media (min-width: 768px) {
   .header {
-  max-width: 768px;
-  margin-inline: auto;
-  padding-inline: 0;
+    max-width: 768px;
+    margin-inline: auto;
+    padding-inline: 0;
   }
 
   .header-container {
-    max-width: 648px; 
+    max-width: 648px;
     margin: 0 auto;
   }
   .search-form {
@@ -580,14 +579,14 @@ button {
 }
 
 @media (min-width: 1272px) {
- .header {
-  max-width: 100%;
-  height: 65px;
-  margin-inline: auto;
-  padding-inline: 0;
+  .header {
+    max-width: 100%;
+    height: 65px;
+    margin-inline: auto;
+    padding-inline: 0;
   }
 
-  .header-container { 
+  .header-container {
     max-width: 1272px;
     height: 100%;
     margin: 0 auto;
@@ -601,7 +600,7 @@ button {
   .search-form {
     display: flex;
   }
-  
+
   .header-btn {
     width: 44px;
     height: 44px;
@@ -609,10 +608,10 @@ button {
     align-items: center;
     justify-content: center;
   }
-  .header-btn-search{
+  .header-btn-search {
     display: none;
   }
-  
+
   .header-btn-account svg,
   .header-btn-cart svg,
   .header-btn-menu svg {
@@ -624,7 +623,6 @@ button {
     width: 28px;
     height: 28px;
   }
-   
 }
 /* 헤더 반응형 */
 /* 헤더 */
@@ -764,6 +762,7 @@ button {
   }
 }
 
+/* 1. 기본 버튼 상태 */
 .primary-btn {
   width: 100%;
   height: 48px;
@@ -773,22 +772,23 @@ button {
   font-weight: 700;
   cursor: pointer;
   box-sizing: border-box;
-  transition: background-color 0.2s ease;
+  transition: background 0.2s ease; /* background-color를 background로 변경 */
 
-  /* 위에서 정의한 변수 대입 */
-  background-color: var(--primary-btn-bg) !important;
-  color: var(--primary-btn-color) !important;
+  /* !important 제거 및 속성 변경 */
+  background: var(--primary-btn-bg);
+  color: var(--primary-btn-color);
 }
 
+/* 2. 호버 상태 (비활성화가 아닐 때) */
 .primary-btn:hover:not(:disabled) {
-  /* 살짝 더 딥한 느낌을 주거나 투명도를 미세하게 조절할 때 활용 */
-  background-color: rgba(26, 26, 26, 1) !important;
+  /* 그라디언트 버튼에 호버 시 단색으로 변하게 하거나 투명도 조절 */
+  background: rgba(26, 26, 26, 1);
 }
 
-/* 비활성화 상태일 때 */
+/* 3. 비활성화 상태 */
 .primary-btn:disabled {
-  /* 위에서 정의한 비활성화 변수 대입 */
-  background-color: var(--primary-btn-disabled-bg) !important;
-  color: var(--primary-btn-color) !important;
+  /* !important 제거 */
+  background: var(--primary-btn-disabled-bg);
+  color: var(--primary-btn-color);
   cursor: not-allowed;
 }

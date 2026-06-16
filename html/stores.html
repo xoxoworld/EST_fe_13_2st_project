@@ -11,6 +11,9 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=favorite"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/flex-utility.css" />
     <link rel="stylesheet" href="../css/stores.css" />
@@ -23,17 +26,34 @@
         <h2 class="text-title-xs"><strong>라운즈</strong> 안경원</h2>
       </section>
 
-      <section class="store-visual d-flex justify-content-center" aria-label="라운즈 안경원 이미지">
-        <img src="../assets/images/store_1.webp" alt="라운즈 안경원 매장" />
-        <div class="visual-dots" aria-hidden="true">
-          <span class="active"></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+      <section
+        class="store-visual d-flex justify-content-center multiple-wrapper swiper"
+        aria-label="라운즈 안경원 이미지"
+      >
+        <div class="multiple-slider swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="../assets/images/store_1.webp" alt="라운즈 안경원 매장" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../assets/images/store_2.webp" alt="라운즈 안경원 매장" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../assets/images/store_3.webp" alt="라운즈 안경원 매장" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../assets/images/store_4.webp" alt="라운즈 안경원 매장" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../assets/images/store_5.webp" alt="라운즈 안경원 매장" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../assets/images/store_6.webp" alt="라운즈 안경원 매장" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../assets/images/store_7.webp" alt="라운즈 안경원 매장" />
+          </div>
         </div>
+        <div class="swiper-pagination"></div>
       </section>
 
       <section class="info-banners" aria-label="라운즈 안경원 안내">
@@ -105,6 +125,27 @@
                   <option>라운즈 강남역점</option>
                   <option>라운즈 판교점</option>
                   <option>라운즈 검암법조타운점</option>
+                  <option>라운즈 광주고산점</option>
+                  <option>라운즈 광주충장로점</option>
+                  <option>라운즈 교보문고 강남점</option>
+                  <option>라운즈 교보문고 천안점</option>
+                  <option>라운즈 라운즈 남위례역점</option>
+                  <option>라운즈 대구영남대점</option>
+                  <option>라운즈 라운즈 동탄목동점</option>
+                  <option>라운즈 동탄역</option>
+                  <option>라운즈 렌즈미 아주대삼거리점</option>
+                  <option>라운즈 렌즈미 엔터식스 상봉점</option>
+                  <option>라운즈 렌즈베리 광명소하점</option>
+                  <option>라운즈 방배점</option>
+                  <option>라운즈 서울역 게이트웨이타워점</option>
+                  <option>라운즈 성남시청점</option>
+                  <option>라운즈 라운즈 세종나성점</option>
+                  <option>라운즈 아브뉴프랑 광교점</option>
+                  <option>라운즈 안양범계점</option>
+                  <option>라운즈 염창역점</option>
+                  <option>라운즈 이수역점</option>
+                  <option>라운즈 코엑스마곡점</option>
+                  <option>라운즈 포항남구점</option>
                 </select>
               </label>
 
@@ -147,8 +188,12 @@
             <button type="button partner-store">파트너 안경원</button>
           </div>
           <div class="select-group">
-            <button type="button" class="material-icons">시/도 선택 keyboard_arrow_down</button>
-            <button type="button" class="material-icons">시/군/구 keyboard_arrow_down</button>
+            <select aria-label="시/도 선택">
+              <option value="">시/도 선택</option>
+            </select>
+            <select aria-label="시/군/구 선택">
+              <option value="">시/군/구</option>
+            </select>
           </div>
         </div>
 

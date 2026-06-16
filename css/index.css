@@ -1,3 +1,675 @@
+/* =========================
+   Banner
+========================= */
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+
+.banner-carousel,
+.banner-viewport,
+.banner-carousel .swiper-slide {
+  height: 100%;
+  overflow: hidden;
+}
+
+.banner-carousel .swiper-slide {
+  position: relative;
+}
+
+.banner-carousel .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================
+   Text Overlay
+========================= */
+
+.banner-text-box {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 0 24px 24px;
+  color: var(--white-1);
+  pointer-events: none;
+}
+
+.banner-text-box > * {
+  pointer-events: auto;
+}
+
+/* =========================
+   Typography
+========================= */
+
+.banner-badge {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.banner-title {
+  margin: 0;
+  font-size: 30px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  line-height: 1.05;
+  font-weight: 700;
+}
+
+.banner-description {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.banner-text-box .link {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  color: var(--white-1);
+  font-size: 10px;
+}
+
+/* =========================
+   Button
+========================= */
+
+.banner-btn-box {
+  display: none;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.banner-btn {
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 100px;
+}
+.banner__btn--primary {
+  background: var(--primary);
+}
+.banner__btn--primary:hover {
+  background: var(--secondary);
+  color: var(--primary);
+}
+.banner__btn--primary .banner-btn-icon:hover {
+  background: var(--secondary);
+  color: var(--primary);
+}
+.banner__btn--secondary {
+  border: 1px solid var(--white-1);
+}
+.banner__btn--secondary:hover {
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: var(--white-1);
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+
+  .banner {
+    max-width: 768px;
+    width: 100%;
+    height: 950px;
+    margin: 0 auto;
+  }
+
+  .banner-text-box {
+    padding: 0 40px 40px;
+  }
+
+  .banner-btn-box {
+    display: flex;
+  }
+  .banner-text-box {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 24px 24px;
+    color: var(--white-1);
+    pointer-events: none;
+  }
+  .banner-badge {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .banner-title {
+    margin: 0;
+    font-size: 56px;
+    padding-top: 16px;
+    padding-bottom: 30px;
+    line-height: 1.05;
+    font-weight: 700;
+  }
+
+  .banner-description {
+    margin: 0;
+    font-size: 24px;
+    padding-bottom: 30px;
+    font-weight: 400;
+  }
+  .banner-text-box .link {
+    display: none;
+  }
+}
+
+/* Web */
+@media (min-width: 1272px) {
+  .banner {
+    max-width: none;
+    width: 100%;
+    height: 950px;
+  }
+
+  .container {
+    max-width: 1272px;
+  }
+
+  .banner-carousel.container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .banner-text-box {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 24px 24px;
+    color: var(--white-1);
+    pointer-events: none;
+  }
+  .banner-badge {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .banner-title {
+    margin: 0;
+    font-size: 56px;
+    padding-top: 16px;
+    padding-bottom: 30px;
+    line-height: 1.05;
+    font-weight: 700;
+  }
+
+  .banner-description {
+    margin: 0;
+    font-size: 24px;
+    padding-bottom: 30px;
+    font-weight: 400;
+  }
+  .banner-text-box .link {
+    display: none;
+  }
+}
+
+/* 카테고리 섹션 */
+.category {
+  padding: 24px 0;
+  background-color: #fff;
+}
+
+.category__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.category__item {
+  min-height: 100px;
+  padding: 0 12px;
+  border-radius: 10px;
+  background-color: #eef0f8;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.category-card__icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.category-card__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.category-card__name {
+  font-size: var(--normal);
+  margin: 0px 0px 4px 0px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.category-card__description {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #6c7284;
+  word-break: keep-all;
+}
+@media (min-width: 768px) {
+  .category {
+    padding: 80px 0 0 0;
+  }
+  .category__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .category__item {
+    min-height: 100px;
+    padding: 0 20px;
+    border-radius: 10px;
+    background-color: #eef0f8;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .category-card__name {
+    margin: 0 0 8px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .category-card__description {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #6c7284;
+    word-break: keep-all;
+  }
+  .category-card__icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .category__item {
+    min-height: 140px;
+  }
+}
+
+@media (min-width: 1272px) {
+  .category__list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .category__item {
+    min-height: 100px;
+    padding: 0 20px;
+    border-radius: 10px;
+    background-color: #eef0f8;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .category-card__name {
+    margin: 0 0 8px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .category-card__description {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #6c7284;
+    word-break: keep-all;
+  }
+  .category-card__icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .category__item {
+    min-height: 140px;
+  }
+}
+
+/* Timesale section */
+.timesale {
+  padding: 24px 0;
+  background-color: #ffffff;
+}
+
+.timesale__container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.timesale__header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 16px;
+}
+
+.timesale__label {
+  display: inline-block;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #1729ec;
+}
+
+.timesale__timer {
+  margin: 0;
+  font-size: 75px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.timesale__content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 16px;
+}
+
+.timesale__figure {
+  margin: 0;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.timesale__image-web {
+  position: relative;
+  display: none;
+}
+.timesale__image {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+.timesale__image-wrap .arrow-right {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .timesale {
+    padding: 120px 0;
+  }
+  .timesale__container {
+    gap: 20px;
+  }
+
+  .timesale__header {
+    padding: 0;
+  }
+
+  .timesale__content {
+    display: flex;
+    padding: 0;
+  }
+
+  .timesale__label {
+    font-size: 24px;
+  }
+  .timesale__timer {
+    font-size: 90px;
+  }
+  .timesale__content .more-button {
+    display: none;
+  }
+  .timesale__image {
+    display: none;
+  }
+  .timesale__image-web {
+    display: flex;
+  }
+}
+
+@media (min-width: 1272px) {
+  .timesale {
+    padding: 120px 0;
+  }
+  .timesale__container {
+    max-width: 1272px;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .timesale__header,
+  .timesale__content {
+    padding: 0;
+  }
+
+  .timesale__label {
+    font-size: 24px;
+  }
+  .timesale__timer {
+    font-size: 90px;
+  }
+
+  .timesale__content .more-button {
+    display: none;
+  }
+
+  .timesale__image {
+    display: none;
+  }
+  .timesale__image-web {
+    display: block;
+  }
+}
+
+/* Jenny Collection Section */
+.jenny-collection {
+  padding: 28px 0;
+}
+
+.jenny-collection__container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.jenny-collection__figure {
+  margin: 0;
+  padding: 0 16px 16px;
+}
+
+.jenny-collection__figure video {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* 1. 전체 프로그레스바의 배경선 (사진의 연한 회색 부분) */
+.swiper-pagination-progressbar {
+  background: var(--gray-4);
+  width: 100%;
+  height: 2px; /* 선의 두께 (얇고 길쭉하게) */
+  top: auto; /* 기본 상단 고정을 해제하고 하단으로 내릴 때 사용 */
+  bottom: 0; /* 슬라이드 영역 맨 하단에 딱 붙임 */
+}
+
+/* 2. 현재 위치를 나타내는 채워지는 선 (사진의 진한 검은색 부분) */
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+  background: var(--black-1); /* 움직이는 바의 색상 (검은색) */
+}
+
+@media (min-width: 768px) {
+  .jenny-collection {
+    padding: 0;
+    margin: 80px auto;
+  }
+  .jenny-collection .container {
+    padding: 0;
+  }
+  .jenny-contents {
+    padding: 0;
+  }
+  .jenny-collection__container {
+    gap: 24px;
+  }
+
+  /* 배너 */
+  .jenny-collection__figure {
+    padding: 0;
+    margin-bottom: 24px;
+  }
+
+  .jenny-collection__banner-img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+  }
+}
+
+@media (min-width: 1272px) {
+  .jenny-collection {
+    margin: 120px auto;
+  }
+  .jenny-collection__container {
+    max-width: 1272px;
+    gap: 27px;
+  }
+  .jenny-contents {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  /* 왼쪽 배너 */
+  .jenny-collection__figure {
+    flex: 0 0 620px;
+    width: 620px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .jenny-collection__banner-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  /* 오른쪽 상품영역 */
+  .product-contents {
+    flex: 1;
+    padding: 0;
+    min-width: 0;
+  }
+
+  .jenny-contents .product-contents .product-slide-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+/* =========================
+   BEST PRODUCT
+========================= */
+.best-product .container {
+  padding: 24px 0;
+}
+/* 7번째 상품부터는 화면에 표시하지 않음 */
+.product-slide-list .product-product-item:nth-child(n + 7) {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .best-product {
+    padding: 0;
+    margin: 0 auto;
+  }
+  .best-product .container {
+    padding: 80px 0;
+    gap: 27px;
+  }
+
+  .best-product .product-slide-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .product-slide-list .product-product-item:nth-child(n + 5) {
+    display: none;
+  }
+
+  .best-product .more-button {
+    display: none;
+  }
+}
+
+@media (min-width: 1272px) {
+  .best-product {
+    max-width: 1272px;
+    margin: auto;
+    padding: 120px 0 120px 0;
+    gap: 27px;
+  }
+  .best-product .container {
+    gap: 27px;
+    padding: 0;
+  }
+  .product-slide-list .product-product-item:nth-child(n + 1) {
+    display: list-item;
+  }
+  .best-product .more-button {
+    display: none;
+  }
+
+  /* 상품영역 */
+  .best-product .product-slide-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+}
+
 /* ==========================================================================
    ROUNZ MAIN PAGE STYLE (index.css)
    * common.css에 정의된 글로벌 테마 변수를 바탕으로 메인 페이지의 개별 섹션을 스타일링합니다.
@@ -97,6 +769,9 @@
   transform: scale(1.05);
 }
 
+/* =========================
+   Text Overlay
+========================= */
 .card-overlay {
   position: absolute;
   left: 0;
@@ -1694,6 +2369,23 @@
   color: var(--primary);
 }
 
+.jenny-contents .product-wrapper {
+  margin-bottom: 66px;
+}
+
+/* 1. 전체 프로그레스바의 배경선 (사진의 연한 회색 부분) */
+.swiper-pagination-progressbar {
+  background: var(--gray-4);
+  width: 100%;
+  height: 2px; /* 선의 두께 (얇고 길쭉하게) */
+  top: auto; /* 기본 상단 고정을 해제하고 하단으로 내릴 때 사용 */
+  bottom: 0; /* 슬라이드 영역 맨 하단에 딱 붙임 */
+}
+
+/* 2. 현재 위치를 나타내는 채워지는 선 (사진의 진한 검은색 부분) */
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+  background: var(--black-1); /* 움직이는 바의 색상 (검은색) */
+}
 .call-action {
   border-right: 1px solid #e5e7eb;
 }
@@ -1761,6 +2453,9 @@
   .filter-placeholder {
     font-size: 13px;
   }
+}
+
+@media (width <= 768px) {
   .store-detail-card {
     display: flex;
     flex-direction: row;
