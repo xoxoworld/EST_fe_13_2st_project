@@ -1,3 +1,115 @@
+/* ========================================================
+   0. 공통 설정 (354px 중앙 정렬 기준)
+   ======================================================== */
+.container-inner {
+  width: 100%;
+  max-width: 354px; /* 메인 센터 기준 */
+  margin: 0 auto;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+/* ========================================================
+   1. 헤더 정렬
+   ======================================================== */
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 354px; /* 메인 기준 정렬 */
+  padding: 20px 0;
+}
+
+/* ========================================================
+   2. 모달 박스 (메인)
+   ======================================================== */
+.auth-wrapper {
+  width: 100%;
+  max-width: 402px; /* 모달 전용 너비 */
+  margin: 50px auto;
+  padding: 60px 40px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.input-group input {
+  width: 200px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 0 auto 12px auto;
+  display: block;
+}
+
+.primary-btn {
+  width: 200px;
+  height: 40px;
+  margin: 20px auto;
+  display: block;
+  border-radius: 8px;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ========================================================
+   3. 푸터 정렬 (354px 기준)
+   ======================================================== */
+.footer {
+  width: 100%;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.footer .container-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 내부 요소 가로 중앙 */
+}
+
+/* 푸터 탑: 가로 정렬, 200x48 박스 */
+.footer-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.footer-top a {
+  width: 200px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+
+/* 푸터 바텀: 중앙 정렬 */
+.footer-bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* 공통 대형 버튼 기본 스타일 */
 .primary-btn {
   width: 100%;
