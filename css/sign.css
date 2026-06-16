@@ -3,7 +3,7 @@
    ======================================================== */
 .container-inner {
   width: 100%;
-  max-width: 354px; /* 메인 센터 기준 */
+  max-width: 354px; /* 메인 센터 정렬 기준 */
   margin: 0 auto;
   padding: 0 10px;
   box-sizing: border-box;
@@ -23,7 +23,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 354px; /* 메인 기준 정렬 */
+  max-width: 354px; /* 메인 정렬 기준 */
   padding: 20px 0;
 }
 
@@ -50,85 +50,81 @@
   border-radius: 8px;
   margin: 0 auto 12px auto;
   display: block;
+  box-sizing: border-box;
 }
 
+/* 대형 버튼 공통 스타일 (회원가입 등 사용) */
 .primary-btn {
-  width: 200px;
-  height: 40px;
+  width: 200px; /* 로그인/회원가입 버튼 사이즈 */
+  height: 48px;
   margin: 20px auto;
   display: block;
   border-radius: 8px;
   border: none;
-  background-color: #000;
-  color: #fff;
-  cursor: pointer;
-}
-
-/* ========================================================
-   3. 푸터 정렬 (354px 기준)
-   ======================================================== */
-.footer {
-  width: 100%;
-  padding: 40px 0;
-  text-align: center;
-}
-
-.footer .container-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* 내부 요소 가로 중앙 */
-}
-
-/* 푸터 탑: 가로 정렬, 200x48 박스 */
-.footer-top {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 2px;
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.footer-top a {
-  width: 200px;
-  height: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  text-decoration: none;
-  color: #333;
-  font-size: 14px;
-}
-
-/* 푸터 바텀: 중앙 정렬 */
-.footer-bottom {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* 공통 대형 버튼 기본 스타일 */
-.primary-btn {
-  width: 100%;
-  height: 52px;
-  background: var(--primary-btn-bg); /* 기존 그라디언트 변수 정상 작동 */
+  background: var(--primary-btn-bg, #000);
   color: var(--primary-btn-color, #fff);
-  border: none;
-  border-radius: var(--radius-md, 8px);
-  font-size: var(--body--m, 16px);
+  font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-/* ⚠️ 필수 추가: JS의 .disabled = true 속성과 상호작용하는 구문 */
 .primary-btn:disabled {
-  background: var(
-    --primary-btn-disabled-bg
-  ) !important; /* common.css의 회색 톤 보정 변수 강제 적용 */
+  background: var(--primary-btn-disabled-bg, #ccc) !important;
   color: rgba(255, 255, 255, 0.6) !important;
-  cursor: not-allowed !important; /* 마우스 커서 금지 표시 */
+  cursor: not-allowed !important;
+}
+
+/* ========================================================
+   3. 푸터 정렬 (354px 기준)
+   ======================================================== */
+/* 1. 푸터 내부 정렬 기준점 (354px) */
+.footer-inner {
+  width: 100% !important;
+  max-width: 354px !important; /* 빨간 박스 기준 */
+  margin: 0 auto !important; /* 박스 자체를 물리적으로 중앙으로 */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important; /* 내부 내용들 가로 중앙 정렬 */
+  text-align: center !important; /* 텍스트 줄바꿈 시 중앙 정렬 */
+}
+
+/* 2. 회사 정보 블록 */
+.company-info {
+  width: 100% !important;
+  text-align: center !important; /* 텍스트 중앙 정렬 강제 */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+/* 3. 주소 정보 */
+.address-text {
+  text-align: center !important;
+  width: 100% !important;
+  display: block !important;
+}
+
+/* 1. 기본값 (모바일: 354px 유지) */
+.footer-inner {
+  width: 100% !important;
+  max-width: 354px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+/* 2. 태블릿 (768px 이상일 때: 480px로 확장) */
+@media (min-width: 768px) {
+  .footer-inner {
+    max-width: 480px !important;
+  }
+}
+
+/* 3. 데스크탑 (1920px 이상일 때: 560px로 확장) */
+@media (min-width: 1920px) {
+  .footer-inner {
+    max-width: 560px !important;
+  }
 }
