@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const steps = document.querySelectorAll(".step-section"); // 각 단계 섹션 (.step-section)
   const nextBtns = document.querySelectorAll(".next-btn"); // 다음 단계로 넘어가는 버튼들
+
   let currentStep = 0; // 현재 회원가입 단계 인덱스
   let timerInterval = null; // OTP 타이머 인터벌 변수
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const termsData = [
     { id: "all", text: "모두 동의합니다.", isRequired: false },
@@ -36,26 +39,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const validateTerms = () => {
       const requiredChecks = termsList.querySelectorAll(".sub-check[data-required='true']");
-      const allRequiredChecked = Array.from(requiredChecks).every(chk => chk.checked);
-      step1NextBtn.disabled = !allRequiredChecked;
+      step1NextBtn.disabled = !Array.from(requiredChecks).every(chk => chk.checked);
     };
 
     allCheck.addEventListener("change", () => {
-      subChecks.forEach(chk => {
-        chk.checked = allCheck.checked;
-      });
+      subChecks.forEach(chk => (chk.checked = allCheck.checked));
       validateTerms();
     });
 
     subChecks.forEach(chk => {
-      chk.checked = false;
       chk.addEventListener("change", () => {
-        const allChecked = Array.from(subChecks).every(c => c.checked);
-        allCheck.checked = allChecked;
+        allCheck.checked = Array.from(subChecks).every(c => c.checked);
         validateTerms();
       });
     });
-
     validateTerms();
   }
 
