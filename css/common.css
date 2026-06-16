@@ -249,7 +249,7 @@ button {
   color: var(--primary);
 }
 @media (min-width: 768px) {
-  .best-product__filter{
+  .best-product__filter {
     padding: 0;
   }
   .filter-btn {
@@ -258,12 +258,88 @@ button {
   }
 }
 @media (min-width: 1272px) {
-  .best-product .container .best-product__filter{
+  .best-product .container .best-product__filter {
     padding: 0;
   }
   .filter-btn {
     padding: 8px 16px;
     font-size: var(--normal);
+  }
+}
+/* Side menu (mobile) */
+.side-menu {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  z-index: 1200;
+  pointer-events: none;
+}
+.side-menu__overlay {
+  flex: 1 1 auto;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  pointer-events: none;
+}
+.side-menu__panel {
+  width: min(402px, 85%);
+  max-width: 85%;
+  background: var(--white-1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateX(-100%);
+  transition: transform 0.28s ease;
+  pointer-events: auto;
+  overflow-y: auto;
+  padding: 20px 16px;
+}
+.side-menu__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: transparent;
+  margin-bottom: 8px;
+}
+.side-menu__nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.side-menu__nav a {
+  color: var(--black-2);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+.side-menu.open {
+  pointer-events: auto;
+}
+.side-menu.open .side-menu__overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+.side-menu.open .side-menu__panel {
+  transform: translateX(0);
+}
+/* Responsive widths for side menu panel per design */
+.side-menu__panel {
+  width: min(402px, 85%);
+}
+
+@media (min-width: 481px) and (max-width: 1023px) {
+  .side-menu__panel {
+    width: min(624px, 85%);
+  }
+}
+
+@media (min-width: 1024px) {
+  .side-menu__panel {
+    width: min(480px, 85%);
   }
 }
 /* 필터 */
@@ -439,8 +515,8 @@ button {
     font-size: var(--normal);
   }
   .product-card__price span {
-  font-size: var(--normal);
-  font-weight: 400;
+    font-size: var(--normal);
+    font-weight: 400;
   }
 }
 @media (min-width: 1272px) {
@@ -490,8 +566,8 @@ button {
     font-size: var(--normal);
   }
   .product-card__price span {
-  font-size: var(--normal);
-  font-weight: 400;
+    font-size: var(--normal);
+    font-weight: 400;
   }
 }
 /* 상품 카드 반응형 */
@@ -528,10 +604,10 @@ button {
   background-color: var(--white-1);
 }
 .search-form {
-    display: none;
+  display: none;
 }
 
-.header-container{
+.header-container {
   width: 100%;
 }
 .header-logo a,
@@ -566,13 +642,13 @@ button {
 /* 헤더 반응형 */
 @media (min-width: 768px) {
   .header {
-  max-width: 768px;
-  margin-inline: auto;
-  padding-inline: 0;
+    max-width: 768px;
+    margin-inline: auto;
+    padding-inline: 0;
   }
 
   .header-container {
-    max-width: 648px; 
+    max-width: 648px;
     margin: 0 auto;
   }
   .search-form {
@@ -581,14 +657,14 @@ button {
 }
 
 @media (min-width: 1272px) {
- .header {
-  max-width: 100%;
-  height: 65px;
-  margin-inline: auto;
-  padding-inline: 0;
+  .header {
+    max-width: 100%;
+    height: 65px;
+    margin-inline: auto;
+    padding-inline: 0;
   }
 
-  .header-container { 
+  .header-container {
     max-width: 1272px;
     height: 100%;
     margin: 0 auto;
@@ -602,7 +678,7 @@ button {
   .search-form {
     display: flex;
   }
-  
+
   .header-btn {
     width: 44px;
     height: 44px;
@@ -610,10 +686,10 @@ button {
     align-items: center;
     justify-content: center;
   }
-  .header-btn-search{
+  .header-btn-search {
     display: none;
   }
-  
+
   .header-btn-account svg,
   .header-btn-cart svg,
   .header-btn-menu svg {
@@ -625,7 +701,6 @@ button {
     width: 28px;
     height: 28px;
   }
-   
 }
 /* 헤더 반응형 */
 /* 헤더 */
