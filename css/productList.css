@@ -8,7 +8,7 @@ body {
   padding-bottom: 118px;
   background: var(--white-1);
   color: var(--black-2);
-  font-size: 12px;
+  font-size: var(--base-font);
   letter-spacing: 0;
   padding: 0;
   margin: 0;
@@ -87,7 +87,7 @@ body {
 }
 .w-filter-btn {
   gap: 5px;
-  font-size: 11px;
+  font-size: var(--base-font);
 }
 .filter-btn {
   width: 53px;
@@ -101,7 +101,7 @@ body {
   display: none;
 }
 .w-filter-count {
-  font-size: 11px;
+  font-size: var(--base-font);
 }
 .filter-btn:hover {
   background: var(--primary);
@@ -149,7 +149,7 @@ body {
   gap: 4px;
 }
 .product-list-name {
-  font-size: 11px;
+  font-size: var(--base-font);
   color: var(--gray-1);
 }
 .product-list-brand,
@@ -360,7 +360,6 @@ body {
   }
   .container {
     max-width: 1272px;
-    padding: 0;
   }
 
   .sunglasses-page {
@@ -449,8 +448,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #fff;
-    font-size: 11px;
+    color: var(--white-1);
+    font-size: var(--base-font);
     font-weight: 700;
   }
   .f-more-btn {
@@ -463,7 +462,7 @@ body {
     height: 47px;
     padding-left: 10px;
     border: 1px solid var(--gray-4);
-    border-radius: 5px;
+    border-radius: var(--radius-s);
     width: 100%;
     box-sizing: border-box;
   }
@@ -522,7 +521,7 @@ body {
     width: 267px;
     height: 244px;
     padding: 30px;
-    border-radius: 15px;
+    border-radius: var(--radius-xl);
   }
   .ai-filter-content {
     gap: 30px;
