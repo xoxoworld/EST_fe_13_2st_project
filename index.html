@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ROUNZ</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/flex-utility.css">
     <link rel="stylesheet" href="../css/index.css" />
@@ -52,6 +53,45 @@
         </nav>
       </div>
     </header>
+    <!-- sidebar -->
+    <div class="sidebar-overlay"></div>
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <button class="sidebar-close" type="button" aria-label="메뉴 닫기">
+          <img src="./assets/icons/sidebar_arrow_forward.svg" alt="닫기" />
+        </button>
+        <button class="sidebar-close" type="button" aria-label="검색">
+          <img src="./assets/icons/sidebar_search.svg" alt="검색" />
+        </button>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-menu-list-left">
+          <ul class="sidebar-menu-list">
+            <li class="active"><a href="#">ALL</a></li>
+            <li><a href="#">선글라스</a></li>
+            <li><a href="#">안경테</a></li>
+            <li><a href="#">베스트</a></li>
+            <li><a href="#">신상품</a></li>
+            <li><a href="#">브랜드</a></li>
+            <li><a href="#">AI피팅</a></li>
+            <li><a href="#">라운즈ONLY</a></li>
+            <li><a href="#">안경원</a></li>
+            <li><a href="#">기획전</a></li>
+            <li><a href="#">라운즈 소개</a></li>
+            <li><a href="#">고객센터</a></li>
+          </ul>
+        </div>
+
+        <ul class="sidebar-menu-list-right d-flex flex-column">
+          <li><a href="#">전 제품보기<img src="./assets/icons/sidebar_arrow_right.svg" alt=""></a></li>
+          <li class="sidebar_event-img d-flex flex-column">
+            <strong class="text-subtitle-s">WELCOME BENEFITS</strong>
+            <a href="#"><img src="./assets/images/sidebar_event.png" alt=""></a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
     <main>
       <!-- 메인 배너 섹션 -->
       <section class="banner" aria-label="프로모션 배너">
@@ -1094,7 +1134,6 @@
         </div>
       </section>
     </main>
-
     <!-- 푸터 영역: 매장 찾기 링크, 약관/개인정보 처리방침, 사업자 정보 노출 -->
     <footer class="footer">
       <div class="footer-inner">
@@ -1180,6 +1219,6 @@
         </div>
       </div>
     </footer>
-    <script src="../js/main.js"></script>
+    <script src="./js/main.js"></script>
   </body>
 </html>
