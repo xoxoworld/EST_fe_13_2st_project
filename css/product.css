@@ -182,16 +182,21 @@ img {
 .color-chip img {
   object-fit: cover;
 }
+.total {
+  margin-top: 30px;
+}
 .price-title {
   display: none;
 }
 .price {
-  margin: 31px 0 0;
   color: var(--black-1);
   font-size: 22px;
   font-weight: 800;
   line-height: 1;
   text-align: right;
+}
+.bottom-buttons + .compare-model {
+  display: none;
 }
 .side-panel .bottom-buttons {
   display: none;
@@ -813,6 +818,7 @@ img {
   background-color: var(--primary);
   color: var(--white-1);
   text-align: center;
+  border-radius: 5px;
 }
 
 .bottom-buttons {
@@ -1161,6 +1167,15 @@ img {
     justify-content: space-between;
     align-items: center;
   }
+  .total .compare-model {
+    display: none;
+  }
+  .bottom-buttons + .compare-model {
+    display: block;
+    width: 100%;
+    height: 47px;
+  }
+
   .price {
     margin: 22px 0 18px;
     font-size: 24px;
@@ -1173,6 +1188,7 @@ img {
   .side-panel .bottom-buttons .cart-btn,
   .side-panel .bottom-buttons .buy-btn {
     width: 100%;
+    height: 58px;
   }
 
   .side-panel .rounz-only-wrap {
