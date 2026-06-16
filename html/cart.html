@@ -45,7 +45,9 @@
 
         <!-- 상품 -->
         <section class="cart-list">
-          <article class="cart-item d-flex flex-column">
+
+
+          <!-- <article class="cart-item d-flex flex-column">
             <p class="brand-name">Ray-Ban</p>
             <div class="cart-item-content d-flex align-items-center">
               <label class="item-check">
@@ -59,19 +61,19 @@
               <button type="button" class="delete-btn">
                 <span class="material-icons close">close</span>
               </button>
-            </div>
+            </div> -->
 
-            <!-- 옵션 -->
-            <label class="option-select">
+          <!-- 옵션 -->
+          <!-- <label class="option-select">
               <select>
                 <option>그레이 / 51mm</option>
                 <option>블랙 / 51mm</option>
                 <option>브라운 / 51mm</option>
               </select>
-            </label>
+            </label> -->
 
-            <!-- 수량 + 가격 -->
-            <div class="product-bottom d-flex justify-content-between align-items-center">
+          <!-- 수량 + 가격 -->
+          <!-- <div class="product-bottom d-flex justify-content-between align-items-center">
               <div class="quantity-box d-flex align-items-center">
                 <button type="button">
                   <span class="material-icons">remove</span>
@@ -83,7 +85,7 @@
               </div>
               <strong class="product-price">204,800원</strong>
             </div>
-          </article>
+          </article> -->
         </section>
 
         <!-- 배너 -->
@@ -113,28 +115,6 @@
 
       <!-- 오른쪽 -->
       <aside class="cart-right">
-        <!-- 결제 예상 금액 -->
-        <section class="payment-summary d-flex flex-column g-10">
-          <h3>결제 예상 금액</h3>
-          <div class="payment-card d-flex flex-column">
-            <h4>전체 합계</h4>
-            <div class="d-flex flex-column g-10">
-              <div class="payment-row d-flex justify-content-between">
-                <span>제품 수</span>
-                <span>2개</span>
-              </div>
-              <div class="payment-row d-flex justify-content-between">
-                <span>제품 금액</span>
-                <span>204,800원</span>
-              </div>
-            </div>
-            <div class="payment-total d-flex justify-content-between">
-              <span>최종 결제 금액</span>
-              <strong>204,800원</strong>
-            </div>
-          </div>
-        </section>
-
         <!-- 구매 예상 혜택 -->
         <section class="benefit-summary  d-flex flex-column g-10">
           <h3>구매 예상 혜택</h3>
@@ -144,14 +124,36 @@
               신한 카드 구매 시
             </button>
             <div class="benefit d-flex flex-column g-10">
-              <div class="benefit-row d-flex justify-content-center justify-content-between">
-                <span>결제 및 할인</span>
-                <span>10,000원</span>
-              </div>
               <div class="benefit-row d-flex justify-content-between">
                 <span>멤버십 포인트 적립</span>
-                <span>100,000원</span>
+                <span class="point-amount">0원</span>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 결제 예상 금액 -->
+        <section class="payment-summary d-flex flex-column g-10">
+          <h3>결제 예상 금액</h3>
+          <div class="payment-card d-flex flex-column">
+            <h4>전체 합계</h4>
+            <div class="d-flex flex-column g-10">
+              <div class="payment-row d-flex justify-content-between">
+                <span>제품 수</span>
+                <span class="product-count">2개</span>
+              </div>
+              <div class="payment-row d-flex justify-content-between">
+                <span>제품 금액</span>
+                <span class="product-amount">204,800원</span>
+              </div>
+              <div class="payment-row d-flex justify-content-between">
+                <span>할인 금액</span>
+                <span class="discount-amount">-10,000원</span>
+              </div>
+            </div>
+            <div class="payment-total d-flex justify-content-between">
+              <span>최종 결제 금액</span>
+              <strong class="total-amount">204,800원</strong>
             </div>
           </div>
         </section>
@@ -193,7 +195,7 @@
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="../js/cart.js"></script>
+  <script src="../js/pages/cart.js"></script>
 </body>
 
 </html>

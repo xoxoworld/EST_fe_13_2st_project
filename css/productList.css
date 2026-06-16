@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
 }
 
 body {
@@ -439,8 +439,8 @@ body {
     appearance: none;
     -webkit-appearance: none;
     position: relative;
-    width: 13px;
-    height: 13px;
+    width: 18px;
+    height: 18px;
     border: 1px solid var(--gray-3);
     border-radius: 50%;
     background-color: var(--white-1);
@@ -457,7 +457,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
   }
   .f-more-btn {
