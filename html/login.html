@@ -113,22 +113,34 @@
               <h2 class="text-subtitle-xl">로그인</h2>
             </div>
 
-            <div class="input-group">
-              <input type="text" id="useremail" placeholder="example@gmail.com" />
-              <input type="password" id="userpassword" placeholder="비밀번호 입력" />
-            </div>
+            <form id="login-form" action="/login-process" method="POST">
+              <div class="input-group">
+                <input
+                  type="text"
+                  id="useremail"
+                  name="useremail"
+                  placeholder="example@gmail.com"
+                />
+                <input
+                  type="password"
+                  id="userpassword"
+                  name="userpassword"
+                  placeholder="비밀번호 입력"
+                />
+              </div>
 
-            <nav class="text-links" aria-label="계정 메뉴">
-              <a href="#">아이디 찾기</a>
-              <a href="#">비밀번호 찾기</a>
-              <a href="signup.html">회원가입</a>
-            </nav>
+              <nav class="text-links" aria-label="계정 메뉴">
+                <a href="#">아이디 찾기</a>
+                <a href="#">비밀번호 찾기</a>
+                <a href="signup.html">회원가입</a>
+              </nav>
 
-            <div class="divider"><span>또는</span></div>
+              <div class="divider"><span>또는</span></div>
 
-            <div class="social-group" id="social-container"></div>
+              <div class="social-group" id="social-container"></div>
 
-            <button class="primary-btn" id="login-btn">로그인</button>
+              <button type="submit" class="primary-btn" id="login-btn">로그인</button>
+            </form>
           </div>
         </section>
       </main>
@@ -151,6 +163,12 @@
                 <span class="policy-bold">개인정보처리방침</span>
               </address>
               <p class="copyright">&copy;ROUNZ</p>
+            </div>
+
+            <div class="footer-links">
+              <a href="#">라운즈앱</a> | <a href="#">라운즈 해외</a> |
+              <a href="#">라운즈 파트너스</a> | <a href="#">글라스박스</a> |
+              <a href="#">가맹문의</a> | <a href="#">사업자 정보확인</a>
             </div>
 
             <ul class="social-links">

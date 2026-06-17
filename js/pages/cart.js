@@ -55,32 +55,11 @@ console.log(getCartCount());
 
 updateCartCountFx();
 
-// 총 금액 계산
-function updateTotalAmount() {
-  const sum = cart.reduce(
-    (acc, current) => acc + current.qty * current.price, 0,);
-
-  const count = cart.reduce(
-    (acc, current) => acc + current.qty, 0,);
-
-  const discount = sum > 0 ? 10000 : 0;
-  const finalPrice = Math.max(0, sum - discount);
-  const point = Math.floor(sum * 0.1);
-
-  productCount.textContent = `${count}개`;
-  productAmount.textContent = `${sum.toLocaleString("ko-KR")}원`;
-  discountAmount.textContent = discount === 0 ? "0원" : `-${discount.toLocaleString("ko-KR")}원`;
-  totalAmount.textContent = `${finalPrice.toLocaleString("ko-KR")}원`;
-  pointAmount.textContent = `${point.toLocaleString("ko-KR")}원`;
-}
-updateTotalAmount();
-
 function saveCart() {
   writeCart(cart);
   updateCartCountFx();
   updateTotalAmount();
 }
-
 
 function renderCart() {
   // 기존 상품 제거

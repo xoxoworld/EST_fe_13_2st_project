@@ -206,6 +206,18 @@ body {
   margin: 0 auto;
   padding: 0 16px;
 }
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 1272px) {
+  .container {
+    max-width: 1272px;
+    margin: 0 auto;
+  }
+}
 
 /* 버튼 */
 a {
@@ -226,28 +238,35 @@ button {
 }
 
 /* 필터 */
-.best-product__filter {
-  display: flex;
-  padding: 0 16px;
-  gap: 10px;
+.filter {
   overflow-x: auto;
   scrollbar-width: none;
 }
 
-.best-product__filter::-webkit-scrollbar {
+.filter::-webkit-scrollbar {
   display: none;
 }
 
 .filter-btn {
   border-radius: 100px;
-  padding: 8px 12px;
+  height: 20px;
+  padding: 4px 12px;
   font-size: var(--base-font);
+  font-weight: 600;
   background-color: var(--white-1);
   border: 1px solid var(--primary);
   color: var(--primary);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+.filter-btn:hover,
+.filter-btn.active {
+  background-color: var(--primary);
+  color: var(--white-1);
 }
 @media (min-width: 768px) {
-  .best-product__filter {
+  .filter {
     padding: 0;
   }
   .filter-btn {
@@ -256,7 +275,7 @@ button {
   }
 }
 @media (min-width: 1272px) {
-  .best-product .container .best-product__filter {
+  .best-product .container .filter {
     padding: 0;
   }
   .filter-btn {
@@ -264,6 +283,66 @@ button {
     font-size: var(--normal);
   }
 }
+/* web 컨트롤 방향 버튼 */
+.control-btn {
+  background-color: var(--white-1);
+  width: 200px;
+  align-items: center;
+  justify-content: flex-end;
+}
+.ctrl-btn {
+  width: 40px;
+  height: 40px;
+  background-color: var(--white-1);
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.ctrl-btn:hover {
+  background-color: var(--secondary);
+  border-color: #d9d9d9;
+}
+
+.ctrl-btn svg {
+  transition: fill 0.25s ease;
+}
+
+.ctrl-btn:hover svg {
+  fill: var(--black-1);
+}
+.filter-more-btn .control-btn {
+  display: none;
+}
+
+/* web 컨트롤 방향 버튼 */
+/* web 더보기 btn */
+.more-web-btn {
+  display: none;
+  width: 40px;
+  height: 40px;
+  background: var(--primary);
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+.more-web-btn:hover {
+  background-color: #0b1ec2;
+}
+.more-web-btn a {
+  padding-top: 1px;
+  text-decoration: none;
+}
+@media (min-width: 768px) {
+  .filter-more-btn .control-btn {
+    display: flex !important;
+  }
+}
+@media (min-width: 1272px) {
+  .filter-more-btn .control-btn {
+    display: flex !important;
+  }
+}
+/* web 더보기 btn */
 /* 필터 */
 
 /* 모바일 더보기 btn */
@@ -283,12 +362,10 @@ button {
 /* 모바일 더보기 btn */
 
 /* 모바일 섹션 별 헤더 */
-.product-header {
-  padding: 0 16px;
-}
-
 .product-title {
   margin: 0;
+  font-size: clamp(20px, 2.5vw + 10px, 32px);
+  font-weight: 700;
   color: var(--black-2);
 }
 
@@ -304,10 +381,6 @@ button {
 /* 모바일 섹션 별 헤더 */
 
 /* --------상품 카드요소--------- */
-.product-contents {
-  padding: 0 16px;
-}
-
 .product-swiper {
   overflow: hidden;
 }
@@ -495,28 +568,6 @@ button {
 /* 상품 카드 반응형 */
 /* --------상품 카드요소--------- */
 
-/* web 더보기 btn */
-.filter-more-btn .more-web-btn {
-  display: none;
-  width: 40px;
-  height: 40px;
-  background: var(--primary);
-}
-.more-web-btn a {
-  padding-top: 1px;
-  text-decoration: none;
-}
-@media (min-width: 768px) {
-  .best-product .filter-more-btn .more-web-btn {
-    display: flex !important;
-  }
-}
-@media (min-width: 1272px) {
-  .best-product .filter-more-btn .more-web-btn {
-    display: flex !important;
-  }
-}
-/* web 더보기 btn */
 
 /* 헤더 */
 .header {
@@ -633,6 +684,131 @@ button {
 }
 /* 헤더 반응형 */
 /* 헤더 */
+
+/* 사이드바 */
+.sidebar {
+  position: fixed;
+  max-width: 402px;
+  top:0;
+  left:0;
+  width:480px;
+  height:100vh;
+  background: var(--white-1);
+  transform:translateX(-100%);
+  transition:.3s ease;
+  z-index:2000;
+}
+
+.sidebar.active{
+  transform:translateX(0);
+}
+
+/* 어두운 영역 */
+.sidebar-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.35);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  z-index:1500;
+}
+
+.sidebar-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+
+/* 사이드바 헤더 */
+.sidebar-header{
+  height:46px;
+  padding:0 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom: 10px solid var(--white-2);
+}
+
+.sidebar-logo img{
+  width:80px;
+}
+
+.sidebar-close{
+  border:0;
+  background:none;
+}
+
+/* 메뉴 */
+.sidebar-nav{
+  display: flex;
+  height: 100%;
+}
+.sidebar-menu-list-left {
+  width: 120px;
+  background-color: var(--white-2);
+}
+
+.sidebar-menu-list {
+  background-color: var(--white-2);
+  width: 100%;
+  height: auto;
+  display:flex;
+  flex-direction:column;
+}
+.sidebar-menu-list li:hover {
+  background-color: var(--white-1);
+}
+.sidebar-menu-list li.active {
+  background-color: var(--white-1);
+}
+.sidebar-menu-list-right li {
+  width: 282px;
+  height: 54px;
+  gap: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 30px;
+}
+.sidebar-menu-list-right .sidebar_event-img {
+  height: auto;
+  padding: 0 20px;
+  padding-top: 80px;
+}
+
+.sidebar-menu-list li {
+  width: 120px;
+  background-color: var(--white-2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 54px;
+}
+.sidebar-menu-list,
+.sidebar-menu-list-right a{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--medium);
+  font-weight:600;
+}
+
+/* 태블릿 반응형 수정중*/
+/* @media(min-width:624px){
+ .sidebar{
+   max-width:624px;
+ }
+} */
+
+/* 웹 반응형 수정중 */
+/* @media(min-width:480px){
+ .sidebar{
+   max-width:480px;
+ }
+} */
 
 /* 푸터 */
 .footer {

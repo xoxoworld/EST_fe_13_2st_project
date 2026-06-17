@@ -1799,3 +1799,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+/*사이드바*/
+$(function(){
+  const $menuBtn = $(".header-btn-menu");
+  const $sidebar = $(".sidebar");
+  const $overlay = $(".sidebar-overlay");
+  const $close = $(".sidebar-close");
+  // 열기
+  $menuBtn.on("click", function(){
+    $sidebar.toggleClass("active");
+    $overlay.toggleClass("active");
+  });
+  // 닫기
+  $close.on("click", function(){
+    $sidebar.removeClass("active");
+    $overlay.removeClass("active");
+  });
+  // 바깥 클릭 닫기
+  $overlay.on("click", function(){
+    $sidebar.removeClass("active");
+    $overlay.removeClass("active");
+  });
+  // 닫기
+  $(document).on("keydown", function(e){
+    if(e.key === "Escape"){
+      $sidebar.removeClass("active");
+      $overlay.removeClass("active");
+    }
+  });
+});
+/*사이드바*/
