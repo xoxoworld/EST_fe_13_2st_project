@@ -9,6 +9,16 @@
   box-sizing: border-box;
 }
 
+.auth-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+}
+
 /* ========================================================
    1. 헤더 정렬
    ======================================================== */
@@ -32,9 +42,9 @@
    ======================================================== */
 .auth-wrapper {
   width: 100%;
-  max-width: 402px; /* 모달 전용 너비 */
+  max-width: 354px; /* default: 모바일 기준 */
   margin: 50px auto;
-  padding: 60px 40px;
+  padding: 40px 24px;
   box-sizing: border-box;
   background-color: #ffffff;
   border: 1px solid #e0e0e0;
@@ -43,36 +53,41 @@
 }
 
 .input-group input {
-  width: 200px;
-  height: 40px;
+  width: 100%;
+  height: 44px;
   padding: 0 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  margin: 0 auto 12px auto;
+  margin: 0 0 12px 0;
   display: block;
   box-sizing: border-box;
 }
 
 /* 대형 버튼 공통 스타일 (회원가입 등 사용) */
 .primary-btn {
-  width: 200px; /* 로그인/회원가입 버튼 사이즈 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   height: 48px;
-  margin: 20px auto;
-  display: block;
-  border-radius: 8px;
+  margin: 20px 0;
   border: none;
-  background: var(--primary-btn-bg, #000);
-  color: var(--primary-btn-color, #fff);
+  border-radius: 8px;
+  background: var(--primary-btn-bg, #6732e2); /* 기본값 설정 */
+  color: #fff;
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: opacity 0.2s ease;
+}
+
+.primary-btn:hover:not(:disabled) {
+  opacity: 0.9;
 }
 
 .primary-btn:disabled {
-  background: var(--primary-btn-disabled-bg, #ccc) !important;
-  color: rgba(255, 255, 255, 0.6) !important;
-  cursor: not-allowed !important;
+  background: #ccc;
+  cursor: not-allowed;
 }
 
 /* ========================================================
@@ -80,51 +95,54 @@
    ======================================================== */
 /* 1. 푸터 내부 정렬 기준점 (354px) */
 .footer-inner {
-  width: 100% !important;
-  max-width: 354px !important; /* 빨간 박스 기준 */
-  margin: 0 auto !important; /* 박스 자체를 물리적으로 중앙으로 */
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important; /* 내부 내용들 가로 중앙 정렬 */
-  text-align: center !important; /* 텍스트 줄바꿈 시 중앙 정렬 */
+  width: 100%;
+  max-width: 354px; /* 빨간 박스 기준 */
+  margin: 0 auto; /* 박스 자체를 물리적으로 중앙으로 */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 내부 내용들 가로 중앙 정렬 */
+  text-align: center; /* 텍스트 줄바꿈 시 중앙 정렬 */
 }
 
 /* 2. 회사 정보 블록 */
 .company-info {
-  width: 100% !important;
-  text-align: center !important; /* 텍스트 중앙 정렬 강제 */
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
+  width: 100%;
+  text-align: center; /* 텍스트 중앙 정렬 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* 3. 주소 정보 */
 .address-text {
-  text-align: center !important;
-  width: 100% !important;
-  display: block !important;
+  text-align: center;
+  width: 100%;
+  display: block;
 }
 
 /* 1. 기본값 (모바일: 354px 유지) */
 .footer-inner {
-  width: 100% !important;
-  max-width: 354px !important;
-  margin: 0 auto !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
+  width: 100%;
+  max-width: 354px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* 2. 태블릿 (768px 이상일 때: 480px로 확장) */
+/* 반응형: auth-wrapper, footer-inner, container-inner의 최대 너비를 동기화 */
 @media (min-width: 768px) {
-  .footer-inner {
-    max-width: 480px !important;
+  .auth-wrapper,
+  .footer-inner,
+  .container-inner {
+    max-width: 480px;
   }
 }
 
-/* 3. 데스크탑 (1920px 이상일 때: 560px로 확장) */
 @media (min-width: 1920px) {
-  .footer-inner {
-    max-width: 560px !important;
+  .auth-wrapper,
+  .footer-inner,
+  .container-inner {
+    max-width: 560px;
   }
 }

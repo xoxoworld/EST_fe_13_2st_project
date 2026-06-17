@@ -1,21 +1,25 @@
-/* ========================================================
-   1. 기본 레이아웃 및 래퍼
-   ======================================================== */
+/* 가로 스크롤 방지 */
 html,
 body {
-  overflow-x: hidden !important;
-  max-width: 100% !important;
-  margin: 0;
-  padding: 0;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 #app-container {
-  min-height: 100vh !important;
-  background-color: #ffffff !important;
-  display: flex !important;
-  flex-direction: column !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
+  min-height: 100vh;
+  background-color: #ffffff; /* 흰색 베이스 */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* 헤더 및 푸터 기본 표시 */
+.header,
+.footer {
+  display: flex;
 }
 
 .header-underline {
@@ -25,120 +29,222 @@ body {
   flex-shrink: 0;
 }
 
+/* 메인 레이아웃 중앙 정렬 */
 .main-layout {
-  flex: 1;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  padding: 40px 20px !important;
-  box-sizing: border-box !important;
-  width: 100% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
-/* ========================================================
-   2. 인증 박스 (로그인 폼 중심)
-   ======================================================== */
-.auth-wrapper {
-  width: 100% !important;
-  max-width: 354px !important;
-  margin: 0 auto !important;
-  padding: 40px 24px !important;
-  background-color: #ffffff !important;
-  border: 1px solid #e0e0e0 !important;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
-  display: flex !important;
-  flex-direction: column !important;
-  box-sizing: border-box !important;
-}
-
-@media (min-width: 768px) {
-  .auth-wrapper {
-    max-width: 480px !important;
-  }
-}
-
-/* ========================================================
-   3. 로그인 폼 내부 요소
-   ======================================================== */
-#login-form {
+/* 로그인 페이지 uses shared .auth-wrapper from sign.css */
+.login-section {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  gap: 20px;
-}
-
-.login-header {
-  text-align: center !important;
-  margin-bottom: 24px !important;
-}
-
-.login-header .logo {
-  font-size: 28px !important;
-  font-weight: 800 !important;
-  margin-bottom: 4px !important;
+  justify-content: center;
+  align-items: center;
 }
 
 .input-group {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-bottom: 20px;
 }
 
-.input-group input {
-  width: 100% !important;
-  height: 48px !important;
-  padding: 0 16px !important;
-  border: 1.5px solid var(--radius-color, #a0a0a0) !important;
-  border-radius: 8px !important;
-  box-sizing: border-box !important;
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border: 1.5px solid #a0a0a0;
+  border-radius: var(--radius-md, 8px);
+  font-size: var(--small, 14px);
+  color: var(--black-2, #111);
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+input::placeholder {
+  color: var(--gray-3, #999);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: var(--primary-btn-bg, #6732e2);
+}
+
+.login-header {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 24px;
+}
+.login-header .logo {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+  color: var(--black-2, #1c1b1f);
+}
+.login-header p {
+  font-size: 13px;
+  color: var(--gray-2, #767676);
+  margin: 0;
+}
+
+.page-title-box {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.page-title-box .text-subtitle-xl {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--black-2, #111);
+  margin: 0;
 }
 
 .text-links {
-  display: flex !important;
-  justify-content: center !important;
-  gap: 15px;
-  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin: 0 0 24px 0;
+  font-size: var(--small, 14px);
+}
+.text-links a:not(:last-child)::after {
+  content: "|";
+  margin-left: 12px;
+  color: var(--radius-color, #dedede);
+  pointer-events: none;
+}
+.text-links a {
   color: var(--gray-2, #767676);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+.text-links a:hover {
+  color: #6732e2;
+  text-decoration: underline;
 }
 
 .divider {
+  display: flex;
+  align-items: center;
   text-align: center;
-  border-top: 1px solid var(--radius-color, #e5e5e5);
-  margin: 20px 0;
-  position: relative;
+  width: 100%;
+  margin: 16px 0;
+  color: var(--gray-3, #999);
+  font-size: var(--small, 14px);
+}
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid var(--radius-color, #e5e5e5);
+}
+.divider span {
+  padding: 0 12px;
 }
 
-.divider span {
-  background: white;
-  padding: 0 10px;
-  color: var(--gray-3, #999);
-  font-size: 12px;
-  position: relative;
-  top: -10px;
+#social-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 8px 0 28px 0;
+  width: 100%;
+}
+.social {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  overflow: hidden;
+  background-color: transparent;
+  flex-shrink: 0;
+}
+.social img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.social.kakao {
+  background-color: #fee500;
+}
+.social.naver {
+  background-color: #03c75a;
+}
+.social.google {
+  background-color: var(--white-1, #ffffff);
+  border: 1px solid var(--radius-color, #dedede);
 }
 
 .primary-btn {
-  width: 100% !important;
-  height: 52px !important;
-  background: var(--primary-btn-bg, #6732e2) !important;
-  color: #fff !important;
-  border: none !important;
-  border-radius: 8px !important;
-  font-weight: 700 !important;
-  cursor: pointer !important;
+  width: 100%;
+  height: 52px;
+  background: var(--primary-btn-bg, #6732e2);
+  color: var(--primary-btn-color, #fff);
+  border: none;
+  border-radius: var(--radius-md, 8px);
+  font-size: var(--body--m, 16px);
+  font-weight: 700;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  margin-top: auto;
+}
+.primary-btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+.primary-btn:disabled {
+  background: var(--primary-btn-disabled-bg, #ccced2);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: not-allowed;
 }
 
-/* ========================================================
-   4. 푸터 정렬
-   ======================================================== */
+/* 헤더 가로폭 전체 확장 및 중앙 배치 */
+.header {
+  width: 100%;
+  max-width: 100%;
+  justify-content: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.header-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+/* 푸터 전체 영역: 화면 전체 너비 */
 .footer {
   width: 100%;
-  display: flex !important;
+  display: flex;
   justify-content: center;
   padding: 40px 0;
 }
-
 .footer-inner {
   width: 100%;
   max-width: 354px;
@@ -147,4 +253,20 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+.footer-top {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 1020px) {
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+  }
 }
