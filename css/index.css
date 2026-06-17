@@ -149,6 +149,10 @@
   background: var(--secondary);
   color: var(--primary);
 }
+.banner__btn--primary:hover .banner-btn-icon svg path,
+.banner__btn--primary:hover .banner-btn-icon svg rect {
+  fill: var(--primary);
+}
 .banner__btn--secondary {
   border: 1px solid var(--white-1);
 }
