@@ -1,5 +1,7 @@
 let product = {};
+let visualSwiper;
 
+// 상품 로드
 async function fetchProduct() {
   const params = new URLSearchParams(location.search);
   const productID = params.get("id");
@@ -33,6 +35,7 @@ async function fetchProduct() {
   }
 }
 
+// 컨텐츠 생성
 function createContent(data) {
   const title = document.querySelector(".product-title"),
     brand = document.querySelector(".brand-path"),
@@ -40,7 +43,8 @@ function createContent(data) {
     reviewTop = document.querySelector(".review-top"),
     price = document.querySelector(".price"),
     totalPrices = document.querySelectorAll(".total-price"),
-    mainImage = document.querySelector(".visual-wrap img"),
+    visualWrap = document.querySelector(".visual-wrap"),
+    visualCount = document.querySelector(".visual-count"),
     detailWrap = document.querySelector(".detail-wrap"),
     thumbWrap = document.querySelector(".thumb-wrap");
 
@@ -53,11 +57,37 @@ function createContent(data) {
     totalPrice.textContent = `${data.price.final.toLocaleString()}원`;
   });
 
-  mainImage.setAttribute("src", data.images.thumbnail);
-  mainImage.setAttribute("alt", data.title);
+  const galleryImages = [data.images.thumbnail, ...data.images.gallery];
 
+  renderVisualSwiper(visualWrap, visualCount, data, galleryImages);
   renderDetailImages(detailWrap, data);
-  renderThumbImages(thumbWrap, data);
+  renderThumbImages(thumbWrap, galleryImages);
+  initVisualSwiper(visualCount, thumbWrap, galleryImages.length);
+}
+
+// 메인이미지 스와이퍼
+function renderVisualSwiper(visualWrap, visualCount, data, galleryImages) {
+  const swiper = document.createElement("div");
+  const wrapper = document.createElement("div");
+
+  swiper.classList.add("visual-swiper", "swiper");
+  wrapper.classList.add("swiper-wrapper");
+
+  const slides = galleryImages.map((src, index) => {
+    const slide = document.createElement("div");
+    const img = document.createElement("img");
+
+    slide.classList.add("swiper-slide");
+    img.setAttribute("src", src);
+    img.setAttribute("alt", `${data.title} image ${index + 1}`);
+
+    slide.append(img);
+    return slide;
+  });
+
+  wrapper.append(...slides);
+  swiper.append(wrapper);
+  visualWrap.replaceChildren(swiper, visualCount);
 }
 
 // 상세정보 이미지 render
@@ -72,8 +102,9 @@ function renderDetailImages(detailWrap, data) {
   detailWrap.replaceChildren(...detailImages);
 }
 
-function renderThumbImages(thumbWrap, data) {
-  const thumbImages = data.images.gallery.map((src, index) => {
+// 메인이미지 render
+function renderThumbImages(thumbWrap, galleryImages) {
+  const thumbImages = galleryImages.map((src, index) => {
     const button = document.createElement("button");
     const img = document.createElement("img");
 
@@ -81,6 +112,7 @@ function renderThumbImages(thumbWrap, data) {
     if (index === 0) button.classList.add("active");
     button.setAttribute("type", "button");
     button.setAttribute("aria-label", `상품 이미지 ${index + 1}`);
+    button.dataset.index = index;
 
     img.setAttribute("src", src);
     img.setAttribute("alt", "");
@@ -90,11 +122,57 @@ function renderThumbImages(thumbWrap, data) {
   });
 
   thumbWrap.replaceChildren(...thumbImages);
+
+  thumbWrap.addEventListener("click", event => {
+    const thumb = event.target.closest(".thumb");
+    if (!thumb || !visualSwiper) return;
+
+    visualSwiper.slideTo(Number(thumb.dataset.index));
+  });
+}
+
+// 메인이미지 스와이퍼
+function initVisualSwiper(visualCount, thumbWrap, total) {
+  if (visualSwiper) visualSwiper.destroy(true, true);
+
+  visualSwiper = new Swiper(".visual-swiper", {
+    slidesPerView: 1,
+    loop: false,
+    on: {
+      init() {
+        updateProductVisual(visualCount, thumbWrap, this.activeIndex, total);
+      },
+      slideChange() {
+        updateProductVisual(visualCount, thumbWrap, this.activeIndex, total);
+      },
+    },
+  });
+}
+
+function updateProductVisual(visualCount, thumbWrap, index, total) {
+  updateVisualCount(visualCount, index, total);
+  updateActiveThumb(thumbWrap, index);
+}
+
+// visual-count update
+function updateVisualCount(visualCount, index, total) {
+  if (!visualCount) return;
+
+  visualCount.innerHTML = `<strong>${index + 1}</strong> / ${total}`;
+}
+
+// 썸네일이미지 active 추가
+function updateActiveThumb(thumbWrap, index) {
+  const activeThumb = thumbWrap.querySelector(".thumb.active");
+  if (activeThumb) activeThumb.classList.remove("active");
+
+  const nextThumb = thumbWrap.querySelector(`.thumb[data-index="${index}"]`);
+  if (nextThumb) nextThumb.classList.add("active");
 }
 
 fetchProduct();
 
-// 스와이퍼
+// 배너 스와이퍼
 const swiper = new Swiper(".face-banner.swiper", {
   loop: true,
   navigation: {
