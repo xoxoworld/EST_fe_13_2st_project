@@ -98,20 +98,16 @@ function renderCart() {
     item => `
           <article class="cart-item d-flex flex-column" data-id="${item.id}">
             <p class="brand-name">${item.brand}</p>
-
-            <div class="cart-item-content d-flex align-items-center">
+            <div class="cart-item-content">
               <label class="item-check">
                 <input type="checkbox" />
               </label>
-
               <img src="${item.thumb}" alt="${item.title}" class="product-image" />
-
-              <div class="product-content d-flex flex-column">
+              <div class="product-content">
                 <div class="product-info">
                   <p class="product-name">${item.title}</p>
                   <p class="product-code">RB4258F 601/71</p>
                 </div>
-
                 <label class="option-select">
                   <select>
                     <option>그레이 / 51mm</option>
@@ -119,34 +115,28 @@ function renderCart() {
                     <option>화이트 / 51mm</option>
                   </select>
                 </label>
+                <div class="product-bottom">
+                  <div class="quantity-box d-flex align-items-center">
+                    <button type="button" class="minusBtn">
+                      <span class="material-icons">remove</span>
+                    </button>
+                    <span class="quantity">${item.qty}</span>
+                    <button type="button" class="plusBtn">
+                      <span class="material-icons">add</span>
+                    </button>
+                  </div>
+                  <strong class="product-price">
+                    ${item.price.toLocaleString("ko-KR")}원
+                  </strong>
+                </div>
               </div>
-
               <button class="delete-btn">
                 ✕
               </button>
             </div>
-
-            <div class="product-bottom d-flex justify-content-between align-items-center">
-              <div class="quantity-box d-flex align-items-center">
-                <button type="button" class="minusBtn">
-                  <span class="material-icons">remove</span>
-                </button>
-
-                <span class="quantity">${item.qty}</span>
-
-                <button type="button" class="plusBtn">
-                  <span class="material-icons">add</span>
-                </button>
-              </div>
-
-              <strong class="product-price">
-                ${item.price.toLocaleString("ko-KR")}원
-              </strong>
-            </div>
-
+            
             <div class="mobile-total d-flex justify-content-between">
               <span>총 금액</span>
-
               <strong class="mobile-total-price">
                 ${(item.price * item.qty).toLocaleString("ko-KR")}원
               </strong>
