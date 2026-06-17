@@ -12,7 +12,7 @@ const eyewearData = {
     brand: "RAY-BAN",
     name: "웨이페어러 RX5121 2000",
     price: 218000,
-    image: "../assets/images/rayban_02.png",
+    image: "../assets/images/brand_product_01.png",
     detailUrl: "./detail/rx5121.html",
   },
   3: {
@@ -20,7 +20,7 @@ const eyewearData = {
     brand: "GUCCI",
     name: "GG0935O 001",
     price: 325000,
-    image: "../assets/images/gucci_01.png",
+    image: "../assets/images/brand_product_03.png",
     detailUrl: "./detail/gg0935o.html",
   },
   4: {
@@ -28,7 +28,7 @@ const eyewearData = {
     brand: "TOM FORD",
     name: "FT5783-B 001",
     price: 389000,
-    image: "../assets/images/tomford_01.png",
+    image: "../assets/images/brand_product_04.png",
     detailUrl: "./detail/ft5783.html",
   },
 };
