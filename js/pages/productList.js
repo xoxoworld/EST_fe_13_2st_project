@@ -1,7 +1,11 @@
 const sortButtons = document.querySelectorAll(".filter-btn");
 const countPerPage = 12;
 const moreBtn = document.querySelector(".more-btn");
+const categoryInputs = document.querySelectorAll(".category input[type='checkbox']");
+const colorInputs = document.querySelectorAll(".lens-color input[type='checkbox']");
 
+let selectedCategories = [];
+let selectedColors = [];
 let currentCount = countPerPage;
 let products = [];
 let filteredData = [];
@@ -97,7 +101,7 @@ function renderProducts(products) {
                 ${product.brand}
               </p>
 
-              <p class="text-small-r">
+              <p class="product-list-name">
                 ${product.title}
               </p>
 
@@ -114,4 +118,69 @@ function renderProducts(products) {
   productList.innerHTML = html;
 }
 
+// 데스크 탑 필터
+function applyFilter() {
+  let result = [...products];
+
+  // 카테고리
+  if (
+    selectedCategories.length > 0 &&
+    !selectedCategories.includes("all")
+  ) {
+    result = result.filter(product =>
+      selectedCategories.some(value => {
+        if (value === "goggle") {
+          return product["frame-shape"] === "goggle";
+        }
+
+        return product.category === value;
+      })
+    );
+  }
+
+  // 렌즈 색상
+  if (selectedColors.length > 0) {
+    result = result.filter(product => {
+      const text = [
+        product.title,
+        ...(product.otherColors || []).map(
+          item => item.model
+        ),
+      ].join(" ");
+
+      return selectedColors.some(color =>
+        text.includes(color)
+      );
+    });
+  }
+
+  filteredData = result;
+  currentCount = countPerPage;
+
+  renderProducts(filteredData);
+}
+
+// 카테고리 필터
+categoryInputs.forEach(input => {
+  input.addEventListener("change", () => {
+    selectedCategories = [...categoryInputs]
+      .filter(item => item.checked)
+      .map(item => item.value);
+
+    applyFilter();
+  });
+});
+
+// 렌즈 색상 필터
+colorInputs.forEach(input => {
+  input.addEventListener("change", () => {
+    selectedColors = [...colorInputs]
+      .filter(item => item.checked)
+      .map(item => item.value);
+
+    applyFilter();
+  });
+});
+
 fetchProducts();
+

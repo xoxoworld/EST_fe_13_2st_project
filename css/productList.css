@@ -148,7 +148,11 @@ body {
   flex-direction: column;
   gap: 4px;
 }
-
+.product-list-name {
+  font-size: var(--base-font);
+  font-weight: 400;
+  color: var(--gray-4);
+}
 .product-list-brand,
 .product-list-price {
   color: var(--black-2);
