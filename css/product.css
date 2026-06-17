@@ -162,19 +162,6 @@ img {
   margin-top: 39px;
 }
 
-.color-block h2,
-.rounz-only-wrap h3,
-.related-wrap h2,
-.review-wrap h2,
-.qna-head h2,
-.purchase-wrap > h2 {
-  margin: 0;
-  color: var(--black-1);
-  font-size: 18px;
-  font-weight: 800;
-  line-height: 1.35;
-}
-
 .color-list {
   display: flex;
   gap: 8px;
@@ -540,7 +527,6 @@ img {
   left: 18px;
 }
 
-.review-tools button,
 .qna-head button {
   height: 24px;
   min-width: 58px;
@@ -549,8 +535,57 @@ img {
   color: var(--black-2);
 }
 
-.review-tools button {
+.review-sort {
+  position: relative;
+}
+
+.review-sort-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 24px;
+  min-width: 70px;
+  border-radius: 2px;
+  background: #f1f4ff;
+  color: var(--black-2);
   font-size: 10px;
+}
+
+.review-sort-toggle .material-icons {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.review-sort-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 5;
+  display: none;
+  min-width: 70px;
+  overflow: hidden;
+  border: 1px solid #d9dee8;
+  border-radius: 2px;
+  background: var(--white-1);
+}
+
+.review-sort.open .review-sort-menu {
+  display: block;
+}
+
+.review-sort-menu button {
+  display: block;
+  width: 100%;
+  height: 28px;
+  padding: 0 8px;
+  color: var(--black-2);
+  font-size: 10px;
+  text-align: left;
+}
+
+.review-sort-menu button:hover {
+  background: #f1f4ff;
 }
 
 /* 후기 아이템은 본문과 사진 썸네일의 2컬럼 구조입니다. */
@@ -1006,6 +1041,15 @@ img {
     height: 56px;
   }
 
+  .color-block h2,
+  .rounz-only-wrap h3,
+  .related-wrap h2,
+  .review-wrap h2,
+  .qna-head h2,
+  .purchase-wrap > h2 {
+    font-size: var(--large);
+  }
+
   /* 상세 브랜드 이미지는 태블릿에서 더 크게 보여 세로 스케일을 맞춥니다. */
   .related-list {
     overflow: hidden;
@@ -1339,6 +1383,14 @@ img {
     border-bottom: 2px solid var(--black-1);
   }
 
+  .color-block h2,
+  .rounz-only-wrap h3,
+  .related-wrap h2,
+  .review-wrap h2,
+  .qna-head h2,
+  .purchase-wrap > h2 {
+    font-size: var(--sub-title--m);
+  }
   /* 데스크톱 상세 이미지는 좌측 948px 영역에서 더 큰 콜라주로 표시합니다. */
   .related-wrap,
   .review-wrap,

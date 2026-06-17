@@ -52,6 +52,7 @@ function createContent(data, products) {
     colorList = document.querySelector(".color-list"),
     relatedList = document.querySelector(".related-list"),
     photoReviewToggle = document.querySelector(".review-toggle input"),
+    reviewSort = document.querySelector(".review-sort"),
     reviewList = document.querySelector(".review-list"),
     reviewPager = document.querySelector(".review-wrap .pager"),
     qnaList = document.querySelector(".qna-list"),
@@ -75,6 +76,7 @@ function createContent(data, products) {
   renderThumbImages(thumbWrap, galleryImages);
   renderRelatedProducts(relatedList, products, data);
   renderReviews(reviewList, reviewPager, photoReviewToggle, data.reviews);
+  initReviewSortDropdown(reviewSort);
   renderQnaList(qnaList, qnaPager, data.qna);
   initThumbSwiper(galleryImages.length);
   initVisualSwiper(visualCount, thumbWrap, galleryImages.length);
@@ -165,7 +167,9 @@ detailTabMenu.forEach(m => {
       c.classList.remove("active");
     });
     const target = m.getAttribute("href").replace("#", "");
-    const targetContents = [...detailTabContent].filter(c => c.dataset.tabPanel.split(" ").includes(target));
+    const targetContents = [...detailTabContent].filter(c =>
+      c.dataset.tabPanel.split(" ").includes(target),
+    );
 
     targetContents.forEach(c => {
       c.classList.add("active");
@@ -305,6 +309,33 @@ function renderReviews(reviewList, reviewPager, photoReviewToggle, reviews = [])
 
   photoReviewToggle.addEventListener("change", () => {
     reviewPagination.update(getFilteredReviews());
+  });
+}
+
+// 후기 정렬 드롭다운 UI
+function initReviewSortDropdown(reviewSort) {
+  const toggle = reviewSort.querySelector(".review-sort-toggle");
+  const label = toggle.querySelector("span");
+  const menuButtons = reviewSort.querySelectorAll(".review-sort-menu button");
+
+  toggle.addEventListener("click", () => {
+    const isOpen = reviewSort.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", isOpen);
+  });
+
+  menuButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      label.textContent = button.dataset.sortLabel;
+      reviewSort.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  document.addEventListener("click", event => {
+    if (reviewSort.contains(event.target)) return;
+
+    reviewSort.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
   });
 }
 
@@ -497,7 +528,22 @@ function updateActiveThumb(thumbWrap, index) {
   if (thumbSwiper) thumbSwiper.slideTo(index);
 }
 
+// 모바일/태블릿 하단 구매 옵션 토글
+function initBottomBuySheet() {
+  const bottomBuySection = document.querySelector(".bottom-buy-section");
+  const bottomSheetHandle = document.querySelector(".bottom-sheet-handle");
+
+  if (!bottomBuySection || !bottomSheetHandle) return;
+
+  bottomSheetHandle.addEventListener("click", () => {
+    const isOpen = bottomBuySection.classList.toggle("open");
+    bottomSheetHandle.setAttribute("aria-label", isOpen ? "구매 옵션 닫기" : "구매 옵션 열기");
+    bottomSheetHandle.setAttribute("aria-expanded", isOpen);
+  });
+}
+
 fetchProduct();
+initBottomBuySheet();
 
 // 우측 배너 스와이퍼
 const swiper = new Swiper(".face-banner.swiper", {

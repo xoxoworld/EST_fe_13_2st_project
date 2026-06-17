@@ -210,7 +210,16 @@
                       <span class="toggle"></span>
                       <span>사진 후기만</span>
                     </label>
-                    <button type="button" class="material-icons">최신순 keyboard_arrow_down</button>
+                    <div class="review-sort">
+                      <button class="review-sort-toggle" type="button" aria-expanded="false">
+                        <span>최신순</span>
+                        <span class="material-icons">keyboard_arrow_down</span>
+                      </button>
+                      <div class="review-sort-menu">
+                        <button type="button" data-sort-label="최신순">최신순</button>
+                        <button type="button" data-sort-label="별점순">별점순</button>
+                      </div>
+                    </div>
                   </div>
                   <div class="review-list d-flex flex-column">
                     <!-- <article class="review-card">
@@ -372,7 +381,7 @@
 
     <section class="bottom-buy-section" aria-label="구매 버튼">
       <div class="bottom-buy-wrap">
-        <button class="bottom-sheet-handle" type="button" aria-label="구매 옵션 열기">
+        <button class="bottom-sheet-handle" type="button" aria-label="구매 옵션 열기" aria-expanded="false">
           <span class="home-indicator"></span>
         </button>
 
