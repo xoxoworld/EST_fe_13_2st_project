@@ -122,27 +122,3 @@
    ```bash
    git clone https://github.com/xoxoworld/EST_fe_13_2st_project.git
    ```
-
-2. **패키지 의존성 설치**:
-   ```bash
-   npm install
-   ```
-   - 설치 완료 시, 커밋 시점에 자동으로 자바스크립트 결함을 분석하는 **Husky (Git Hook)**가 자동으로 활성화됩니다.
-
-3. **SCSS/SASS 실시간 자동 컴파일 (압축 및 감시)**:
-   ```bash
-   npm run watch:css
-   ```
-   - `scss/` 폴더 내부의 `.scss` 수정본을 실시간으로 감시하여 저장할 때마다 자동으로 최적화 및 압축된 `.css`로 `css/` 폴더에 변환 배출합니다.
-
-4. **1회성 CSS 빌드**:
-   ```bash
-   npm run build:css
-   ```
-
-5. **자바스크립트 품질 분석 (ESLint)**:
-   - 코드를 스테이지하고 커밋할 때마다 staged 파일들을 대상으로 검사가 자동 작동합니다.
-   - 프로젝트 전체 수동 검사:
-     ```bash
-     npx eslint js
-     ```
