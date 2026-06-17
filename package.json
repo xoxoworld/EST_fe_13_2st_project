@@ -21,5 +21,9 @@
   "homepage": "https://github.com/xoxoworld/EST_fe_13_2st_project#readme",
   "devDependencies": {
     "sass": "^1.101.0"
+  },
+  "dependencies": {
+    "jquery": "^4.0.0",
+    "swiper": "^12.2.0"
   }
 }
