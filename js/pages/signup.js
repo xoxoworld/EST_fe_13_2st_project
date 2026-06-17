@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const steps = document.querySelectorAll(".step-section"); // 각 단계 섹션 (.step-section)
-  const nextBtns = document.querySelectorAll(".next-btn"); // 다음 단계로 넘어가는 버튼들
+  // 1. 공통 변수 선택
+  const signupForm = document.getElementById("signup-form");
+  const steps = document.querySelectorAll(".step-section");
+  const nextBtns = document.querySelectorAll(".next-btn");
+  let currentStep = 0;
+  let timerInterval = null;
 
-  let currentStep = 0; // 현재 회원가입 단계 인덱스
-  let timerInterval = null; // OTP 타이머 인터벌 변수
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+  // 2. 약관 동의 데이터 및 로직 (1단계)
   const termsData = [
     { id: "all", text: "모두 동의합니다.", isRequired: false },
     { id: "term1", text: "[필수] 만 14세 이상입니다.", isRequired: true },
@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     { id: "term5", text: "[선택] 광고성 정보 수신", isRequired: false },
   ];
 
-  // 1단계: 약관 동의 초기화 및 주입
   const termsList = document.getElementById("terms-list");
   const step1NextBtn = document.getElementById("step1-next");
 
@@ -53,122 +52,93 @@ document.addEventListener("DOMContentLoaded", () => {
         validateTerms();
       });
     });
-    validateTerms();
   }
 
-  // ⏰ [스코프 개선] 타이머 함수를 전역 레벨로 독립 및 실시간 DOM 탐색 적용
+  // 3. OTP 타이머 함수
   const startTimer = () => {
-    if (timerInterval) clearInterval(timerInterval); // 기존 타이머 소거
-
-    let timeLeft = 180; // 3분
-
+    if (timerInterval) clearInterval(timerInterval);
+    let timeLeft = 180;
     const tick = () => {
-      // 매 초마다 화면의 타이머 요소를 신규로 직접 찾음 (null 에러 원천 차단)
       const currentTimerDisplay = document.getElementById("timer");
       const currentStep3NextBtn = document.getElementById("step3-next");
-
       if (timeLeft <= 0) {
         clearInterval(timerInterval);
         if (currentTimerDisplay) currentTimerDisplay.textContent = "00:00";
-        if (currentStep3NextBtn) currentStep3NextBtn.disabled = true; // 시간 만료 시 잠금
+        if (currentStep3NextBtn) currentStep3NextBtn.disabled = true;
         return;
       }
-
       timeLeft--;
       const min = String(Math.floor(timeLeft / 60)).padStart(2, "0");
       const sec = String(timeLeft % 60).padStart(2, "0");
-
-      if (currentTimerDisplay) {
-        currentTimerDisplay.textContent = `${min}:${sec}`;
-      }
+      if (currentTimerDisplay) currentTimerDisplay.textContent = `${min}:${sec}`;
     };
-
-    // 초기화 및 인터벌 시작
     const initialTimerDisplay = document.getElementById("timer");
     if (initialTimerDisplay) initialTimerDisplay.textContent = "03:00";
     timerInterval = setInterval(tick, 1000);
   };
 
-  // 3단계: OTP 인터랙션 초기화
+  // 4. OTP 입력 로직 (3단계)
   const otpGroup = document.querySelector(".otp-group");
   const step3NextBtn = document.getElementById("step3-next");
   const resendBtn = document.getElementById("resend-btn");
 
   if (otpGroup) {
     const otpInputs = otpGroup.querySelectorAll("input");
-
     const validateOtp = () => {
       const isAllFilled = Array.from(otpInputs).every(input => input.value.trim().length === 1);
-      const currentStep3NextBtn = document.getElementById("step3-next");
-      if (currentStep3NextBtn) currentStep3NextBtn.disabled = !isAllFilled;
+      if (step3NextBtn) step3NextBtn.disabled = !isAllFilled;
     };
-
     otpInputs.forEach((input, index) => {
-      input.addEventListener("input", e => {
+      input.addEventListener("input", () => {
         input.value = input.value.replace(/[^0-9]/g, "");
-        if (input.value.length === 1 && index < otpInputs.length - 1) {
-          otpInputs[index + 1].focus();
-        }
+        if (input.value.length === 1 && index < otpInputs.length - 1) otpInputs[index + 1].focus();
         validateOtp();
       });
-
       input.addEventListener("keydown", e => {
         if (e.key === "Backspace" && input.value.length === 0 && index > 0) {
           otpInputs[index - 1].focus();
-          otpInputs[index - 1].value = "";
           validateOtp();
         }
       });
     });
-
     if (resendBtn) {
       resendBtn.addEventListener("click", e => {
         e.preventDefault();
-        startTimer(); // 타이머 재시작
+        startTimer();
         otpInputs.forEach(input => (input.value = ""));
         otpInputs[0].focus();
-        validateOtp();
       });
     }
-
-    if (step3NextBtn) step3NextBtn.disabled = true;
   }
 
-  // 🚀 단계 전환 (Step Navigation) 이벤트 핸들러
+  // 5. 통합 단계 전환 로직
   nextBtns.forEach(btn => {
     btn.addEventListener("click", e => {
+      if (btn.getAttribute("type") === "submit") return; // 마지막 단계 제출 버튼은 제외
       e.preventDefault();
 
-      if (currentStep >= steps.length - 1) return;
-
-      // 현재 단계 숨기기
-      if (steps[currentStep]) {
+      if (currentStep < steps.length - 1) {
         steps[currentStep].classList.remove("active");
-      }
-
-      // 다음 단계로 이동
-      currentStep++;
-
-      // 다음 단계 보여주기
-      if (steps[currentStep]) {
+        currentStep++;
         steps[currentStep].classList.add("active");
 
-        // 활성화된 화면 내에 otp 입력 그룹이 있는지 검사
-        const hasOtpGroup = steps[currentStep].querySelector(".otp-group");
-
-        if (hasOtpGroup) {
-          startTimer(); // 안정적으로 전역 타이머 호출
-
-          // 첫 번째 입력창 포커스 타겟팅
-          const firstInput = steps[currentStep].querySelector(".otp-group input");
-          if (firstInput) {
-            setTimeout(() => firstInput.focus(), 50);
-          }
+        // OTP 단계 진입 시 타이머 시작
+        if (steps[currentStep].querySelector(".otp-group")) {
+          startTimer();
         } else {
-          // OTP 단계가 아니면 타이머 제거
           if (timerInterval) clearInterval(timerInterval);
         }
       }
     });
   });
+
+  // 6. 최종 제출 로직
+  if (signupForm) {
+    signupForm.addEventListener("submit", e => {
+      // e.preventDefault(); // 실제 서버 연동 시 주석 해제
+      const formData = new FormData(signupForm);
+      const data = Object.fromEntries(formData.entries());
+      console.log("회원가입 최종 데이터:", data);
+    });
+  }
 });
