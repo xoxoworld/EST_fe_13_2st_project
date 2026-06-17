@@ -1833,7 +1833,7 @@ $(function(){
 /*제니 컬렉션 상품*/
 document.addEventListener('DOMContentLoaded', () => {
   // Config
-  const API = "../data/products.json";
+  const API = "./data/products.json";
   const CHUNK_SIZE = 3;
   let isLoading = false;
   let productSwiper;
