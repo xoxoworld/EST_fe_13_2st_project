@@ -61,6 +61,23 @@ function saveCart() {
   updateTotalAmount();
 }
 
+function updateTotalAmount() {
+  const total = cart.reduce(
+    (sum, item) => sum + item.price * item.qty,
+    0
+  );
+
+  const discount = total >= 200000 ? 10000 : 0;
+  const finalPrice = total - discount;
+  const point = Math.floor(finalPrice * 0.1);
+
+  productCount.textContent = `${getCartCount()}개`;
+  productAmount.textContent = `${total.toLocaleString("ko-KR")}원`;
+  discountAmount.textContent = `-${discount.toLocaleString("ko-KR")}원`;
+  totalAmount.textContent = `${finalPrice.toLocaleString("ko-KR")}원`;
+  pointAmount.textContent = `${point.toLocaleString("ko-KR")}원`;
+}
+
 function renderCart() {
   // 기존 상품 제거
   cartList.innerHTML = "";
@@ -82,53 +99,62 @@ function renderCart() {
   // 상품 HTML 생성
   cartHTML = cart.map(
     item => `
-    <article class="cart-item d-flex flex-column" data-id="${item.id}">
-      <p class="brand-name">${item.brand}</p>
+          <article class="cart-item d-flex flex-column" data-id="${item.id}">
+            <p class="brand-name">${item.brand}</p>
 
-      <div class="cart-item-content d-flex align-items-center">
-        <label class="item-check">
-          <input type="checkbox" />
-        </label>
+            <div class="cart-item-content d-flex align-items-center">
+              <label class="item-check">
+                <input type="checkbox" />
+              </label>
 
-        <img
-          src="${item.thumb}"
-          alt="${item.title}"
-          class="product-image"
-        />
+              <img src="${item.thumb}" alt="${item.title}" class="product-image" />
 
-        <div class="product-info d-flex flex-column">
-          <p class="product-name">${item.title}</p>
-        </div>
+              <div class="product-content d-flex flex-column">
+                <div class="product-info">
+                  <p class="product-name">${item.title}</p>
+                  <p class="product-code">RB4258F 601/71</p>
+                </div>
 
-        <button type="button" class="delete-btn">
-          <span class="material-icons close">close</span>
-        </button>
-      </div>
+                <label class="option-select">
+                  <select>
+                    <option>그레이 / 51mm</option>
+                    <option>블랙 / 51mm</option>
+                    <option>화이트 / 51mm</option>
+                  </select>
+                </label>
+              </div>
 
-      <label class="option-select">
-        <select>
-          <option>그레이 / 51mm</option>
-        </select>
-      </label>
+              <button class="delete-btn">
+                ✕
+              </button>
+            </div>
 
-      <div class="product-bottom d-flex justify-content-between align-items-center">
-        <div class="quantity-box d-flex align-items-center">
-          <button type="button" class="minusBtn">
-            <span class="material-icons">remove</span>
-          </button>
+            <div class="product-bottom d-flex justify-content-between align-items-center">
+              <div class="quantity-box d-flex align-items-center">
+                <button type="button" class="minusBtn">
+                  <span class="material-icons">remove</span>
+                </button>
 
-          <span class="quantity">${item.qty}</span>
+                <span class="quantity">${item.qty}</span>
 
-          <button type="button" class="plusBtn">
-            <span class="material-icons">add</span>
-          </button>
-        </div>
+                <button type="button" class="plusBtn">
+                  <span class="material-icons">add</span>
+                </button>
+              </div>
 
-        <strong class="product-price">
-          ${item.price.toLocaleString("ko-KR")}원
-        </strong>
-      </div>
-    </article>
+              <strong class="product-price">
+                ${item.price.toLocaleString("ko-KR")}원
+              </strong>
+            </div>
+
+            <div class="mobile-total d-flex justify-content-between">
+              <span>총 금액</span>
+
+              <strong class="mobile-total-price">
+                ${(item.price * item.qty).toLocaleString("ko-KR")}원
+              </strong>
+            </div>
+          </article>
   `,
   );
   // 화면에 출력
@@ -226,6 +252,16 @@ cartList.addEventListener("change", e => {
   if (e.target.matches(".cart-item input")) {
     updateSelectState();
   }
+});
+
+// 스와이퍼
+const swiper = new Swiper(".cart-banner", {
+  loop: true,
+
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
 });
 
 // 함수 실행
