@@ -65,6 +65,19 @@ img {
   background: #f2f2f2;
 }
 
+.visual-swiper,
+.visual-swiper .swiper-wrapper,
+.visual-swiper .swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+
+.visual-swiper .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .visual-wrap img {
   width: 100%;
   height: 100%;
@@ -76,10 +89,12 @@ img {
   position: absolute;
   right: 17px;
   bottom: 17px;
+  z-index: 2;
   margin: 0;
   color: var(--black-1);
   font-size: 15px;
   font-weight: 600;
+  pointer-events: none;
 }
 
 .thumb-section {
@@ -380,6 +395,8 @@ img {
 .related-wrap {
   padding-top: 19px;
   padding-bottom: 40px;
+  padding-right: 0px;
+  padding-left: 0px;
 }
 
 .related-wrap h2 {
@@ -387,17 +404,18 @@ img {
 }
 
 .related-list {
-  display: flex;
-  gap: 16px;
   overflow: hidden;
   padding-bottom: 18px;
-  border-bottom: 2px solid var(--black-1);
+}
+
+.related-list.swiper {
+  display: block;
 }
 
 /* 모바일/태블릿에서는 카드가 가로로 흘러가고, 데스크톱에서는 grid로 전환됩니다. */
 .related-list article {
-  flex: 0 0 122px;
   min-width: 0;
+  cursor: pointer;
 }
 
 .related-list img {
@@ -939,11 +957,11 @@ img {
 
   /* 상세 브랜드 이미지는 태블릿에서 더 크게 보여 세로 스케일을 맞춥니다. */
   .related-list {
-    gap: 18px;
+    overflow: hidden;
   }
 
   .related-list article {
-    flex-basis: 180px;
+    min-width: 0;
   }
 
   .related-list img {
@@ -1064,19 +1082,24 @@ img {
 
   /* 썸네일은 대표 이미지 하단의 5열 고정 리스트입니다. */
   .thumb-wrap {
-    display: grid;
-    grid-template-columns: repeat(5, 170px);
-    gap: 24px;
+    display: block;
     height: 143px;
-    padding-top: 27px;
+    padding-top: 25px;
+    overflow: hidden;
+  }
+
+  .thumb-wrap .swiper-wrapper {
+    height: 116px;
   }
 
   .thumb {
-    width: 170px;
     height: 116px;
     overflow: hidden;
     border: 1px solid transparent;
     background: #f4f4f4;
+  }
+  .thumb:hover {
+    border-color: var(--black-1);
   }
 
   .thumb.active {
@@ -1278,10 +1301,7 @@ img {
   }
 
   .related-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    overflow: visible;
+    overflow: hidden;
   }
 
   /* 데스크톱에서는 비슷한 상품을 스크롤이 아닌 3열 grid로 보여줍니다. */
@@ -1346,5 +1366,11 @@ img {
 
   .bottom-buy-section {
     display: none;
+  }
+}
+
+@media (min-width: 1272px) and (pointer: coarse) {
+  .visual-count {
+    display: block;
   }
 }
