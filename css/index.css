@@ -231,7 +231,7 @@
   }
 }
 
-/* 카테고리 ?�션 */
+/* 카테고리 섹션 */
 .category {
   padding: 24px 0;
   background-color: #fff;
@@ -421,7 +421,7 @@
   display: none;
 }
 .img-box::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -431,7 +431,7 @@
   transition: background-color 0.3s ease;
   pointer-events: none;
 }
-.img-box:hover:after{
+.img-box:hover:after {
   background-color: rgba(0, 0, 0, 0.5);
 }
 .timesale__image {
@@ -543,18 +543,16 @@
   object-fit: cover;
 }
 
-/* 1. ?�체 ?�로그레?�바??배경??(?�진???�한 ?�색 부�? */
 .swiper-pagination-progressbar {
   background: var(--gray-4);
   width: 100%;
-  height: 2px; /* ?�의 ?�께 (?�고 길쭉?�게) */
-  top: auto; /* 기본 ?�단 고정???�제?�고 ?�단?�로 ?�릴 ???�용 */
-  bottom: 0; /* ?�라?�드 ?�역 �??�단????붙임 */
+  height: 2px;
+  top: auto;
+  bottom: 0;
 }
 
-/* 2. ?�재 ?�치�??��??�는 채워지????(?�진??진한 검?�??부�? */
 .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-  background: var(--black-1); /* ?�직이??바의 ?�상 (검?�?? */
+  background: var(--black-1);
 }
 
 @media (min-width: 768px) {
@@ -599,7 +597,7 @@
     align-items: flex-start;
   }
 
-  /* ?�쪽 배너 */
+  /* 왼쪽 배너 */
   .jenny-collection__figure {
     flex: 0 0 620px;
     width: 620px;
@@ -615,7 +613,7 @@
     object-fit: cover;
   }
 
-  /* ?�른�??�품?�역 */
+  /* 오른쪽 상품 영역 */
   .product-contents {
     flex: 1;
     padding: 0;
@@ -635,7 +633,7 @@
 .best-product .container {
   padding: 24px 0;
 }
-/* 7번째 ?�품부?�는 ?�면???�시?��? ?�음 */
+/* 7번째 상품부터는 화면에 표시되지 않음 */
 .product-slide-list .product-product-item:nth-child(n + 7) {
   display: none;
 }
@@ -682,7 +680,7 @@
     display: none;
   }
 
-  /* ?�품?�역 */
+  /* 상품 영역 */
   .best-product .product-slide-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -692,8 +690,8 @@
 
 /* ==========================================================================
    ROUNZ MAIN PAGE STYLE (index.css)
-   * common.css???�의??글로벌 ?�마 변?��? 바탕?�로 메인 ?�이지??개별 ?�션???��??�링?�니??
-   * �??�션?� 반응???�이?�웃 분기(1024px / 768px / 480px ?�하)�??�함?�니??
+   * common.css에 정의된 글로벌 테마 변수를 바탕으로 메인 페이지의 개별 섹션을 스타일링합니다.
+   * 각 섹션은 반응형 레이아웃 분기(1024px / 768px / 480px 이하)를 포함합니다.
    ========================================================================== */
 
 /* ==========================================================================
@@ -1041,6 +1039,11 @@
   transition: transform 0.3s ease;
 }
 
+.new-product-slider-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
 .new-product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1237,7 +1240,7 @@
     gap: 16px;
   }
 
-  .new-product-grid .product-card:nth-child(4) {
+  .new-product-grid:not(.is-transitioning) .product-card:nth-child(n + 4) {
     display: none;
   }
 
@@ -1635,6 +1638,7 @@
   width: 100%;
   overflow: hidden;
   margin-bottom: 48px;
+  height: 640px; /* Fixed height to prevent vertical layout shifts during slide width transitions */
 }
 
 .brand-carousel-track {
@@ -1643,7 +1647,9 @@
   align-items: center;
   gap: 24px;
   width: 100%;
+  height: 100%;
   padding: 10px 0;
+  box-sizing: border-box;
 }
 
 .carousel-slide {
@@ -1652,7 +1658,7 @@
   overflow: hidden;
   aspect-ratio: 1 / 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   position: relative;
 }
 
@@ -1661,7 +1667,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* Side Banners */
@@ -1803,6 +1809,9 @@
 
 /* Responsive Styles */
 @media (width <= 1200px) {
+  .brand-carousel-container {
+    height: 520px; /* Adjusted fixed height for 500px slide width + padding */
+  }
   .recommended-brand-pagination {
     display: flex;
   }
@@ -1823,6 +1832,9 @@
 }
 
 @media (width <= 900px) {
+  .brand-carousel-container {
+    height: 420px; /* Adjusted fixed height for 400px slide width + padding */
+  }
   .brand-carousel-track {
     gap: 16px;
   }
@@ -1836,6 +1848,10 @@
 }
 
 @media (width <= 768px) {
+  .brand-carousel-container {
+    aspect-ratio: 1 / 1;
+    height: auto; /* Reset to auto height on mobile/tablet */
+  }
   .recommended-brand {
     padding: 60px 0;
   }
@@ -1867,7 +1883,13 @@
   }
   .carousel-slide.prev,
   .carousel-slide.next {
-    display: none;
+    display: block;
+    width: 100%;
+    transform: scale(1);
+  }
+  .carousel-slide.prev img,
+  .carousel-slide.next img {
+    opacity: 1;
   }
   .carousel-slide.active {
     width: 100%;
@@ -2221,7 +2243,7 @@
 }
 
 .rounz-store-container {
-  max-width: 880px; /* 880px 컨테?�너 가로폭 ?�정 */
+  max-width: 880px; /* 880px 컨테이너 가로폭 설정 */
   margin: 0 auto;
   padding: 0 24px;
   box-sizing: border-box;
@@ -2460,135 +2482,132 @@
   margin-bottom: 66px;
 }
 
-/* 1. ?�체 ?�로그레?�바??배경??(?�진???�한 ?�색 부�? */
 .swiper-pagination-progressbar {
   background: var(--gray-4);
   width: 100%;
-  height: 2px; /* ?�의 ?�께 (?�고 길쭉?�게) */
-  top: auto; /* 기본 ?�단 고정???�제?�고 ?�단?�로 ?�릴 ???�용 */
-  bottom: 0; /* ?�라?�드 ?�역 �??�단????붙임 */
+  height: 2px;
+  top: auto;
+  bottom: 0;
+
+  .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+    background: var(--black-1);
+  }
+  .call-action {
+    border-right: 1px solid #e5e7eb;
+  }
+
+  /* Responsive Styles */
+  @media (width <= 1024px) {
+    .store-detail-image-box {
+      width: 432px;
+      max-width: 50%;
+    }
+  }
+
+  @media (width <= 768px) {
+    .rounz-store {
+      padding: 50px 0;
+    }
+
+    .rounz-store-filters {
+      flex-direction: row;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .store-filter-box {
+      height: 56px;
+    }
+    .store-name {
+      font-size: 32px;
+    }
+    .store-address {
+      font-size: 16px;
+    }
+    .store-phone {
+      font-size: 16px;
+    }
+    .store-actions {
+      padding-top: 24px;
+      margin-top: 24px;
+    }
+    .action-btn {
+      font-size: 16px;
+    }
+  }
+
+  @media (width <= 480px) {
+    .rounz-store {
+      padding: 40px 0;
+    }
+    .rounz-store-title {
+      margin-bottom: 8px;
+    }
+    .rounz-store-subtitle {
+      font-size: 12px;
+      margin-bottom: 24px;
+    }
+    .rounz-store-filters {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .store-filter-box {
+      height: 48px;
+      padding: 0 12px;
+    }
+    .filter-placeholder {
+      font-size: 13px;
+    }
+  }
+
+  @media (width <= 768px) {
+    .store-detail-card {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      align-items: center;
+    }
+    .store-detail-image-box {
+      width: 42%;
+      max-width: 42%;
+      aspect-ratio: 432 / 302;
+      border-radius: 16px;
+    }
+    .store-detail-info {
+      width: 53%;
+      max-width: 53%;
+      padding: 4px 0;
+    }
+    .store-info-content {
+      gap: 8px;
+    }
+    .store-name {
+      font-size: 20px;
+    }
+    .store-address {
+      font-size: 13px;
+      line-height: 1.5;
+      gap: 4px;
+    }
+    .store-phone {
+      font-size: 13px;
+    }
+    .store-tag {
+      gap: 8px;
+    }
+    .tag-text {
+      font-size: 12px;
+    }
+
+    .store-actions {
+      padding-top: 16px;
+      margin-top: 16px;
+    }
+    .action-btn {
+      font-size: 13px;
+      gap: 6px;
+      height: 38px;
+    }
+  }
 }
-
-/* 2. ?�재 ?�치�??��??�는 채워지????(?�진??진한 검?�??부�? */
-.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-  background: var(--black-1); /* ?�직이??바의 ?�상 (검?�?? */
-}
-.call-action {
-  border-right: 1px solid #e5e7eb;
-}
-
-/* Responsive Styles */
-@media (width <= 1024px) {
-  .store-detail-image-box {
-    width: 432px;
-    max-width: 50%;
-  }
-}
-
-@media (width <= 768px) {
-  .rounz-store {
-    padding: 50px 0;
-  }
-
-  .rounz-store-filters {
-    flex-direction: row;
-    gap: 16px;
-    margin-bottom: 32px;
-  }
-  .store-filter-box {
-    height: 56px;
-  }
-  .store-name {
-    font-size: 32px;
-  }
-  .store-address {
-    font-size: 16px;
-  }
-  .store-phone {
-    font-size: 16px;
-  }
-  .store-actions {
-    padding-top: 24px;
-    margin-top: 24px;
-  }
-  .action-btn {
-    font-size: 16px;
-  }
-}
-
-@media (width <= 480px) {
-  .rounz-store {
-    padding: 40px 0;
-  }
-  .rounz-store-title {
-    margin-bottom: 8px;
-  }
-  .rounz-store-subtitle {
-    font-size: 12px;
-    margin-bottom: 24px;
-  }
-  .rounz-store-filters {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    margin-bottom: 24px;
-  }
-  .store-filter-box {
-    height: 48px;
-    padding: 0 12px;
-  }
-  .filter-placeholder {
-    font-size: 13px;
-  }
-}
-
-@media (width <= 768px) {
-  .store-detail-card {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-    align-items: center;
-  }
-  .store-detail-image-box {
-    width: 42%;
-    max-width: 42%;
-    aspect-ratio: 432 / 302;
-    border-radius: 16px;
-  }
-  .store-detail-info {
-    width: 53%;
-    max-width: 53%;
-    padding: 4px 0;
-  }
-  .store-info-content {
-    gap: 8px;
-  }
-  .store-name {
-    font-size: 20px;
-  }
-  .store-address {
-    font-size: 13px;
-    line-height: 1.5;
-    gap: 4px;
-  }
-  .store-phone {
-    font-size: 13px;
-  }
-  .store-tag {
-    gap: 8px;
-  }
-  .tag-text {
-    font-size: 12px;
-  }
-
-  .store-actions {
-    padding-top: 16px;
-    margin-top: 16px;
-  }
-  .action-btn {
-    font-size: 13px;
-    gap: 6px;
-    height: 38px;
-  }
-}
-
