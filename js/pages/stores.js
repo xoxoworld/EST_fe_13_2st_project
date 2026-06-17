@@ -1,4 +1,8 @@
 ﻿import { getFilteredStores, getSidoList, getSigunguList } from "../common.js";
+import { renderHeader } from "../modules/header.js";
+document.addEventListener("DOMContentLoaded", () => {
+  renderHeader();
+});
 
 const storesGrid = document.querySelector(".store-grid");
 const storeDetailLayer = document.querySelector(".store-detail-layer");
