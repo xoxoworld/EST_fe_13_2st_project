@@ -2258,3 +2258,25 @@ document.addEventListener("DOMContentLoaded",()=>{
   loadProducts();
 
 });
+
+/*타임세일 타이머*/
+document.addEventListener("DOMContentLoaded", () => {
+  const timer = document.querySelector(".timesale__timer");
+
+  if (!timer) return;
+
+  function updateTimer() {
+    const now = new Date();
+
+    const hours = String(now.getHours()).padStart(2, "0");
+    const minutes = String(now.getMinutes()).padStart(2, "0");
+    const seconds = String(now.getSeconds()).padStart(2, "0");
+
+    timer.textContent =
+      `${hours} : ${minutes} : ${seconds}`;
+  }
+
+  updateTimer();
+
+  setInterval(updateTimer, 1000);
+});
