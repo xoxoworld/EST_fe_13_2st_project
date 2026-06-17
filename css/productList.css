@@ -77,7 +77,7 @@ body {
 
 /* filter */
 .w-filter {
-  gap: 23px;
+  gap: 5px;
   padding: 20px 0;
 }
 .w-filter > div:last-child {
@@ -85,7 +85,7 @@ body {
   flex-shrink: 0;
 }
 .w-filter-btn {
-  gap: 5px;
+  gap: 3px;
   font-size: var(--base-font);
   text-align: center;
 }
@@ -148,10 +148,7 @@ body {
   flex-direction: column;
   gap: 4px;
 }
-.product-list-name {
-  font-size: var(--base-font);
-  color: var(--gray-1);
-}
+
 .product-list-brand,
 .product-list-price {
   color: var(--black-2);
