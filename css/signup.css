@@ -1,6 +1,4 @@
-/* ========================================================
-   1. 기본 초기화 및 전체 레이아웃
-   ======================================================== */
+/* 1. 기본 레이아웃 초기화 */
 html,
 body {
   height: 100%;
@@ -9,102 +7,45 @@ body {
   overflow-x: hidden;
 }
 
+/* 2. 전체를 감싸는 컨테이너 */
 #app-container {
   min-height: 100vh;
-  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-/* 헤더 및 푸터 기본 표시 */
-.header,
-.footer {
-  display: flex;
-}
-
-/* 메인 콘텐츠 영역: flex: 1을 통해 헤더와 푸터 사이 공간을 강제 확보 */
+/* 3. 메인 레이아웃: 여기서 확실하게 가운데로 배치 */
 .main-layout {
-  flex: 1;
+  min-height: 80vh; /* 푸터 공간 확보 */
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 20px;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
   width: 100%;
+  padding: 20px;
   box-sizing: border-box;
 }
 
-/* ========================================================
-   2. 회원가입 단계별 섹션 (Step Navigation)
-   ======================================================== */
+/* 4. 회원가입 전용 폼 스타일 (다른 CSS와 겹치지 않게 이름 분리) */
+.signup-box {
+  width: 100%;
+  max-width: 354px; /* 로그인 박스와 동일한 기준 */
+  padding: 40px 24px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 5. 내부 섹션 숨김/표시 */
 .step-section {
-  width: 100%;
-  display: flex; /* 기본 숨김 */
+  display: none;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
 }
-
 .step-section.active {
-  display: flex; /* 활성 섹션 보임 */
-}
-
-.step-section h2 {
-  text-align: center;
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 24px;
-}
-
-/* ========================================================
-   3. 입력 요소 및 버튼 스타일
-   ======================================================== */
-.input-row {
   display: flex;
-  flex-direction: column;
-  margin-bottom: 24px;
-  width: 100%;
-  position: relative;
-}
-
-.next-btn {
-  margin-top: 24px;
-}
-
-.otp-group,
-.timer-row {
-  display: flex;
-}
-
-/* ========================================================
-   4. 헤더 및 푸터 (레이아웃 고정)
-   ======================================================== */
-.header,
-.footer {
-  flex-shrink: 0; /* 내용물에 의해 줄어들지 않도록 고정 */
-}
-
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  padding: 10px 20px;
-  box-sizing: border-box;
-}
-
-.footer {
-  background-color: #f9f9f9;
-  padding: 40px 20px;
-}
-
-.footer-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
 }

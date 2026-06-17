@@ -1091,717 +1091,273 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  // --- New Product Slider (Infinite Loop with Brand Filtering and Smooth Slide Transition) ---
+  // --- New Product Slider (Smooth Swiper.js Transition) ---
 
-  const newProductGrid = document.querySelector('.new-product-grid');
-
+  const newProductSliderWrapper = document.querySelector('.new-product-slider-wrapper');
+  const newProductSwiperWrapper = document.querySelector('.new-product-swiper-wrapper');
   const newPrevBtn = document.querySelector('.new-product-controls .ctrl-prev');
-
   const newNextBtn = document.querySelector('.new-product-controls .ctrl-next');
-
   const newDotsContainer = document.querySelector('.new-product-pagination');
-
   const filterChips = document.querySelectorAll('.new-product-filters .filter-chip');
 
-
-
-  if (newProductGrid && newPrevBtn && newNextBtn && newDotsContainer && filterChips.length > 0) {
+  if (newProductSliderWrapper && newProductSwiperWrapper && newPrevBtn && newNextBtn && newDotsContainer && filterChips.length > 0) {
 
     // Brand Data
-
     const publicBeaconProducts = [
-
       {
-
         brand: "PUBLIC BEACON",
-
         name: "블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스",
-
         price: "235,000원",
-
         img: "assets/images/new_product_01.png"
-
       },
-
       {
-
         brand: "PUBLIC BEACON",
-
         name: "블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스",
-
         price: "235,000원",
-
         img: "assets/images/new_product_02.png"
-
       },
-
       {
-
         brand: "PUBLIC BEACON",
-
         name: "블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스",
-
         price: "235,000원",
-
         img: "assets/images/new_product_03.png"
-
       },
-
       {
-
         brand: "PUBLIC BEACON",
-
         name: "블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스",
-
         price: "235,000원",
-
         img: "assets/images/new_product_04.png"
-
       }
-
     ];
-
-
 
     const escadaProducts = [
-
       {
-
         brand: "ESCADA",
-
         name: "N_SESF63B 0Z42_SU 에스까다 선글라스",
-
         price: "235,000원",
-
         img: "assets/images/escada_01.png"
-
       },
-
       {
-
         brand: "ESCADA",
-
         name: "N_SESF68B 0700_SU 에스까다 선글라스",
-
         price: "235,000원",
-
         img: "assets/images/escada_02.png"
-
       },
-
       {
-
         brand: "ESCADA",
-
         name: "N_SESF65B 0700_SU 에스까다 선글라스",
-
         price: "235,000원",
-
         img: "assets/images/escada_03.png"
-
       },
-
       {
-
         brand: "ESCADA",
-
         name: "N_SESF66B 0700_SU 에스까다 선글라스",
-
         price: "235,000원",
-
         img: "assets/images/escada_04.png"
-
       }
-
     ];
-
-
 
     const oakleyProducts = [
-
       {
-
         brand: "OAKLEY",
-
         name: "오클리 하이퍼링크 아시안핏 안경테 OX8051-0354",
-
         price: "160,000원",
-
         img: "assets/images/oakley_01.png"
-
       },
-
       {
-
         brand: "OAKLEY",
-
         name: "오클리 크로스링크 제로 안경테 OX8080-0458 아시안핏",
-
         price: "160,000원",
-
         img: "assets/images/oakley_02.png"
-
       },
-
       {
-
         brand: "OAKLEY",
-
         name: "오클리 크로스링크 제로 안경테 OX8080-0758 아시안핏",
-
         price: "일시품절",
-
         img: "assets/images/oakley_03.png"
-
       },
-
       {
-
         brand: "OAKLEY",
-
         name: "오클리 홀브룩 아시안핏 편광 프리즘 선글라스 OO9244-25",
-
         price: "일시품절",
-
         img: "assets/images/oakley_04.png"
-
       }
-
     ];
-
-
 
     const policeProducts = [
-
       {
-
         brand: "POLICE",
-
         name: "블랙&블랙 메탈 SPLT59K 0700 폴리스 선글라스",
-
         price: "오프라인 전용 상품",
-
         img: "assets/images/police_01.png"
-
       },
-
       {
-
         brand: "POLICE",
-
         name: "블랙 SPLT54K 700K 폴리스 선글라스",
-
         price: "오프라인 전용 상품",
-
         img: "assets/images/police_02.png"
-
       },
-
       {
-
         brand: "POLICE",
-
         name: "실버 메탈 SPLT55K 0568 폴리스 선글라스",
-
         price: "오프라인 전용 상품",
-
         img: "assets/images/police_03.png"
-
       },
-
       {
-
         brand: "POLICE",
-
         name: "그린 그레이 투명&실버 메탈 SPLT59K 09RM 폴리스 선글라스",
-
         price: "오프라인 전용 상품",
-
         img: "assets/images/police_04.png"
-
       }
-
     ];
-
-
 
     const oliverPeoplesProducts = [
-
       {
-
         brand: "OLIVER PEOPLES",
-
         name: "올리버피플스 피어시 안경테 OV1281 5145 48mm",
-
         price: "314,400원",
-
         img: "assets/images/oliver_peoples_01.png"
-
       },
-
       {
-
         brand: "OLIVER PEOPLES",
-
         name: "올리버피플스 하일디 안경테 OV5457U 1178 52mm",
-
         price: "398,400원",
-
         img: "assets/images/oliver_peoples_02.png"
-
       },
-
       {
-
         brand: "OLIVER PEOPLES",
-
         name: "올리버피플스 그레고리팩 안경테 OV5186 1011 50mm",
-
         price: "일시품절",
-
         img: "assets/images/oliver_peoples_03.png"
-
       },
-
       {
-
         brand: "OLIVER PEOPLES",
-
         name: "올리버피플스 그레고리팩 투명 안경테 OV5186 1484 50mm",
-
         price: "364,000원",
-
         img: "assets/images/oliver_peoples_04.png"
-
       }
-
     ];
-
-
-
-    let currentProducts = [];
-
-    let currentBrandIndex = 0;
-
-    let isTransitioning = false;
-    let transitionTimeoutId = null;
-    let cleanupActiveTransition = null;
-
-
 
     const chipsArray = Array.from(filterChips);
-
-    // Preload all product images to ensure transition is instant and flicker-free
-    const allProductsPool = [
-      ...publicBeaconProducts,
-      ...escadaProducts,
-      ...oakleyProducts,
-      ...policeProducts,
-      ...oliverPeoplesProducts
-    ];
-    allProductsPool.forEach(product => {
-      const img = new Image();
-      img.src = product.img;
-    });
-
-
-
-    function createCardElement(product) {
-
-      const card = document.createElement('div');
-
-      card.className = 'product-card';
-
-      card.innerHTML = `
-
-        <a href="#" class="product-link">
-
-          <div class="product-image-box">
-
-            <img
-
-              src="${product.img}"
-
-              alt="${product.brand} ${product.name}"
-
-              class="product-img"
-
-            />
-
-          </div>
-
-          <div class="product-info">
-
-            <span class="product-brand">${product.brand}</span>
-
-            <p class="product-name">${product.name}</p>
-
-            <span class="product-price">${product.price}</span>
-
-          </div>
-
-        </a>
-
-      `;
-
-      return card;
-
-    }
-
-
+    let newProductSwiper = null;
 
     function getRandomAllProducts() {
-
       const allPool = [
-
         ...publicBeaconProducts,
-
         ...escadaProducts,
-
         ...oakleyProducts,
-
         ...policeProducts,
-
         ...oliverPeoplesProducts
+      ];
+      const shuffled = [...allPool].sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, 4);
+    }
 
+    function createCardHTML(product) {
+      return `
+        <div class="product-card">
+          <a href="#" class="product-link">
+            <div class="product-image-box">
+              <img
+                src="${product.img}"
+                alt="${product.brand} ${product.name}"
+                class="product-img"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-info">
+              <span class="product-brand">${product.brand}</span>
+              <p class="product-name">${product.name}</p>
+              <span class="product-price">${product.price}</span>
+            </div>
+          </a>
+        </div>
+      `;
+    }
+
+    function renderSlides() {
+      const slidesData = [
+        getRandomAllProducts(),
+        publicBeaconProducts,
+        escadaProducts,
+        oakleyProducts,
+        policeProducts,
+        oliverPeoplesProducts
       ];
 
-      const shuffled = [...allPool].sort(() => 0.5 - Math.random());
-
-      return shuffled.slice(0, 4);
-
+      newProductSwiperWrapper.innerHTML = slidesData.map(productsList => `
+        <div class="swiper-slide">
+          <div class="new-product-grid">
+            ${productsList.map(createCardHTML).join('')}
+          </div>
+        </div>
+      `).join('');
     }
-
-
-
-    function getProductsByBrand(brandText) {
-
-      if (brandText === 'escada') {
-
-        return escadaProducts;
-
-      } else if (brandText === 'oakley') {
-
-        return oakleyProducts;
-
-      } else if (brandText === 'police') {
-
-        return policeProducts;
-
-      } else if (brandText === 'oliver peoples') {
-
-        return oliverPeoplesProducts;
-
-      } else if (brandText === 'public beacon') {
-
-        return publicBeaconProducts;
-
-      } else {
-
-        return getRandomAllProducts();
-
-      }
-
-    }
-
-
-
-    function initProducts(products) {
-      currentProducts = products;
-      newProductGrid.innerHTML = '';
-      const isMobile = window.innerWidth <= 480;
-      const displayProducts = isMobile ? products.slice(0, 3) : products;
-      const cards = displayProducts.map(createCardElement);
-      cards.forEach(card => newProductGrid.appendChild(card));
-      newProductGrid.style.transition = 'none';
-      newProductGrid.style.transform = 'translateX(0)';
-      updateDots();
-    }
-
-
 
     function initDots() {
-
       newDotsContainer.innerHTML = chipsArray.map((_, idx) => `
-
-        <button type="button" class="dot ${idx === currentBrandIndex ? 'active' : ''}" aria-label="${idx + 1}번 브랜드"></button>
-
+        <button type="button" class="dot ${idx === 0 ? 'active' : ''}" aria-label="${idx + 1}번 브랜드"></button>
       `).join('');
 
-
-
       const dots = newDotsContainer.querySelectorAll('.dot');
-
       dots.forEach((dot, idx) => {
-
         dot.addEventListener('click', () => {
-
-          transitionToBrand(idx);
-
+          if (newProductSwiper) newProductSwiper.slideTo(idx);
         });
-
       });
-
     }
 
+    function updateActiveState(activeIndex) {
+      // Update filter chips
+      filterChips.forEach((chip, idx) => {
+        if (idx === activeIndex) {
+          chip.classList.add('active');
+        } else {
+          chip.classList.remove('active');
+        }
+      });
 
-
-    function updateDots() {
-
+      // Update dots
       const dots = newDotsContainer.querySelectorAll('.dot');
-
       dots.forEach((dot, idx) => {
-
-        if (idx === currentBrandIndex) {
-
+        if (idx === activeIndex) {
           dot.classList.add('active');
-
         } else {
-
           dot.classList.remove('active');
-
         }
-
       });
-
     }
 
-
-
-    function getGap() {
-
-      const style = window.getComputedStyle(newProductGrid);
-
-      return parseFloat(style.gap) || 24;
-
-    }
-
-
-
-    function transitionToBrand(targetIndex, direction = null) {
-      if (targetIndex === currentBrandIndex) return;
-
-      // If already transitioning, instantly complete the active transition first
-      if (isTransitioning && cleanupActiveTransition) {
-        cleanupActiveTransition();
-      }
-      isTransitioning = true;
-
-      const currentChip = chipsArray[currentBrandIndex];
-      const targetChip = chipsArray[targetIndex];
-
-      currentChip.classList.remove('active');
-      targetChip.classList.add('active');
-
-      const targetBrandText = targetChip.textContent.trim().toLowerCase();
-      const oldProducts = currentProducts;
-      const newProducts = getProductsByBrand(targetBrandText);
-
-      if (!direction) {
-        direction = targetIndex > currentBrandIndex ? 'next' : 'prev';
-      }
-
-      const isMobile = window.innerWidth <= 480;
-      const isMobileOrTablet = window.innerWidth <= 1024;
-      const gap = getGap();
-
-      // Reuse existing DOM nodes as oldCards to prevent image reloading/flickering
-      const oldCards = Array.from(newProductGrid.children);
-
-      // Add transitioning class to the container to disable card hiding CSS rule
-      newProductGrid.classList.add('is-transitioning');
-
-      // Measure old height
-      const oldHeight = newProductGrid.offsetHeight;
-
-      // Slice products to 3 on mobile viewport to prevent nth-child(4) from causing visual pops
-      const displayNewProducts = isMobile ? newProducts.slice(0, 3) : newProducts;
-      const newCards = displayNewProducts.map(createCardElement);
-
-      // Create a hidden out-of-flow clone of the grid container to measure the new layout height without detaching active DOM nodes
-      const cloneGrid = newProductGrid.cloneNode(false);
-      cloneGrid.style.position = 'absolute';
-      cloneGrid.style.visibility = 'hidden';
-      cloneGrid.style.height = 'auto';
-      cloneGrid.style.width = `${newProductGrid.offsetWidth}px`;
-      
-      newCards.forEach(card => {
-        cloneGrid.appendChild(card.cloneNode(true));
+    function initSwiper() {
+      newProductSwiper = new Swiper(newProductSliderWrapper, {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        speed: 600,
+        observer: true,
+        observeParents: true,
+        navigation: {
+          prevEl: newPrevBtn,
+          nextEl: newNextBtn
+        },
+        on: {
+          slideChange(swiper) {
+            updateActiveState(swiper.activeIndex);
+          }
+        }
       });
-      
-      newProductGrid.parentNode.appendChild(cloneGrid);
-      const targetHeight = cloneGrid.offsetHeight;
-      newProductGrid.parentNode.removeChild(cloneGrid);
-
-      // Freeze height of the grid to prevent layout collapse, starting at oldHeight
-      newProductGrid.style.height = `${oldHeight}px`;
-      newProductGrid.style.overflow = 'hidden';
-
-      if (isMobileOrTablet) {
-        // Vertical slide transition for mobile and tablet grid/list layout
-        if (direction === 'next') {
-          newCards.forEach(card => newProductGrid.appendChild(card));
-
-          newProductGrid.style.transition = 'none';
-          newProductGrid.style.transform = 'translateY(0)';
-          
-          newProductGrid.offsetHeight;
-
-          newProductGrid.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), height 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
-          newProductGrid.style.transform = `translateY(-${oldHeight + gap}px)`;
-          newProductGrid.style.height = `${targetHeight}px`;
-        } else {
-          newCards.forEach(card => newProductGrid.insertBefore(card, oldCards[0]));
-
-          newProductGrid.style.transition = 'none';
-          newProductGrid.style.transform = `translateY(-${oldHeight + gap}px)`;
-          
-          newProductGrid.offsetHeight;
-
-          newProductGrid.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), height 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
-          newProductGrid.style.transform = 'translateY(0)';
-          newProductGrid.style.height = `${targetHeight}px`;
-        }
-      } else {
-        // Horizontal slide transition for desktop layout
-        const gridWidth = newProductGrid.offsetWidth || 1160;
-        const cardWidth = (gridWidth - (3 * gap)) / 4;
-        const offset = oldCards.length * (cardWidth + gap);
-
-        newProductGrid.style.display = 'flex';
-        newProductGrid.style.flexWrap = 'nowrap';
-        
-        // Apply sizing to all elements currently in the transition
-        oldCards.forEach(card => {
-          card.style.flex = `0 0 ${cardWidth}px`;
-          card.style.width = `${cardWidth}px`;
-        });
-        newCards.forEach(card => {
-          card.style.flex = `0 0 ${cardWidth}px`;
-          card.style.width = `${cardWidth}px`;
-        });
-
-        if (direction === 'next') {
-          newCards.forEach(card => newProductGrid.appendChild(card));
-
-          newProductGrid.style.transition = 'none';
-          newProductGrid.style.transform = 'translateX(0)';
-          
-          newProductGrid.offsetHeight;
-
-          newProductGrid.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), height 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
-          newProductGrid.style.transform = `translateX(-${offset}px)`;
-          newProductGrid.style.height = `${targetHeight}px`;
-        } else {
-          newCards.forEach(card => newProductGrid.insertBefore(card, oldCards[0]));
-
-          newProductGrid.style.transition = 'none';
-          newProductGrid.style.transform = `translateX(-${offset}px)`;
-          
-          newProductGrid.offsetHeight;
-
-          newProductGrid.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), height 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
-          newProductGrid.style.transform = 'translateX(0)';
-          newProductGrid.style.height = `${targetHeight}px`;
-        }
-      }
-
-      cleanupActiveTransition = () => {
-        if (transitionTimeoutId) {
-          clearTimeout(transitionTimeoutId);
-          transitionTimeoutId = null;
-        }
-        newProductGrid.classList.remove('is-transitioning');
-        newProductGrid.style.display = '';
-        newProductGrid.style.flexWrap = '';
-        newProductGrid.style.height = ''; // Unfreeze height
-        newProductGrid.style.overflow = '';
-        newProductGrid.style.transition = 'none';
-        newProductGrid.style.transform = '';
-
-        // Safely remove only the old cards, leaving new cards in their DOM positions
-        oldCards.forEach(card => card.remove());
-        
-        newCards.forEach(card => {
-          card.style.flex = '';
-          card.style.width = '';
-          card.style.transition = '';
-          card.style.opacity = '';
-        });
-
-        currentProducts = newProducts;
-        currentBrandIndex = targetIndex;
-        isTransitioning = false;
-        cleanupActiveTransition = null;
-
-        updateDots();
-      };
-
-      transitionTimeoutId = setTimeout(cleanupActiveTransition, 550); // Set to 550ms to ensure 500ms CSS transitions finish completely first
     }
 
-
-
-    function slideNext() {
-
-      const nextIndex = (currentBrandIndex + 1) % chipsArray.length;
-
-      transitionToBrand(nextIndex, 'next');
-
-    }
-
-
-
-    function slidePrev() {
-
-      const prevIndex = (currentBrandIndex - 1 + chipsArray.length) % chipsArray.length;
-
-      transitionToBrand(prevIndex, 'prev');
-
-    }
-
-
-
-    newNextBtn.addEventListener('click', slideNext);
-
-    newPrevBtn.addEventListener('click', slidePrev);
-
-
-
+    // Filter Chips Event Listener
     filterChips.forEach((chip, idx) => {
-
       chip.addEventListener('click', () => {
-
-        transitionToBrand(idx);
-
+        if (newProductSwiper) newProductSwiper.slideTo(idx);
       });
-
     });
 
-
-
-    // Dynamic resize handler to update card counts between mobile (3) and tablet/desktop (4) viewports
-    let newResizeTimeout;
-    window.addEventListener('resize', () => {
-      clearTimeout(newResizeTimeout);
-      newResizeTimeout = setTimeout(() => {
-        if (isTransitioning) return;
-        const isMobile = window.innerWidth <= 480;
-        const currentCardsCount = newProductGrid.children.length;
-        const expectedCount = isMobile ? 3 : 4;
-        if (currentCardsCount !== expectedCount && currentProducts && currentProducts.length > 0) {
-          newProductGrid.innerHTML = '';
-          const displayProducts = isMobile ? currentProducts.slice(0, 3) : currentProducts;
-          const cards = displayProducts.map(createCardElement);
-          cards.forEach(card => newProductGrid.appendChild(card));
-        }
-      }, 100);
-    });
-
+    // Run
+    renderSlides();
     initDots();
-
-    initProducts(getRandomAllProducts());
-
+    initSwiper();
   }
 
 });

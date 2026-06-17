@@ -1,3 +1,8 @@
+import { renderHeader } from "../modules/header.js";
+document.addEventListener("DOMContentLoaded", () => {
+  renderHeader();
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   // 1. 요소 선택
   const loginForm = document.getElementById("login-form");
@@ -52,6 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const formData = new FormData(loginForm);
       const data = Object.fromEntries(formData.entries());
+
+      alert("로그인 시도 데이터: " + JSON.stringify(data));
 
       console.log("로그인 시도 데이터:", data);
 

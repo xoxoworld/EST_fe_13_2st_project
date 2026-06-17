@@ -1,4 +1,8 @@
 ﻿import { getFilteredStores, getSidoList, getSigunguList } from "../common.js";
+import { renderHeader } from "../modules/header.js";
+document.addEventListener("DOMContentLoaded", () => {
+  renderHeader();
+});
 
 const storesGrid = document.querySelector(".store-grid");
 const storeDetailLayer = document.querySelector(".store-detail-layer");
@@ -98,6 +102,9 @@ storesGrid.addEventListener("click", event => {
 
   storeDetail(selectedStore);
   storeDetailLayer.classList.add("open");
+  requestAnimationFrame(() => {
+    renderStoreMap(selectedStore);
+  });
 });
 
 // modal close
@@ -140,8 +147,7 @@ function storeDetail(store) {
 
       <div class="detail-image">
         <div class="detail-map-placeholder" aria-label="지도 영역">
-          <span class="material-icons" aria-hidden="true">location_on</span>
-          <p>지도 영역</p>
+          <div id="map" class="map"></div>
         </div>
         <img class="detail-store-photo" src="${store.thumbnail}" alt="${store.name}" />
       </div>
@@ -200,6 +206,37 @@ function storeDetail(store) {
   `;
 
   storeDetailLayer.innerHTML = storeDetailHTML;
+}
+
+// 매장 상세 지도
+function renderStoreMap(store) {
+  const container = document.getElementById("map");
+
+  if (!container || !window.kakao?.maps) return;
+
+  const defaultPosition = new kakao.maps.LatLng(37.497952, 127.027619);
+  const map = new kakao.maps.Map(container, {
+    center: defaultPosition,
+    level: 2,
+  });
+  const marker = new kakao.maps.Marker({
+    position: defaultPosition,
+  });
+
+  marker.setMap(map);
+
+  if (!store.address || !kakao.maps.services) return;
+
+  const geocoder = new kakao.maps.services.Geocoder();
+
+  geocoder.addressSearch(store.address, (result, status) => {
+    if (status !== kakao.maps.services.Status.OK || result.length === 0) return;
+
+    const position = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+    map.setCenter(position);
+    marker.setPosition(position);
+  });
 }
 
 // 더보기 버튼 클릭
@@ -261,5 +298,3 @@ const swiper = new Swiper(".swiper", {
     delay: 5000,
   },
 });
-
-// 지도 api
