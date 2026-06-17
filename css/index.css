@@ -245,10 +245,14 @@
   .banner-text-box .link {
     display: none;
   }
+  .banner-text-box > .banner-description.is-narrow {
+    width: auto;
+    height: auto;
+  }
   .banner-logo svg {
     width: 620px;
     height: 120px;
-}
+  }
 }
 
 /* Web */
@@ -307,6 +311,10 @@
   }
   .banner-text-box .link {
     display: none;
+  }
+  .banner-text-box > .banner-description.is-narrow {
+    width: auto;
+    height: auto;
   }
   .banner-logo svg {
     width: 620px;
