@@ -1106,6 +1106,9 @@ img {
     grid-template-columns: repeat(2, minmax(0, 340px));
     gap: 28px;
   }
+  .product-name {
+    font-size: var(--normal);
+  }
 }
 
 /* Desktop layout: 1272px 디자인 기준으로 좌측 상세 영역과 우측 sticky 구매 패널을 배치합니다. */

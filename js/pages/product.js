@@ -57,7 +57,8 @@ function createContent(data, products) {
     reviewPager = document.querySelector(".review-wrap .pager"),
     qnaList = document.querySelector(".qna-list"),
     qnaPager = document.querySelector(".qna-wrap .pager"),
-    thumbWrap = document.querySelector(".thumb-wrap");
+    thumbWrap = document.querySelector(".thumb-wrap"),
+    productName = document.querySelector(".product-name");
 
   title.textContent = data.title;
   brand.textContent = data.brand;
@@ -67,6 +68,7 @@ function createContent(data, products) {
   totalPrices.forEach(totalPrice => {
     totalPrice.textContent = `${data.price.final.toLocaleString()}원`;
   });
+  productName.textContent = data.title;
 
   const galleryImages = [data.images.thumbnail, ...data.images.gallery];
 
