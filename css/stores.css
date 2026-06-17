@@ -551,7 +551,8 @@ main > section {
   display: none;
 }
 
-.detail-map-placeholder {
+.detail-map-placeholder,
+.map {
   display: flex;
   flex-direction: column;
   align-items: center;
