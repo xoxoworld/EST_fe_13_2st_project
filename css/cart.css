@@ -98,11 +98,11 @@ body {
   margin: 0;
 }
 .option-select {
-  width: 156px;
-  margin: 0;
+  flex: 1;
+  min-width: 0;
 }
 .option-select select {
-  width: 156px;
+  width: 100%;
   height: 30px;
   font-size: var(--base-font);
   background-color: var(--secondary);
@@ -223,8 +223,9 @@ body {
   .cart-right {
     display: flex;
     flex-direction: column;
-    width: 375px;
+    width: 250px;
     flex-shrink: 0;
+    gap: 30px;
   }
 
   .cart-title {
@@ -246,9 +247,9 @@ body {
   .product-info p {
     font-size: var(--small);
   }
-  .option-select select {
-    font-size: var(--small);
-    font-weight: 400;
+  .product-content {
+    flex: 1;
+    min-width: 0;
   }
 
   /* 오른쪽 */
@@ -324,20 +325,22 @@ body {
   }
 
   .cart-title {
-    font-size: var(--title--x-l);
+    padding-top: 118px;
+    padding-bottom: 118px;
+    font-size: var(--heading--m);
   }
 
   .cart-count {
-    font-size: var(--medium);
+    font-size: var(--large);
   }
   .select-all span,
   .select-delete-btn {
-    font-size: var(--normal);
+    font-size: var(--large);
   }
 
   /* 왼쪽 */
   .brand-name {
-    font-size: var(--sub-title--l);
+    font-size: var(--title--x-l);
   }
   .product-info p {
     font-size: var(--normal);
@@ -400,5 +403,10 @@ body {
   .ai-logo {
     width: 40px;
     height: 40px;
+  }
+  .item-check input,
+  .select-all input {
+    width: 20px;
+    height: 20px;
   }
 }
