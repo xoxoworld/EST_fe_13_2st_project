@@ -542,18 +542,25 @@
   border-radius: 10px;
   object-fit: cover;
 }
-
-.swiper-pagination-progressbar {
-  background: var(--gray-4);
+/* 제니 페이지 네이션 */
+.product-pagination__track {
+  position: relative;
   width: 100%;
   height: 2px;
-  top: auto;
-  bottom: 0;
+  background-color: var(--radius-color);
+  overflow: hidden;
 }
 
-.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-  background: var(--black-1);
+.product-pagination__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--black-2);
+  transition: left 0.3s ease;
 }
+/* 제니 페이지 네이션 */
 
 @media (min-width: 768px) {
   .jenny-collection {
@@ -2479,22 +2486,12 @@
 }
 
 .jenny-contents .product-wrapper {
-  margin-bottom: 66px;
+  margin-bottom: 50px;
 }
 
-.swiper-pagination-progressbar {
-  background: var(--gray-4);
-  width: 100%;
-  height: 2px;
-  top: auto;
-  bottom: 0;
-
-  .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-    background: var(--black-1);
-  }
-  .call-action {
-    border-right: 1px solid #e5e7eb;
-  }
+.call-action {
+  border-right: 1px solid #e5e7eb;
+}
 
   /* Responsive Styles */
   @media (width <= 1024px) {
@@ -2610,7 +2607,6 @@
       height: 38px;
     }
   }
-}
 
 /* ==========================================================================
    STYLE MAGAZINE SECTION
