@@ -3,7 +3,7 @@ let visualSwiper;
 let thumbSwiper;
 let relatedSwiper;
 
-// 상품 로드
+// 상품 데이터 로드
 async function fetchProduct() {
   const params = new URLSearchParams(location.search);
   const productID = params.get("id");
@@ -37,7 +37,7 @@ async function fetchProduct() {
   }
 }
 
-// 콘텐츠 생성
+// 상품 상세 페이지 콘텐츠 생성
 function createContent(data, products) {
   const title = document.querySelector(".product-title"),
     brand = document.querySelector(".brand-path"),
@@ -51,6 +51,11 @@ function createContent(data, products) {
     colorBlock = document.querySelector(".color-block"),
     colorList = document.querySelector(".color-list"),
     relatedList = document.querySelector(".related-list"),
+    photoReviewToggle = document.querySelector(".review-toggle input"),
+    reviewList = document.querySelector(".review-list"),
+    reviewPager = document.querySelector(".review-wrap .pager"),
+    qnaList = document.querySelector(".qna-list"),
+    qnaPager = document.querySelector(".qna-wrap .pager"),
     thumbWrap = document.querySelector(".thumb-wrap");
 
   title.textContent = data.title;
@@ -69,12 +74,14 @@ function createContent(data, products) {
   renderColorChips(colorBlock, colorList, data.otherColors);
   renderThumbImages(thumbWrap, galleryImages);
   renderRelatedProducts(relatedList, products, data);
+  renderReviews(reviewList, reviewPager, photoReviewToggle, data.reviews);
+  renderQnaList(qnaList, qnaPager, data.qna);
   initThumbSwiper(galleryImages.length);
   initVisualSwiper(visualCount, thumbWrap, galleryImages.length);
   initRelatedSwiper();
 }
 
-// 메인 이미지 스와이퍼
+// 메인 상품 이미지 스와이퍼 렌더
 function renderVisualSwiper(visualWrap, visualCount, data, galleryImages) {
   const swiper = document.createElement("div");
   const wrapper = document.createElement("div");
@@ -99,7 +106,7 @@ function renderVisualSwiper(visualWrap, visualCount, data, galleryImages) {
   visualWrap.replaceChildren(swiper, visualCount);
 }
 
-// 상세정보 이미지 render
+// 상세정보 이미지 렌더
 function renderDetailImages(detailWrap, data) {
   const detailImages = data.images.detail.map((src, index) => {
     const img = document.createElement("img");
@@ -111,11 +118,10 @@ function renderDetailImages(detailWrap, data) {
   detailWrap.replaceChildren(...detailImages);
 }
 
-// 색상 선택 render
+// 다른 색상 상품 렌더
 function renderColorChips(colorBlock, colorList, otherColors = []) {
   const linkedColors = otherColors.filter(color => color.id && color.thumb);
 
-  // otherColors 없으면 colorBlock none
   if (linkedColors.length === 0) {
     colorBlock.style.display = "none";
     colorList.replaceChildren();
@@ -145,7 +151,7 @@ function renderColorChips(colorBlock, colorList, otherColors = []) {
   colorList.replaceChildren(...colorChips);
 }
 
-// 비슷한 상품 render
+// 비슷한 상품 렌더
 function renderRelatedProducts(relatedList, products, currentProduct) {
   const wrapper = document.createElement("div");
   const relatedProducts = getRandomRelatedProducts(products, currentProduct, 6);
@@ -179,23 +185,183 @@ function renderRelatedProducts(relatedList, products, currentProduct) {
   relatedList.replaceChildren(wrapper);
 }
 
-// 비슷한 상품 랜덤 추출
+// 같은 브랜드/같은 프레임 형태의 상품 중 랜덤 추출
 function getRandomRelatedProducts(products, currentProduct, count) {
-  const candidates = products.filter(product => {
+  const candidates = products.filter(item => {
     return (
-      product.id !== currentProduct.id &&
-      product.brand === currentProduct.brand &&
-      product["frame-shape"] === currentProduct["frame-shape"]
+      item.id !== currentProduct.id &&
+      item.brand === currentProduct.brand &&
+      item["frame-shape"] === currentProduct["frame-shape"]
     );
   });
 
   return shuffleArray(candidates).slice(0, count);
 }
 
+// 배열 랜덤 섞기
 function shuffleArray(array) {
   return [...array].sort(() => Math.random() - 0.5);
 }
-// 썸네일 이미지 render
+
+// 리뷰/Q&A 공용 페이지네이션 렌더
+function renderPaginatedList({ list, pager, items, renderItem, renderEmpty, pageSize = 3 }) {
+  let currentPage = 1;
+  let currentItems = items;
+
+  function renderPage(page = 1) {
+    const totalPages = Math.ceil(currentItems.length / pageSize);
+
+    if (currentItems.length === 0) {
+      list.replaceChildren(renderEmpty());
+      pager.style.display = "none";
+      return;
+    }
+
+    currentPage = Math.min(Math.max(page, 1), totalPages);
+    const start = (currentPage - 1) * pageSize;
+    const visibleItems = currentItems.slice(start, start + pageSize);
+
+    list.replaceChildren(...visibleItems.map(renderItem));
+    renderPager(totalPages);
+  }
+
+  function renderPager(totalPages) {
+    if (totalPages <= 1) {
+      pager.style.display = "none";
+      return;
+    }
+
+    const prevButton = document.createElement("button");
+    const nextButton = document.createElement("button");
+    const pageButtons = Array.from({ length: totalPages }, (_, index) => {
+      const page = index + 1;
+      const pageButton = document.createElement(page === currentPage ? "b" : "span");
+
+      pageButton.textContent = page;
+      pageButton.addEventListener("click", () => renderPage(page));
+      return pageButton;
+    });
+
+    pager.style.display = "";
+    prevButton.setAttribute("type", "button");
+    prevButton.textContent = "<";
+    prevButton.disabled = currentPage === 1;
+    prevButton.addEventListener("click", () => renderPage(currentPage - 1));
+
+    nextButton.setAttribute("type", "button");
+    nextButton.textContent = ">";
+    nextButton.disabled = currentPage === totalPages;
+    nextButton.addEventListener("click", () => renderPage(currentPage + 1));
+
+    pager.replaceChildren(prevButton, ...pageButtons, nextButton);
+  }
+
+  renderPage(currentPage);
+
+  return {
+    update(nextItems) {
+      currentItems = nextItems;
+      renderPage(1);
+    },
+  };
+}
+
+// 후기 목록 렌더
+function renderReviews(reviewList, reviewPager, photoReviewToggle, reviews = []) {
+  const getFilteredReviews = () => {
+    if (!photoReviewToggle.checked) return reviews;
+
+    return reviews.filter(review => review.image);
+  };
+  const reviewPagination = renderPaginatedList({
+    list: reviewList,
+    pager: reviewPager,
+    items: getFilteredReviews(),
+    renderItem: createReviewCard,
+    renderEmpty: createEmptyReview,
+  });
+
+  photoReviewToggle.addEventListener("change", () => {
+    reviewPagination.update(getFilteredReviews());
+  });
+}
+
+// 후기 없음 상태 렌더
+function createEmptyReview() {
+  const emptyText = document.createElement("p");
+
+  emptyText.classList.add("review-empty");
+  emptyText.textContent = "첫번째 후기를 남겨보세요";
+  return emptyText;
+}
+
+// 후기 카드 생성
+function createReviewCard(review) {
+  const article = document.createElement("article");
+  const meta = document.createElement("div");
+  const stars = document.createElement("p");
+  const content = document.createElement("div");
+  const title = document.createElement("h3");
+  const text = document.createElement("p");
+  const img = document.createElement("img");
+
+  article.classList.add("review-card");
+  meta.classList.add("review-meta", "d-flex", "flex-column", "justify-content-between");
+  stars.classList.add("stars");
+  stars.textContent = "★★★★★";
+  content.classList.add("review-content", "d-flex", "flex-column", "justify-content-between");
+  title.textContent = review.title || "";
+  text.textContent = review.content || "";
+  img.setAttribute("src", review.image || "");
+  img.setAttribute("alt", "");
+
+  meta.append(stars);
+  content.append(title, text);
+  article.append(meta, content, img);
+  return article;
+}
+
+// 상품 문의 목록 렌더
+function renderQnaList(qnaList, qnaPager, qna = []) {
+  renderPaginatedList({
+    list: qnaList,
+    pager: qnaPager,
+    items: qna,
+    renderItem: createQnaItem,
+    renderEmpty: createEmptyQna,
+  });
+}
+
+// 상품 문의 아이템 생성
+function createQnaItem(qna) {
+  const item = document.createElement("li");
+  const icon = document.createElement("p");
+  const title = document.createElement("strong");
+  const author = document.createElement("em");
+  const status = document.createElement("b");
+
+  icon.classList.add("material-icons");
+  icon.textContent = "lock";
+  title.textContent = qna.title || "";
+  author.textContent = "";
+  status.textContent = "답변완료";
+
+  item.append(icon, title, author, status);
+  return item;
+}
+
+// 상품 문의 없음 상태 렌더
+function createEmptyQna() {
+  const item = document.createElement("li");
+  const title = document.createElement("strong");
+
+  item.classList.add("qna-empty");
+  title.textContent = "상품 문의가 없습니다";
+  item.append(title);
+  return item;
+}
+
+// 썸네일 이미지 렌더
 function renderThumbImages(thumbWrap, galleryImages) {
   const wrapper = document.createElement("div");
   const thumbImages = galleryImages.map((src, index) => {
@@ -266,6 +432,7 @@ function initRelatedSwiper() {
     },
   });
 }
+
 // 메인 이미지 스와이퍼
 function initVisualSwiper(visualCount, thumbWrap, total) {
   if (visualSwiper) visualSwiper.destroy(true, true);
@@ -284,19 +451,20 @@ function initVisualSwiper(visualCount, thumbWrap, total) {
   });
 }
 
+// 메인 이미지 상태 업데이트
 function updateProductVisual(visualCount, thumbWrap, index, total) {
   updateVisualCount(visualCount, index, total);
   updateActiveThumb(thumbWrap, index);
 }
 
-// visual-count update
+// 메인 이미지 카운트 업데이트
 function updateVisualCount(visualCount, index, total) {
   if (!visualCount) return;
 
   visualCount.innerHTML = `<strong>${index + 1}</strong> / ${total}`;
 }
 
-// 썸네일 이미지 active 추가
+// 현재 썸네일 active 업데이트
 function updateActiveThumb(thumbWrap, index) {
   const activeThumb = thumbWrap.querySelector(".thumb.active");
   if (activeThumb) activeThumb.classList.remove("active");
@@ -309,7 +477,7 @@ function updateActiveThumb(thumbWrap, index) {
 
 fetchProduct();
 
-// 배너 스와이퍼
+// 우측 배너 스와이퍼
 const swiper = new Swiper(".face-banner.swiper", {
   loop: true,
   navigation: {
