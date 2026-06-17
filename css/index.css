@@ -39,6 +39,20 @@
   object-fit: cover;
 }
 
+.banner .swiper-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0.35) 35%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
 /* =========================
    Text Overlay
 ========================= */
@@ -134,6 +148,10 @@
 .banner__btn--primary .banner-btn-icon:hover {
   background: var(--secondary);
   color: var(--primary);
+}
+.banner__btn--primary:hover .banner-btn-icon svg path,
+.banner__btn--primary:hover .banner-btn-icon svg rect {
+  fill: var(--primary);
 }
 .banner__btn--secondary {
   border: 1px solid var(--white-1);
