@@ -1830,6 +1830,48 @@ $(function(){
 });
 /*사이드바*/
 
+/*배너 슬라이드 스와이퍼*/
+document.addEventListener("DOMContentLoaded", () => {
+  const bannerSwiper = document.querySelector(".banner-swiper");
+  if (!bannerSwiper) return;
+
+  const paginationBtns = document.querySelectorAll(".banner__pagination-btn");
+  
+  const swiper = new Swiper(bannerSwiper, {
+    slidesPerView: 1,
+    loop: true,
+    speed: 600,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false
+    },
+    observer: true,
+    observeParents: true,
+    resizeObserver: true, 
+    
+    on: {
+      slideChange(swiper) {
+        updatePagination(swiper.realIndex);
+      }
+    }
+  });
+
+  function updatePagination(index) {
+    paginationBtns.forEach((btn, i) => {
+      btn.classList.toggle(
+        "banner__pagination-btn--active",
+        i === index
+      );
+    });
+  }
+
+  paginationBtns.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+      swiper.slideToLoop(index);
+    });
+  });
+});
+
 /*제니 컬렉션 상품*/
 document.addEventListener('DOMContentLoaded', () => {
   // Config
