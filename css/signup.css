@@ -39,7 +39,7 @@ body {
    ======================================================== */
 .step-section {
   width: 100%;
-  display: flex; /* 기본 숨김 */
+  display: none; /* 기본 숨김 */
   flex-direction: column;
   justify-content: center;
   align-items: center;

@@ -1,3 +1,8 @@
+import { renderHeader } from "../modules/header.js";
+document.addEventListener("DOMContentLoaded", () => {
+  renderHeader();
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   // 1. 공통 변수 선택
   const signupForm = document.getElementById("signup-form");
