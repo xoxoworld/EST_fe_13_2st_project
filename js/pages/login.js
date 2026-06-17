@@ -1,3 +1,8 @@
+import { renderHeader } from "../modules/header.js";
+document.addEventListener("DOMContentLoaded", () => {
+  renderHeader();
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   // 1. 요소 선택
   const loginForm = document.getElementById("login-form");
