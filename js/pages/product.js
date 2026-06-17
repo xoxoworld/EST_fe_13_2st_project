@@ -1,7 +1,12 @@
+import { updateCartCount, addToCart } from "../common.js";
+
 let product = {};
 let visualSwiper;
 let thumbSwiper;
 let relatedSwiper;
+let productUnitPrice = 0;
+
+updateCartCount();
 
 // 상품 데이터 로드
 async function fetchProduct() {
@@ -64,6 +69,7 @@ function createContent(data, products) {
   brand.textContent = data.brand;
   favorite.textContent = data.likeCount;
   reviewTop.textContent = ` 후기 ${data.reviewCount.toLocaleString()}`;
+  productUnitPrice = data.price.final;
   price.textContent = `${data.price.final.toLocaleString()}원`;
   totalPrices.forEach(totalPrice => {
     totalPrice.textContent = `${data.price.final.toLocaleString()}원`;
@@ -554,4 +560,43 @@ const swiper = new Swiper(".face-banner.swiper", {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
+});
+
+// 상품 수량 변경하기
+const quantityControls = document.querySelectorAll(".quantity-control");
+const quantityInputs = document.querySelectorAll(".quantity-input");
+
+let currentQty = 1;
+
+function syncQuantityInputs() {
+  quantityInputs.forEach(input => {
+    input.value = currentQty;
+  });
+  document.querySelectorAll(".total-price").forEach(totalPrice => {
+    totalPrice.textContent = `${(productUnitPrice * currentQty).toLocaleString()}원`;
+  });
+}
+
+quantityControls.forEach(quantityControl => {
+  quantityControl.addEventListener("click", event => {
+    const btn = event.target.closest("button");
+    if (!btn) return;
+
+    if (btn.textContent.trim() === "-") {
+      if (currentQty > 1) currentQty--;
+    } else {
+      currentQty++;
+    }
+
+    syncQuantityInputs();
+  });
+});
+
+// 장바구니에 담기
+const cartButtons = document.querySelectorAll(".cart-btn");
+
+cartButtons.forEach(cartButton => {
+  cartButton.addEventListener("click", () => {
+    addToCart(product, currentQty);
+  });
 });
