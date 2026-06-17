@@ -58,6 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const formData = new FormData(loginForm);
       const data = Object.fromEntries(formData.entries());
 
+      alert("로그인 시도 데이터: " + JSON.stringify(data));
+
       console.log("로그인 시도 데이터:", data);
 
       // 실제 서버 연동 시 아래와 같이 사용하세요.
