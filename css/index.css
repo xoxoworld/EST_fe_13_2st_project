@@ -2187,6 +2187,10 @@
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.about-us-card:hover .about-us-image {
+  transform: scale(1.05);
+}
+
 .about-us-card-overlay {
   position: absolute;
   left: 0;
