@@ -3411,9 +3411,7 @@
       },
       "images": {
         "thumbnail": "https://image.rounz.com/_data/product/OAKLEY/OO9417-08/OO9417-08_03.JPG",
-        "gallery": [
-          "https://image.rounz.com/_data/product/OAKLEY/OO9417-08/OO9417-08_03.JPG"
-        ],
+        "gallery": ["https://image.rounz.com/_data/product/OAKLEY/OO9417-08/OO9417-08_03.JPG"],
         "detail": []
       },
       "reviews": [],
@@ -3437,9 +3435,7 @@
       },
       "images": {
         "thumbnail": "https://image.rounz.com/_data/product/OAKLEY/MULTI/OO9244-MULTI_11.jpg",
-        "gallery": [
-          "https://image.rounz.com/_data/product/OAKLEY/MULTI/OO9244-MULTI_11.jpg"
-        ],
+        "gallery": ["https://image.rounz.com/_data/product/OAKLEY/MULTI/OO9244-MULTI_11.jpg"],
         "detail": []
       },
       "reviews": [],
@@ -3463,9 +3459,7 @@
       },
       "images": {
         "thumbnail": "https://image.rounz.com/_data/product/OAKLEY/OO9406A-03/OO9406A-03_11.jpg",
-        "gallery": [
-          "https://image.rounz.com/_data/product/OAKLEY/OO9406A-03/OO9406A-03_11.jpg"
-        ],
+        "gallery": ["https://image.rounz.com/_data/product/OAKLEY/OO9406A-03/OO9406A-03_11.jpg"],
         "detail": []
       },
       "reviews": [],
@@ -4283,7 +4277,7 @@
     {
       "id": 55,
       "brand": "BLIZ",
-      "title": "안경 렌즈 맞춤까지 한 번에",
+      "title": "블리츠 퓨전 전용 렌즈 6종 BZ52905 L0 L1 L3 L4 L9 L10",
       "category": "sunglasses",
       "releaseDate": "2024-03-28",
       "frame-shape": "goggle",

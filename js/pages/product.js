@@ -1,6 +1,7 @@
 let product = {};
 let visualSwiper;
 let thumbSwiper;
+let relatedSwiper;
 
 // 상품 로드
 async function fetchProduct() {
@@ -26,7 +27,7 @@ async function fetchProduct() {
       return;
     }
 
-    createContent(product);
+    createContent(product, data.products);
 
     if (typeof createRecommendLists === "function") {
       createRecommendLists(data.products, product.category, Number(productID));
@@ -37,7 +38,7 @@ async function fetchProduct() {
 }
 
 // 콘텐츠 생성
-function createContent(data) {
+function createContent(data, products) {
   const title = document.querySelector(".product-title"),
     brand = document.querySelector(".brand-path"),
     favorite = document.querySelector(".favorite"),
@@ -47,7 +48,9 @@ function createContent(data) {
     visualWrap = document.querySelector(".visual-wrap"),
     visualCount = document.querySelector(".visual-count"),
     detailWrap = document.querySelector(".detail-wrap"),
+    colorBlock = document.querySelector(".color-block"),
     colorList = document.querySelector(".color-list"),
+    relatedList = document.querySelector(".related-list"),
     thumbWrap = document.querySelector(".thumb-wrap");
 
   title.textContent = data.title;
@@ -63,10 +66,12 @@ function createContent(data) {
 
   renderVisualSwiper(visualWrap, visualCount, data, galleryImages);
   renderDetailImages(detailWrap, data);
-  renderColorChips(colorList, data.otherColors);
+  renderColorChips(colorBlock, colorList, data.otherColors);
   renderThumbImages(thumbWrap, galleryImages);
+  renderRelatedProducts(relatedList, products, data);
   initThumbSwiper(galleryImages.length);
   initVisualSwiper(visualCount, thumbWrap, galleryImages.length);
+  initRelatedSwiper();
 }
 
 // 메인 이미지 스와이퍼
@@ -107,8 +112,18 @@ function renderDetailImages(detailWrap, data) {
 }
 
 // 색상 선택 render
-function renderColorChips(colorList, otherColors = []) {
+function renderColorChips(colorBlock, colorList, otherColors = []) {
   const linkedColors = otherColors.filter(color => color.id && color.thumb);
+
+  // otherColors 없으면 colorBlock none
+  if (linkedColors.length === 0) {
+    colorBlock.style.display = "none";
+    colorList.replaceChildren();
+    return;
+  }
+
+  colorBlock.style.display = "";
+
   const colorChips = linkedColors.map(color => {
     const button = document.createElement("button");
     const img = document.createElement("img");
@@ -130,6 +145,56 @@ function renderColorChips(colorList, otherColors = []) {
   colorList.replaceChildren(...colorChips);
 }
 
+// 비슷한 상품 render
+function renderRelatedProducts(relatedList, products, currentProduct) {
+  const wrapper = document.createElement("div");
+  const relatedProducts = getRandomRelatedProducts(products, currentProduct, 6);
+  const relatedCards = relatedProducts.map(product => {
+    const article = document.createElement("article");
+    const img = document.createElement("img");
+    const brand = document.createElement("h3");
+    const title = document.createElement("p");
+    const price = document.createElement("strong");
+
+    article.classList.add("swiper-slide");
+    article.addEventListener("click", () => {
+      location.href = `./product.html?id=${product.id}`;
+    });
+
+    img.setAttribute("src", product.images.thumbnail);
+    img.setAttribute("alt", product.title);
+    brand.classList.add("text-small-b");
+    brand.textContent = product.brand;
+    title.textContent = product.title;
+    price.classList.add("text-small-b");
+    price.textContent = `${product.price.final.toLocaleString()}원`;
+
+    article.append(img, brand, title, price);
+    return article;
+  });
+
+  relatedList.classList.add("related-swiper", "swiper");
+  wrapper.classList.add("swiper-wrapper");
+  wrapper.append(...relatedCards);
+  relatedList.replaceChildren(wrapper);
+}
+
+// 비슷한 상품 랜덤 추출
+function getRandomRelatedProducts(products, currentProduct, count) {
+  const candidates = products.filter(product => {
+    return (
+      product.id !== currentProduct.id &&
+      product.brand === currentProduct.brand &&
+      product["frame-shape"] === currentProduct["frame-shape"]
+    );
+  });
+
+  return shuffleArray(candidates).slice(0, count);
+}
+
+function shuffleArray(array) {
+  return [...array].sort(() => Math.random() - 0.5);
+}
 // 썸네일 이미지 render
 function renderThumbImages(thumbWrap, galleryImages) {
   const wrapper = document.createElement("div");
@@ -178,6 +243,29 @@ function initThumbSwiper(total) {
   });
 }
 
+// 비슷한 상품 스와이퍼
+function initRelatedSwiper() {
+  if (relatedSwiper) relatedSwiper.destroy(true, true);
+
+  relatedSwiper = new Swiper(".related-swiper", {
+    slidesPerView: 2.4,
+    spaceBetween: 16,
+    loop: false,
+    grabCursor: true,
+    observer: true,
+    observeParents: true,
+    breakpoints: {
+      768: {
+        slidesPerView: 4,
+        spaceBetween: 18,
+      },
+      1272: {
+        slidesPerView: 3,
+        spaceBetween: 24,
+      },
+    },
+  });
+}
 // 메인 이미지 스와이퍼
 function initVisualSwiper(visualCount, thumbWrap, total) {
   if (visualSwiper) visualSwiper.destroy(true, true);

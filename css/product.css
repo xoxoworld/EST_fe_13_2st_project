@@ -395,6 +395,8 @@ img {
 .related-wrap {
   padding-top: 19px;
   padding-bottom: 40px;
+  padding-right: 0px;
+  padding-left: 0px;
 }
 
 .related-wrap h2 {
@@ -402,17 +404,18 @@ img {
 }
 
 .related-list {
-  display: flex;
-  gap: 16px;
   overflow: hidden;
   padding-bottom: 18px;
-  border-bottom: 2px solid var(--black-1);
+}
+
+.related-list.swiper {
+  display: block;
 }
 
 /* 모바일/태블릿에서는 카드가 가로로 흘러가고, 데스크톱에서는 grid로 전환됩니다. */
 .related-list article {
-  flex: 0 0 122px;
   min-width: 0;
+  cursor: pointer;
 }
 
 .related-list img {
@@ -954,11 +957,11 @@ img {
 
   /* 상세 브랜드 이미지는 태블릿에서 더 크게 보여 세로 스케일을 맞춥니다. */
   .related-list {
-    gap: 18px;
+    overflow: hidden;
   }
 
   .related-list article {
-    flex-basis: 180px;
+    min-width: 0;
   }
 
   .related-list img {
@@ -1298,10 +1301,7 @@ img {
   }
 
   .related-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    overflow: visible;
+    overflow: hidden;
   }
 
   /* 데스크톱에서는 비슷한 상품을 스크롤이 아닌 3열 grid로 보여줍니다. */
