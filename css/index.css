@@ -231,7 +231,7 @@
   }
 }
 
-/* 카테고리 ?�션 */
+/* 카테고리 섹션 */
 .category {
   padding: 24px 0;
   background-color: #fff;
@@ -543,18 +543,18 @@
   object-fit: cover;
 }
 
-/* 1. ?�체 ?�로그레?�바??배경??(?�진???�한 ?�색 ��? */
+/* 1. 전체 프로그레스바의 배경 (사진/연한 회색 부분) */
 .swiper-pagination-progressbar {
   background: var(--gray-4);
   width: 100%;
-  height: 2px; /* ?�의 ?�께 (?�고 길쭉?�게) */
-  top: auto; /* 기본 ?�단 고정???�제?�고 ?�단?�로 ?�릴 ???�용 */
-  bottom: 0; /* ?�라?�드 ?�역 �??�단????붙임 */
+  height: 2px; /* 선의 두께 (얇고 길쭉하게) */
+  top: auto; /* 기본 상단 고정은 해제하고 하단으로 내릴 때 사용 */
+  bottom: 0; /* 슬라이드 영역 하단에 붙임 */
 }
 
-/* 2. ?�재 ?�치�??��??�는 채워�????(?�진??진한 �???��? */
+/* 2. 현재 위치를 나타내는 채워진 부분 (사진/진한 검은색 부분) */
 .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-  background: var(--black-1); /* ?직이??바의 ?�상 (�??? */
+  background: var(--black-1); /* 움직이는 바의 색상 (검은색) */
 }
 
 @media (min-width: 768px) {
@@ -599,7 +599,7 @@
     align-items: flex-start;
   }
 
-  /* ?�쪽 배너 */
+  /* 왼쪽 배너 */
   .jenny-collection__figure {
     flex: 0 0 620px;
     width: 620px;
@@ -615,7 +615,7 @@
     object-fit: cover;
   }
 
-  /* ?�른�??�품?�역 */
+  /* 오른쪽 상품 영역 */
   .product-contents {
     flex: 1;
     padding: 0;
@@ -635,7 +635,7 @@
 .best-product .container {
   padding: 24px 0;
 }
-/* 7번째 ?�품�?�는 ?�면???�시?��? ?�음 */
+/* 7번째 상품부터는 화면에 표시되지 않음 */
 .product-slide-list .product-product-item:nth-child(n + 7) {
   display: none;
 }
@@ -682,7 +682,7 @@
     display: none;
   }
 
-  /* ?�품?�역 */
+  /* 상품 영역 */
   .best-product .product-slide-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -692,8 +692,8 @@
 
 /* ==========================================================================
    ROUNZ MAIN PAGE STYLE (index.css)
-   * common.css???�의??�로벌 ?�마 �?��? 바탕?�로 메인 ?�이�??개별 ?�션???��??�링?�니??
-   * �??�션? 반응???�이?�웃 분기(1024px / 768px / 480px ?�하)�??�함?�니??
+   * common.css에 정의된 글로벌 테마 변수를 바탕으로 메인 페이지의 개별 섹션을 스타일링합니다.
+   * 각 섹션은 반응형 레이아웃 분기(1024px / 768px / 480px 이하)를 포함합니다.
    ========================================================================== */
 
 /* ==========================================================================
@@ -1039,6 +1039,11 @@
   width: 24px;
   height: 24px;
   transition: transform 0.3s ease;
+}
+
+.new-product-slider-wrapper {
+  width: 100%;
+  overflow: hidden;
 }
 
 .new-product-grid {
@@ -1635,6 +1640,7 @@
   width: 100%;
   overflow: hidden;
   margin-bottom: 48px;
+  height: 640px; /* Fixed height to prevent vertical layout shifts during slide width transitions */
 }
 
 .brand-carousel-track {
@@ -1643,7 +1649,9 @@
   align-items: center;
   gap: 24px;
   width: 100%;
+  height: 100%;
   padding: 10px 0;
+  box-sizing: border-box;
 }
 
 .carousel-slide {
@@ -1652,7 +1660,7 @@
   overflow: hidden;
   aspect-ratio: 1 / 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   position: relative;
 }
 
@@ -1661,7 +1669,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* Side Banners */
@@ -1803,6 +1811,9 @@
 
 /* Responsive Styles */
 @media (width <= 1200px) {
+  .brand-carousel-container {
+    height: 520px; /* Adjusted fixed height for 500px slide width + padding */
+  }
   .recommended-brand-pagination {
     display: flex;
   }
@@ -1823,6 +1834,9 @@
 }
 
 @media (width <= 900px) {
+  .brand-carousel-container {
+    height: 420px; /* Adjusted fixed height for 400px slide width + padding */
+  }
   .brand-carousel-track {
     gap: 16px;
   }
@@ -1836,6 +1850,10 @@
 }
 
 @media (width <= 768px) {
+  .brand-carousel-container {
+    aspect-ratio: 1 / 1;
+    height: auto; /* Reset to auto height on mobile/tablet */
+  }
   .recommended-brand {
     padding: 60px 0;
   }
@@ -2227,7 +2245,7 @@
 }
 
 .rounz-store-container {
-  max-width: 880px; /* 880px 컨테?�너 �로폭 ?�정 */
+  max-width: 880px; /* 880px 컨테이너 가로폭 설정 */
   margin: 0 auto;
   padding: 0 24px;
   box-sizing: border-box;
@@ -2466,18 +2484,18 @@
   margin-bottom: 66px;
 }
 
-/* 1. ?�체 ?�로그레?�바??배경??(?�진???�한 ?�색 ��? */
+/* 1. 전체 프로그레스바의 배경 (사진/연한 회색 부분) */
 .swiper-pagination-progressbar {
   background: var(--gray-4);
   width: 100%;
-  height: 2px; /* ?�의 ?�께 (?�고 길쭉?�게) */
-  top: auto; /* 기본 ?�단 고정???�제?�고 ?�단?�로 ?�릴 ???�용 */
-  bottom: 0; /* ?�라?�드 ?�역 �??�단????붙임 */
+  height: 2px; /* 선의 두께 (얇고 길쭉하게) */
+  top: auto; /* 기본 상단 고정은 해제하고 하단으로 내릴 때 사용 */
+  bottom: 0; /* 슬라이드 영역 하단에 붙임 */
 }
 
-/* 2. ?�재 ?�치�??��??�는 채워�????(?�진??진한 �???��? */
+/* 2. 현재 위치를 나타내는 채워진 부분 (사진/진한 검은색 부분) */
 .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-  background: var(--black-1); /* ?직이??바의 ?�상 (�??? */
+  background: var(--black-1); /* 움직이는 바의 색상 (검은색) */
 }
 .call-action {
   border-right: 1px solid #e5e7eb;

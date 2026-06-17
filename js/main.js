@@ -24,36 +24,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    function rotateCarousel(direction) {
-
+    function rotateCarousel(direction, dragOffset = 0) {
       if (isTransitioning) return;
-
       isTransitioning = true;
 
-
-
       const activeSlide = carouselTrack.querySelector('.carousel-slide.active');
-
       const targetSlide = direction === 'next' 
-
         ? carouselTrack.querySelector('.carousel-slide.next') 
-
         : carouselTrack.querySelector('.carousel-slide.prev');
 
-
-
       if (!activeSlide || !targetSlide) {
-
         isTransitioning = false;
-
         return;
-
       }
 
-
-
-            // Find the inactive slide width and the gap dynamically to calculate the exact final translation offset.
-      // This prevents visual snapping/jumping by aligning the target slide center with the container center.
+      // Find the inactive slide width and the gap dynamically
       const currentPrev = carouselTrack.querySelector('.carousel-slide.prev');
       const currentNext = carouselTrack.querySelector('.carousel-slide.next');
       let inactiveWidth = 302; // default fallback
@@ -72,146 +57,79 @@ document.addEventListener('DOMContentLoaded', () => {
         gap = gapVal;
       }
 
-      const distance = direction === 'next' ? -(inactiveWidth + gap) : (inactiveWidth + gap);
+      const offsetVal = inactiveWidth + gap;
 
-      // Animate track translation - matched with CSS (0.5s, cubic-bezier(0.25, 1, 0.5, 1))
-      carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
-      carouselTrack.style.transform = `translateX(${distance}px)`;
+      // 1. Temporarily disable transitions to instantly reorder DOM and set starting position
+      carouselTrack.style.transition = 'none';
 
-
-
-      // Pre-update classes of active slides to trigger width/scale transitions
-
-      const slides = Array.from(carouselTrack.children);
-
-      const prevSlide = slides.find(slide => slide.classList.contains('prev'));
-
-      const nextSlide = slides.find(slide => slide.classList.contains('next'));
-
-
+      // 2. Perform DOM reordering and adjust starting position
+      const startOffset = direction === 'next' ? (offsetVal + dragOffset) : (-offsetVal + dragOffset);
 
       if (direction === 'next') {
-
-        prevSlide.classList.remove('prev');
-
-        prevSlide.classList.add('next');
-
-        activeSlide.classList.remove('active');
-
-        activeSlide.classList.add('prev');
-
-        nextSlide.classList.remove('next');
-
-        nextSlide.classList.add('active');
-
+        // Shift first element to the end. The track shifts left, so we translate right to keep current active slide centered.
+        carouselTrack.appendChild(carouselTrack.firstElementChild);
       } else {
+        // Shift last element to the beginning. The track shifts right, so we translate left to keep current active slide centered.
+        carouselTrack.insertBefore(carouselTrack.lastElementChild, carouselTrack.firstElementChild);
+      }
+      carouselTrack.style.transform = `translateX(${startOffset}px)`;
 
-        prevSlide.classList.remove('prev');
-
-        prevSlide.classList.add('active');
-
-        activeSlide.classList.remove('active');
-
-        activeSlide.classList.add('next');
-
-        nextSlide.classList.remove('next');
-
-        nextSlide.classList.add('prev');
-
+      // 3. Re-assign class names to reflect the pre-transition state in the new DOM order
+      const slides = Array.from(carouselTrack.children);
+      if (direction === 'next') {
+        // In Slide 1, Slide 2, Slide 0 order: Slide 1 (index 0) was active, Slide 2 (index 1) is next, Slide 0 (index 2) is prev.
+        slides[0].className = 'carousel-slide active';
+        slides[1].className = 'carousel-slide next';
+        slides[2].className = 'carousel-slide prev';
+      } else {
+        // In Slide 2, Slide 0, Slide 1 order: Slide 1 (index 2) was active, Slide 0 (index 1) is prev, Slide 2 (index 0) is next.
+        slides[0].className = 'carousel-slide next';
+        slides[1].className = 'carousel-slide prev';
+        slides[2].className = 'carousel-slide active';
       }
 
+      // Force a browser reflow to apply the DOM order, starting classes, and translation instantly without animation
+      carouselTrack.offsetHeight;
 
+      // 4. Animate the transition to the target state (transform 0px and swap classes)
+      carouselTrack.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+      carouselTrack.style.transform = 'translateX(0px)';
 
-      // Shift DOM order and reset translation instantly after transition finishes
+      if (direction === 'next') {
+        // Slide 2 (index 1) becomes active, Slide 1 (index 0) becomes prev, Slide 0 (index 2) becomes next
+        slides[0].className = 'carousel-slide prev';
+        slides[1].className = 'carousel-slide active';
+        slides[2].className = 'carousel-slide next';
+      } else {
+        // Slide 2 (index 0) becomes prev, Slide 0 (index 1) becomes active, Slide 1 (index 2) becomes next
+        slides[0].className = 'carousel-slide prev';
+        slides[1].className = 'carousel-slide active';
+        slides[2].className = 'carousel-slide next';
+      }
 
+      // 5. Handle cleanup after transition ends
       let safetyTimeout = null;
 
-
-
       const handleTransitionEnd = (e) => {
-
         if (e && (e.target !== carouselTrack || e.propertyName !== 'transform')) return;
 
-
-
         if (safetyTimeout) {
-
           clearTimeout(safetyTimeout);
-
           safetyTimeout = null;
-
         }
-
         carouselTrack.removeEventListener('transitionend', handleTransitionEnd);
-
-
 
         if (!isTransitioning) return;
 
-
-
-        // Temporarily disable transitions on track to prevent visual jumps during DOM reordering
-
-        carouselTrack.style.transition = 'none';
-
-
-
-        if (direction === 'next') {
-
-          carouselTrack.appendChild(carouselTrack.firstElementChild);
-
-        } else {
-
-          carouselTrack.insertBefore(carouselTrack.lastElementChild, carouselTrack.firstElementChild);
-
-        }
-
-
-
-        carouselTrack.style.transform = 'translateX(0px)';
-
-
-
-        // Re-assign classes to match new DOM layout order
-
-        const updatedSlides = carouselTrack.children;
-
-        updatedSlides[0].className = 'carousel-slide prev';
-
-        updatedSlides[1].className = 'carousel-slide active';
-
-        updatedSlides[2].className = 'carousel-slide next';
-
-
-
-        // Force a browser reflow to apply the DOM and class changes instantly without animation
-
-        carouselTrack.offsetHeight;
-
-
-
         syncFilterChipWithBanner();
-
         isTransitioning = false;
-
       };
-
-
-
-      // Register the transitionend listener
 
       carouselTrack.addEventListener('transitionend', handleTransitionEnd);
 
-
-
-      // Safety fallback to guarantee we release the lock and swap the DOM even if transitionend doesn't fire (550ms for 500ms transition)
-
       safetyTimeout = setTimeout(() => {
-
         handleTransitionEnd();
-
-      }, 550);
-
+      }, 650);
     }
 
 
@@ -303,45 +221,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function handleDragEnd() {
-
       if (!isDragging) return;
-
       isDragging = false;
-
       carouselTrack.style.cursor = 'grab';
-
-
 
       if (isTransitioning) return;
 
-
-
       const threshold = 60;
 
-
-
       if (dragDistance < -threshold) {
-
+        const offset = dragDistance;
         dragDistance = 0;
-
-        rotateCarousel('next');
-
+        rotateCarousel('next', offset);
       } else if (dragDistance > threshold) {
-
+        const offset = dragDistance;
         dragDistance = 0;
-
-        rotateCarousel('prev');
-
+        rotateCarousel('prev', offset);
       } else {
-
         dragDistance = 0;
-
         carouselTrack.style.transition = 'transform 0.25s cubic-bezier(0.25, 1, 0.5, 1)';
-
         carouselTrack.style.transform = 'translateX(0px)';
-
       }
-
     }
 
 
@@ -1665,183 +1565,123 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function transitionToBrand(targetIndex, direction = null) {
-
       if (isTransitioning || targetIndex === currentBrandIndex) return;
-
       isTransitioning = true;
 
-
-
       const currentChip = chipsArray[currentBrandIndex];
-
       const targetChip = chipsArray[targetIndex];
 
-
-
       currentChip.classList.remove('active');
-
       targetChip.classList.add('active');
 
-
-
       const targetBrandText = targetChip.textContent.trim().toLowerCase();
-
-
-
       const oldProducts = currentProducts;
-
       const newProducts = getProductsByBrand(targetBrandText);
 
-
-
       if (!direction) {
-
         direction = targetIndex > currentBrandIndex ? 'next' : 'prev';
-
       }
 
-
-
+      const isMobileOrTablet = window.innerWidth <= 1024;
       const firstCard = newProductGrid.querySelector('.product-card');
-
-      const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 272;
-
-
-
-      // Freeze height of the grid to prevent layout collapse
-
-      const currentHeight = newProductGrid.offsetHeight;
-
-      newProductGrid.style.height = `${currentHeight}px`;
-
-
-
-      newProductGrid.innerHTML = '';
-
-      
-
-      const oldCards = oldProducts.map(createCardElement);
-
-      const newCards = newProducts.map(createCardElement);
-
-
-
-      const pageWidth = newProductGrid.parentElement.offsetWidth;
-
       const gap = getGap();
 
-      const offset = pageWidth + gap;
+      // Freeze height of the grid to prevent layout collapse
+      const currentHeight = newProductGrid.offsetHeight;
+      newProductGrid.style.height = `${currentHeight}px`;
+      newProductGrid.style.overflow = 'hidden';
 
-
-
-      newProductGrid.style.display = 'flex';
-
-      newProductGrid.style.flexWrap = 'nowrap';
-
+      newProductGrid.innerHTML = '';
       
+      const oldCards = oldProducts.map(createCardElement);
+      const newCards = newProducts.map(createCardElement);
 
-      const allTransitionCards = [...oldCards, ...newCards];
+      if (isMobileOrTablet) {
+        // Vertical slide transition for mobile and tablet grid/list layout
+        if (direction === 'next') {
+          oldCards.forEach(card => newProductGrid.appendChild(card));
+          newCards.forEach(card => newProductGrid.appendChild(card));
 
-      allTransitionCards.forEach(card => {
+          newProductGrid.style.transition = 'none';
+          newProductGrid.style.transform = 'translateY(0)';
+          
+          newProductGrid.offsetHeight;
 
-        card.style.flex = `0 0 ${cardWidth}px`;
+          newProductGrid.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+          newProductGrid.style.transform = `translateY(-${currentHeight + gap}px)`;
+        } else {
+          newCards.forEach(card => newProductGrid.appendChild(card));
+          oldCards.forEach(card => newProductGrid.appendChild(card));
 
-        card.style.width = `${cardWidth}px`;
+          newProductGrid.style.transition = 'none';
+          newProductGrid.style.transform = `translateY(-${currentHeight + gap}px)`;
+          
+          newProductGrid.offsetHeight;
 
-      });
-
-
-
-      if (direction === 'next') {
-
-        oldCards.forEach(card => newProductGrid.appendChild(card));
-
-        newCards.forEach(card => newProductGrid.appendChild(card));
-
-
-
-        newProductGrid.style.transition = 'none';
-
-        newProductGrid.style.transform = 'translateX(0)';
-
-        
-
-        newProductGrid.offsetHeight;
-
-
-
-        newProductGrid.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
-
-        newProductGrid.style.transform = `translateX(-${offset}px)`;
-
+          newProductGrid.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+          newProductGrid.style.transform = 'translateY(0)';
+        }
       } else {
+        // Horizontal slide transition for desktop layout
+        const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 272;
+        const offset = oldCards.length * (cardWidth + gap);
 
-        newCards.forEach(card => newProductGrid.appendChild(card));
-
-        oldCards.forEach(card => newProductGrid.appendChild(card));
-
-
-
-        newProductGrid.style.transition = 'none';
-
-        newProductGrid.style.transform = `translateX(-${offset}px)`;
-
+        newProductGrid.style.display = 'flex';
+        newProductGrid.style.flexWrap = 'nowrap';
         
-
-        newProductGrid.offsetHeight;
-
-
-
-        newProductGrid.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
-
-        newProductGrid.style.transform = 'translateX(0)';
-
-      }
-
-
-
-      setTimeout(() => {
-
-        newProductGrid.style.display = '';
-
-        newProductGrid.style.flexWrap = '';
-
-        newProductGrid.style.height = ''; // Unfreeze height
-
-        newProductGrid.style.transition = 'none';
-
-        newProductGrid.innerHTML = '';
-
-        
-
-        newCards.forEach(card => {
-
-          card.style.flex = '';
-
-          card.style.width = '';
-
-          newProductGrid.appendChild(card);
-
+        const allTransitionCards = [...oldCards, ...newCards];
+        allTransitionCards.forEach(card => {
+          card.style.flex = `0 0 ${cardWidth}px`;
+          card.style.width = `${cardWidth}px`;
         });
 
+        if (direction === 'next') {
+          oldCards.forEach(card => newProductGrid.appendChild(card));
+          newCards.forEach(card => newProductGrid.appendChild(card));
+
+          newProductGrid.style.transition = 'none';
+          newProductGrid.style.transform = 'translateX(0)';
+          
+          newProductGrid.offsetHeight;
+
+          newProductGrid.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+          newProductGrid.style.transform = `translateX(-${offset}px)`;
+        } else {
+          newCards.forEach(card => newProductGrid.appendChild(card));
+          oldCards.forEach(card => newProductGrid.appendChild(card));
+
+          newProductGrid.style.transition = 'none';
+          newProductGrid.style.transform = `translateX(-${offset}px)`;
+          
+          newProductGrid.offsetHeight;
+
+          newProductGrid.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+          newProductGrid.style.transform = 'translateX(0)';
+        }
+      }
+
+      setTimeout(() => {
+        newProductGrid.style.display = '';
+        newProductGrid.style.flexWrap = '';
+        newProductGrid.style.height = ''; // Unfreeze height
+        newProductGrid.style.overflow = '';
+        newProductGrid.style.transition = 'none';
+        newProductGrid.innerHTML = '';
         
-
-        newProductGrid.style.transform = 'translateX(0)';
-
-
+        newCards.forEach(card => {
+          card.style.flex = '';
+          card.style.width = '';
+          newProductGrid.appendChild(card);
+        });
+        
+        newProductGrid.style.transform = '';
 
         currentProducts = newProducts;
-
         currentBrandIndex = targetIndex;
-
         isTransitioning = false;
 
-
-
         updateDots();
-
       }, 500);
-
     }
 
 
