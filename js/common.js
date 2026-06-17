@@ -115,3 +115,36 @@ export function addToCart(product, qty = 1) {
   writeCart(cart);
   updateCartCount();
 }
+
+//로컬스토리지에서 상품 비교 읽기
+export function readCompareProduct() {
+  try {
+    return JSON.parse(window.localStorage.getItem("compare")) || [];
+  } catch (error) {
+    console.error("비교 데이터를 읽는 중 오류 발생", error);
+    return [];
+  }
+}
+
+// 로컬스토리지 상품 비교 쓰기
+export function writeCompareProduct(compare) {
+  window.localStorage.setItem("compare", JSON.stringify(compare));
+}
+
+// 비교 버튼 클릭시 상품 추가
+export function addToCompare(product) {
+  if (!product) return;
+  const compare = readCompareProduct();
+  const existingItem = compare.find(item => item.id === product.id);
+
+  if (existingItem) return;
+
+  compare.push({
+    id: product.id,
+    price: product.price?.final || product.price,
+    title: product.title,
+    brand: product.brand,
+    thumb: product.thumbnail || product.images?.thumbnail,
+  });
+  writeCompareProduct(compare);
+}

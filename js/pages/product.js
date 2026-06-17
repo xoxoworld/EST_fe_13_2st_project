@@ -1,4 +1,4 @@
-import { updateCartCount, addToCart } from "../common.js";
+import { updateCartCount, addToCart, addToCompare } from "../common.js";
 
 let product = {};
 let visualSwiper;
@@ -598,5 +598,15 @@ const cartButtons = document.querySelectorAll(".cart-btn");
 cartButtons.forEach(cartButton => {
   cartButton.addEventListener("click", () => {
     addToCart(product, currentQty);
+  });
+});
+
+// 상품 비교하기로 넘어가기
+const compareModelButtons = document.querySelectorAll(".compare-model");
+
+compareModelButtons.forEach(compareModel => {
+  compareModel.addEventListener("click", () => {
+    addToCompare(product);
+    location.href = "./compare.html";
   });
 });
