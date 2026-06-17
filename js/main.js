@@ -2172,30 +2172,41 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
   }
 
+  // 필터
   filterBtns.forEach(btn=>{
-
-
-    btn.addEventListener("click",()=>{
-
-
-      filterBtns.forEach(el=>
-        el.classList.remove("active")
-      );
-      btn.classList.add("active");
-      const category=
-      btn.dataset.category ||
-      btn.textContent.trim();
-
-      const filtered =
-      category==="ALL"
-      ? products
-      : products.filter(item=>
-        item.category === category
-      );
-      renderProducts(filtered);
-
+  btn.addEventListener("click",()=>{
+    filterBtns.forEach(el=>{
+      el.classList.remove("active");
     });
+    btn.classList.add("active");
+
+    const text = btn.textContent.trim();
+
+    const categoryMap={
+      "선글라스":"sunglasses",
+      "안경":"glasses",
+      "렌즈":"contact"
+    };
+
+    const category =
+    categoryMap[text] || text.toLowerCase();
+
+    const filtered =
+    category === "all"
+    ? products
+    : products.filter(item=>{
+
+        return item.category === category;
+      });
+
+    console.log("버튼:", category);
+    console.log("결과:", filtered.length);
+
+    renderProducts(filtered);
+
   });
+
+});
 
   loadProducts();
 
