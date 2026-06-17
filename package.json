@@ -1,0 +1,25 @@
+{
+  "name": "0_0",
+  "version": "1.0.0",
+  "description": "이 프로젝트는 이스트소프트 프론트엔드 개발자 오르름캠프 13기 2차 프로젝트로, 안경 및 선글라스 온라인 쇼핑몰 **라운즈(ROUNZ)** 웹사이트를 모티브로 삼아, 최신 웹 트렌드와 프리미엄 디자인 요소를 가미한 **반응형 웹 퍼블리싱 및 모듈형 웹 애플리케이션 리뉴얼 프로젝트**입니다.",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "sass --style=compressed scss:css",
+    "watch:css": "sass --watch --style=compressed scss:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xoxoworld/EST_fe_13_2st_project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/xoxoworld/EST_fe_13_2st_project/issues"
+  },
+  "homepage": "https://github.com/xoxoworld/EST_fe_13_2st_project#readme",
+  "devDependencies": {
+    "sass": "^1.101.0"
+  }
+}
