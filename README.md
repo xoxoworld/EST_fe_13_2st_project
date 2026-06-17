@@ -57,6 +57,7 @@
 ## 📂 디렉토리 구조 (Directory Structure)
 
 ```bash
+├── .husky/             # Git Hooks 설정 (Husky)
 ├── assets/             # 이미지, 아이콘 등 정적 자원
 ├── css/
 │   ├── common.css      # 공통 디자인 시스템 (변수, 타이포)
@@ -76,11 +77,14 @@
 │   ├── cart.html       # 장바구니 페이지
 │   ├── stores.html     # 매장 찾기 페이지
 │   └── ...
-└── js/
-    ├── main.js         # 글로벌 스크립트 (슬라이더, 아코디언, 스크롤 프로그레스 등)
-    ├── common.js       # 공통 헬퍼 스크립트
-    ├── pages/          # 페이지별 독립 비즈니스 로직 스크립트
-    └── ...
+├── js/
+│   ├── main.js         # 글로벌 스크립트 (슬라이더, 아코디언, 스크롤 프로그레스 등)
+│   ├── common.js       # 공통 헬퍼 스크립트
+│   ├── pages/          # 페이지별 독립 비즈니스 로직 스크립트
+│   └── ...
+├── .gitignore          # Git 추적 예외 정의 파일
+├── eslint.config.mjs   # ESLint 문법 오류/품질 분석 규칙 정의 파일
+└── package.json        # 의존성 패키지 및 스크립트 정의 파일
 ```
 
 ---
@@ -112,9 +116,33 @@
 
 ## 🏃 실행 방법 (Getting Started)
 
-이 프로젝트는 별도의 빌드 도구 없이 브라우저에서 바로 실행할 수 있는 정적 웹 애플리케이션입니다.
+이 프로젝트는 기본적으로 브라우저에서 바로 실행할 수 있는 정적 웹 애플리케이션이지만, 개발 품질 및 SASS 컴파일을 효율적으로 수행하기 위해 Node.js 패키지 환경이 함께 구성되어 있습니다.
 
 1. **저장소 클론**:
    ```bash
    git clone https://github.com/xoxoworld/EST_fe_13_2st_project.git
    ```
+
+2. **패키지 의존성 설치**:
+   ```bash
+   npm install
+   ```
+   - 설치 완료 시, 커밋 시점에 자동으로 자바스크립트 결함을 분석하는 **Husky (Git Hook)**가 자동으로 활성화됩니다.
+
+3. **SCSS/SASS 실시간 자동 컴파일 (압축 및 감시)**:
+   ```bash
+   npm run watch:css
+   ```
+   - `scss/` 폴더 내부의 `.scss` 수정본을 실시간으로 감시하여 저장할 때마다 자동으로 최적화 및 압축된 `.css`로 `css/` 폴더에 변환 배출합니다.
+
+4. **1회성 CSS 빌드**:
+   ```bash
+   npm run build:css
+   ```
+
+5. **자바스크립트 품질 분석 (ESLint)**:
+   - 코드를 스테이지하고 커밋할 때마다 staged 파일들을 대상으로 검사가 자동 작동합니다.
+   - 프로젝트 전체 수동 검사:
+     ```bash
+     npx eslint js
+     ```
