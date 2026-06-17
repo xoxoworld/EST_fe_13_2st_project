@@ -1831,193 +1831,383 @@ $(function(){
 /*사이드바*/
 
 /*제니 컬렉션 상품*/
-// Config
-const API = "../data/products.json";
-const CHUNK_SIZE = 3;
-let isLoading = false;
-let productSwiper;
-
-const productWrapper = document.querySelector(".product-wrapper");
-
-// Skeleton
-function renderSkeleton() {
-  productWrapper.innerHTML = `
-    <div class="swiper-slide">
-      <ul class="product-slide-list">
-        ${Array.from(
-          { length: CHUNK_SIZE },
-          () => `
-            <li class="product-product-item skeleton-item">
-              <article class="product-card">
-                <figure class="product-card__figure">
-                  <div class="skeleton skeleton-image"></div>
-                </figure>
-
-                <div class="product-card-text-box d-flex flex-column">
-                  <div class="skeleton skeleton-brand"></div>
-                  <div class="skeleton skeleton-name"></div>
-                  <div class="skeleton skeleton-name short"></div>
-                  <div class="skeleton skeleton-price"></div>
-                </div>
-              </article>
-            </li>
-          `
-        ).join("")}
-      </ul>
-    </div>
-  `;
-}
-
-// API
-async function fetchProducts() {
-  if (isLoading) return;
-
-  isLoading = true;
-
-  renderSkeleton();
-
-  try {
-    const res = await fetch(API);
-
-    if (!res.ok) {
-      throw new Error(`API 오류 : ${res.status}`);
-    }
-
-    const data = await res.json();
-
-    renderSlides(data.products);
-
-    initSwiper();
-  } catch (error) {
-    console.error(error);
-
+document.addEventListener('DOMContentLoaded', () => {
+  // Config
+  const API = "../data/products.json";
+  const CHUNK_SIZE = 3;
+  let isLoading = false;
+  let productSwiper;
+  
+  const productWrapper = document.querySelector(".product-wrapper");
+  
+  // Skeleton
+  function renderSkeleton() {
     productWrapper.innerHTML = `
       <div class="swiper-slide">
         <ul class="product-slide-list">
-          <li class="product-product-item">
-            상품을 불러오지 못했습니다.
-          </li>
+          ${Array.from(
+            { length: CHUNK_SIZE },
+            () => `
+              <li class="product-product-item skeleton-item">
+                <article class="product-card">
+                  <figure class="product-card__figure">
+                    <div class="skeleton skeleton-image"></div>
+                  </figure>
+  
+                  <div class="product-card-text-box d-flex flex-column">
+                    <div class="skeleton skeleton-brand"></div>
+                    <div class="skeleton skeleton-name"></div>
+                    <div class="skeleton skeleton-name short"></div>
+                    <div class="skeleton skeleton-price"></div>
+                  </div>
+                </article>
+              </li>
+            `
+          ).join("")}
         </ul>
       </div>
     `;
-  } finally {
-    isLoading = false;
   }
-}
-
-// 슬라이드
-function renderSlides(products) {
-  productWrapper.innerHTML = "";
-
-  const limitedProducts = products.slice(0, 12);
-
-  for (let i = 0; i < limitedProducts.length; i += CHUNK_SIZE) {
-    const slideProducts = limitedProducts.slice(i, i + CHUNK_SIZE);
-
-    const slide = document.createElement("div");
-    slide.className = "swiper-slide";
-
-    const list = document.createElement("ul");
-    list.className = "product-slide-list";
-
-    slideProducts.forEach(product => {
-      list.appendChild(productCard(product));
+  
+  // API
+  async function fetchProducts() {
+    if (isLoading) return;
+  
+    isLoading = true;
+  
+    renderSkeleton();
+  
+    try {
+      const res = await fetch(API);
+  
+      if (!res.ok) {
+        throw new Error(`API 오류 : ${res.status}`);
+      }
+  
+      const data = await res.json();
+  
+      renderSlides(data.products);
+  
+      initSwiper();
+    } catch (error) {
+      console.error(error);
+  
+      productWrapper.innerHTML = `
+        <div class="swiper-slide">
+          <ul class="product-slide-list">
+            <li class="product-product-item">
+              상품을 불러오지 못했습니다.
+            </li>
+          </ul>
+        </div>
+      `;
+    } finally {
+      isLoading = false;
+    }
+  }
+  
+  // 슬라이드
+  function renderSlides(products) {
+    productWrapper.innerHTML = "";
+  
+    const limitedProducts = products.slice(0, 12);
+  
+    for (let i = 0; i < limitedProducts.length; i += CHUNK_SIZE) {
+      const slideProducts = limitedProducts.slice(i, i + CHUNK_SIZE);
+  
+      const slide = document.createElement("div");
+      slide.className = "swiper-slide";
+  
+      const list = document.createElement("ul");
+      list.className = "product-slide-list";
+  
+      slideProducts.forEach(product => {
+        list.appendChild(productCard(product));
+      });
+  
+      slide.appendChild(list);
+      productWrapper.appendChild(slide);
+    }
+  }
+  
+  // 상품카드
+  function productCard(product) {
+    const item = document.createElement("li");
+  
+    item.className = "product-product-item";
+  
+    item.innerHTML = `
+      <article class="product-card">
+        <figure class="product-card__figure">
+          <img
+            class="product-card__img"
+            src="${product.images.thumbnail}"
+            alt="${escapeHTML(product.title)}"
+            loading="lazy"
+          />
+        </figure>
+  
+        <div class="product-card-text-box d-flex flex-column">
+          <span class="product-card__brand text-small-b">
+            ${escapeHTML(product.brand)}
+          </span>
+  
+          <p class="product-card__name">
+            ${escapeHTML(product.title)}
+          </p>
+  
+          <strong class="product-card__price">
+            ${product.price.final.toLocaleString()}
+            <span>원</span>
+          </strong>
+        </div>
+      </article>
+    `;
+  
+    return item;
+  }
+  
+  // 스와이퍼
+  function initSwiper() {
+    if (productSwiper) {
+      productSwiper.destroy(true, true);
+    }
+  
+    const progressFill = document.querySelector(
+      ".product-pagination__fill"
+    );
+  
+    productSwiper = new Swiper(".product-swiper", {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      speed: 600,
+  
+      observer: true,
+      observeParents: true,
+  
+      on: {
+        init(swiper) {
+          if (progressFill) updateProgress(swiper);
+        },
+  
+        slideChange(swiper) {
+          if (progressFill) updateProgress(swiper);
+        }
+      }
     });
-
-    slide.appendChild(list);
-    productWrapper.appendChild(slide);
+  
+    function updateProgress(swiper) {
+    if (!progressFill) return;
+  
+    const totalSlides = swiper.slides.length;
+    const currentSlide = swiper.activeIndex;
+  
+    const segmentWidth = 100 / totalSlides;
+  
+    progressFill.style.width = `${segmentWidth}%`;
+    progressFill.style.left = `${currentSlide * segmentWidth}%`;
   }
-}
+  }
+  
+  // Utils
+  function escapeHTML(str) {
+    return String(str)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+  
+  // Init
+  fetchProducts();
+});
 
-// 상품카드
-function productCard(product) {
-  const item = document.createElement("li");
+/* 베스트상품 */
+document.addEventListener("DOMContentLoaded",()=>{
 
-  item.className = "product-product-item";
+  const bestSection=document.querySelector(".best-product");
+  if(!bestSection)return;
 
-  item.innerHTML = `
+  const swiperEl=bestSection.querySelector(".product-swiper");
+  const productWrapper=bestSection.querySelector(".swiper-wrapper");
+  const filterBtns=bestSection.querySelectorAll(".filter-btn");
+  const prevBtn=bestSection.querySelector(".ctrl-prev");
+  const nextBtn=bestSection.querySelector(".ctrl-next");
+  let swiper=null;
+  let products=[];
+
+  // 스켈레톤
+  function createSkeleton(){
+
+    return Array.from({length:8}).map(()=>`
+
+      <li class="product-product-item">
+
+        <article class="product-card">
+
+          <figure class="product-card__figure skeleton-box"></figure>
+
+          <div class="product-card-text-box">
+
+            <span class="skeleton-text"></span>
+            <p class="skeleton-text"></p>
+            <strong class="skeleton-text"></strong>
+
+          </div>
+
+        </article>
+
+      </li>
+
+    `).join("");
+
+  }
+
+  // 상품 카드
+  function createCard(item){
+
+  return `
+
+  <li class="product-product-item">
     <article class="product-card">
       <figure class="product-card__figure">
         <img
           class="product-card__img"
-          src="${product.images.thumbnail}"
-          alt="${escapeHTML(product.title)}"
-          loading="lazy"
-        />
+          src="${item.images.thumbnail}"
+          alt="${item.title}"
+        >
       </figure>
 
       <div class="product-card-text-box d-flex flex-column">
         <span class="product-card__brand text-small-b">
-          ${escapeHTML(product.brand)}
+          ${item.brand}
         </span>
 
         <p class="product-card__name">
-          ${escapeHTML(product.title)}
+          ${item.title}
         </p>
-
         <strong class="product-card__price">
-          ${product.price.final.toLocaleString()}
+          ${Number(item.price.final).toLocaleString()}
           <span>원</span>
         </strong>
       </div>
     </article>
+  </li>
   `;
-
-  return item;
 }
 
-// 스와이퍼
-function initSwiper() {
-  if (productSwiper) {
-    productSwiper.destroy(true, true);
+
+  function renderProducts(list){
+    if(swiper){
+      swiper.destroy(true,true);
+      swiper=null;
+
+    }
+    let html="";
+    for(let i=0;i<list.length;i+=8){
+      const slide=list.slice(i,i+8);
+      html+=`
+      <div class="swiper-slide">
+        <ul class="product-slide-list">
+          ${slide.map(createCard).join("")}
+        </ul>
+      </div>
+      `;
+    }
+
+    productWrapper.innerHTML=html;
+    initSwiper();
   }
 
-  const progressFill = document.querySelector(
-    ".product-pagination__fill"
-  );
 
-  productSwiper = new Swiper(".product-swiper", {
-    slidesPerView: 1,
-    spaceBetween: 0,
-    speed: 600,
+  function initSwiper(){
+    swiper=new Swiper(swiperEl,{
+      slidesPerView:1,
+      spaceBetween:20,
 
-    observer: true,
-    observeParents: true,
-
-    on: {
-      init(swiper) {
-        if (progressFill) updateProgress(swiper);
+      navigation:{
+        prevEl:prevBtn,
+        nextEl:nextBtn
       },
+      observer:true,
+      observeParents:true
+    });
+  }
 
-      slideChange(swiper) {
-        if (progressFill) updateProgress(swiper);
-      }
+  async function loadProducts(){
+    productWrapper.innerHTML=`
+    <div class="swiper-slide">
+      <ul class="product-slide-list">
+        ${createSkeleton()}
+      </ul>
+    </div>
+    `;
+
+    try{
+
+
+      const res=await fetch("./data/products.json");
+
+      const data=await res.json();
+
+
+      products =
+      Array.isArray(data)
+      ? data
+      : data.products;
+
+
+
+      setTimeout(()=>{
+
+        renderProducts(products);
+
+      },700);
+
+
+
+    }catch(err){
+      console.error(err);
     }
+  }
+
+  // 필터
+  filterBtns.forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    filterBtns.forEach(el=>{
+      el.classList.remove("active");
+    });
+    btn.classList.add("active");
+
+    const text = btn.textContent.trim();
+
+    const categoryMap={
+      "선글라스":"sunglasses",
+      "안경":"glasses",
+      "렌즈":"contact"
+    };
+
+    const category =
+    categoryMap[text] || text.toLowerCase();
+
+    const filtered =
+    category === "all"
+    ? products
+    : products.filter(item=>{
+
+        return item.category === category;
+      });
+
+    console.log("버튼:", category);
+    console.log("결과:", filtered.length);
+
+    renderProducts(filtered);
+
   });
 
-  function updateProgress(swiper) {
-  if (!progressFill) return;
+});
 
-  const totalSlides = swiper.slides.length;
-  const currentSlide = swiper.activeIndex;
+  loadProducts();
 
-  const segmentWidth = 100 / totalSlides;
-
-  progressFill.style.width = `${segmentWidth}%`;
-  progressFill.style.left = `${currentSlide * segmentWidth}%`;
-}
-}
-
-// Utils
-function escapeHTML(str) {
-  return String(str)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
-// Init
-fetchProducts();
-/*제니 컬렉션 상품*/
+});
