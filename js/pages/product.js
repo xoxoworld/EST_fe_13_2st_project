@@ -150,6 +150,28 @@ function renderColorChips(colorBlock, colorList, otherColors = []) {
 
   colorList.replaceChildren(...colorChips);
 }
+// 상품 상세 탭
+const detailTabMenu = document.querySelectorAll(".tabs-wrap a");
+const detailTabContent = document.querySelectorAll(".tab-content [data-tab-panel]");
+
+detailTabMenu.forEach(m => {
+  m.addEventListener("click", e => {
+    e.preventDefault();
+    detailTabMenu.forEach(m => {
+      m.classList.remove("active");
+    });
+    m.classList.add("active");
+    detailTabContent.forEach(c => {
+      c.classList.remove("active");
+    });
+    const target = m.getAttribute("href").replace("#", "");
+    const targetContents = [...detailTabContent].filter(c => c.dataset.tabPanel.split(" ").includes(target));
+
+    targetContents.forEach(c => {
+      c.classList.add("active");
+    });
+  });
+});
 
 // 비슷한 상품 렌더
 function renderRelatedProducts(relatedList, products, currentProduct) {
