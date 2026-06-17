@@ -1,5 +1,6 @@
 let product = {};
 let visualSwiper;
+let thumbSwiper;
 
 // 상품 로드
 async function fetchProduct() {
@@ -35,7 +36,7 @@ async function fetchProduct() {
   }
 }
 
-// 컨텐츠 생성
+// 콘텐츠 생성
 function createContent(data) {
   const title = document.querySelector(".product-title"),
     brand = document.querySelector(".brand-path"),
@@ -46,6 +47,7 @@ function createContent(data) {
     visualWrap = document.querySelector(".visual-wrap"),
     visualCount = document.querySelector(".visual-count"),
     detailWrap = document.querySelector(".detail-wrap"),
+    colorList = document.querySelector(".color-list"),
     thumbWrap = document.querySelector(".thumb-wrap");
 
   title.textContent = data.title;
@@ -61,11 +63,13 @@ function createContent(data) {
 
   renderVisualSwiper(visualWrap, visualCount, data, galleryImages);
   renderDetailImages(detailWrap, data);
+  renderColorChips(colorList, data.otherColors);
   renderThumbImages(thumbWrap, galleryImages);
+  initThumbSwiper(galleryImages.length);
   initVisualSwiper(visualCount, thumbWrap, galleryImages.length);
 }
 
-// 메인이미지 스와이퍼
+// 메인 이미지 스와이퍼
 function renderVisualSwiper(visualWrap, visualCount, data, galleryImages) {
   const swiper = document.createElement("div");
   const wrapper = document.createElement("div");
@@ -102,13 +106,38 @@ function renderDetailImages(detailWrap, data) {
   detailWrap.replaceChildren(...detailImages);
 }
 
-// 메인이미지 render
+// 색상 선택 render
+function renderColorChips(colorList, otherColors = []) {
+  const linkedColors = otherColors.filter(color => color.id && color.thumb);
+  const colorChips = linkedColors.map(color => {
+    const button = document.createElement("button");
+    const img = document.createElement("img");
+
+    button.classList.add("color-chip");
+    button.setAttribute("type", "button");
+    button.setAttribute("aria-label", color.title || color.model || "다른 색상");
+    button.addEventListener("click", () => {
+      location.href = `./product.html?id=${color.id}`;
+    });
+
+    img.setAttribute("src", color.thumb);
+    img.setAttribute("alt", "");
+
+    button.append(img);
+    return button;
+  });
+
+  colorList.replaceChildren(...colorChips);
+}
+
+// 썸네일 이미지 render
 function renderThumbImages(thumbWrap, galleryImages) {
+  const wrapper = document.createElement("div");
   const thumbImages = galleryImages.map((src, index) => {
     const button = document.createElement("button");
     const img = document.createElement("img");
 
-    button.classList.add("thumb");
+    button.classList.add("thumb", "swiper-slide");
     if (index === 0) button.classList.add("active");
     button.setAttribute("type", "button");
     button.setAttribute("aria-label", `상품 이미지 ${index + 1}`);
@@ -121,7 +150,10 @@ function renderThumbImages(thumbWrap, galleryImages) {
     return button;
   });
 
-  thumbWrap.replaceChildren(...thumbImages);
+  thumbWrap.classList.add("thumb-swiper", "swiper");
+  wrapper.classList.add("swiper-wrapper");
+  wrapper.append(...thumbImages);
+  thumbWrap.replaceChildren(wrapper);
 
   thumbWrap.addEventListener("click", event => {
     const thumb = event.target.closest(".thumb");
@@ -131,7 +163,22 @@ function renderThumbImages(thumbWrap, galleryImages) {
   });
 }
 
-// 메인이미지 스와이퍼
+// 썸네일 스와이퍼
+function initThumbSwiper(total) {
+  if (thumbSwiper) thumbSwiper.destroy(true, true);
+
+  thumbSwiper = new Swiper(".thumb-swiper", {
+    slidesPerView: 5,
+    spaceBetween: 24,
+    loop: false,
+    grabCursor: total > 5,
+    allowTouchMove: total > 5,
+    observer: true,
+    observeParents: true,
+  });
+}
+
+// 메인 이미지 스와이퍼
 function initVisualSwiper(visualCount, thumbWrap, total) {
   if (visualSwiper) visualSwiper.destroy(true, true);
 
@@ -161,13 +208,15 @@ function updateVisualCount(visualCount, index, total) {
   visualCount.innerHTML = `<strong>${index + 1}</strong> / ${total}`;
 }
 
-// 썸네일이미지 active 추가
+// 썸네일 이미지 active 추가
 function updateActiveThumb(thumbWrap, index) {
   const activeThumb = thumbWrap.querySelector(".thumb.active");
   if (activeThumb) activeThumb.classList.remove("active");
 
   const nextThumb = thumbWrap.querySelector(`.thumb[data-index="${index}"]`);
   if (nextThumb) nextThumb.classList.add("active");
+
+  if (thumbSwiper) thumbSwiper.slideTo(index);
 }
 
 fetchProduct();

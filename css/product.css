@@ -1079,15 +1079,17 @@ img {
 
   /* 썸네일은 대표 이미지 하단의 5열 고정 리스트입니다. */
   .thumb-wrap {
-    display: grid;
-    grid-template-columns: repeat(5, 170px);
-    gap: 24px;
+    display: block;
     height: 143px;
-    padding-top: 27px;
+    padding-top: 25px;
+    overflow: hidden;
+  }
+
+  .thumb-wrap .swiper-wrapper {
+    height: 116px;
   }
 
   .thumb {
-    width: 170px;
     height: 116px;
     overflow: hidden;
     border: 1px solid transparent;
