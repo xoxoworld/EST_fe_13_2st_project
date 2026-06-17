@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ROUNZ</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/flex-utility.css" />
     <link rel="stylesheet" href="./css/index.css" />
@@ -450,12 +455,12 @@
                   <!-- Slide 1: 3 items -->
                   <div class="swiper-slide">
                     <ul class="product-slide-list">
-                      <li class="product-product-item">
+                      <!-- <li class="product-product-item">
                         <article class="product-card">
                           <figure class="product-card__figure">
                             <img
                               class="product-card__img"
-                              src="https://image.rounz.com/_data/product/RAYBAN/RB6489-2500(58)/RB6489-2500(58)_03.JPG"
+                              src=""
                               alt="아리스타 보잉 RB6489 2500 58mm 레이밴 안경"
                             />
                           </figure>
@@ -471,7 +476,7 @@
                           <figure class="product-card__figure">
                             <img
                               class="product-card__img"
-                              src="https://image.rounz.com/_data/product/RAYBAN/RB5449D-8464(54)/RB5449D-8464(54)_03.JPG"
+                              src=""
                               alt="버건디 캣아이 RB5449D 846 54mm 레이밴 안경"
                             />
                           </figure>
@@ -487,7 +492,7 @@
                           <figure class="product-card__figure">
                             <img
                               class="product-card__img"
-                              src="https://image.rounz.com/_data/product/RAYBAN/RB5449D-2000(54)/RB5449D-2000(54)_03.JPG"
+                              src=""
                               alt="블랙 RB5449D 2000 54mm 레이밴 안경"
                             />
                           </figure>
@@ -497,13 +502,15 @@
                             <strong class="product-card__price">194,000<span>원</span></strong>
                           </div>
                         </article>
-                      </li>
+                      </li> -->
                     </ul>
                   </div>
                 </div>
   
-                <div class="swiper-pagination-progressbar">
-                  <div class="swiper-pagination-progressbar-fill"></div>
+                <div class="product-pagination">
+                  <div class="product-pagination__track">
+                    <div class="product-pagination__fill"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -760,296 +767,876 @@
         </div>
       </section>
 
-      <!-- NEW PRODUCT 섹션: 신상품 슬라이더 및 필터(브랜드별) 칩 제공 -->
-
-      <section class="new-product">
-
-        <div class="new-product-container">
-
-          <div class="new-product-title-area">
-
-            <h2 class="new-product-title">NEW 새롭게 도착한 안경</h2>
-
-          </div>
-
-          <div class="new-product-sub-header">
-
-            <div class="new-product-filters">
-
-              <button type="button" class="filter-chip active">ALL</button>
-
-              <button type="button" class="filter-chip">public beacon</button>
-
-              <button type="button" class="filter-chip">ESCADA</button>
-
-              <button type="button" class="filter-chip">OAKLEY</button>
-
-              <button type="button" class="filter-chip">POLICE</button>
-
-              <button type="button" class="filter-chip">OLIVER PEOPLES</button>
-
-            </div>
-
-            <div class="new-product-controls">
-
-              <button type="button" class="ctrl-btn ctrl-prev" aria-label="이전 상품 보기">
-
-                <svg
-
-                  xmlns="http://www.w3.org/2000/svg"
-
-                  width="20"
-
-                  height="20"
-
-                  viewBox="0 0 24 24"
-
-                  fill="none"
-
-                >
-
-                  <path
-
-                    d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z"
-
-                    fill="#666"
-
-                  />
-
-                </svg>
-
-              </button>
-
-              <button type="button" class="ctrl-btn ctrl-next" aria-label="다음 상품 보기">
-
-                <svg
-
-                  xmlns="http://www.w3.org/2000/svg"
-
-                  width="20"
-
-                  height="20"
-
-                  viewBox="0 0 24 24"
-
-                  fill="none"
-
-                >
-
-                  <path
-
-                    d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z"
-
-                    fill="#666"
-
-                  />
-
-                </svg>
-
-              </button>
-
-              <a href="#" class="new-product-more-btn" aria-label="신상품 더보기">
-
-                <span class="more-text">전체보기</span>
-
-                <svg
-
-                  xmlns="http://www.w3.org/2000/svg"
-
-                  width="24"
-
-                  height="24"
-
-                  viewBox="0 0 24 24"
-
-                  fill="none"
-
-                >
-
-                  <path d="M11 13H5V11H11V5H13V11H19V13H13V19H11V13Z" fill="white" />
-
-                </svg>
-
-              </a>
-
-            </div>
-
-          </div>
-
-
-
-          <div class="new-product-slider-wrapper">
-<div class="new-product-grid">
-
-            <!-- Product Card 1 -->
-
-            <div class="product-card">
-
-              <a href="#" class="product-link">
-
-                <div class="product-image-box">
-
-                  <img
-
-                    src="assets/images/new_product_01.png"
-
-                    alt="PUBLIC BEACON 블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스"
-
-                    class="product-img"
-
-                    loading="lazy"
-
-                  />
-
-                </div>
-
-                <div class="product-info">
-
-                  <span class="product-brand">PUBLIC BEACON</span>
-
-                  <p class="product-name">블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스</p>
-
-                  <span class="product-price">235,000원</span>
-
-                </div>
-
-              </a>
-
-            </div>
-
-            <!-- Product Card 2 -->
-
-            <div class="product-card">
-
-              <a href="#" class="product-link">
-
-                <div class="product-image-box">
-
-                  <img
-
-                    src="assets/images/new_product_02.png"
-
-                    alt="PUBLIC BEACON 블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스"
-
-                    class="product-img"
-
-                    loading="lazy"
-
-                  />
-
-                </div>
-
-                <div class="product-info">
-
-                  <span class="product-brand">PUBLIC BEACON</span>
-
-                  <p class="product-name">블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스</p>
-
-                  <span class="product-price">235,000원</span>
-
-                </div>
-
-              </a>
-
-            </div>
-
-            <!-- Product Card 3 -->
-
-            <div class="product-card">
-
-              <a href="#" class="product-link">
-
-                <div class="product-image-box">
-
-                  <img
-
-                    src="assets/images/new_product_03.png"
-
-                    alt="PUBLIC BEACON 블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스"
-
-                    class="product-img"
-
-                    loading="lazy"
-
-                  />
-
-                </div>
-
-                <div class="product-info">
-
-                  <span class="product-brand">PUBLIC BEACON</span>
-
-                  <p class="product-name">블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스</p>
-
-                  <span class="product-price">235,000원</span>
-
-                </div>
-
-              </a>
-
-            </div>
-
-            <!-- Product Card 4 -->
-
-            <div class="product-card">
-
-              <a href="#" class="product-link">
-
-                <div class="product-image-box">
-
-                  <img
-
-                    src="assets/images/new_product_04.png"
-
-                    alt="PUBLIC BEACON 블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스"
-
-                    class="product-img"
-
-                    loading="lazy"
-
-                  />
-
-                </div>
-
-                <div class="product-info">
-
-                  <span class="product-brand">PUBLIC BEACON</span>
-
-                  <p class="product-name">블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스</p>
-
-                  <span class="product-price">235,000원</span>
-
-                </div>
-
-              </a>
-
-            </div>
-
-          </div>
-          </div>
-
-
-
-          <!-- Pagination Dots -->
-
-          <div class="new-product-pagination">
-
-            <button type="button" class="dot active" aria-label="1페이지"></button>
-
-            <button type="button" class="dot" aria-label="2페이지"></button>
-
-            <button type="button" class="dot" aria-label="3페이지"></button>
-
-          </div>
-
-
-
-          <!-- Load More Button (Mobile Only) -->
-
-          <button type="button" class="new-product-load-more-btn">더보기</button>
-
-        </div>
-
+      <!-- NEW PRODUCT 섹션: 신상품 슬라이더 및 필터(브랜드별) 칩 제공 -->
+
+
+
+
+
+      <section class="new-product">
+
+
+
+
+
+        <div class="new-product-container">
+
+
+
+
+
+          <div class="new-product-title-area">
+
+
+
+
+
+            <h2 class="new-product-title">NEW 새롭게 도착한 안경</h2>
+
+
+
+
+
+          </div>
+
+
+
+
+
+          <div class="new-product-sub-header">
+
+
+
+
+
+            <div class="new-product-filters">
+
+
+
+
+
+              <button type="button" class="filter-chip active">ALL</button>
+
+
+
+
+
+              <button type="button" class="filter-chip">public beacon</button>
+
+
+
+
+
+              <button type="button" class="filter-chip">ESCADA</button>
+
+
+
+
+
+              <button type="button" class="filter-chip">OAKLEY</button>
+
+
+
+
+
+              <button type="button" class="filter-chip">POLICE</button>
+
+
+
+
+
+              <button type="button" class="filter-chip">OLIVER PEOPLES</button>
+
+
+
+
+
+            </div>
+
+
+
+
+
+            <div class="new-product-controls">
+
+
+
+
+
+              <button type="button" class="ctrl-btn ctrl-prev" aria-label="이전 상품 보기">
+
+
+
+
+
+                <svg
+
+
+
+
+
+                  xmlns="http://www.w3.org/2000/svg"
+
+
+
+
+
+                  width="20"
+
+
+
+
+
+                  height="20"
+
+
+
+
+
+                  viewBox="0 0 24 24"
+
+
+
+
+
+                  fill="none"
+
+
+
+
+
+                >
+
+
+
+
+
+                  <path
+
+
+
+
+
+                    d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z"
+
+
+
+
+
+                    fill="#666"
+
+
+
+
+
+                  />
+
+
+
+
+
+                </svg>
+
+
+
+
+
+              </button>
+
+
+
+
+
+              <button type="button" class="ctrl-btn ctrl-next" aria-label="다음 상품 보기">
+
+
+
+
+
+                <svg
+
+
+
+
+
+                  xmlns="http://www.w3.org/2000/svg"
+
+
+
+
+
+                  width="20"
+
+
+
+
+
+                  height="20"
+
+
+
+
+
+                  viewBox="0 0 24 24"
+
+
+
+
+
+                  fill="none"
+
+
+
+
+
+                >
+
+
+
+
+
+                  <path
+
+
+
+
+
+                    d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z"
+
+
+
+
+
+                    fill="#666"
+
+
+
+
+
+                  />
+
+
+
+
+
+                </svg>
+
+
+
+
+
+              </button>
+
+
+
+
+
+              <a href="#" class="new-product-more-btn" aria-label="신상품 더보기">
+
+
+
+
+
+                <span class="more-text">전체보기</span>
+
+
+
+
+
+                <svg
+
+
+
+
+
+                  xmlns="http://www.w3.org/2000/svg"
+
+
+
+
+
+                  width="24"
+
+
+
+
+
+                  height="24"
+
+
+
+
+
+                  viewBox="0 0 24 24"
+
+
+
+
+
+                  fill="none"
+
+
+
+
+
+                >
+
+
+
+
+
+                  <path d="M11 13H5V11H11V5H13V11H19V13H13V19H11V13Z" fill="white" />
+
+
+
+
+
+                </svg>
+
+
+
+
+
+              </a>
+
+
+
+
+
+            </div>
+
+
+
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+          <div class="new-product-slider-wrapper">
+
+
+<div class="new-product-grid">
+
+
+
+
+
+            <!-- Product Card 1 -->
+
+
+
+
+
+            <div class="product-card">
+
+
+
+
+
+              <a href="#" class="product-link">
+
+
+
+
+
+                <div class="product-image-box">
+
+
+
+
+
+                  <img
+
+
+
+
+
+                    src="assets/images/new_product_01.png"
+
+
+
+
+
+                    alt="PUBLIC BEACON 블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스"
+
+
+
+
+
+                    class="product-img"
+
+
+
+
+
+                    loading="lazy"
+
+
+
+
+
+                  />
+
+
+
+
+
+                </div>
+
+
+
+
+
+                <div class="product-info">
+
+
+
+
+
+                  <span class="product-brand">PUBLIC BEACON</span>
+
+
+
+
+
+                  <p class="product-name">블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스</p>
+
+
+
+
+
+                  <span class="product-price">235,000원</span>
+
+
+
+
+
+                </div>
+
+
+
+
+
+              </a>
+
+
+
+
+
+            </div>
+
+
+
+
+
+            <!-- Product Card 2 -->
+
+
+
+
+
+            <div class="product-card">
+
+
+
+
+
+              <a href="#" class="product-link">
+
+
+
+
+
+                <div class="product-image-box">
+
+
+
+
+
+                  <img
+
+
+
+
+
+                    src="assets/images/new_product_02.png"
+
+
+
+
+
+                    alt="PUBLIC BEACON 블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스"
+
+
+
+
+
+                    class="product-img"
+
+
+
+
+
+                    loading="lazy"
+
+
+
+
+
+                  />
+
+
+
+
+
+                </div>
+
+
+
+
+
+                <div class="product-info">
+
+
+
+
+
+                  <span class="product-brand">PUBLIC BEACON</span>
+
+
+
+
+
+                  <p class="product-name">블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스</p>
+
+
+
+
+
+                  <span class="product-price">235,000원</span>
+
+
+
+
+
+                </div>
+
+
+
+
+
+              </a>
+
+
+
+
+
+            </div>
+
+
+
+
+
+            <!-- Product Card 3 -->
+
+
+
+
+
+            <div class="product-card">
+
+
+
+
+
+              <a href="#" class="product-link">
+
+
+
+
+
+                <div class="product-image-box">
+
+
+
+
+
+                  <img
+
+
+
+
+
+                    src="assets/images/new_product_03.png"
+
+
+
+
+
+                    alt="PUBLIC BEACON 블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스"
+
+
+
+
+
+                    class="product-img"
+
+
+
+
+
+                    loading="lazy"
+
+
+
+
+
+                  />
+
+
+
+
+
+                </div>
+
+
+
+
+
+                <div class="product-info">
+
+
+
+
+
+                  <span class="product-brand">PUBLIC BEACON</span>
+
+
+
+
+
+                  <p class="product-name">블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스</p>
+
+
+
+
+
+                  <span class="product-price">235,000원</span>
+
+
+
+
+
+                </div>
+
+
+
+
+
+              </a>
+
+
+
+
+
+            </div>
+
+
+
+
+
+            <!-- Product Card 4 -->
+
+
+
+
+
+            <div class="product-card">
+
+
+
+
+
+              <a href="#" class="product-link">
+
+
+
+
+
+                <div class="product-image-box">
+
+
+
+
+
+                  <img
+
+
+
+
+
+                    src="assets/images/new_product_04.png"
+
+
+
+
+
+                    alt="PUBLIC BEACON 블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스"
+
+
+
+
+
+                    class="product-img"
+
+
+
+
+
+                    loading="lazy"
+
+
+
+
+
+                  />
+
+
+
+
+
+                </div>
+
+
+
+
+
+                <div class="product-info">
+
+
+
+
+
+                  <span class="product-brand">PUBLIC BEACON</span>
+
+
+
+
+
+                  <p class="product-name">블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스</p>
+
+
+
+
+
+                  <span class="product-price">235,000원</span>
+
+
+
+
+
+                </div>
+
+
+
+
+
+              </a>
+
+
+
+
+
+            </div>
+
+
+
+
+
+          </div>
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+          <!-- Pagination Dots -->
+
+
+
+
+
+          <div class="new-product-pagination">
+
+
+
+
+
+            <button type="button" class="dot active" aria-label="1페이지"></button>
+
+
+
+
+
+            <button type="button" class="dot" aria-label="2페이지"></button>
+
+
+
+
+
+            <button type="button" class="dot" aria-label="3페이지"></button>
+
+
+
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+          <!-- Load More Button (Mobile Only) -->
+
+
+
+
+
+          <button type="button" class="new-product-load-more-btn">더보기</button>
+
+
+
+
+
+        </div>
+
+
+
+
+
       </section>
 
       <!-- AI CTA 섹션: 라운즈 AI 가상피팅 및 얼굴형 분석 서비스 홍보 및 예약 유도 -->
@@ -1074,330 +1661,978 @@
         </div>
       </section>
 
-      <!-- RECOMMENDED BRAND 섹션: 추천 브랜드 대표 배너 캐러셀 및 상품 슬라이더 -->
-
-      <section class="recommended-brand">
-
-        <div class="recommended-brand-container">
-
-          <div class="recommended-brand-title-area">
-
-            <h2 class="recommended-brand-title">ROUNZ 추천 브랜드</h2>
-
-            <a href="#" class="brand-more-btn">전체보기</a>
-
-          </div>
-
-          <div class="recommended-brand-sub-header">
-
-            <div class="recommended-brand-filters">
-
-              <button type="button" class="filter-chip active">ALL</button>
-
-
-
-              <button type="button" class="filter-chip">1.618</button>
-
-              <button type="button" class="filter-chip">59 HYSTERIC</button>
-
-              <button type="button" class="filter-chip">ACCRUE</button>
-
-            </div>
-
-          </div>
-
-
-
-          <!-- Carousel Banners -->
-
-          <div class="brand-carousel-container">
-
-            <div class="brand-carousel-track">
-
-              <!-- Slide 1 (Left) -->
-
-              <div class="carousel-slide prev">
-
-                <img
-
-                  src="assets/images/brand_banner_museum.png"
-
-                  alt="회색 배경 슬라이드"
-
-                  loading="lazy"
-
-                />
-
-              </div>
-
-              <!-- Slide 2 (Center) -->
-
-              <div class="carousel-slide active">
-
-                <img
-
-                  src="assets/images/brand_banner.png"
-
-                  alt="추천 브랜드 대표 배너"
-
-                  loading="lazy"
-
-                />
-
-              </div>
-
-              <!-- Slide 3 (Right) -->
-
-              <div class="carousel-slide next">
-
-                <img
-
-                  src="assets/images/brand_banner_rayban.png"
-
-                  alt="회색 배경 슬라이드"
-
-                  loading="lazy"
-
-                />
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-
-          <!-- Product Slider Wrapper -->
-
-          <div class="brand-product-slider-wrapper">
-
-            <!-- Product Grid (5 columns, sliding on desktop) -->
-
-            <div class="brand-product-grid">
-
-              <!-- Product Card 1 -->
-
-              <div class="brand-product-card">
-
-                <a href="#" class="brand-product-link">
-
-                  <div class="brand-product-image-box">
-
-                    <img
-
-                      src="assets/images/brand_product_01.png"
-
-                      alt="STYLE:WORK 매트블랙 고글 STYLE19 BK 스타일워크 스포츠 선글라스"
-
-                      class="brand-product-img"
-
-                      loading="lazy"
-
-                    />
-
-                  </div>
-
-                  <div class="brand-product-info">
-
-                    <span class="brand-product-brand">STYLE:WORK</span>
-
-                    <p class="brand-product-name">
-
-                      매트블랙 고글 STYLE19 BK 스타일워크 스포츠 선글라스
-
-                    </p>
-
-                    <span class="brand-product-price">69,000원</span>
-
-                  </div>
-
-                </a>
-
-              </div>
-
-              <!-- Product Card 2 -->
-
-              <div class="brand-product-card">
-
-                <a href="#" class="brand-product-link">
-
-                  <div class="brand-product-image-box">
-
-                    <img
-
-                      src="assets/images/brand_product_02.png"
-
-                      alt="RAY-BAN 블랙 RB0832SF 601/31 55mm 레이밴 메가 웨이페어러 선글라스"
-
-                      class="brand-product-img"
-
-                      loading="lazy"
-
-                    />
-
-                  </div>
-
-                  <div class="brand-product-info">
-
-                    <span class="brand-product-brand">RAY-BAN</span>
-
-                    <p class="brand-product-name">
-
-                      블랙 RB0832SF 601/31 55mm 레이밴 메가 웨이페어러 선글라스
-
-                    </p>
-
-                    <span class="brand-product-price">272,000원</span>
-
-                  </div>
-
-                </a>
-
-              </div>
-
-              <!-- Product Card 3 -->
-
-              <div class="brand-product-card">
-
-                <a href="#" class="brand-product-link">
-
-                  <div class="brand-product-image-box">
-
-                    <img
-
-                      src="assets/images/brand_product_03.png"
-
-                      alt="TART OPTICAL 브라운 페이드 ARNEL HERITAGE BROWN FADE 42mm 타르트옵티컬 안경"
-
-                      class="brand-product-img"
-
-                      loading="lazy"
-
-                    />
-
-                  </div>
-
-                  <div class="brand-product-info">
-
-                    <span class="brand-product-brand">TART OPTICAL</span>
-
-                    <p class="brand-product-name">
-
-                      브라운 페이드 ARNEL HERITAGE BROWN FADE 42mm 타르트옵티컬 안경
-
-                    </p>
-
-                    <span class="brand-product-price">395,000원</span>
-
-                  </div>
-
-                </a>
-
-              </div>
-
-              <!-- Product Card 4 -->
-
-              <div class="brand-product-card">
-
-                <a href="#" class="brand-product-link">
-
-                  <div class="brand-product-image-box">
-
-                    <img
-
-                      src="assets/images/brand_product_04.png"
-
-                      alt="NINE ACCORD 투명 HORN ELISA C4 48mm 나인어코드 혼 엘리사 안경테"
-
-                      class="brand-product-img"
-
-                      loading="lazy"
-
-                    />
-
-                  </div>
-
-                  <div class="brand-product-info">
-
-                    <span class="brand-product-brand">NINE ACCORD</span>
-
-                    <p class="brand-product-name">
-
-                      투명 HORN ELISA C4 48mm 나인어코드 혼 엘리사 안경테
-
-                    </p>
-
-                    <span class="brand-product-price">218,000원</span>
-
-                  </div>
-
-                </a>
-
-              </div>
-
-              <!-- Product Card 5 -->
-
-              <div class="brand-product-card">
-
-                <a href="#" class="brand-product-link">
-
-                  <div class="brand-product-image-box">
-
-                    <img
-
-                      src="assets/images/brand_product_05.png"
-
-                      alt="OAKLEY 오클리 수트로 스포츠 고글 선글라스 OO9406A-04"
-
-                      class="brand-product-img"
-
-                      loading="lazy"
-
-                    />
-
-                  </div>
-
-                  <div class="brand-product-info">
-
-                    <span class="brand-product-brand">OAKLEY</span>
-
-                    <p class="brand-product-name">오클리 수트로 스포츠 고글 선글라스 OO9406A-04</p>
-
-                    <span class="brand-product-price">229,000원</span>
-
-                  </div>
-
-                </a>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-
-          <!-- Pagination Dots -->
-
-          <div class="recommended-brand-pagination">
-
-            <button type="button" class="dot active" aria-label="1페이지"></button>
-
-            <button type="button" class="dot" aria-label="2페이지"></button>
-
-            <button type="button" class="dot" aria-label="3페이지"></button>
-
-          </div>
-
-
-
-          <!-- Load More Button (Mobile Only) -->
-
-          <button type="button" class="brand-load-more-btn">더보기</button>
-
-        </div>
-
+      <!-- RECOMMENDED BRAND 섹션: 추천 브랜드 대표 배너 캐러셀 및 상품 슬라이더 -->
+
+
+
+
+
+      <section class="recommended-brand">
+
+
+
+
+
+        <div class="recommended-brand-container">
+
+
+
+
+
+          <div class="recommended-brand-title-area">
+
+
+
+
+
+            <h2 class="recommended-brand-title">ROUNZ 추천 브랜드</h2>
+
+
+
+
+
+            <a href="#" class="brand-more-btn">전체보기</a>
+
+
+
+
+
+          </div>
+
+
+
+
+
+          <div class="recommended-brand-sub-header">
+
+
+
+
+
+            <div class="recommended-brand-filters">
+
+
+
+
+
+              <button type="button" class="filter-chip active">ALL</button>
+
+
+
+
+
+
+
+
+
+
+
+              <button type="button" class="filter-chip">1.618</button>
+
+
+
+
+
+              <button type="button" class="filter-chip">59 HYSTERIC</button>
+
+
+
+
+
+              <button type="button" class="filter-chip">ACCRUE</button>
+
+
+
+
+
+            </div>
+
+
+
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+          <!-- Carousel Banners -->
+
+
+
+
+
+          <div class="brand-carousel-container">
+
+
+
+
+
+            <div class="brand-carousel-track">
+
+
+
+
+
+              <!-- Slide 1 (Left) -->
+
+
+
+
+
+              <div class="carousel-slide prev">
+
+
+
+
+
+                <img
+
+
+
+
+
+                  src="assets/images/brand_banner_museum.png"
+
+
+
+
+
+                  alt="회색 배경 슬라이드"
+
+
+
+
+
+                  loading="lazy"
+
+
+
+
+
+                />
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <!-- Slide 2 (Center) -->
+
+
+
+
+
+              <div class="carousel-slide active">
+
+
+
+
+
+                <img
+
+
+
+
+
+                  src="assets/images/brand_banner.png"
+
+
+
+
+
+                  alt="추천 브랜드 대표 배너"
+
+
+
+
+
+                  loading="lazy"
+
+
+
+
+
+                />
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <!-- Slide 3 (Right) -->
+
+
+
+
+
+              <div class="carousel-slide next">
+
+
+
+
+
+                <img
+
+
+
+
+
+                  src="assets/images/brand_banner_rayban.png"
+
+
+
+
+
+                  alt="회색 배경 슬라이드"
+
+
+
+
+
+                  loading="lazy"
+
+
+
+
+
+                />
+
+
+
+
+
+              </div>
+
+
+
+
+
+            </div>
+
+
+
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+          <!-- Product Slider Wrapper -->
+
+
+
+
+
+          <div class="brand-product-slider-wrapper">
+
+
+
+
+
+            <!-- Product Grid (5 columns, sliding on desktop) -->
+
+
+
+
+
+            <div class="brand-product-grid">
+
+
+
+
+
+              <!-- Product Card 1 -->
+
+
+
+
+
+              <div class="brand-product-card">
+
+
+
+
+
+                <a href="#" class="brand-product-link">
+
+
+
+
+
+                  <div class="brand-product-image-box">
+
+
+
+
+
+                    <img
+
+
+
+
+
+                      src="assets/images/brand_product_01.png"
+
+
+
+
+
+                      alt="STYLE:WORK 매트블랙 고글 STYLE19 BK 스타일워크 스포츠 선글라스"
+
+
+
+
+
+                      class="brand-product-img"
+
+
+
+
+
+                      loading="lazy"
+
+
+
+
+
+                    />
+
+
+
+
+
+                  </div>
+
+
+
+
+
+                  <div class="brand-product-info">
+
+
+
+
+
+                    <span class="brand-product-brand">STYLE:WORK</span>
+
+
+
+
+
+                    <p class="brand-product-name">
+
+
+
+
+
+                      매트블랙 고글 STYLE19 BK 스타일워크 스포츠 선글라스
+
+
+
+
+
+                    </p>
+
+
+
+
+
+                    <span class="brand-product-price">69,000원</span>
+
+
+
+
+
+                  </div>
+
+
+
+
+
+                </a>
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <!-- Product Card 2 -->
+
+
+
+
+
+              <div class="brand-product-card">
+
+
+
+
+
+                <a href="#" class="brand-product-link">
+
+
+
+
+
+                  <div class="brand-product-image-box">
+
+
+
+
+
+                    <img
+
+
+
+
+
+                      src="assets/images/brand_product_02.png"
+
+
+
+
+
+                      alt="RAY-BAN 블랙 RB0832SF 601/31 55mm 레이밴 메가 웨이페어러 선글라스"
+
+
+
+
+
+                      class="brand-product-img"
+
+
+
+
+
+                      loading="lazy"
+
+
+
+
+
+                    />
+
+
+
+
+
+                  </div>
+
+
+
+
+
+                  <div class="brand-product-info">
+
+
+
+
+
+                    <span class="brand-product-brand">RAY-BAN</span>
+
+
+
+
+
+                    <p class="brand-product-name">
+
+
+
+
+
+                      블랙 RB0832SF 601/31 55mm 레이밴 메가 웨이페어러 선글라스
+
+
+
+
+
+                    </p>
+
+
+
+
+
+                    <span class="brand-product-price">272,000원</span>
+
+
+
+
+
+                  </div>
+
+
+
+
+
+                </a>
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <!-- Product Card 3 -->
+
+
+
+
+
+              <div class="brand-product-card">
+
+
+
+
+
+                <a href="#" class="brand-product-link">
+
+
+
+
+
+                  <div class="brand-product-image-box">
+
+
+
+
+
+                    <img
+
+
+
+
+
+                      src="assets/images/brand_product_03.png"
+
+
+
+
+
+                      alt="TART OPTICAL 브라운 페이드 ARNEL HERITAGE BROWN FADE 42mm 타르트옵티컬 안경"
+
+
+
+
+
+                      class="brand-product-img"
+
+
+
+
+
+                      loading="lazy"
+
+
+
+
+
+                    />
+
+
+
+
+
+                  </div>
+
+
+
+
+
+                  <div class="brand-product-info">
+
+
+
+
+
+                    <span class="brand-product-brand">TART OPTICAL</span>
+
+
+
+
+
+                    <p class="brand-product-name">
+
+
+
+
+
+                      브라운 페이드 ARNEL HERITAGE BROWN FADE 42mm 타르트옵티컬 안경
+
+
+
+
+
+                    </p>
+
+
+
+
+
+                    <span class="brand-product-price">395,000원</span>
+
+
+
+
+
+                  </div>
+
+
+
+
+
+                </a>
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <!-- Product Card 4 -->
+
+
+
+
+
+              <div class="brand-product-card">
+
+
+
+
+
+                <a href="#" class="brand-product-link">
+
+
+
+
+
+                  <div class="brand-product-image-box">
+
+
+
+
+
+                    <img
+
+
+
+
+
+                      src="assets/images/brand_product_04.png"
+
+
+
+
+
+                      alt="NINE ACCORD 투명 HORN ELISA C4 48mm 나인어코드 혼 엘리사 안경테"
+
+
+
+
+
+                      class="brand-product-img"
+
+
+
+
+
+                      loading="lazy"
+
+
+
+
+
+                    />
+
+
+
+
+
+                  </div>
+
+
+
+
+
+                  <div class="brand-product-info">
+
+
+
+
+
+                    <span class="brand-product-brand">NINE ACCORD</span>
+
+
+
+
+
+                    <p class="brand-product-name">
+
+
+
+
+
+                      투명 HORN ELISA C4 48mm 나인어코드 혼 엘리사 안경테
+
+
+
+
+
+                    </p>
+
+
+
+
+
+                    <span class="brand-product-price">218,000원</span>
+
+
+
+
+
+                  </div>
+
+
+
+
+
+                </a>
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <!-- Product Card 5 -->
+
+
+
+
+
+              <div class="brand-product-card">
+
+
+
+
+
+                <a href="#" class="brand-product-link">
+
+
+
+
+
+                  <div class="brand-product-image-box">
+
+
+
+
+
+                    <img
+
+
+
+
+
+                      src="assets/images/brand_product_05.png"
+
+
+
+
+
+                      alt="OAKLEY 오클리 수트로 스포츠 고글 선글라스 OO9406A-04"
+
+
+
+
+
+                      class="brand-product-img"
+
+
+
+
+
+                      loading="lazy"
+
+
+
+
+
+                    />
+
+
+
+
+
+                  </div>
+
+
+
+
+
+                  <div class="brand-product-info">
+
+
+
+
+
+                    <span class="brand-product-brand">OAKLEY</span>
+
+
+
+
+
+                    <p class="brand-product-name">오클리 수트로 스포츠 고글 선글라스 OO9406A-04</p>
+
+
+
+
+
+                    <span class="brand-product-price">229,000원</span>
+
+
+
+
+
+                  </div>
+
+
+
+
+
+                </a>
+
+
+
+
+
+              </div>
+
+
+
+
+
+            </div>
+
+
+
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+          <!-- Pagination Dots -->
+
+
+
+
+
+          <div class="recommended-brand-pagination">
+
+
+
+
+
+            <button type="button" class="dot active" aria-label="1페이지"></button>
+
+
+
+
+
+            <button type="button" class="dot" aria-label="2페이지"></button>
+
+
+
+
+
+            <button type="button" class="dot" aria-label="3페이지"></button>
+
+
+
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+          <!-- Load More Button (Mobile Only) -->
+
+
+
+
+
+          <button type="button" class="brand-load-more-btn">더보기</button>
+
+
+
+
+
+        </div>
+
+
+
+
+
       </section>
 
       <!-- ABOUT US 섹션: 브랜드 미션 및 아이웨어 쇼핑 가치 소개 카드 -->
