@@ -238,13 +238,109 @@ cartList.addEventListener("change", e => {
   }
 });
 
-// 스와이퍼
+async function fetchProducts() {
+  try {
+    const res = await fetch("../data/products.json");
+    const data = await res.json();
+    renderProducts(data.products);
+  } catch (error) {
+    console.error(error);
+  }
+}
+fetchProducts();
+
+function renderProducts(products) {
+  const productLists = document.querySelectorAll(".product-list");
+  // 함께 구매하면 좋은 상품
+  productLists[0].innerHTML = createCards(
+    products.slice(0, 8)
+  );
+  // 당신을 위한 컬렉션
+  productLists[1].innerHTML = createCards(
+    products.slice(9, 16)
+  );
+}
+
+// 상품 카드
+function createCards(products) {
+  return products
+    .map(
+      product => `
+         <article class="swiper-slide product-list-card">
+          <a href="./product.html?id=${product.id}" class="product-list-link">
+
+            <div class="product-list-image">
+              <img
+                src="${product.images.thumbnail}"
+                alt="${product.title}"
+                class="product-list-img"
+              >
+            </div>
+
+            <div class="product-list-info">
+              <p class="product-list-brand">
+                ${product.brand}
+              </p>
+
+              <p class="product-list-name">
+                ${product.title}
+              </p>
+
+              <p class="product-list-price">
+                ${product.price.final.toLocaleString("ko-KR")}원
+              </p>
+            </div>
+
+          </a>
+        </article>
+      `
+    )
+    .join("");
+}
+
+
+// 배너 스와이퍼
 const swiper = new Swiper(".cart-banner", {
   loop: true,
 
   autoplay: {
     delay: 3000,
     disableOnInteraction: false,
+  },
+});
+
+// 추천 상품 스와이퍼
+const recommendSwiper = new Swiper(".recommend-swiper", {
+  slidesPerView: 2.2,
+  spaceBetween: 16,
+  navigation: {
+    nextEl: ".recommend-next",
+    prevEl: ".recommend-prev",
+  },
+  breakpoints: {
+    768: {
+      slidesPerView: 3,
+    },
+    1272: {
+      slidesPerView: 4,
+    },
+  },
+});
+
+const collectionSwiper = new Swiper(".collection-swiper", {
+  slidesPerView: 2.2,
+  spaceBetween: 16,
+  navigation: {
+    nextEl: ".collection-next",
+    prevEl: ".collection-prev",
+  },
+  breakpoints: {
+    768: {
+      slidesPerView: 3,
+    },
+    1272: {
+      slidesPerView: 4,
+    },
   },
 });
 

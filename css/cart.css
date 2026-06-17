@@ -185,10 +185,18 @@ body {
 }
 
 /* 상품 리스트 */
+.recommend-section {
+  gap: 15px;
+}
+.collection-section {
+  padding-top: 30px;
+  gap: 15px;
+}
 .product-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.6rem;
+  display: flex;
+}
+.product-list-card {
+  height: auto;
 }
 .section-header h2 {
   font-size: var(--sub-title--s);
@@ -198,6 +206,69 @@ body {
   font-size: var(--small);
   font-weight: 400;
   color: var(--gray-2);
+}
+.product-list-brand,
+.product-list-price {
+  font-size: var(--small);
+  font-weight: 700;
+  color: var(--black-2);
+}
+.product-list-name {
+  font-size: var(--base-font);
+  font-weight: 400;
+  color: var(--gray-1);
+}
+.product-list-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-top: 5px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+}
+.recommend-swiper,
+.collection-swiper {
+  --swiper-navigation-size: 16px;
+}
+.recommend-swiper,
+.collection-swiper {
+  width: 100%;
+}
+.swiper-button-prev {
+  left: 0;
+}
+.swiper-button-next {
+  right: 0;
+}
+.swiper-button-prev {
+  left: -10px;
+}
+.swiper-button-next {
+  right: -10px;
+}
+
+/* 모바일 주문하기 버튼 */
+.mobile-order {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 16px;
+  background: var(--white-1);
+  border-top: 1px solid var(--gray-4);
+  z-index: 100;
+}
+.mobile-order .mobile-order-btn {
+  width: 100%;
+  height: 50px;
+  border-radius: var(--radius-md);
+  color: var(--white-1);
+  background: var(--primary);
 }
 
 .cart-layout {
@@ -214,6 +285,9 @@ body {
     padding: 0;
   }
   .mobile-total {
+    display: none;
+  }
+  .mobile-order {
     display: none;
   }
 
@@ -366,7 +440,6 @@ body {
     width: 150px;
     height: 150px;
   }
-  
 
   /* 배너 */
   .cart-banner {
@@ -403,12 +476,20 @@ body {
     font-size: var(--sub-title--m);
   }
 
+  /* 추천 상품 */
   .section-header h2 {
     font-size: var(--title--l);
   }
-
-  .product-list {
-    grid-template-columns: repeat(5, 1fr);
+  .product-list-brand,
+  .product-list-price {
+    font-size: var(--medium);
+    font-weight: 700;
+    color: var(--black-2);
+  }
+  .product-list-name {
+    font-size: var( --normal);
+    font-weight: 400;
+    color: var(--gray-1);
   }
 
   .ai-logo {

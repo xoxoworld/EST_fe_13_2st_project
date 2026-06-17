@@ -165,29 +165,46 @@
     </div>
 
     <!-- 함께 구매하면 좋은 상품 -->
-    <section class="recommend-section">
+    <section class="recommend-section d-flex flex-column">
       <div class="section-header d-flex justify-content-between">
         <h2>함께 구매하면 좋은 상품</h2>
-        <a href="#" class="section-text">
+        <a href="../html/productList.html" class="section-text">
           전체보기
         </a>
       </div>
-      <div class="product-list">
-        <!-- 상품 카드 -->
+      <div class="swiper recommend-swiper">
+        <div class="swiper-wrapper product-list">
+          <!-- JS로 상품 넣기 -->
+        </div>
+
+        <div class="swiper-button-prev recommend-prev"></div>
+        <div class="swiper-button-next recommend-next"></div>
       </div>
     </section>
 
     <!-- 당신을 위한 컬렉션 -->
-    <section class="collection-section">
+    <section class="collection-section d-flex flex-column">
       <div class="section-header d-flex justify-content-between">
         <h2>당신을 위한 컬렉션</h2>
-        <a href="#" class="section-text">
+        <a href="../html/productList.html" class="section-text">
           전체보기
         </a>
       </div>
-      <div class="product-list">
-        <!-- 상품 카드 -->
+      <div class="swiper collection-swiper">
+        <div class="swiper-wrapper product-list">
+          <!-- JS로 상품 넣기 -->
+        </div>
+
+        <div class="swiper-button-prev collection-prev"></div>
+        <div class="swiper-button-next collection-next"></div>
       </div>
+    </section>
+
+    <!-- 주문하기 -->
+    <section class="mobile-order">
+      <a href="../html/login.html" class="mobile-order-btn d-flex justify-content-center align-items-center">
+        주문하기
+      </a>
     </section>
   </main>
 
