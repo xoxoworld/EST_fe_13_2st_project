@@ -313,6 +313,9 @@ button {
 .filter-more-btn .control-btn {
   display: none;
 }
+.f-more-btn {
+  text-align: center;
+}
 
 /* web 컨트롤 방향 버튼 */
 /* web 더보기 btn */

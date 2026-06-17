@@ -73,9 +73,12 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   gap: 12px;
 }
+.product-price {
+  flex-shrink: 0;
+}
+
 .product-image {
   width: 110px;
   height: 110px;
@@ -113,8 +116,11 @@ body {
 
 /* 수량 */
 .product-bottom {
-  margin-left: 38px;
-  width: calc(100% - 38px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-left: 0;
 }
 .quantity-box {
   display: flex;
@@ -356,6 +362,11 @@ body {
   .product-price {
     font-size: var(--large);
   }
+  .product-image {
+    width: 150px;
+    height: 150px;
+  }
+  
 
   /* 배너 */
   .cart-banner {
