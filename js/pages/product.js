@@ -1,4 +1,8 @@
 import { updateCartCount, addToCart, addToCompare } from "../common.js";
+import { renderHeader } from "../modules/header.js";
+document.addEventListener("DOMContentLoaded", () => {
+  renderHeader();
+});
 
 let product = {};
 let visualSwiper;
