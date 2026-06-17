@@ -52,7 +52,8 @@ function renderColumn(columnIndex) {
 
   if (!product) return;
 
-  const column = document.querySelectorAll(".compare-column")[columnIndex];
+  const columns = document.querySelectorAll(".compare-column");
+  const column = columns[columnIndex];
 
   if (!column) return;
 
@@ -66,15 +67,12 @@ function renderColumn(columnIndex) {
 
   column.querySelector(".dropdown-select-btn span").textContent = product.brand;
 
-  // 버튼 데이터 저장
+  // 버튼 데이터 속성 저장
   const buyBtn = column.querySelector(".btn-buy");
   const moreBtn = column.querySelector(".btn-more");
 
   buyBtn.dataset.id = product.id;
   moreBtn.dataset.id = product.id;
-
-  // 상세페이지 경로 저장
-  moreBtn.href = product.detailUrl;
 }
 
 // 전체 렌더링
@@ -90,59 +88,65 @@ function changeEyewear(columnIndex, eyewearId) {
   renderColumn(columnIndex);
 }
 
-// 장바구니 추가
+// 구매하기: 장바구니에 담고 장바구니 페이지로 이동
 function handleBuy(productId) {
   const product = eyewearData[productId];
-
   if (!product) return;
 
   let cart = JSON.parse(localStorage.getItem("cart") || "[]");
-
   const exists = cart.find(item => item.id === productId);
 
   if (!exists) {
     cart.push({
       id: product.id,
-      name: product.name,
+      brand: product.brand,
+      title: product.name,
+      thumb: product.image,
       price: product.price,
-      image: product.image,
-      quantity: 1,
+      qty: 1,
     });
-
     localStorage.setItem("cart", JSON.stringify(cart));
   }
-  console.log("buy click", productId);
-  // 장바구니 페이지 이동
-  window.location.href = "./cart.html";
+
+  window.location.href = "../../html/cart.html";
 }
 
-// 상세페이지 이동
+// 더 알아보기: 상품 ID를 URL 파라미터로 전달하여 상세 페이지로 이동
 function handleMore(productId) {
-  const product = eyewearData[productId];
-
-  if (!product) return;
-
-  window.location.href = "./product.html";
+  window.location.href = `../../html/product.html?id=${productId}`;
 }
 
-// 이벤트
+// 이벤트 바인딩
 function bindEvents() {
+  // 구매 버튼 이벤트
   document.querySelectorAll(".btn-buy").forEach(button => {
-    button.addEventListener("click", () => {
-      handleBuy(Number(button.dataset.id));
+    // 기존 리스너 제거 및 초기화
+    button.replaceWith(button.cloneNode(true));
+  });
+
+  document.querySelectorAll(".btn-buy").forEach(button => {
+    button.addEventListener("click", e => {
+      const id = e.currentTarget.dataset.id;
+      handleBuy(Number(id));
     });
+  });
+
+  // 더 알아보기 버튼 이벤트
+  document.querySelectorAll(".btn-more").forEach(button => {
+    button.replaceWith(button.cloneNode(true));
   });
 
   document.querySelectorAll(".btn-more").forEach(button => {
     button.addEventListener("click", e => {
       e.preventDefault();
-      handleMore(Number(button.dataset.id));
+      const id = e.currentTarget.dataset.id;
+      handleMore(Number(id));
     });
   });
 }
 
-// 실행
+// DOMContentLoaded 실행
 document.addEventListener("DOMContentLoaded", () => {
-  renderComparePage();
-  bindEvents();
+  renderComparePage(); // 1. 화면 먼저 그리기
+  bindEvents(); // 2. 이벤트 붙이기
 });

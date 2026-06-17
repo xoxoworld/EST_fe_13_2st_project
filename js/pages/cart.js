@@ -62,10 +62,7 @@ function saveCart() {
 }
 
 function updateTotalAmount() {
-  const total = cart.reduce(
-    (sum, item) => sum + item.price * item.qty,
-    0
-  );
+  const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   const discount = total >= 200000 ? 10000 : 0;
   const finalPrice = total - discount;
@@ -197,12 +194,9 @@ cartList.addEventListener("click", e => {
 
 function updateSelectState() {
   const checkboxes = getCheckBoxes();
-  const checkedCount = checkboxes.filter(
-    checkbox => checkbox.checked,
-  ).length;
+  const checkedCount = checkboxes.filter(checkbox => checkbox.checked).length;
   selectAllText.textContent = `전체선택 (${checkedCount}/${checkboxes.length})`;
-  selectAll.querySelector("input").checked =
-    checkedCount > 0 && checkedCount === checkboxes.length;
+  selectAll.querySelector("input").checked = checkedCount > 0 && checkedCount === checkboxes.length;
   selectedIds = new Set(getCheckedIds());
 }
 

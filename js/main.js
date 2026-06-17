@@ -1829,3 +1829,195 @@ $(function(){
   });
 });
 /*사이드바*/
+
+/*제니 컬렉션 상품*/
+// Config
+const API = "../data/products.json";
+const CHUNK_SIZE = 3;
+let isLoading = false;
+let productSwiper;
+
+const productWrapper = document.querySelector(".product-wrapper");
+
+// Skeleton
+function renderSkeleton() {
+  productWrapper.innerHTML = `
+    <div class="swiper-slide">
+      <ul class="product-slide-list">
+        ${Array.from(
+          { length: CHUNK_SIZE },
+          () => `
+            <li class="product-product-item skeleton-item">
+              <article class="product-card">
+                <figure class="product-card__figure">
+                  <div class="skeleton skeleton-image"></div>
+                </figure>
+
+                <div class="product-card-text-box d-flex flex-column">
+                  <div class="skeleton skeleton-brand"></div>
+                  <div class="skeleton skeleton-name"></div>
+                  <div class="skeleton skeleton-name short"></div>
+                  <div class="skeleton skeleton-price"></div>
+                </div>
+              </article>
+            </li>
+          `
+        ).join("")}
+      </ul>
+    </div>
+  `;
+}
+
+// API
+async function fetchProducts() {
+  if (isLoading) return;
+
+  isLoading = true;
+
+  renderSkeleton();
+
+  try {
+    const res = await fetch(API);
+
+    if (!res.ok) {
+      throw new Error(`API 오류 : ${res.status}`);
+    }
+
+    const data = await res.json();
+
+    renderSlides(data.products);
+
+    initSwiper();
+  } catch (error) {
+    console.error(error);
+
+    productWrapper.innerHTML = `
+      <div class="swiper-slide">
+        <ul class="product-slide-list">
+          <li class="product-product-item">
+            상품을 불러오지 못했습니다.
+          </li>
+        </ul>
+      </div>
+    `;
+  } finally {
+    isLoading = false;
+  }
+}
+
+// 슬라이드
+function renderSlides(products) {
+  productWrapper.innerHTML = "";
+
+  const limitedProducts = products.slice(0, 12);
+
+  for (let i = 0; i < limitedProducts.length; i += CHUNK_SIZE) {
+    const slideProducts = limitedProducts.slice(i, i + CHUNK_SIZE);
+
+    const slide = document.createElement("div");
+    slide.className = "swiper-slide";
+
+    const list = document.createElement("ul");
+    list.className = "product-slide-list";
+
+    slideProducts.forEach(product => {
+      list.appendChild(productCard(product));
+    });
+
+    slide.appendChild(list);
+    productWrapper.appendChild(slide);
+  }
+}
+
+// 상품카드
+function productCard(product) {
+  const item = document.createElement("li");
+
+  item.className = "product-product-item";
+
+  item.innerHTML = `
+    <article class="product-card">
+      <figure class="product-card__figure">
+        <img
+          class="product-card__img"
+          src="${product.images.thumbnail}"
+          alt="${escapeHTML(product.title)}"
+          loading="lazy"
+        />
+      </figure>
+
+      <div class="product-card-text-box d-flex flex-column">
+        <span class="product-card__brand text-small-b">
+          ${escapeHTML(product.brand)}
+        </span>
+
+        <p class="product-card__name">
+          ${escapeHTML(product.title)}
+        </p>
+
+        <strong class="product-card__price">
+          ${product.price.final.toLocaleString()}
+          <span>원</span>
+        </strong>
+      </div>
+    </article>
+  `;
+
+  return item;
+}
+
+// 스와이퍼
+function initSwiper() {
+  if (productSwiper) {
+    productSwiper.destroy(true, true);
+  }
+
+  const progressFill = document.querySelector(
+    ".product-pagination__fill"
+  );
+
+  productSwiper = new Swiper(".product-swiper", {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    speed: 600,
+
+    observer: true,
+    observeParents: true,
+
+    on: {
+      init(swiper) {
+        if (progressFill) updateProgress(swiper);
+      },
+
+      slideChange(swiper) {
+        if (progressFill) updateProgress(swiper);
+      }
+    }
+  });
+
+  function updateProgress(swiper) {
+  if (!progressFill) return;
+
+  const totalSlides = swiper.slides.length;
+  const currentSlide = swiper.activeIndex;
+
+  const segmentWidth = 100 / totalSlides;
+
+  progressFill.style.width = `${segmentWidth}%`;
+  progressFill.style.left = `${currentSlide * segmentWidth}%`;
+}
+}
+
+// Utils
+function escapeHTML(str) {
+  return String(str)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+// Init
+fetchProducts();
+/*제니 컬렉션 상품*/
