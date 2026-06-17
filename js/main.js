@@ -1582,7 +1582,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ".product-pagination__fill"
     );
   
-    productSwiper = new Swiper(".product-swiper", {
+    productSwiper = new Swiper(".jenny-collection .product-swiper", {
       slidesPerView: 1,
       spaceBetween: 0,
       speed: 600,
@@ -1789,22 +1789,43 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     const categoryMap={
       "선글라스":"sunglasses",
-      "안경":"glasses",
-      "렌즈":"contact"
+      "안경":"frame",
+      "블루라이트 차단":"frame",
+      "스포츠고글":"sunglasses"
+    };
+
+    const brandMap={
+      "라운즈ONLY":[
+        "ROUNZ BASIC",
+        "STYLE:WORK",
+        "TART OPTICAL",
+        "1.618",
+        "ROUNZ STANDARD",
+        "ROUNZ ABSOLUTE"
+      ]
     };
 
     const category =
     categoryMap[text] || text.toLowerCase();
+
+    const brand =
+    brandMap[text] || null;
 
     const filtered =
     category === "all"
     ? products
     : products.filter(item=>{
 
+        if(brand){
+            return brand.includes(item.brand);
+          }
+
         return item.category === category;
       });
 
-    console.log("버튼:", category);
+    console.log("버튼:", text);
+    console.log("카테고리:", category);
+    console.log("브랜드:", brand);
     console.log("결과:", filtered.length);
 
     renderProducts(filtered);
