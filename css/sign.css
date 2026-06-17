@@ -9,7 +9,7 @@
   box-sizing: border-box;
 }
 
-.auth-wrapper {
+/* .auth-wrapper {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -17,7 +17,7 @@
 
 .main-content {
   flex: 1;
-}
+} */
 
 /* ========================================================
    1. 헤더 정렬
@@ -61,6 +61,19 @@
   margin: 0 0 12px 0;
   display: block;
   box-sizing: border-box;
+}
+
+#app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-layout {
+  flex: 1; /* 이 속성이 푸터를 아래로 밀어냅니다 */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* 필요시 추가 */
 }
 
 /* 대형 버튼 공통 스타일 (회원가입 등 사용) */
@@ -118,16 +131,6 @@
   text-align: center;
   width: 100%;
   display: block;
-}
-
-/* 1. 기본값 (모바일: 354px 유지) */
-.footer-inner {
-  width: 100%;
-  max-width: 354px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 /* 반응형: auth-wrapper, footer-inner, container-inner의 최대 너비를 동기화 */
