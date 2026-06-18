@@ -635,6 +635,7 @@ cartButtons.forEach(cartButton => {
     setQuantity(currentQty);
     addToCart(product, currentQty);
     setQuantity(minQty);
+    location.href = "./cart.html";
   });
 });
 
