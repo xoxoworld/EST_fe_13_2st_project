@@ -188,6 +188,22 @@ cartList.addEventListener("click", e => {
   }
 });
 
+// 상품 클릭 시 상세페이지 이동
+cartList.addEventListener("click", e => {
+  const cartItem = e.target.closest(".cart-item");
+
+  if (!cartItem) return;
+
+  if (
+    e.target.closest(".product-image") ||
+    e.target.closest(".product-info")
+  ) {
+    const id = cartItem.dataset.id;
+
+    location.href = `./product.html?id=${id}`;
+  }
+});
+
 function updateSelectState() {
   const checkboxes = getCheckBoxes();
   const checkedCount = checkboxes.filter(checkbox => checkbox.checked).length;
