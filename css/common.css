@@ -737,7 +737,7 @@ button {
 /* 사이드바 헤더 */
 .sidebar-header{
   height:46px;
-  padding:0 16px;
+  padding:0 24px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -751,6 +751,9 @@ button {
 .sidebar-close{
   border:0;
   background:none;
+}
+.sidebar-auth {
+  color: var(--gray-1);
 }
 
 /* 메뉴 */
@@ -772,9 +775,11 @@ button {
 }
 .sidebar-menu-list li:hover {
   background-color: var(--white-1);
+  color: var(--primary)
 }
 .sidebar-menu-list li.active {
   background-color: var(--white-1);
+  color: var(--primary)
 }
 .sidebar-menu-list-right li {
   width: 282px;
