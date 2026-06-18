@@ -582,7 +582,6 @@ button {
 /* 상품 카드 반응형 */
 /* --------상품 카드요소--------- */
 
-
 /* 헤더 */
 .header {
   position: sticky;
@@ -703,61 +702,61 @@ button {
 /* 사이드바 */
 .sidebar {
   position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  max-width:402px;
-  height:100vh;
-  background:var(--white-1);
-  transform:translateX(-100%);
-  transition:.3s ease;
-  z-index:2000;
+  max-width: 402px;
+  top: 0;
+  left: 0;
+  width: 480px;
+  height: 100vh;
+  background: var(--white-1);
+  transform: translateX(-100%);
+  transition: 0.3s ease;
+  z-index: 2000;
 }
 
-.sidebar.active{
-  transform:translateX(0);
+.sidebar.active {
+  transform: translateX(0);
 }
 
 /* 어두운 영역 */
-.sidebar-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.35);
-  opacity:0;
-  visibility:hidden;
-  transition:.3s;
-  z-index:1500;
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  z-index: 1500;
 }
 
-.sidebar-overlay.active{
-  opacity:1;
-  visibility:visible;
+.sidebar-overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* 사이드바 헤더 */
-.sidebar-header{
-  height:46px;
-  padding:0 24px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+.sidebar-header {
+  height: 46px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border-bottom: 10px solid var(--white-2);
 }
 
-.sidebar-logo img{
-  width:80px;
+.sidebar-logo img {
+  width: 80px;
 }
 
-.sidebar-close{
-  border:0;
-  background:none;
+.sidebar-close {
+  border: 0;
+  background: none;
 }
 .sidebar-auth {
   color: var(--gray-1);
 }
 
 /* 메뉴 */
-.sidebar-nav{
+.sidebar-nav {
   display: flex;
   height: 100%;
 }
@@ -770,8 +769,8 @@ button {
   background-color: var(--white-2);
   width: 100%;
   height: auto;
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
 }
 .sidebar-menu-list li:hover {
   background-color: var(--white-1);
@@ -807,13 +806,13 @@ button {
   height: 54px;
 }
 .sidebar-menu-list,
-.sidebar-menu-list-right a{
+.sidebar-menu-list-right a {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: var(--medium);
-  font-weight:600;
+  font-weight: 600;
 }
 
 /* 태블릿 반응형*/
@@ -980,7 +979,9 @@ button {
   }
 }
 
-/* 1. 기본 버튼 상태 */
+/* 로그인 및 회원가입 공통*/
+
+/* 기본 버튼 상태 */
 .primary-btn {
   width: 100%;
   height: 48px;
@@ -997,13 +998,13 @@ button {
   color: var(--primary-btn-color);
 }
 
-/* 2. 호버 상태 (비활성화가 아닐 때) */
+/* 호버 상태 (비활성화가 아닐 때) */
 .primary-btn:hover:not(:disabled) {
   /* 그라디언트 버튼에 호버 시 단색으로 변하게 하거나 투명도 조절 */
   background: rgba(26, 26, 26, 1);
 }
 
-/* 3. 비활성화 상태 */
+/* 비활성화 상태 */
 .primary-btn:disabled {
   /* !important 제거 */
   background: var(--primary-btn-disabled-bg);
@@ -1011,3 +1012,44 @@ button {
   cursor: not-allowed;
 }
 
+#app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.auth-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 354px; /* 메인 정렬 기준 */
+  padding: 20px 0;
+}
+
+/* 페이지 전체 틀 (너비 제약 및 중앙 정렬) */
+.page-container {
+  width: 100%;
+  max-width: 1272px; /* 데스크탑 최대 너비 */
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* 인증 페이지용 좁은 컨테이너 */
+.auth-container {
+  width: 100%;
+  max-width: 354px; /* 로그인/회원가입 기본 너비 */
+  margin: 0 auto;
+  padding: 40px 20px; /* 상하 여백 추가 */
+  box-sizing: border-box;
+  display: flex; /* flex-grow-1을 적용받기 위함 */
+  flex-direction: column;
+  justify-content: center;
+}
