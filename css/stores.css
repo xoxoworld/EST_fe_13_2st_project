@@ -188,7 +188,7 @@ main > section {
   display: none;
 }
 
-.reservation-layer:target {
+.reservation-layer.open {
   display: block;
 }
 
