@@ -16,8 +16,8 @@
     <header class="header d-flex align-items-center"></header>
 
     <!-- sidebar -->
-     <div class="sidebar-wrap">
-       <!-- <div class="sidebar-overlay"></div>
+    <div class="sidebar-wrap">
+      <!-- <div class="sidebar-overlay"></div>
        <aside class="sidebar">
          <div class="sidebar-header">
            <div class="menu-form d-flex g-24">
@@ -72,7 +72,7 @@
            </ul>
          </nav>
        </aside> -->
-     </div>
+    </div>
 
     <main>
       <!-- 메인 배너 섹션 -->
@@ -576,10 +576,13 @@
       <!-- NEW PRODUCT 섹션: 신상품 슬라이더 및 필터(브랜드별) 칩 제공 -->
       <section class="new-product">
         <div class="new-product-container">
-          <div class="new-product-title-area">
-            <h2 class="new-product-title">NEW 새롭게 도착한 안경</h2>
-          </div>
-          <div class="new-product-sub-header d-flex">
+          <header
+            class="product-header new-product-title-area d-flex justify-content-between align-items-center"
+          >
+            <h2 class="product-title new-product-title">NEW 새롭게 도착한 안경</h2>
+            <a href="#" class="All-more-link">전체보기</a>
+          </header>
+          <div class="filter-more-btn new-product-sub-header d-flex">
             <div class="new-product-filters">
               <button type="button" class="filter-chip active">ALL</button>
               <button type="button" class="filter-chip">public beacon</button>
@@ -729,6 +732,10 @@
             <button type="button" class="dot active" aria-label="1페이지"></button>
             <button type="button" class="dot" aria-label="2페이지"></button>
             <button type="button" class="dot" aria-label="3페이지"></button>
+          </div>
+          <!-- Progress Bar (Mobile Only) -->
+          <div class="new-product-progress-container">
+            <div class="new-product-progress-bar"></div>
           </div>
           <!-- Load More Button (Mobile Only) -->
           <button type="button" class="new-product-load-more-btn">더보기</button>
@@ -936,24 +943,30 @@
       <!-- ABOUT US 섹션: 브랜드 미션 및 아이웨어 쇼핑 가치 소개 카드 -->
       <section class="about-us">
         <div class="about-us-container">
-          <div class="about-us-header">
-            <h2 class="about-us-title">ABOUT US</h2>
-            <button class="more-web-btn d-flex justify-content-center align-items-center">
-              <a href="#"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="17"
-                  height="17"
-                  viewBox="0 0 17 17"
-                  fill="none"
-                >
-                  <path
-                    d="M7.75 17V9.25H0V7.75H7.75V0H9.25V7.75H17V9.25H9.25V17H7.75Z"
-                    fill="white"
-                  /></svg
-              ></a>
+          <header
+            class="product-header about-us-header d-flex justify-content-between align-items-center"
+          >
+            <h2 class="product-title about-us-title">ABOUT US</h2>
+            <button
+              class="more-web-btn d-flex justify-content-center align-items-center"
+              onclick="location.href = '#'"
+              aria-label="ABOUT US 더보기"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="17"
+                height="17"
+                viewBox="0 0 17 17"
+                fill="none"
+              >
+                <path
+                  d="M7.75 17V9.25H0V7.75H7.75V0H9.25V7.75H17V9.25H9.25V17H7.75Z"
+                  fill="white"
+                />
+              </svg>
             </button>
-          </div>
+            <a href="#" class="All-more-link">전체보기</a>
+          </header>
           <div class="about-us-grid">
             <!-- Card 1 -->
             <a href="#" class="about-us-card">
