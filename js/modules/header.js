@@ -127,7 +127,7 @@ export function renderHeader(){
             </svg>
           </button>
 
-          <a href="" class="header-btn header-btn-account" aria-label="로그인으로 이동">
+          <a href="html/login.html" class="header-btn header-btn-account" aria-label="로그인으로 이동">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -155,7 +155,7 @@ export function renderHeader(){
             </svg>
           </a>
 
-          <a href="" class="header-btn header-btn-cart" aria-label="장바구니로 이동">
+          <a href="html/cart.html" class="header-btn header-btn-cart" aria-label="장바구니로 이동">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
