@@ -1,10 +1,25 @@
 const sortButtons = document.querySelectorAll(".filter-btn");
 const countPerPage = 12;
 const moreBtn = document.querySelector(".more-btn");
+const categoryInputs = document.querySelectorAll(".category input[type='checkbox']");
+const brandInputs = document.querySelectorAll(".brand input[type='checkbox']");
+const colorInputs = document.querySelectorAll(".lens-color input[type='checkbox']");
+const frameInputs = document.querySelectorAll(".frame-shape input[type='checkbox']");
+const shapeImages = document.querySelectorAll(".shape-img");
+const priceRange = document.querySelector(".price-range input[type='range']");
+const currentPrice = document.querySelector(".current-price");
+const moreButtons = document.querySelectorAll(".f-more-btn");
+const genderInputs = document.querySelectorAll(".gender input[type='checkbox']");
 
 let currentCount = countPerPage;
 let products = [];
 let filteredData = [];
+let selectedBrands = [];
+let selectedColors = [];
+let selectedCategories = [];
+let selectedFrames = [];
+let selectedPrice = 500000;
+let selectedGenders = [];
 
 // 더보기 버튼
 moreBtn.addEventListener("click", () => {
@@ -23,6 +38,15 @@ async function fetchProducts() {
     const data = await res.json();
 
     products = data.products;
+
+
+    console.log(
+      products.filter(item => item.gender === "women").length
+    );
+    console.log(
+      [...new Set(products.map(item => item.gender))]
+    );
+
     filteredData = [...products];
 
     renderProducts(filteredData);
@@ -80,38 +104,219 @@ function renderProducts(products) {
 
   const html = products
     .slice(0, currentCount)
-    .map(
-      product => `
-        <article class="product-list-card">
-          <a href="./productDetail.html?id=${product.id}" class="product-list-link">
-            <div class="product-list-image">
-              <img
-                src="${product.images.thumbnail}"
-                alt="${product.title}"
-                class="product-list-img"
-              >
-            </div>
-
-            <div class="product-list-info d-flex flex-column g-5">
-              <p class="product-list-brand text-small-b">
-                ${product.brand}
-              </p>
-
-              <p class="text-small-r">
-                ${product.title}
-              </p>
-
-              <p class="product-list-price text-small-b">
-                ${product.price.final.toLocaleString("ko-KR")}원
-              </p>
-            </div>
-          </a>
+    .map((product, index) => {
+      let card = `
+      <article class="product-list-card">
+        <a href="./productDetail.html?id=${product.id}" class="product-list-link">
+          <div class="product-list-image">
+            <img
+              src="${product.images.thumbnail}"
+              alt="${product.title}"
+              class="product-list-img"
+            >
+          </div>
+          <div class="product-list-info d-flex flex-column g-5">
+            <p class="product-list-brand text-small-b">
+              ${product.brand}
+            </p>
+            <p class="product-list-name">
+              ${product.title}
+            </p>
+            <p class="product-list-price text-small-b">
+              ${product.price.final.toLocaleString("ko-KR")}원
+            </p>
+          </div>
+        </a>
+      </article>
+    `;
+      if (index === 5) {
+        card += `
+        <article class="promotion-banner">
+          <img src="../assets/images/timesale.jpg"  alt="">
         </article>
-      `
-    )
+      `;
+      }
+      if (index === 12) {
+        card += `
+        <article class="promotion-banner">
+          <img src="../assets/images/brand_banner.png" alt="">
+        </article>
+      `;
+      }
+      return card;
+    })
     .join("");
+
 
   productList.innerHTML = html;
 }
 
+
+// 데스크 탑 필터
+function applyFilter() {
+  let result = [...products];
+
+  // 카테고리
+  if (
+    selectedCategories.length > 0 &&
+    !selectedCategories.includes("all")
+  ) {
+    result = result.filter(product =>
+      selectedCategories.some(value => {
+        if (value === "goggle") {
+          return product["frame-shape"] === "goggle";
+        }
+
+        return product.category === value;
+      })
+    );
+  }
+
+  // 브랜드
+  if (selectedBrands.length > 0) {
+    result = result.filter(product =>
+      selectedBrands.includes(product.brand)
+    );
+  }
+
+  // 렌즈 색상
+  if (selectedColors.length > 0) {
+    result = result.filter(product => {
+      const text = [
+        product.title,
+        ...(product.otherColors || []).map(
+          item => item.model
+        ),
+      ].join(" ");
+
+      return selectedColors.some(color =>
+        text.includes(color)
+      );
+    });
+  }
+
+  // 가격대
+  result = result.filter(
+    product => product.price.final <= selectedPrice
+  );
+
+  // 프레임 
+  if (selectedFrames.length > 0) {
+    result = result.filter(product =>
+      selectedFrames.includes(product["frame-shape"])
+    );
+  }
+
+  // 성별
+  if (
+    selectedGenders.length > 0 &&
+    !selectedGenders.includes("all")
+  ) {
+    result = result.filter(product =>
+      selectedGenders.includes(product.gender)
+    );
+  }
+
+  filteredData = result;
+  currentCount = countPerPage;
+
+  renderProducts(filteredData);
+}
+
+// 카테고리 필터
+categoryInputs.forEach(input => {
+  input.addEventListener("change", () => {
+    selectedCategories = [...categoryInputs]
+      .filter(item => item.checked)
+      .map(item => item.value);
+
+    applyFilter();
+  });
+});
+
+// 브랜드 필터
+brandInputs.forEach(input => {
+  input.addEventListener("change", () => {
+    selectedBrands = [...brandInputs]
+      .filter(item => item.checked)
+      .map(item => item.value);
+
+    applyFilter();
+  });
+});
+
+// 렌즈 색상 필터
+colorInputs.forEach(input => {
+  input.addEventListener("change", () => {
+    selectedColors = [...colorInputs]
+      .filter(item => item.checked)
+      .map(item => item.value);
+
+    applyFilter();
+  });
+});
+
+// 가격 필터
+priceRange.addEventListener("input", () => {
+  selectedPrice = Number(priceRange.value);
+
+  currentPrice.textContent =
+    selectedPrice.toLocaleString("ko-KR") + "원";
+
+  applyFilter();
+});
+
+// 프레임필터
+shapeImages.forEach(img => {
+  img.addEventListener("click", () => {
+    const shape = img.dataset.shape;
+
+    if (selectedFrames.includes(shape)) {
+      selectedFrames = selectedFrames.filter(
+        item => item !== shape
+      );
+      img.classList.remove("active");
+    } else {
+      selectedFrames.push(shape);
+      img.classList.add("active");
+    }
+
+    applyFilter();
+  });
+});
+
+// 성별 필터
+genderInputs.forEach(input => {
+  input.addEventListener("change", () => {
+    selectedGenders = [...genderInputs]
+      .filter(item => item.checked)
+      .map(item => item.value);
+
+    applyFilter();
+  });
+});
+
+// 더보기 누르면 열림
+moreButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    const filterGroup = button.closest(".filter-group");
+
+    const hiddenItems =
+      filterGroup.querySelectorAll(".hidden-item");
+
+    hiddenItems.forEach(item => {
+      item.classList.toggle("show");
+    });
+
+    if (
+      button.textContent.includes("더보기")
+    ) {
+      button.textContent = "접기 -";
+    } else {
+      button.textContent = "더보기 +";
+    }
+  });
+});
+
 fetchProducts();
+
