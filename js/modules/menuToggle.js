@@ -14,7 +14,7 @@ export function initSidebar(){
         <div class="menu-form d-flex g-24">
 
           <button class="sidebar-close" type="button" aria-label="메뉴 닫기">
-            <img src="../assets/icons/sidebar_arrow_forward.svg" alt="닫기">
+            <img src="/assets/icons/sidebar_arrow_forward.svg" alt="닫기">
           </button>
 
           <div class="sidebar-auth d-flex g-10 text-medium-r">
@@ -35,7 +35,7 @@ export function initSidebar(){
 
 
         <button class="sidebar-search" type="button" aria-label="검색">
-          <img src="../assets/icons/sidebar_search.svg" alt="검색">
+          <img src="/assets/icons/sidebar_search.svg" alt="검색">
         </button>
 
 
@@ -88,7 +88,7 @@ export function initSidebar(){
               전 제품보기
 
               <img 
-                src="../assets/icons/sidebar_arrow_right.svg" 
+                src="/assets/icons/sidebar_arrow_right.svg" 
                 alt=""
               >
 
@@ -105,7 +105,7 @@ export function initSidebar(){
               모델 비교하기
 
               <img 
-                src="../assets/icons/sidebar_arrow_right.svg" 
+                src="/assets/icons/sidebar_arrow_right.svg" 
                 alt=""
               >
 
@@ -127,7 +127,7 @@ export function initSidebar(){
 
               <img
                 class="event-banner"
-                src="../assets/images/sidebar_event.png"
+                src="/assets/images/sidebar_event.png"
                 alt=""
               >
 
