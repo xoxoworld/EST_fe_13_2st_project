@@ -774,11 +774,11 @@ button {
 }
 .sidebar-menu-list li:hover {
   background-color: var(--white-1);
-  color: var(--primary)
+  color: var(--primary);
 }
 .sidebar-menu-list li.active {
   background-color: var(--white-1);
-  color: var(--primary)
+  color: var(--primary);
 }
 .sidebar-menu-list-right li {
   width: 282px;
@@ -817,29 +817,28 @@ button {
 
 /* 태블릿 반응형*/
 /* 480px 이상 */
-@media(min-width:480px){
-  .sidebar{
-    width:480px;
-    max-width:480px;
+@media (min-width: 480px) {
+  .sidebar {
+    width: 480px;
+    max-width: 480px;
   }
-  .sidebar-menu-list-right li{
+  .sidebar-menu-list-right li {
     width: 360px;
   }
-  .sidebar-menu-list-right li a .event-banner{
+  .sidebar-menu-list-right li a .event-banner {
     width: 280px;
   }
 }
 
-
 /* 624px 이상 */
-@media(min-width:624px){
-  .sidebar-menu-list-left{
-    width:160px;
+@media (min-width: 624px) {
+  .sidebar-menu-list-left {
+    width: 160px;
   }
-  .sidebar-menu-list li{
-    width:160px;
+  .sidebar-menu-list li {
+    width: 160px;
   }
-  .sidebar-menu-list-right li{
+  .sidebar-menu-list-right li {
     width: 320px;
   }
 }
@@ -1052,4 +1051,11 @@ button {
   display: flex; /* flex-grow-1을 적용받기 위함 */
   flex-direction: column;
   justify-content: center;
+}
+
+/* 768px보다 작은 화면(모바일)에서만 숨김 */
+@media (max-width: 767px) {
+  .mobile-hidden {
+    display: none;
+  }
 }
