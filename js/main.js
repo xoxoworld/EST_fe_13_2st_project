@@ -1332,7 +1332,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const newProductSwiperWrapper = document.querySelector('.new-product-swiper-wrapper');
   const newPrevBtn = document.querySelector('.new-product .control-btn .ctrl-prev');
   const newNextBtn = document.querySelector('.new-product .control-btn .ctrl-next');
-  const newDotsContainer = document.querySelector('.new-product-pagination');
+  const newDotsContainer = document.querySelector('.new-product .new-product-pagination');
   const filterChips = document.querySelectorAll('.new-product-filters .filter-chip');
 
   if (newProductSliderWrapper && newProductSwiperWrapper && newPrevBtn && newNextBtn && newDotsContainer && filterChips.length > 0) {
