@@ -1354,6 +1354,8 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .product-info {
@@ -1944,6 +1946,8 @@
   object-fit: cover;
   display: block;
   transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 /* Side Banners */
@@ -2016,6 +2020,8 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .brand-product-info {
