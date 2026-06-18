@@ -1312,6 +1312,9 @@ img {
     background-color 0.25s ease,
     transform 0.25s ease;
 }
+.new-product .new-product-container .more-button {
+    display: none;
+}
 
 .new-product-more-btn .more-text {
   display: none;
@@ -1604,7 +1607,7 @@ img {
   }
 
   .new-product-progress-container {
-    display: block;
+    display: none;
     width: 100%;
     height: 3px;
     background-color: #e5e7eb;
@@ -1649,6 +1652,9 @@ img {
   .new-product-load-more-btn:hover {
     background-color: #f9fafb;
     border-color: #9ca3af;
+  }
+  .new-product .new-product-container .more-button {
+    display: flex;
   }
 }
 
@@ -1928,6 +1934,9 @@ img {
 }
 
 .brand-load-more-btn {
+  display: none;
+}
+.recommended-brand .recommended-brand-container .more-button {
   display: none;
 }
 
@@ -2331,6 +2340,9 @@ img {
   .brand-load-more-btn:hover {
     background-color: #f9fafb;
     border-color: #9ca3af;
+  }
+  .recommended-brand .recommended-brand-container .more-button {
+    display: flex;
   }
 }
 
