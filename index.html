@@ -1,18 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROUNZ</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/>
-    <link rel="stylesheet" href="./css/common.css" />
-    <link rel="stylesheet" href="./css/flex-utility.css" />
-    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/flex-utility.css">
+    <link rel="stylesheet" href="./css/index.css">
   </head>
   <body>
     <!-- 헤더 -->
@@ -203,7 +200,7 @@
       <div class="sidebar-header">
         <div class="menu-form d-flex g-24">
           <button class="sidebar-close" type="button" aria-label="메뉴 닫기">
-            <img src="./assets/icons/sidebar_arrow_forward.svg" alt="닫기" />
+            <img src="./assets/icons/sidebar_arrow_forward.svg" alt="닫기">
           </button>
           <div class="sidebar-auth d-flex g-10 text-medium-r">
           <a href="#">로그인</a>
@@ -212,7 +209,7 @@
           </div>
         </div>
         <button class="sidebar-close" type="button" aria-label="검색">
-          <img src="./assets/icons/sidebar_search.svg" alt="검색" />
+          <img src="./assets/icons/sidebar_search.svg" alt="검색">
         </button>
       </div>
       <nav class="sidebar-nav">
@@ -234,10 +231,13 @@
         </div>
 
         <ul class="sidebar-menu-list-right d-flex flex-column">
-          <li><a href="html/productList.html">전 제품보기<img src="./assets/icons/sidebar_arrow_right.svg" alt=""></a></li>
-          <li class="sidebar_event-img d-flex flex-column g-10">
+          <li>
+            <a href="#">전 제품보기<img src="./assets/icons/sidebar_arrow_right.svg" alt=""></a>
+          </li>
+          <li class="sidebar_event-img d-flex flex-column">
             <strong class="text-subtitle-s">WELCOME BENEFITS</strong>
-            <a href="#"><img class="event-banner" src="./assets/images/sidebar_event.png" alt=""></a>
+            <a href="#"
+              ><img class="event-banner" src="./assets/images/sidebar_event.png" alt="웰컴 혜택 배너"></a>
           </li>
         </ul>
       </nav>
@@ -246,90 +246,153 @@
     <main>
       <!-- 메인 배너 섹션 -->
       <section class="banner" aria-label="프로모션 배너">
-        <div class=" banner-carousel swiper banner-swiper" role="region" aria-roledescription="carousel" aria-label="주요 프로모션 슬라이드">
+        <section
+          class="banner-carousel swiper banner-swiper"
+          aria-roledescription="carousel"
+          aria-label="주요 프로모션 슬라이드"
+        >
           <div class="banner-viewport swiper-wrapper">
             <div class="swiper-slide">
-              <img src="./assets/images/banner_02.jpg" alt="" />
-              <figcaption class="banner-text-box">
-                <div class="banner-logo"><svg xmlns="http://www.w3.org/2000/svg" width="620" height="121" viewBox="0 0 620 121" fill="none">
-<g clip-path="url(#clip0_938_22434)">
-<path d="M185.01 121.382C173.517 121.382 163.136 118.819 153.858 113.7C144.864 108.752 137.377 101.463 132.189 92.6051C127.024 83.5546 124.439 73.4229 124.439 62.1949C124.439 50.9668 127.024 40.8805 132.189 31.9434C137.338 23.0131 144.832 15.6608 153.858 10.682C163.136 5.57073 173.517 3 185.01 3C196.502 3 206.83 5.56317 216.01 10.682C225.033 15.6619 232.524 23.0141 237.672 31.9434C242.942 40.8805 245.58 50.9668 245.58 62.1873C245.58 73.4229 242.942 83.5546 237.672 92.6051C232.484 101.463 224.996 108.752 216.002 113.7C206.83 118.819 196.502 121.382 185.01 121.382ZM185.01 98.8202C191.542 98.8202 197.447 97.2929 202.717 94.2383C207.963 91.1059 212.235 86.5772 215.057 81.1578C218.111 75.6005 219.639 69.2795 219.639 62.1949C219.639 55.1027 218.111 48.7817 215.057 43.2244C212.26 37.8302 207.979 33.3491 202.717 30.3102C197.447 27.1422 191.542 25.562 185.01 25.562C178.469 25.562 172.564 27.1498 167.294 30.3102C162.013 33.3729 157.688 37.8443 154.803 43.2244C151.855 48.7817 150.373 55.1027 150.373 62.1949C150.373 69.2795 151.855 75.6005 154.803 81.1578C157.713 86.563 162.029 91.0822 167.294 94.2383C172.564 97.2929 178.469 98.8202 185.01 98.8202ZM83.6244 121.382L59.0512 85.5734H26.4634V121.382H0V3H57.7507C67.8824 3 76.6456 4.6861 84.0478 8.06585C91.5634 11.4456 97.3324 16.2468 101.362 22.4544C105.392 28.6695 107.411 36.0263 107.411 44.5324C107.411 53.0385 105.34 60.3954 101.204 66.6105C97.1737 72.7122 91.3971 77.4 83.889 80.6739L112.054 121.382H83.6244ZM80.6227 44.5324C80.6227 38.1056 78.551 33.191 74.4151 29.8188C70.2717 26.3256 64.2305 24.5866 56.2839 24.5866H26.4634V64.4707H56.2839C64.2305 64.4707 70.2717 62.7317 74.4151 59.2385C78.551 55.7529 80.6151 50.8459 80.6151 44.5249L80.6227 44.5324ZM620 97.2551V118.834H520.036V101.671L582.762 25.9627H521.344V4.3761H617.55V21.5395L554.991 97.2551H620ZM316.631 120.8C300.299 120.8 287.551 116.271 278.403 107.228C269.367 98.1776 264.846 85.2634 264.846 68.4705V4.3761H291.309V67.4951C291.309 87.9854 299.8 98.2305 316.79 98.2305C325.069 98.2305 331.382 95.7807 335.738 90.8737C340.093 85.8607 342.27 78.0654 342.27 67.4951V4.3761H368.409V68.4781C368.409 85.2634 363.834 98.1927 354.685 107.236C345.65 116.279 332.963 120.808 316.631 120.808V120.8ZM497.58 4.3761V118.834H475.858L418.848 49.3488V118.834H392.717V4.3761H414.606L471.442 73.869V4.38366H497.58V4.3761Z" fill="white"/>
-</g>
-<defs>
-<clipPath id="clip0_938_22434">
-<rect width="620" height="121" fill="white"/>
-</clipPath>
-</defs>
-                </svg></div>
+              <img src="./assets/images/banner_02.jpg" alt="">
+              <div class="banner-text-box">
+                <div class="banner-logo">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="620"
+                    height="121"
+                    viewBox="0 0 620 121"
+                    fill="none"
+                  >
+                    <g clip-path="url(#clip0_938_22434)">
+                      <path
+                        d="M185.01 121.382C173.517 121.382 163.136 118.819 153.858 113.7C144.864 108.752 137.377 101.463 132.189 92.6051C127.024 83.5546 124.439 73.4229 124.439 62.1949C124.439 50.9668 127.024 40.8805 132.189 31.9434C137.338 23.0131 144.832 15.6608 153.858 10.682C163.136 5.57073 173.517 3 185.01 3C196.502 3 206.83 5.56317 216.01 10.682C225.033 15.6619 232.524 23.0141 237.672 31.9434C242.942 40.8805 245.58 50.9668 245.58 62.1873C245.58 73.4229 242.942 83.5546 237.672 92.6051C232.484 101.463 224.996 108.752 216.002 113.7C206.83 118.819 196.502 121.382 185.01 121.382ZM185.01 98.8202C191.542 98.8202 197.447 97.2929 202.717 94.2383C207.963 91.1059 212.235 86.5772 215.057 81.1578C218.111 75.6005 219.639 69.2795 219.639 62.1949C219.639 55.1027 218.111 48.7817 215.057 43.2244C212.26 37.8302 207.979 33.3491 202.717 30.3102C197.447 27.1422 191.542 25.562 185.01 25.562C178.469 25.562 172.564 27.1498 167.294 30.3102C162.013 33.3729 157.688 37.8443 154.803 43.2244C151.855 48.7817 150.373 55.1027 150.373 62.1949C150.373 69.2795 151.855 75.6005 154.803 81.1578C157.713 86.563 162.029 91.0822 167.294 94.2383C172.564 97.2929 178.469 98.8202 185.01 98.8202ZM83.6244 121.382L59.0512 85.5734H26.4634V121.382H0V3H57.7507C67.8824 3 76.6456 4.6861 84.0478 8.06585C91.5634 11.4456 97.3324 16.2468 101.362 22.4544C105.392 28.6695 107.411 36.0263 107.411 44.5324C107.411 53.0385 105.34 60.3954 101.204 66.6105C97.1737 72.7122 91.3971 77.4 83.889 80.6739L112.054 121.382H83.6244ZM80.6227 44.5324C80.6227 38.1056 78.551 33.191 74.4151 29.8188C70.2717 26.3256 64.2305 24.5866 56.2839 24.5866H26.4634V64.4707H56.2839C64.2305 64.4707 70.2717 62.7317 74.4151 59.2385C78.551 55.7529 80.6151 50.8459 80.6151 44.5249L80.6227 44.5324ZM620 97.2551V118.834H520.036V101.671L582.762 25.9627H521.344V4.3761H617.55V21.5395L554.991 97.2551H620ZM316.631 120.8C300.299 120.8 287.551 116.271 278.403 107.228C269.367 98.1776 264.846 85.2634 264.846 68.4705V4.3761H291.309V67.4951C291.309 87.9854 299.8 98.2305 316.79 98.2305C325.069 98.2305 331.382 95.7807 335.738 90.8737C340.093 85.8607 342.27 78.0654 342.27 67.4951V4.3761H368.409V68.4781C368.409 85.2634 363.834 98.1927 354.685 107.236C345.65 116.279 332.963 120.808 316.631 120.808V120.8ZM497.58 4.3761V118.834H475.858L418.848 49.3488V118.834H392.717V4.3761H414.606L471.442 73.869V4.38366H497.58V4.3761Z"
+                        fill="white"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_938_22434">
+                        <rect width="620" height="121" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
                 <h2 class="banner-description is-narrow">
                   세상에 없던 안경 쇼핑,실시간 가상피팅으로 완성하는 나만의 안경
                 </h2>
                 <a href="html/productList.html" class="link">자세히보기</a>
                 <div class="banner-btn-box">
-                  <a href="#" class="banner-btn banner__btn--primary d-flex justify-content-center align-items-center g-10" aria-label="전제품보기 페이지로 이동">
-                    <span class="banner-btn-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="7" height="10" viewBox="0 0 7 10" fill="none">
-  <path d="M6.17188 8.82812L2.34375 5L6.17188 1.17188L5 0L0 5L5 10L6.17188 8.82812Z" fill="white"/>
-  </svg></span>
+                  <button type="button"
+                    class="banner-btn banner__btn--primary d-flex justify-content-center align-items-center g-10"
+                    aria-label="전제품보기 페이지로 이동"
+                  >
+                    <span class="banner-btn-icon" aria-hidden="true"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="7"
+                        height="10"
+                        viewBox="0 0 7 10"
+                        fill="none"
+                      >
+                        <path
+                          d="M6.17188 8.82812L2.34375 5L6.17188 1.17188L5 0L0 5L5 10L6.17188 8.82812Z"
+                          fill="white"
+                        /></svg
+                    ></span>
                     <span class="banner-btn-text text-medium-r">가상피팅 시작하기</span>
-                  </a>
-                  <a href="html/productList.html" class="banner-btn banner__btn--secondary d-flex justify-content-center align-items-center g-10" aria-label="자세히 보기">
+                  </button>
+                  <button type="button"
+                    class="banner-btn banner__btn--secondary d-flex justify-content-center align-items-center g-10"
+                    aria-label="자세히 보기"
+                  >
                     <span class="banner-btn-text text-medium-r">자세히 보기</span>
                     <span class="banner-btn-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="7" height="10" viewBox="0 0 7 10" fill="none">
   <path d="M0 8.82812L3.82812 5L0 1.17188L1.17188 0L6.17188 5L1.17188 10L0 8.82812Z" fill="white"/>
   </svg></span>
                   </a>
                 </div>
-              </figcaption>
-            </div>            
+              </div>
+            </div>
             <div class="swiper-slide">
-              <img src="./assets/images/banner_01.jpg" alt="" />
-              <figcaption class="banner-text-box">
+              <img src="./assets/images/banner_01.jpg" alt="">
+              <div class="banner-text-box">
                 <p class="banner-badge">최대 71% 할인</p>
                 <h2 class="banner-title">스포츠 선글라스 최저가 특가</h2>
                 <p class="banner-description">지금 가장 좋은 혜택으로 준비하세요!</p>
                 <a href="#" class="link">자세히보기</a>
                 <div class="banner-btn-box">
-                  <a href="#" class="banner-btn banner__btn--primary d-flex justify-content-center align-items-center g-10" aria-label="전제품보기 페이지로 이동">
-                    <span class="banner-btn-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="7" height="10" viewBox="0 0 7 10" fill="none">
-  <path d="M6.17188 8.82812L2.34375 5L6.17188 1.17188L5 0L0 5L5 10L6.17188 8.82812Z" fill="white"/>
-  </svg></span>
+                  <button type="button"
+                    class="banner-btn banner__btn--primary d-flex justify-content-center align-items-center g-10"
+                    aria-label="전제품보기 페이지로 이동"
+                  >
+                    <span class="banner-btn-icon" aria-hidden="true"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="7"
+                        height="10"
+                        viewBox="0 0 7 10"
+                        fill="none"
+                      >
+                        <path
+                          d="M6.17188 8.82812L2.34375 5L6.17188 1.17188L5 0L0 5L5 10L6.17188 8.82812Z"
+                          fill="white"
+                        /></svg
+                    ></span>
                     <span class="banner-btn-text text-medium-r">가상피팅 시작하기</span>
-                  </a>
-                  <a href="html/productList.html" class="banner-btn banner__btn--secondary d-flex justify-content-center align-items-center g-10" aria-label="자세히 보기">
+                  </button>
+                  <button type="button"
+                    class="banner-btn banner__btn--secondary d-flex justify-content-center align-items-center g-10"
+                    aria-label="자세히 보기"
+                  >
                     <span class="banner-btn-text text-medium-r">자세히 보기</span>
                     <span class="banner-btn-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="7" height="10" viewBox="0 0 7 10" fill="none">
   <path d="M0 8.82812L3.82812 5L0 1.17188L1.17188 0L6.17188 5L1.17188 10L0 8.82812Z" fill="white"/>
   </svg></span>
                   </a>
                 </div>
-              </figcaption>
+              </div>
             </div>
             <div class="swiper-slide">
-              <img src="./assets/images/banner_03.jpg" alt="" />
-              <figcaption class="banner-text-box">
+              <img src="./assets/images/banner_03.jpg" alt="">
+              <div class="banner-text-box">
                 <p class="banner-badge">6월 한정 특별 혜택</p>
                 <h2 class="banner-title">여름 선글라스 특가전</h2>
                 <p class="banner-description">6월 한정 특별 혜택 지금 바로 확인해보세요</p>
                 <a href="#" class="link">자세히보기</a>
                 <div class="banner-btn-box">
-                  <a href="#" class="banner-btn banner__btn--primary d-flex justify-content-center align-items-center g-10" aria-label="전제품보기 페이지로 이동">
-                    <span class="banner-btn-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="7" height="10" viewBox="0 0 7 10" fill="none">
-  <path d="M6.17188 8.82812L2.34375 5L6.17188 1.17188L5 0L0 5L5 10L6.17188 8.82812Z" fill="white"/>
-  </svg></span>
+                  <button type="button"
+                    class="banner-btn banner__btn--primary d-flex justify-content-center align-items-center g-10"
+                    aria-label="전제품보기 페이지로 이동"
+                  >
+                    <span class="banner-btn-icon" aria-hidden="true"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="7"
+                        height="10"
+                        viewBox="0 0 7 10"
+                        fill="none"
+                      >
+                        <path
+                          d="M6.17188 8.82812L2.34375 5L6.17188 1.17188L5 0L0 5L5 10L6.17188 8.82812Z"
+                          fill="white"
+                        /></svg
+                    ></span>
                     <span class="banner-btn-text text-medium-r">가상피팅 시작하기</span>
-                  </a>
-                  <a href="html/productList.html" class="banner-btn banner__btn--secondary d-flex justify-content-center align-items-center g-10" aria-label="자세히 보기">
+                  </button>
+                  <button type="button"
+                    class="banner-btn banner__btn--secondary d-flex justify-content-center align-items-center g-10"
+                    aria-label="자세히 보기"
+                  >
                     <span class="banner-btn-text text-medium-r">자세히 보기</span>
                     <span class="banner-btn-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="7" height="10" viewBox="0 0 7 10" fill="none">
   <path d="M0 8.82812L3.82812 5L0 1.17188L1.17188 0L6.17188 5L1.17188 10L0 8.82812Z" fill="white"/>
   </svg></span>
                   </a>
                 </div>
-              </figcaption>
+              </div>
             </div>
           </div>
-  
-          <div class="banner__pagination" aria-label="슬라이드 진행률">
+
+          <div class="banner__pagination" role="group" aria-label="슬라이드 진행률">
             <button
               class="banner__pagination-btn banner__pagination-btn--active"
               type="button"
@@ -348,7 +411,7 @@
               aria-label="슬라이드 3"
             ></button>
           </div>
-        </div>
+        </section>
       </section>
       <!-- 카테고리 섹션 -->
       <section class="category" aria-labelledby="category-heading">
@@ -359,8 +422,7 @@
               <img
                 class="category-card__icon"
                 src="./assets/icons/feature_fitting.png"
-                alt="AI 가상피팅 이미지"
-              />
+                alt="AI 가상피팅 이미지">
               <div class="category-card__content">
                 <h3 class="category-card__name">AI 가상피팅</h3>
                 <p class="category-card__description">다양한 안경을 실시간으로 써보세요</p>
@@ -370,8 +432,7 @@
               <img
                 class="category-card__icon"
                 src="./assets/icons/face.gif"
-                alt="얼굴형 분석 이미지"
-              />
+                alt="얼굴형 분석 이미지">
               <div class="category-card__content">
                 <h3 class="category-card__name">얼굴형 분석</h3>
                 <p class="category-card__description">
@@ -383,8 +444,7 @@
               <img
                 class="category-card__icon"
                 src="./assets/icons/feature_star.png"
-                alt="스타일 추천 아이콘"
-              />
+                alt="스타일 추천 아이콘">
               <div class="category-card__content">
                 <h3 class="category-card__name">스타일 추천</h3>
                 <p class="category-card__description">내 스타일에 맞는 안경을 추천 해드려요</p>
@@ -394,8 +454,7 @@
               <img
                 class="category-card__icon"
                 src="./assets/icons/feature_store.png"
-                alt="안경원 찾기 이미지"
-              />
+                alt="안경원 찾기 이미지">
               <div class="category-card__content">
                 <h3 class="category-card__name">안경원 찾기</h3>
                 <p class="category-card__description">가까운 안경원 위치와 리뷰를 확인 해보세요</p>
@@ -418,15 +477,13 @@
                 <img
                   class="timesale__image-web"
                   src="./assets/images/timesale_web.png"
-                  alt="타임세일 상품 이미지"
-                />
+                  alt="타임세일 상품 이미지">
                 <img
                   class="timesale__image"
                   src="./assets/images/timesale.jpg"
-                  alt="타임세일 상품 이미지"
-                />
+                  alt="타임세일 상품 이미지">
               </div>
-              <button class="arrow-right">
+              <button type="button" class="arrow-right" aria-label="타임세일 다음 상품 보기">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="29"
@@ -460,7 +517,12 @@
           </header>
           <div class="jenny-contents">
             <figure class="jenny-collection__figure">
-              <video src="./assets/video/jenny_col.mp4" autoplay muted loop playsinline width="100%"></video>
+              <video
+                src="./assets/video/jenny_col.mp4"
+                muted
+                loop
+                playsinline
+              ></video>
             </figure>
     
             <div class="product-contents">
@@ -545,12 +607,12 @@
   
           <div class="filter-more-btn d-flex justify-content-between">
             <div class="filter d-flex g-10">
-              <button class="filter-btn active">ALL</button>
-              <button class="filter-btn">라운즈ONLY</button>
-              <button class="filter-btn">안경</button>
-              <button class="filter-btn">선글라스</button>
-              <button class="filter-btn">스포츠고글</button>
-              <button class="filter-btn">블루라이트 차단</button>
+              <button type="button" class="filter-btn active">ALL</button>
+              <button type="button" class="filter-btn">라운즈ONLY</button>
+              <button type="button" class="filter-btn">안경</button>
+              <button type="button" class="filter-btn">선글라스</button>
+              <button type="button" class="filter-btn">스포츠고글</button>
+              <button type="button" class="filter-btn">블루라이트 차단</button>
             </div>
             <div class="control-btn d-flex g-10">
               <button type="button" class="ctrl-btn ctrl-prev d-flex align-items-center justify-content-center" aria-label="이전 상품 보기">
@@ -735,8 +797,7 @@
                 <img
                   src="assets/images/magazine_01.png"
                   alt="여름 선글라스 추천"
-                  class="card-image"
-                />
+                  class="card-image">
               </div>
               <div class="card-overlay">
                 <h3 class="card-title">여름 선글라스 추천</h3>
@@ -749,8 +810,7 @@
                 <img
                   src="assets/images/magazine_02.png"
                   alt="직장인 안경 스타일링"
-                  class="card-image"
-                />
+                  class="card-image">
               </div>
               <div class="card-overlay">
                 <h3 class="card-title">직장인 안경 스타일링</h3>
@@ -763,8 +823,7 @@
                 <img
                   src="assets/images/magazine_03.png"
                   alt="얼굴형별 안경 스타일"
-                  class="card-image"
-                />
+                  class="card-image">
               </div>
               <div class="card-overlay">
                 <h3 class="card-title">얼굴형별 안경 스타일</h3>
@@ -812,442 +871,86 @@
             <div class="new-product-swiper-wrapper swiper-wrapper">
               <div class="swiper-slide">
                 <div class="new-product-grid">
-            <!-- Product Card 1 -->
-            <div class="product-card">
-              <a href="#" class="product-link">
-                <div class="product-image-box">
-                  <img
-                    src="assets/images/new_product_01.png"
-                    alt="PUBLIC BEACON 블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스"
-                    class="product-img"
-                    loading="lazy"
-                  />
-
-
-
-
-
+                  <div class="product-card">
+                    <a href="#" class="product-link">
+                      <div class="product-image-box">
+                        <img
+                          src="assets/images/new_product_03.png"
+                          alt="PUBLIC BEACON 블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스"
+                          class="product-img"
+                          loading="lazy">
+                      </div>
+                      <div class="product-info">
+                        <span class="product-brand">PUBLIC BEACON</span>
+                        <p class="product-name">블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스</p>
+                        <span class="product-price">235,000원</span>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="product-card">
+                    <a href="#" class="product-link">
+                      <div class="product-image-box">
+                        <img
+                          src="assets/images/new_product_02.png"
+                          alt="PUBLIC BEACON 블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스"
+                          class="product-img"
+                          loading="lazy">
+                      </div>
+                      <div class="product-info">
+                        <span class="product-brand">PUBLIC BEACON</span>
+                        <p class="product-name">블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스</p>
+                        <span class="product-price">235,000원</span>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="product-card">
+                    <a href="#" class="product-link">
+                      <div class="product-image-box">
+                        <img
+                          src="assets/images/new_product_03.png"
+                          alt="PUBLIC BEACON 블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스"
+                          class="product-img"
+                          loading="lazy">
+                      </div>
+                      <div class="product-info">
+                        <span class="product-brand">PUBLIC BEACON</span>
+                        <p class="product-name">블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스</p>
+                        <span class="product-price">235,000원</span>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="product-card">
+                    <a href="#" class="product-link">
+                      <div class="product-image-box">
+                        <img
+                          src="assets/images/new_product_04.png"
+                          alt="PUBLIC BEACON 블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스"
+                          class="product-img"
+                          loading="lazy">
+                      </div>
+                      <div class="product-info">
+                        <span class="product-brand">PUBLIC BEACON</span>
+                        <p class="product-name">블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스</p>
+                        <span class="product-price">235,000원</span>
+                      </div>
+                    </a>
+                  </div>
                 </div>
-
-
-
-
-
-                <div class="product-info">
-
-
-
-
-
-                  <span class="product-brand">PUBLIC BEACON</span>
-
-
-
-
-
-                  <p class="product-name">블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스</p>
-
-
-
-
-
-                  <span class="product-price">235,000원</span>
-
-
-
-
-
-                </div>
-
-
-
-
-
-              </a>
-
-
-
-
-
-            </div>
-
-            <!-- Product Card 2 -->
-            <div class="product-card">
-
-
-
-
-
-              <a href="#" class="product-link">
-
-
-
-
-
-                <div class="product-image-box">
-
-
-
-
-
-                  <img
-
-
-
-
-
-                    src="assets/images/new_product_02.png"
-
-
-
-
-
-                    alt="PUBLIC BEACON 블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스"
-
-
-
-
-
-                    class="product-img"
-
-
-
-
-
-                    loading="lazy"
-
-
-
-
-
-                  />
-
-
-
-
-
-                </div>
-
-
-
-
-
-                <div class="product-info">
-
-
-
-
-
-                  <span class="product-brand">PUBLIC BEACON</span>
-
-
-
-
-
-                  <p class="product-name">블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스</p>
-
-
-
-
-
-                  <span class="product-price">235,000원</span>
-
-
-
-
-
-                </div>
-
-
-
-
-
-              </a>
-
-
-
-
-
-            </div>
-
-            <!-- Product Card 3 -->
-            <div class="product-card">
-
-
-
-
-
-              <a href="#" class="product-link">
-
-
-
-
-
-                <div class="product-image-box">
-
-
-
-
-
-                  <img
-
-
-
-
-
-                    src="assets/images/new_product_03.png"
-
-
-
-
-
-                    alt="PUBLIC BEACON 블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스"
-
-
-
-
-
-                    class="product-img"
-
-
-
-
-
-                    loading="lazy"
-
-
-
-
-
-                  />
-
-
-
-
-
-                </div>
-
-
-
-
-
-                <div class="product-info">
-
-
-
-
-
-                  <span class="product-brand">PUBLIC BEACON</span>
-
-
-
-
-
-                  <p class="product-name">블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스</p>
-
-
-
-
-
-                  <span class="product-price">235,000원</span>
-
-
-
-
-
-                </div>
-
-
-
-
-
-              </a>
-
-
-
-
-
-            </div>
-            <!-- Product Card 4 -->
-            <div class="product-card">
-
-
-
-
-
-              <a href="#" class="product-link">
-
-
-
-
-
-                <div class="product-image-box">
-
-
-
-
-
-                  <img
-
-
-
-
-
-                    src="assets/images/new_product_04.png"
-
-
-
-
-
-                    alt="PUBLIC BEACON 블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스"
-
-
-
-
-
-                    class="product-img"
-
-
-
-
-
-                    loading="lazy"
-
-
-
-
-
-                  />
-
-
-
-
-
-                </div>
-
-
-
-
-
-                <div class="product-info">
-
-
-
-
-
-                  <span class="product-brand">PUBLIC BEACON</span>
-
-
-
-
-
-                  <p class="product-name">블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스</p>
-
-
-
-
-
-                  <span class="product-price">235,000원</span>
-
-
-
-
-
-                </div>
-
-
-
-
-
-              </a>
-
-
-
-
-
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-          <!-- Pagination Dots -->
-
-
-
-
-
           <div class="new-product-pagination">
-
-
-
-
-
             <button type="button" class="dot active" aria-label="1페이지"></button>
-
-
-
-
-
             <button type="button" class="dot" aria-label="2페이지"></button>
-
-
-
-
-
             <button type="button" class="dot" aria-label="3페이지"></button>
-
-
-
-
-
           </div>
-
-
-
-
-
-
-
-
-
-
-
-          <!-- Load More Button (Mobile Only) -->
-
-
-
-
-
           <button type="button" class="new-product-load-more-btn">더보기</button>
-
-
-
-
-
         </div>
-
-
-
-
-
       </section>
-
-      <!-- AI CTA 섹션: 라운즈 AI 가상피팅 및 얼굴형 분석 서비스 홍보 및 예약 유도 -->
       <section class="ai-cta">
         <div class="ai-cta-container">
           <div class="ai-cta-content">
-            <h2 class="ai-cta-title">AI 가상피팅,<br />먼저 경험해보세요</h2>
+            <h2 class="ai-cta-title">AI 가상피팅,<br>먼저 경험해보세요</h2>
             <p class="ai-cta-subtitle">AI스마트 안경, 가까운 라운즈 안경원에서 체험해 보세요</p>
             <div class="ai-cta-buttons">
               <a href="#" class="btn-primary">써보기 무료 예약</a>
@@ -1256,25 +959,17 @@
           </div>
           <div class="ai-cta-visual">
             <img
-              src="assets/images/ai_cta.png"
+              src="assets/images/ai_cta_phone.png"
               alt="AI 가상 피팅 스마트폰 데모"
               class="ai-cta-phone-img"
-              loading="lazy"
-            />
+              loading="lazy">
           </div>
         </div>
       </section>
-
-      <!-- RECOMMENDED BRAND 섹션: 추천 브랜드 대표 배너 캐러셀 및 상품 슬라이더 -->
       <section class="recommended-brand">
         <div class="recommended-brand-container">
           <div class="recommended-brand-title-area">
             <h2 class="recommended-brand-title">ROUNZ 추천 브랜드</h2>
-            <button  class="more-web-btn d-flex justify-content-center align-items-center">
-                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-      <path d="M7.75 17V9.25H0V7.75H7.75V0H9.25V7.75H17V9.25H9.25V17H7.75Z" fill="white"/>
-      </svg></a>
-            </button>
             <a href="#" class="brand-more-btn">전체보기</a>
           </div>
           <div class="recommended-brand-sub-header">
@@ -1285,16 +980,19 @@
               <button type="button" class="filter-chip">ACCRUE</button>
             </div>
           </div>
-          <!-- Carousel Banners -->
           <div class="brand-carousel-container">
             <div class="brand-carousel-track">
-              <!-- Slide 1 (Left) -->
               <div class="carousel-slide prev">
                 <img
                   src="assets/images/brand_banner_museum.png"
                   alt="회색 배경 슬라이드"
-                  loading="lazy"
-                />
+                  loading="lazy">
+              </div>
+              <div class="carousel-slide active">
+                <img
+                  src="assets/images/brand_banner.png"
+                  alt="추천 브랜드 대표 배너"
+                  loading="lazy">
               </div>
               <!-- Slide 2 (Center) -->
               <div class="carousel-slide active">
@@ -1309,8 +1007,7 @@
                 <img
                   src="assets/images/brand_banner_rayban.png"
                   alt="회색 배경 슬라이드"
-                  loading="lazy"
-                />
+                  loading="lazy">
               </div>
             </div>
           </div>
@@ -1618,12 +1315,11 @@
                   src="assets/images/about_us_inside.jpg"
                   alt="세상에 없던 안경 쇼핑"
                   class="about-us-image"
-                  loading="lazy"
-                />
+                  loading="lazy">
               </div>
               <div class="about-us-card-overlay">
-                <h3 class="about-us-card-title-active">ROUNZ<br/>INSIDE</h3>
-                <h3 class="about-us-card-title">세상에 없던<br/>안경 쇼핑</h3>
+                <h3 class="about-us-card-title-active">ROUNZ<br>INSIDE</h3>
+                <h3 class="about-us-card-title">세상에 없던<br>안경 쇼핑</h3>
                 <p class="about-us-card-subtitle">새로운 경험, 실시간 가상피팅</p>
               </div>
             </a>
@@ -1634,11 +1330,10 @@
                   src="assets/images/about_us_mirror.png"
                   alt="ROUNZ MIRROR"
                   class="about-us-image"
-                  loading="lazy"
-                />
+                  loading="lazy">
               </div>
               <div class="about-us-card-overlay">
-                <h3 class="about-us-card-title">ROUNZ<br />MIRROR</h3>
+                <h3 class="about-us-card-title">ROUNZ<br>MIRROR</h3>
                 <p class="about-us-card-subtitle">A.I 딥러닝, AR 증강현실</p>
               </div>
             </a>
@@ -1649,11 +1344,10 @@
                   src="assets/images/about_us_mission.png"
                   alt="ROUNZ MISSION"
                   class="about-us-image"
-                  loading="lazy"
-                />
+                  loading="lazy">
               </div>
               <div class="about-us-card-overlay">
-                <h3 class="about-us-card-title">ROUNZ<br />MISSION</h3>
+                <h3 class="about-us-card-title">ROUNZ<br>MISSION</h3>
                 <p class="about-us-card-subtitle">안경을 사고 쓰는 일이 즐거운 경험</p>
               </div>
             </a>
@@ -1685,8 +1379,10 @@
             <div
               class="store-filter-box"
               id="sido-filter-box"
-              role="button"
+              role="combobox"
+              tabindex="0"
               aria-haspopup="listbox"
+              aria-controls="sido-dropdown"
               aria-expanded="false"
             >
               <span class="filter-placeholder">시/도(24)</span>
@@ -1707,8 +1403,10 @@
             <div
               class="store-filter-box"
               id="sigungu-filter-box"
-              role="button"
+              role="combobox"
+              tabindex="0"
               aria-haspopup="listbox"
+              aria-controls="sigungu-dropdown"
               aria-expanded="false"
             >
               <span class="filter-placeholder">시/군/구</span>
@@ -1736,8 +1434,7 @@
                 src="./assets/images/store_rounz_000.png"
                 alt="라운즈 강남점 매장 입구 전경"
                 class="store-detail-img"
-                loading="lazy"
-              />
+                loading="lazy">
             </div>
             <!-- Right: Store information text -->
             <div class="store-detail-info">
@@ -1746,7 +1443,7 @@
                 <address class="store-address">
                   <span>서울특별시 강남구 역삼로 109 1층</span>
                   <span>(강남역 4번출구 365m, 우성아파트사거리)</span>
-                  <a href="tel:02-3454-1006" class="store-phone">02-3454-1006</a>
+                  <a href="tel:02-3454-1006" class="store-phone">02&#8209;3454&#8209;1006</a>
                 </address>
                 <div class="store-tag">
                   <span class="tag-icon">
