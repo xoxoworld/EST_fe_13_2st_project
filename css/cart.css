@@ -56,10 +56,11 @@ body {
   border-top: 1px solid var(--radius-color);
   /* border-bottom: 1px solid var(--radius-color); */
   padding: 13px 0;
+  gap: 50px;
 }
 
 .cart-item {
-  gap: 20px;
+  gap: 5px;
 }
 .cart-item-content {
   display: flex;
@@ -414,8 +415,8 @@ body {
   }
 
   .cart-title {
-    padding-top: 118px;
-    padding-bottom: 118px;
+    padding-top: 50px;
+    padding-bottom: 50px;
     font-size: var(--heading--m);
   }
 
@@ -429,7 +430,7 @@ body {
 
   /* 왼쪽 */
   .brand-name {
-    font-size: var(--title--x-l);
+    font-size: var(--sub-title--l);
   }
   .product-info p {
     font-size: var(--normal);
