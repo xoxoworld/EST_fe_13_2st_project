@@ -824,12 +824,7 @@
   left: -100%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.6),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
   animation: skeleton-loading 1.4s infinite;
 }
 
@@ -903,63 +898,58 @@
   left: -100%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.6),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
   animation: bestSkeletonLoading 1.4s infinite;
 }
 
 @keyframes bestSkeletonLoading {
   0% {
-    left:-100%;
+    left: -100%;
   }
   100% {
-    left:150%;
+    left: 150%;
   }
 }
 
 /* 이미지 */
 .best-product .skeleton-box {
-  width:100%;
-  aspect-ratio:1 / 1;
-  border-radius:12px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
 }
 
 /* 브랜드 */
 .best-product .skeleton-text:first-child {
-  width:70px;
-  height:14px;
-  margin-top:16px;
-  margin-bottom:10px;
+  width: 70px;
+  height: 14px;
+  margin-top: 16px;
+  margin-bottom: 10px;
 }
 
 /* 상품명 */
-.best-product .skeleton-text:nth-child(2){
-  width:100%;
-  height:16px;
-  margin-bottom:8px;
+.best-product .skeleton-text:nth-child(2) {
+  width: 100%;
+  height: 16px;
+  margin-bottom: 8px;
 }
 
 /* 가격 */
-.best-product .skeleton-text:nth-child(3){
-  width:90px;
-  height:18px;
-  margin-top:12px;
+.best-product .skeleton-text:nth-child(3) {
+  width: 90px;
+  height: 18px;
+  margin-top: 12px;
 }
 
 /* 리스트 */
 .best-product .skeleton-item {
-  list-style:none;
+  list-style: none;
 }
 .best-product .product-card {
-  height:100%;
+  height: 100%;
 }
 
 .best-product .product-card-text-box {
-  padding-top:16px;
+  padding-top: 16px;
 }
 /* 제니/베스트상품 섹션 스켈레톤css */
 
@@ -1105,7 +1095,7 @@
 }
 
 /* Responsive Styles */
-@media (width <= 1024px) {
+@media (max-width: 1024px) {
   .style-magazine {
     padding: 60px 0;
   }
@@ -1118,7 +1108,7 @@
   }
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .style-magazine {
     padding: 60px 0;
   }
@@ -1162,7 +1152,7 @@
     font-size: 24px;
   }
 
-  @media (width <= 480px) {
+  @media (max-width: 480px) {
     .style-magazine {
       padding: 40px 0;
     }
@@ -1424,7 +1414,7 @@
 }
 
 /* Responsive Styles */
-@media (width <= 1024px) {
+@media (max-width: 1024px) {
   .new-product {
     padding: 60px 0;
   }
@@ -1435,7 +1425,7 @@
   }
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .new-product {
     padding: 60px 0;
   }
@@ -1481,7 +1471,7 @@
   }
 }
 
-@media (width <= 480px) {
+@media (max-width: 480px) {
   .new-product-controls .ctrl-btn {
     display: none;
   }
@@ -1715,7 +1705,7 @@
 }
 
 /* Responsive Styles */
-@media (width <= 1024px) {
+@media (max-width: 1024px) {
   .ai-cta {
     padding: 60px 0 0 0;
   }
@@ -1741,7 +1731,7 @@
   }
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .ai-cta {
     padding: 60px 0 0 0;
   }
@@ -1789,7 +1779,7 @@
   }
 }
 
-@media (width <= 480px) {
+@media (max-width: 480px) {
   .ai-cta {
     padding: 30px 0 0 0;
   }
@@ -2114,7 +2104,7 @@
 }
 
 /* Responsive Styles */
-@media (width <= 1200px) {
+@media (max-width: 1200px) {
   .brand-carousel-container {
     height: 520px; /* Adjusted fixed height for 500px slide width + padding */
   }
@@ -2137,7 +2127,7 @@
   }
 }
 
-@media (width <= 900px) {
+@media (max-width: 900px) {
   .brand-carousel-container {
     height: 420px; /* Adjusted fixed height for 400px slide width + padding */
   }
@@ -2159,7 +2149,7 @@
   }
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .brand-carousel-container {
     aspect-ratio: 1 / 1;
     height: auto; /* Reset to auto height on mobile/tablet */
@@ -2224,7 +2214,7 @@
   }
 }
 
-@media (width <= 480px) {
+@media (max-width: 480px) {
   .brand-more-btn {
     display: block;
     font-size: 12px;
@@ -2385,8 +2375,9 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-   filter 0.4s ease;
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.4s ease;
 }
 
 .about-us-card-overlay {
@@ -2407,7 +2398,7 @@
   flex-direction: column;
   justify-content: flex-end;
   box-sizing: border-box;
-   transition: all 0.4s ease;
+  transition: all 0.4s ease;
 }
 
 .about-us-card-title,
@@ -2451,11 +2442,15 @@
 }
 
 .about-us-card-title {
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
 }
 
 .about-us-card-subtitle {
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
 }
 
 /* 이미지 */
@@ -2510,7 +2505,7 @@
   transform: translateY(12px);
 }
 
-@media (width <= 1024px) {
+@media (max-width: 1024px) {
   .about-us {
     padding: 60px 0;
   }
@@ -2521,12 +2516,12 @@
   .about-us-card-title {
     font-size: 24px;
   }
-  .about-us-card-title-active{
+  .about-us-card-title-active {
     font-size: 24px;
   }
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .about-us {
     padding: 50px 0;
   }
@@ -2548,7 +2543,7 @@
   .about-us-card-title {
     font-size: 30px;
   }
-  .about-us-card-title-active{
+  .about-us-card-title-active {
     font-size: 30px;
   }
   .about-us-card-subtitle {
@@ -2556,7 +2551,7 @@
   }
 }
 
-@media (width <= 480px) {
+@media (max-width: 480px) {
   .about-us-container {
     padding: 0 16px;
   }
@@ -2591,7 +2586,7 @@
     font-size: 24px;
     margin-bottom: 8px;
   }
-  .about-us-card-title-active{
+  .about-us-card-title-active {
     font-size: 24px;
     margin-bottom: 8px;
   }
@@ -2877,14 +2872,14 @@
 }
 
 /* Responsive Styles */
-@media (width <= 1024px) {
+@media (max-width: 1024px) {
   .store-detail-image-box {
     width: 432px;
     max-width: 50%;
   }
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .rounz-store {
     padding: 50px 0;
   }
@@ -2915,7 +2910,7 @@
   }
 }
 
-@media (width <= 480px) {
+@media (max-width: 480px) {
   .rounz-store {
     padding: 40px 0;
   }
@@ -2941,7 +2936,7 @@
   }
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .store-detail-card {
     display: flex;
     flex-direction: row;
@@ -3127,7 +3122,7 @@
 }
 
 /* Responsive Styles */
-@media (width <= 1024px) {
+@media (max-width: 1024px) {
   .style-magazine {
     padding: 60px 0;
   }
@@ -3140,7 +3135,7 @@
   }
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .style-magazine {
     padding: 60px 0;
   }
@@ -3184,7 +3179,7 @@
     font-size: 24px;
   }
 
-  @media (width <= 480px) {
+  @media (max-width: 480px) {
     .style-magazine {
       padding: 40px 0;
     }
@@ -3209,4 +3204,4 @@
       padding: 24px 20px;
     }
   }
-} /* @media (width <=768px) 종료 */
+}
