@@ -177,3 +177,23 @@ input[type="password"]:focus {
   color: rgba(255, 255, 255, 0.6);
   cursor: not-allowed;
 }
+
+/* [추가] 유효성 검사 스타일 */
+.input-group input.is-invalid {
+  border-color: var(--sale, #ff3300); /* 공통 CSS의 sale 색상 사용 */
+}
+
+.error-message {
+  display: block;
+  font-size: var(--small, 14px);
+  color: var(--sale, #ff3300);
+  margin-top: -8px; /* 입력 필드와의 간격 조정 */
+  margin-bottom: 8px;
+  padding-left: 16px;
+  visibility: hidden; /* 기본적으로 숨김 */
+}
+
+/* 유효성 검사 실패 시 메시지 보이기 */
+.input-group input.is-invalid + .error-message {
+  visibility: visible;
+}

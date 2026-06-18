@@ -4,7 +4,7 @@
 .auth-wrapper {
   width: 100%;
   max-width: 354px; /* default: 모바일 기준 */
-  margin: 50px auto;
+  margin: 0 auto;
   padding: 40px 24px;
   box-sizing: border-box;
   background-color: #ffffff;
@@ -29,4 +29,6 @@
   display: flex;
   justify-content: center;
   align-items: center; /* 필요시 추가 */
+  width: 100%;
+  min-height: 100%;
 }

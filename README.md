@@ -1,10 +1,16 @@
 # 🕶️ ROUNZ 웹페이지 반응형 리뉴얼 프로젝트 (EST_fe_13_2st_project)
 
-이 프로젝트는 이스트소프트 프론트엔드 개발자 오르름캠프 13기 2차 프로젝트로, 안경 및 선글라스 온라인 쇼핑몰 **라운즈(ROUNZ)** 웹사이트를 모티브로 삼아, 최신 웹 트렌드와 프리미엄 디자인 요소를 가미한 **반응형 웹 퍼블리싱 및 모듈형 웹 애플리케이션 리뉴얼 프로젝트**입니다.
+## 3조 O_O
+
++ 과정명 : 이스트캠프 오르미 프론트엔드 개발 13기(React, HTML, CSS, JavaScript)
++ 기간: 2026/04/07 ~ 2026/08/21
++ 2차 프로젝트 : 2026/05/29 ~ 2026/06/19
 
 ---
 
-## 🌟 프로젝트 소개 (Project Overview)
+## 🌟 프로젝트 개요
+
+이 프로젝트는 이스트소프트 프론트엔드 개발자 오르미캠프 13기 2차 프로젝트로, 안경 및 선글라스 온라인 쇼핑몰 **라운즈(ROUNZ)** 웹사이트를 모티브로 삼아, 최신 웹 트렌드와 프리미엄 디자인 요소를 가미한 **반응형 웹 퍼블리싱 및 모듈형 웹 애플리케이션 리뉴얼 프로젝트**입니다.
 
 안경을 사고 쓰는 즐거운 경험을 제공하는 **라운즈(ROUNZ)** 쇼핑몰을 고도화된 UI/UX로 재해석했습니다.
 
@@ -13,6 +19,87 @@
 - **검증된 UI/UX**: 슬라이더, 캐러셀, 동적 지점 검색 필터, 아코디언 메뉴, 가상 피팅 모의 CTA 등 실감형 모바일-데스크톱 인터랙션 제공
 
 ---
+
+## 👥 팀원 
+
+| 이름     | 역할                                                    | 담당 브랜치 | GitHub 링크                                                      |
+| :------- | :------------------------------------------------------ | :---------- | :--------------------------------------------------------------- |
+| **정민** | 👑 팀장 / 기획/디자인/로그인/회원가입/상품비교 퍼블리싱 | `jeongmin`  | [@chittybb1357-commits](https://github.com/chittybb1357-commits) |
+| **성희** | 💻 팀원 / 기획/디자인/메인/푸터/상품비교 퍼블리싱       | `sunghee`   | [@xoxoworld](https://github.com/xoxoworld)                       |
+| **시원** | 💻 팀원 / 기획/디자인/상세/안경원 퍼블리싱              | `siwon`     | [@isnow-x](https://github.com/isnow-x)                           |
+| **소호** | 💻 팀원 / 기획/디자인/메인/헤더 퍼블리싱                | `soho`      | [@soho1109](https://github.com/soho1109)                         |
+| **소영** | 💻 팀원 / 기획/디자인/상품목록/장바구니 퍼블리싱        | `soyoung`   | [@s0y0ungk](https://github.com/s0y0ungk)                         |
+
+---
+
+## 🗓️ 마일스톤
+
+#### 1일차 — 프로젝트 이해 & 환경 세팅
+- [ ]  Rounz 기존 메인페이지 구조 분석 (레이아웃·UI/UX)
+- [ ]  피그마 또는 와이어프레임 제작
+- [ ]  필수 기능(비동기 데이터, 예외처리) 구현 범위 확정
+- [ ]  GitHub 레포 생성 및 팀원 협업 환경 세팅
+- [ ]  폴더 구조 설계 (/css, /scss, /js, /images 등)
+
+#### 2일차 — HTML 구조 설계 & 공통 요소 구현
+- [ ]  HTML 시맨틱 구조 작성 (header, nav, main, footer)
+- [ ]  공통 헤더·푸터 마크업 및 스타일 작성
+- [ ]  SCSS 변수·믹스인 정의 (색상, 폰트, 여백)
+- [ ]  기본 reset.css 또는 normalize.css 적용
+
+#### 3일차 — 메인페이지 콘텐츠 구현
+- [ ]  Hero 배너, 추천 상품, 이벤트 영역 마크업
+- [ ]  SASS로 반응형 그리드/레이아웃 적용
+- [ ]  JavaScript로 첫 번째 비동기 데이터 렌더링 구현 (예: 상품 목록)
+- [ ]  예외처리 기본 로직 추가 (데이터 불러오기 실패 시 메시지 출력)
+
+#### 4일차 — 서브페이지별 기능 개발 & 데이터 연동
+- [ ]  팀원별 담당 서브페이지 HTML/CSS 작성
+- [ ]  데이터 필터링·정렬 기능 추가
+- [ ]  예외처리 고도화 (네트워크 오류, 빈 데이터 처리)
+- [ ]  GitHub에 각자 브랜치 병합 전 PR 생성
+
+#### 5일차 — 통합, 버그 수정 & 배포 준비
+- [ ]  메인 + 서브페이지 통합
+- [ ]  반응형 디테일 조정 (모바일·태블릿·데스크탑)
+- [ ]  크로스 브라우저 테스트(Chrome, Edge, Safari)
+- [ ]  GitHub Pages 배포 설정
+- [ ]  배포 후 URL 공유
+
+#### 6일차 — 최종 점검 & 발표 자료 완성
+- [ ]  배포 사이트 기능 최종 점검
+- [ ]  모든 코드·주석 정리
+- [ ]  발표 자료(슬라이드, 시연 영상) 완성
+- [ ]  팀원별 발표 파트 확정
+
+```mermaid
+gantt
+    title 프로젝트 일정
+    dateFormat YYYY-MM-DD
+    excludes weekends
+
+    section 기획/설계
+    팀 구성, 기획 착수           :a1, 2026-05-29, 5d
+    발표자료 제작, 기획 마무리   :a2, 2026-06-03, 2d
+
+    section 디자인  
+    스토리보드 작성             :b1, 2026-06-03, 2d
+    와이어프레임 작성             :b2, 2026-06-04, 2d
+    스타일 가이드 작성           :b3, 2026-06-04, 1d
+    figma 디자인            :b4, 2026-06-04, 6d
+
+    section 구현개발
+    HTML/CSS 구현               :c1, 2026-06-11, 3d
+    JS 구현                     :c2, 2026-06-15, 4d
+    반응형 및 접근성 개선        :c3, 2026-06-18, 2d
+
+    section 테스트
+    성능 최적화                 :d2, 2026-06-18, 2d
+
+    section 릴리즈
+    README 및 문서 정리         :e1, 2026-06-18, 2d
+    GitHub 배포                 :e2, 2026-06-19, 1d
+```
 
 ## 🚀 핵심 기능 (Key Features)
 
@@ -49,42 +136,86 @@
 
 ### **Data & Assets**
 
-- **JSON 데이터**: 모의 API용 상품 리스트(`products.json`) 및 전국 안경원 리스트(`stores.json`) 탑재
+- **JSON 데이터**: 모의 API용 상품 리스트(`products.json`) 및 라운즈 안경원 리스트(`stores.json`) 탑재
 - **Google Fonts & SVG**: 'Inter', 'Outfit', 'Noto Sans KR' 서체 적용 및 인라인/벡터 벡터 그래픽 최적화
+
+
+## 배포 URL
+
++ [Git](https://xoxoworld.github.io/EST_fe_13_2st_project/)
 
 ---
 
 ## 📂 디렉토리 구조 (Directory Structure)
 
 ```bash
-├── .husky/             # Git Hooks 설정 (Husky)
-├── assets/             # 이미지, 아이콘 등 정적 자원
+EST_fe_13_2st_project
+├── .husky/                    # Git Hooks 설정
+│   └── pre-commit             # 커밋 전 실행 스크립트
+│
+├── .vscode/
+│   └── settings.json          # VSCode 프로젝트 설정
+│
+├── assets/                    # 정적 리소스
+│   ├── icons/                 # 아이콘 파일
+│   ├── images/                # 이미지 파일
+│   └── video/                 # 영상 파일
+│
 ├── css/
-│   ├── common.css      # 공통 디자인 시스템 (변수, 타이포)
-│   ├── index.css       # 메인 페이지 전용 스타일
-│   ├── compare.css     # 모델 비교 페이지 전용 스타일
-│   ├── normalize.css   # 브라우저 간 기본 스타일 차이 보정
-│   ├── reset.css       # 기본 마진/패딩 초기화
-│   └── ...             # 페이지별 개별 스타일시트
+│   ├── cart.css               # 장바구니 페이지 스타일
+│   ├── common.css             # 공통 디자인 스타일
+│   ├── compare.css            # 모델 비교 페이지 스타일
+│   ├── compare.css.map        # 모델 비교 페이지 map 파일
+│   ├── flex-utility.css       # 공통 Flex 유틸리티 스타일
+│   ├── index.css              # 메인 페이지 스타일
+│   ├── login.css              # 로그인 페이지 스타일
+│   ├── normalize.css          # 브라우저 스타일 정규화
+│   ├── product.css            # 상품 상세 페이지 스타일
+│   ├── productList.css        # 상품 목록 페이지 스타일
+│   ├── reset.css              # 기본 스타일 초기화
+│   ├── sign.css               # 회원가입 관련 공통 스타일
+│   ├── signup.css             # 회원가입 페이지 스타일
+│   └── stores.css             # 안경원 페이지 스타일
+│
 ├── data/
-│   ├── products.json   # 상품 모의 데이터
-│   └── stores.json     # 안경원 지점 모의 데이터
+│   ├── products.json          # 상품 데이터
+│   └── stores.json            # 안경원 데이터
+│
 ├── html/
-│   ├── index.html      # 메인 매거진 페이지
-│   ├── compare.html    # 모델 비교 페이지
-│   ├── login.html      # 로그인 페이지
-│   ├── signup.html     # 회원가입 페이지
-│   ├── cart.html       # 장바구니 페이지
-│   ├── stores.html     # 매장 찾기 페이지
-│   └── ...
+│   ├── cart.html              # 장바구니 페이지
+│   ├── common.html            # 공통 컴포넌트 테스트 페이지
+│   ├── compare.html           # 모델 비교 페이지
+│   ├── login.html             # 로그인 페이지
+│   ├── product.html           # 상품 상세 페이지
+│   ├── productList.html       # 상품 목록 페이지
+│   ├── signup.html            # 회원가입 페이지
+│   └── stores.html            # 매장 찾기 페이지
+│
 ├── js/
-│   ├── main.js         # 글로벌 스크립트 (슬라이더, 아코디언, 스크롤 프로그레스 등)
-│   ├── common.js       # 공통 헬퍼 스크립트
-│   ├── pages/          # 페이지별 독립 비즈니스 로직 스크립트
-│   └── ...
-├── .gitignore          # Git 추적 예외 정의 파일
-├── eslint.config.mjs   # ESLint 문법 오류/품질 분석 규칙 정의 파일
-└── package.json        # 의존성 패키지 및 스크립트 정의 파일
+│   ├── modules/               # 공통 모듈
+│   │   ├── footer.js          # Footer 컴포넌트
+│   │   ├── header.js          # Header 컴포넌트
+│   │   └── menuToggle.js      # 모바일 메뉴 토글
+│   │
+│   ├── pages/                 # 페이지별 js
+│   │   ├── cart.js            # 장바구니 기능
+│   │   ├── compare.js         # 모델 비교 기능
+│   │   ├── login.js           # 로그인 기능
+│   │   ├── product.js         # 상품 상세 기능
+│   │   ├── productList.js     # 상품 목록 기능
+│   │   ├── signup.js          # 회원가입 기능
+│   │   └── stores.js          # 매장 찾기 기능
+│   │
+│   ├── common.js              # 공통 유틸리티 기능
+│   └── main.js                # index 페이지 기능
+│
+├── scss/                      # SCSS 소스 파일
+│
+├── .gitignore                 # Git 추적 예외 파일 정의
+├── index.html                 # 프로젝트 메인 페이지
+├── package-lock.json          # 의존성 잠금 파일
+├── package.json               # 의존성 패키지 및 스크립트 정의 파일
+└── README.md                  # 프로젝트 readme 문서
 ```
 
 ---
@@ -98,27 +229,35 @@
 3. **이미지 렌더링 최적화**:
    - 뷰포트 아래 영역에 존재하는 무거운 배너 이미지 및 상품 썸네일 카드에 `loading="lazy"` 속성을 적용하여 LCP(Largest Contentful Paint) 속도를 획기적으로 개선했습니다.
 
+## 로컬 구동 방법
+
+**1. 리포지토리 클론**
+
+```bash
+git clone https://xoxoworld.github.io/EST_fe_13_2st_project
+```
+
+**2. 프로젝트 실행**
+
+- 클론 완료된 폴더 내의 `index.html` 파일을 더블 클릭하여 기본 브라우저에서 즉각 실행할 수 있습니다.
+- 또는, VS Code 개발 환경에서 **Live Server** 익스텐션을 활성화하여 실시간 리로드 서버(`http://localhost:5500`) 환경에서 매끄럽게 웹 테스팅을 수행할 수 있습니다.
+
 ---
 
-## 👥 팀원 소개 (Team Members)
+## 향후 개선 사항
 
-역할에 맞춰 개별 기능 브랜치를 활용하여 안정적인 협업을 진행하고 있습니다.
+- [ ] **성능 최적화**: 상품 이미지에 webp 및 반응형 이미지를 적용해 로딩 속도 개선, Lighthouse 성능 점수 개선
+- [ ] **사용자 경험(UX) 개선**: 더 많은 페이지의 기능 추가
+- [ ] **데이터 관리 개선**: json 구조를 api 기반 데이터 구조로 전환, 상태 관리 로직 개선
+- [ ] **유지보수성 향상**: 코드 분리 및 모듈화 강화
+---
 
-| 이름     | 역할                                                    | 담당 브랜치 | GitHub 링크                                                      |
-| :------- | :------------------------------------------------------ | :---------- | :--------------------------------------------------------------- |
-| **정민** | 👑 팀장 / 기획/디자인/로그인/회원가입/상품비교 퍼블리싱 | `jeongmin`  | [@chittybb1357-commits](https://github.com/chittybb1357-commits) |
-| **성희** | 💻 팀원 / 기획/디자인/메인/푸터/상품비교 퍼블리싱       | `sunghee`   | [@xoxoworld](https://github.com/xoxoworld)                       |
-| **시원** | 💻 팀원 / 기획/디자인/상세/안경원 퍼블리싱              | `siwon`     | [@isnow-x](https://github.com/isnow-x)                           |
-| **소호** | 💻 팀원 / 기획/디자인/메인/헤더 퍼블리싱                | `soho`      | [@soho1109](https://github.com/soho1109)                         |
-| **소영** | 💻 팀원 / 기획/디자인/상품목록/장바구니 퍼블리싱        | `soyoung`   | [@s0y0ungk](https://github.com/s0y0ungk)                         |
+## 제작 후기
 
 ---
 
-## 🏃 실행 방법 (Getting Started)
-
-이 프로젝트는 기본적으로 브라우저에서 바로 실행할 수 있는 정적 웹 애플리케이션이지만, 개발 품질 및 SASS 컴파일을 효율적으로 수행하기 위해 Node.js 패키지 환경이 함께 구성되어 있습니다.
-
-1. **저장소 클론**:
-   ```bash
-   git clone https://github.com/xoxoworld/EST_fe_13_2st_project.git
-   ```
+## 기획 / 디자인 문서
+- **기획서(피그마 슬라이드)**: 와이어프레임 및 스토리보드, 화면 흐름, 컨셉, 요구사항, 마일스톤 정리 
+  링크: https://www.figma.com/slides/J0l34rO3Emojwpqs2F7Aoi
+- **디자인 원본(피그마)**: 컴포넌트, 컬러/타이포 스케일, 반응형 레이아웃, 아이콘 
+  링크: https://www.figma.com/design/2Vuv7WAMqIjzDzF3COCraq/O_O%EC%98%A4%EC%98%A4-3%ED%8C%80-%EB%94%94%EC%9E%90%EC%9D%B8?node-id=0-1&t=LelziT4F29Prhevt-1
