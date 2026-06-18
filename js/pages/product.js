@@ -1,7 +1,9 @@
 import { updateCartCount, addToCart, addToCompare } from "../common.js";
 import { renderHeader } from "../modules/header.js";
+import { renderFooter } from "../modules/footer.js";
 document.addEventListener("DOMContentLoaded", () => {
   renderHeader();
+  renderFooter();
 });
 
 let product = {};
@@ -126,6 +128,8 @@ function renderDetailImages(detailWrap, data) {
     const img = document.createElement("img");
     img.setAttribute("src", src);
     img.setAttribute("alt", `${data.title} detail ${index + 1}`);
+    img.setAttribute("loading", "lazy");
+    img.setAttribute("decoding", "async");
     return img;
   });
 
@@ -571,6 +575,7 @@ const quantityControls = document.querySelectorAll(".quantity-control");
 const quantityInputs = document.querySelectorAll(".quantity-input");
 
 let currentQty = 1;
+const minQty = 1;
 
 function syncQuantityInputs() {
   quantityInputs.forEach(input => {
@@ -581,18 +586,44 @@ function syncQuantityInputs() {
   });
 }
 
+function getValidQuantity(value) {
+  const nextQty = Number.parseInt(String(value).replace(/\D/g, ""), 10);
+
+  if (Number.isNaN(nextQty) || nextQty < minQty) return minQty;
+
+  return nextQty;
+}
+
+function setQuantity(nextQty) {
+  currentQty = getValidQuantity(nextQty);
+  syncQuantityInputs();
+}
+
 quantityControls.forEach(quantityControl => {
   quantityControl.addEventListener("click", event => {
     const btn = event.target.closest("button");
     if (!btn) return;
 
     if (btn.textContent.trim() === "-") {
-      if (currentQty > 1) currentQty--;
+      setQuantity(currentQty - 1);
     } else {
-      currentQty++;
+      setQuantity(currentQty + 1);
     }
+  });
+});
 
-    syncQuantityInputs();
+quantityInputs.forEach(input => {
+  input.setAttribute("inputmode", "numeric");
+
+  input.addEventListener("input", event => {
+    const nextValue = event.target.value.replace(/\D/g, "");
+    event.target.value = nextValue;
+
+    setQuantity(nextValue || minQty);
+  });
+
+  input.addEventListener("change", event => {
+    setQuantity(event.target.value);
   });
 });
 
@@ -601,7 +632,9 @@ const cartButtons = document.querySelectorAll(".cart-btn");
 
 cartButtons.forEach(cartButton => {
   cartButton.addEventListener("click", () => {
+    setQuantity(currentQty);
     addToCart(product, currentQty);
+    setQuantity(minQty);
   });
 });
 
