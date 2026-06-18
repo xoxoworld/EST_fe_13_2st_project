@@ -1,41 +1,190 @@
-export function initSidebar() {
-  const $menuBtn = $(".header-btn-menu");
-  const $sidebar = $(".sidebar");
-  const $overlay = $(".sidebar-overlay");
-  const $close = $(".sidebar-close");
+export function initSidebar(){
+  const sidebarWrap = document.querySelector(".sidebar-wrap");
+  if(!sidebarWrap) return;
 
-  console.log("메뉴버튼", $menuBtn.length);
-  console.log("사이드바", $sidebar.length);
+  sidebarWrap.innerHTML = `
+    <div class="sidebar-overlay"></div>
 
-  if (!$sidebar.length) return;
+    <aside class="sidebar">
 
-  $menuBtn.off("click").on("click", function () {
-    console.log("열림");
+      <div class="sidebar-header">
 
-    $sidebar.addClass("active");
-    $overlay.addClass("active");
-    $("body").addClass("sidebar-open");
+        <div class="menu-form d-flex g-24">
+
+          <button class="sidebar-close" type="button" aria-label="메뉴 닫기">
+            <img src="./assets/icons/sidebar_arrow_forward.svg" alt="닫기">
+          </button>
+
+          <div class="sidebar-auth d-flex g-10 text-medium-r">
+
+            <a href="html/login.html">
+              로그인
+            </a>
+
+            <span>|</span>
+
+            <a href="html/signup.html">
+              회원가입
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <button class="sidebar-search" type="button" aria-label="검색">
+          <img src="./assets/icons/sidebar_search.svg" alt="검색">
+        </button>
+
+
+      </div>
+
+
+
+      <nav class="sidebar-nav">
+
+
+        <div class="sidebar-menu-list-left">
+
+          <ul class="sidebar-menu-list">
+
+            <li class="active">
+              <a href="#">ALL</a>
+            </li>
+
+            <li><a href="#">선글라스</a></li>
+            <li><a href="#">안경테</a></li>
+            <li><a href="#">베스트</a></li>
+            <li><a href="#">신상품</a></li>
+            <li><a href="#">브랜드</a></li>
+            <li><a href="#">AI피팅</a></li>
+            <li><a href="#">라운즈ONLY</a></li>
+
+            <li>
+              <a href="html/stores.html">
+                안경원
+              </a>
+            </li>
+
+            <li><a href="#">기획전</a></li>
+            <li><a href="#">라운즈 소개</a></li>
+            <li><a href="#">고객센터</a></li>
+
+          </ul>
+
+        </div>
+
+
+
+        <ul class="sidebar-menu-list-right d-flex flex-column">
+
+
+          <li>
+
+            <a href="html/productList.html">
+
+              전 제품보기
+
+              <img 
+                src="./assets/icons/sidebar_arrow_right.svg" 
+                alt=""
+              >
+
+            </a>
+
+          </li>
+
+
+
+          <li>
+
+            <a href="html/compare.html">
+
+              모델 비교하기
+
+              <img 
+                src="./assets/icons/sidebar_arrow_right.svg" 
+                alt=""
+              >
+
+            </a>
+
+          </li>
+
+
+
+          <li class="sidebar_event-img d-flex flex-column g-10">
+
+
+            <strong class="text-subtitle-s">
+              WELCOME BENEFITS
+            </strong>
+
+
+            <a href="#">
+
+              <img
+                class="event-banner"
+                src="./assets/images/sidebar_event.png"
+                alt=""
+              >
+
+            </a>
+
+
+          </li>
+
+
+        </ul>
+
+
+      </nav>
+
+
+    </aside>
+  `;
+
+  const menuBtn = document.querySelector(".header-btn-menu");
+  const sidebar = document.querySelector(".sidebar");
+  const overlay = document.querySelector(".sidebar-overlay");
+  const closeBtns = document.querySelectorAll(".sidebar-close");
+
+  if(
+    !menuBtn ||
+    !sidebar ||
+    !overlay
+  ) return;
+
+  function openSidebar(){
+    sidebar.classList.add("active");
+    overlay.classList.add("active");
+    document.body.classList.add("sidebar-open");
+  }
+
+  function closeSidebar(){
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+    document.body.classList.remove("sidebar-open");
+  }
+  menuBtn.addEventListener("click", openSidebar);
+  closeBtns.forEach(btn=>{
+    btn.addEventListener(
+      "click",
+      closeSidebar
+    );
   });
 
-  $close.off("click").on("click", function () {
-    closeSidebar();
-  });
+  overlay.addEventListener(
+    "click",
+    closeSidebar
+  );
 
-  $overlay.off("click").on("click", function () {
-    closeSidebar();
-  });
-
-  $(document)
-    .off("keydown.sidebar")
-    .on("keydown.sidebar", function (e) {
-      if (e.key === "Escape") {
+  document.addEventListener(
+    "keydown",
+    (e)=>{
+      if(e.key === "Escape"){
         closeSidebar();
       }
-    });
-
-  function closeSidebar() {
-    $sidebar.removeClass("active");
-    $overlay.removeClass("active");
-    $("body").removeClass("sidebar-open");
-  }
+    }
+  );
 }
