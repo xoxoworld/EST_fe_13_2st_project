@@ -112,10 +112,17 @@ sortButtons.forEach(button => {
 // 상품 리스트
 function renderProducts(products) {
   const productList = document.querySelector(".sunglasses-page");
-  const bannerImage1 =
-    bannerImages[(currentPage - 1) % bannerImages.length];
-  const bannerImage2 =
-    bannerImages[currentPage % bannerImages.length];
+  // 배너 랜덤
+const randomIndex1 =
+  Math.floor(Math.random() * bannerImages.length);
+let randomIndex2;
+do {
+  randomIndex2 =
+    Math.floor(Math.random() * bannerImages.length);
+} while (randomIndex1 === randomIndex2);
+
+const bannerImage1 = bannerImages[randomIndex1];
+const bannerImage2 = bannerImages[randomIndex2];
 
   let visibleProducts;
 
@@ -131,7 +138,7 @@ function renderProducts(products) {
     .map((product, index) => {
       let card = `
       <article class="product-list-card">
-        <a href="./productDetail.html?id=${product.id}" class="product-list-link">
+        <a href="../html/product.html" id=${product.id}" class="product-list-link">
           <div class="product-list-image">
             <div class="product-list-image">
               <img
@@ -186,7 +193,6 @@ function renderProducts(products) {
 
 
   productList.innerHTML = html;
-  renderPagination();
 
   if (isDesktop) {
     renderPagination();
@@ -388,35 +394,42 @@ function renderPagination() {
 
         renderProducts(filteredData);
         renderPagination();
-      });
+
         window.scrollTo({
           top: 0,
           behavior: "smooth",
         });
       });
-    }
-// 오른쪽 페이지
-prevBtn.addEventListener("click", () => {
-      if (currentPage > 1) {
-        currentPage--;
-
-        renderProducts(filteredData);
-        renderPagination();
-      }
     });
-  // 왼쪽 페이지
-  nextBtn.addEventListener("click", () => {
-    const totalPages = Math.ceil(
-      filteredData.length / countPerPage
-    );
 
-    if (currentPage < totalPages) {
-      currentPage++;
 
-      renderProducts(filteredData);
-      renderPagination();
-    }
-  });
+  }
+
+    prevBtn.addEventListener("click", () => {
+  if (currentPage > 1) {
+    currentPage--;
+    renderProducts(filteredData);
+    renderPagination();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+});
+
+nextBtn.addEventListener("click", () => {
+  const totalPages = Math.ceil(
+    filteredData.length / countPerPage
+  );
+  if (currentPage < totalPages) {
+    currentPage++;
+    renderProducts(filteredData);
+    renderPagination();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+});
 
   fetchProducts();
-
