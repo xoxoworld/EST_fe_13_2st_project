@@ -1231,6 +1231,10 @@
   flex-wrap: wrap;
 }
 
+.new-product-filters .filter-chip {
+  font-size: 16px;
+}
+
 .filter-chip {
   background-color: var(--white-1);
   border: 1px solid var(--primary);
@@ -2404,31 +2408,8 @@
   }
 
   .about-us-more-btn {
-    position: absolute;
     top: 8px;
     right: 24px;
-    width: auto;
-    height: auto;
-    background-color: transparent;
-    padding: 0;
-    margin: 0;
-  }
-  .about-us-more-btn:hover {
-    background-color: transparent;
-    transform: none;
-  }
-  .about-us-more-btn svg {
-    display: none;
-  }
-  .about-us-more-btn .more-text {
-    display: block;
-    font-size: 13px;
-    font-weight: 500;
-    color: #888;
-    letter-spacing: -0.2px;
-  }
-  .about-us-more-btn:hover .more-text {
-    color: var(--primary);
   }
   .about-us-grid {
     grid-template-columns: 1fr;
@@ -2455,9 +2436,6 @@
     top: 6px;
   }
 
-  .about-us-more-btn .more-text {
-    font-size: 12px;
-  }
   .about-us-grid {
     display: flex;
     flex-direction: row;
