@@ -8,6 +8,9 @@
 html {
   scroll-behavior: smooth;
 }
+body, #wrap {
+  min-width: 320px; /* 창을 이보다 줄여도 더이상 내부 요소가 줄어들지 않고 스크롤바가 생김 */
+}
 
 img {
   display: block;
