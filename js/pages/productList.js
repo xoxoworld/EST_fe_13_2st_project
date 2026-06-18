@@ -330,10 +330,12 @@ moreButtons.forEach(button => {
   });
 });
 
-// 데스크탑 페이지네이션
+// 페이지 네이션
 function renderPagination() {
   const totalPages = Math.ceil(filteredData.length / countPerPage);
+
   pageList.innerHTML = "";
+
   for (let i = 1; i <= totalPages; i++) {
     pageList.innerHTML += `
       <button
@@ -357,6 +359,37 @@ function renderPagination() {
       });
     });
   });
-} 
+}
+
+// 왼쪽 화살표
+prevBtn.addEventListener("click", () => {
+  if (currentPage > 1) {
+    currentPage--;
+
+    renderProducts(filteredData);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+});
+// 오른쪽 화살표
+nextBtn.addEventListener("click", () => {
+  const totalPages = Math.ceil(
+    filteredData.length / countPerPage
+  );
+
+  if (currentPage < totalPages) {
+    currentPage++;
+
+    renderProducts(filteredData);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+});
 
 fetchProducts();
