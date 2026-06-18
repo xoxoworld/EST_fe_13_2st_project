@@ -50,7 +50,7 @@ async function fetchProduct() {
 
 // 상품 상세 페이지 콘텐츠 생성
 function createContent(data, products) {
-  const title = document.querySelector(".product-title"),
+  const title = document.querySelector(".title"),
     brand = document.querySelector(".brand-path"),
     favorite = document.querySelector(".favorite"),
     reviewTop = document.querySelector(".review-top"),
@@ -211,10 +211,8 @@ function renderRelatedProducts(relatedList, products, currentProduct) {
 
     img.setAttribute("src", product.images.thumbnail);
     img.setAttribute("alt", product.title);
-    brand.classList.add("text-small-b");
     brand.textContent = product.brand;
     title.textContent = product.title;
-    price.classList.add("text-small-b");
     price.textContent = `${product.price.final.toLocaleString()}원`;
 
     article.append(img, brand, title, price);
