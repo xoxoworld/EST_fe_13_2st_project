@@ -15,10 +15,10 @@ const prevBtn = document.querySelector(".prev-btn");
 const nextBtn = document.querySelector(".next-btn");
 const isDesktop = window.innerWidth >= 1272;
 const bannerImages = [
-  "../assets/images/promotion_banner_1.webp",
+  "../assets/images/promotion_banner_1.png",
   "../assets/images/promotion_banner_2.png",
+  "../assets/images/promotion_banner_3.png",
   "../assets/images/promotion_banner_4.png",
-  "../assets/images/promotion_banner_2.png",
 ];
 
 let currentCount = countPerPage;
@@ -138,7 +138,7 @@ const bannerImage2 = bannerImages[randomIndex2];
     .map((product, index) => {
       let card = `
       <article class="product-list-card">
-        <a href="../html/product.html" id=${product.id}" class="product-list-link">
+        <a href="../html/product.html?id=${product.id}" class="product-list-link">
           <div class="product-list-image">
             <div class="product-list-image">
               <img
