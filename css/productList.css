@@ -223,9 +223,8 @@ body {
   /* 상단배너 */
   .promotion {
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    gap: 31px;
+    justify-content: space-between;
   }
   .product-list-page {
     max-width: none;
@@ -252,20 +251,20 @@ body {
     font-weight: 600;
   }
   .w-card {
-    position: relative;
-    width: 170px;
-    height: 103px;
-    overflow: hidden;
-    border-radius: 16px;
+    flex: 1;
+    height: 200px;
+    min-width: 220px;
+    max-width: 400px;
   }
   .w-card img {
-    position: absolute;
-    inset: 0;
+    width: 100%;
     height: 100%;
     object-fit: cover;
   }
   .promotion-card {
+    display: flex;
     gap: 5px;
+    flex: 1;
   }
   .card-text {
     top: 13px;
@@ -315,9 +314,8 @@ body {
 
   .sunglasses-page {
     display: grid;
-    grid-template-columns: repeat(3, 220px);
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    justify-content: start;
   }
   .product-list-brand,
   .product-list-price {
@@ -330,14 +328,12 @@ body {
   }
 
   .product-list-card {
-    width: 220px;
-    height: 346px;
+    width: 100%;
   }
   .product-list-image {
-    width: 220px;
-    height: 220px;
-    overflow: hidden;
-    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;
   }
   .product-list-img {
     width: 100%;
@@ -395,7 +391,9 @@ body {
     line-height: var(--base-unit);
   }
   .promotion-card {
+    display: flex;
     gap: 10px;
+    flex: 1;
   }
   .card-sub-text {
     display: block;
@@ -416,8 +414,15 @@ body {
     gap: 35px;
   }
   .w-card {
-    width: 330px;
+    flex: 1;
     height: 200px;
+    min-width: 220px;
+    max-width: 400px;
+  }
+  .w-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   /* 왼쪽 필터 */
