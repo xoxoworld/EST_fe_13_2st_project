@@ -338,28 +338,25 @@
             AI 추천 받기 →
           </a>
         </div>
-        </div>
       </aside>
+    </section>
 
-
-      <!-- 상품 리스트 -->
+    <!-- filter -->
+    <section class="w-filter d-flex align-items-center justify-content-between">
+      <div class="w-filter-btn d-flex">
+        <button type="button" class="filter-btn" data-sort="all">ALL</button>
+        <button type="button" class="filter-btn" data-sort="popular">인기순</button>
+        <button type="button" class="filter-btn" data-sort="recommend">추천순</button>
+        <button type="button" class="filter-btn mobile-only" data-sort="price">가격순</button>
+        <button type="button" class="filter-btn tablet-only" data-sort="price-low">낮은 가격순</button>
+        <button type="button" class="filter-btn tablet-only" data-sort="price-high">높은 가격순</button>
+      </div>
       <div>
-        <!-- filter -->
-        <section class="w-filter d-flex align-items-center justify-content-between">
-          <div class="w-filter-btn d-flex">
-            <button type="button" class="filter-btn" data-sort="all">ALL</button>
-            <button type="button" class="filter-btn" data-sort="popular">인기순</button>
-            <button type="button" class="filter-btn" data-sort="recommend">추천순</button>
-            <button type="button" class="filter-btn mobile-only" data-sort="price">가격순</button>
-            <button type="button" class="filter-btn tablet-only" data-sort="price-low">낮은 가격순</button>
-            <button type="button" class="filter-btn tablet-only" data-sort="price-high">높은 가격순</button>
-          </div>
-          <div>
-            <span class="w-filter-count">1,769개의 상품이 있습니다.</span>
-          </div>
-        </section>
-        <section class="sunglasses-page">
-          <!-- <article class="product-list-card">
+        <span class="w-filter-count">1,769개의 상품이 있습니다.</span>
+      </div>
+    </section>
+    <section class="sunglasses-page">
+      <!-- <article class="product-list-card">
             <a href="#" class="product-list-link">
               <div class="product-list-image">
                 <img class="product-list-img default-img" src="../assets/images/productlist_1.webp" alt="" />
@@ -511,22 +508,22 @@
           </article>
         </section>
       </div> -->
-        </section>
+    </section>
 
-        <div class="more-wrap text-small-r">
-          <button type="button" class="more-btn">
-            더보기
-          </button>
-        </div>
-        <nav class="pagination">
-          <button type="button" class="page-btn prev-btn" aria-label="이전 페이지">
-            <span class="material-icons">chevron_left</span>
-          </button>
+    <div class="more-wrap text-small-r">
+      <button type="button" class="more-btn">
+        더보기
+      </button>
+    </div>
+    <nav class="pagination">
+      <button type="button" class="page-btn prev-btn" aria-label="이전 페이지">
+        <span class="material-icons">chevron_left</span>
+      </button>
 
-          <button type="button" class="page-btn next-btn" aria-label="다음 페이지">
-            <span class="material-icons">chevron_right</span>
-          </button>
-        </nav>
+      <button type="button" class="page-btn next-btn" aria-label="다음 페이지">
+        <span class="material-icons">chevron_right</span>
+      </button>
+    </nav>
   </main>
   <footer class="footer"></footer>
   <script type="module" src="../js/pages/productList.js"></script>
