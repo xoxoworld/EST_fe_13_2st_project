@@ -12,7 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=favorite"
     />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/flex-utility.css" />
     <link rel="stylesheet" href="../css/product.css" />
@@ -23,8 +23,9 @@
     <main class="product-page">
       <div class="layout">
         <section class="contents-section">
+          <h1 class="hidden">상품 상세 컨텐츠</h1>
           <div class="contents-wrap d-flex flex-column">
-            <section class="visual-section" aria-label="상품 이미지">
+            <div class="visual-section">
               <div class="visual-wrap">
                 <img
                   src="https://image.rounz.com/_data/product/OAKLEY/OO9438-0158/OO9438-0158_03.jpg"
@@ -32,9 +33,10 @@
                 />
                 <p class="visual-count"><strong>1</strong> / 5</p>
               </div>
-            </section>
+            </div>
             <aside class="side-panel" aria-label="구매 옵션">
               <section class="summary-section" aria-label="상품 기본 정보">
+                <h2 class="hidden">상품 기본 정보</h2>
                 <div class="container summary-wrap d-flex flex-column g-10">
                   <p class="ship-badge">당일발송</p>
                   <div class="d-flex align-items-center">
@@ -44,10 +46,9 @@
                   <h2 class="product-title">오클리 아이자켓 리덕스 선글라스 OO9438 4종 택1</h2>
                   <div class="meta-row d-flex align-items-center">
                     <span class="material-symbols-outlined">favorite</span
-                    ><span class="favorite">660</span
-                    ><span class="review-meta-item"
-                      ><span class="material-icons">&nbsp;&nbsp;reviews</span
-                      ><span class="review-top"></span>
+                    ><span class="favorite">660</span><span class="review-meta-item"></span
+                    ><span class="material-icons">&nbsp;&nbsp;reviews</span
+                    ><span class="review-top"></span>
                   </div>
                   <div class="color-block">
                     <h2 class="text-medium-b">컬러</h2>
@@ -86,11 +87,13 @@
                 </div>
               </section>
               <section class="rounz-only-section" aria-label="라운즈 혜택">
-                <div class="container rounz-only-wrap ">
+                <div class="container rounz-only-wrap">
                   <h3 class="text-medium-b">오직 라운즈에서만</h3>
-                  <div class="multiple-wrapper swiper face-banner d-flex align-items-center justify-content-center ">
+                  <div
+                    class="multiple-wrapper swiper face-banner d-flex align-items-center justify-content-center"
+                  >
                     <div class="multiple-slider swiper-wrapper">
-                      <div class="swiper-slide face-banner-content d-flex align-items-center ">
+                      <div class="swiper-slide face-banner-content d-flex align-items-center">
                         <img src="../assets/icons/bg_detail_benefit_1.png" alt="rounz_banner_1" />
                         <div>
                           <strong class="text-small-b">내 얼굴에 마음껏 써보기</strong
@@ -108,14 +111,19 @@
                         <img src="../assets/icons/bg_detail_benefit_3.png" alt="rounz_banner_1" />
                         <div>
                           <strong class="text-small-b">실물이 궁금할 때, 안경원에서 써보기</strong
-                          ><span>개수 제한 없이 라운즈 연계 안경원에서 <br />직접 써보고 살 수 있어요</span>
+                          ><span
+                            >개수 제한 없이 라운즈 연계 안경원에서 <br />직접 써보고 살 수
+                            있어요</span
+                          >
                         </div>
                       </div>
                       <div class="face-banner-content d-flex align-items-center swiper-slide">
                         <img src="../assets/icons/bg_detail_benefit_4.png" alt="rounz_banner_1" />
                         <div>
                           <strong class="text-small-b">안경 렌즈 맞춤까지 한 번에</strong
-                          ><span>가까운 안경원으로 배송받아 <br />렌즈 맞춤부터 피팅까지 편하게</span>
+                          ><span
+                            >가까운 안경원으로 배송받아 <br />렌즈 맞춤부터 피팅까지 편하게</span
+                          >
                         </div>
                       </div>
                     </div>
@@ -141,7 +149,6 @@
                     alt=""
                   />
                 </button> -->
-                
               </div>
             </section>
 
@@ -155,16 +162,20 @@
             </section>
 
             <div class="tab-content">
-              <section id="detail" class="detail-section detail-content active" data-tab-panel="detail" aria-label="상세정보">
-                <div class="detail-wrap">
-                  <img
-                      src=""
-                      alt=""
-                    />
-                </div>
+              <section
+                id="detail"
+                class="detail-section detail-content active"
+                data-tab-panel="detail"
+                aria-label="상세정보"
+              >
+                <div class="detail-wrap"></div>
               </section>
-  
-              <section class="related-section detail-content active" data-tab-panel="detail review qna" aria-label="비슷한 상품">
+
+              <section
+                class="related-section detail-content active"
+                data-tab-panel="detail review qna"
+                aria-label="비슷한 상품"
+              >
                 <div class="container related-wrap">
                   <h2 class="text-medium-b">이 상품과 비슷한 상품</h2>
                   <div class="related-list d-flex">
@@ -180,8 +191,13 @@
                   </div>
                 </div>
               </section>
-  
-              <section id="review" class="review-section detail-content container" data-tab-panel="review" aria-label="후기 별점">
+
+              <section
+                id="review"
+                class="review-section detail-content container"
+                data-tab-panel="review"
+                aria-label="후기 별점"
+              >
                 <div class="review-wrap">
                   <h2 class="text-medium-b">후기 별점</h2>
                   <div class="review-tools d-flex align-items-center justify-content-between">
@@ -222,8 +238,13 @@
                   </div>
                 </div>
               </section>
-  
-              <section id="qna" class="qna-section detail-content" data-tab-panel="qna" aria-label="상품 문의">
+
+              <section
+                id="qna"
+                class="qna-section detail-content"
+                data-tab-panel="qna"
+                aria-label="상품 문의"
+              >
                 <div class="container qna-wrap">
                   <div class="qna-head d-flex align-items-center justify-content-between">
                     <h2 class="text-medium-b">상품 문의</h2>
@@ -244,8 +265,13 @@
                   </div>
                 </div>
               </section>
-  
-              <section id="purchase" class="purchase-section detail-content" data-tab-panel="purchase" aria-label="구매 정보">
+
+              <section
+                id="purchase"
+                class="purchase-section detail-content"
+                data-tab-panel="purchase"
+                aria-label="구매 정보"
+              >
                 <div class="container purchase-wrap">
                   <h2 class="text-medium-b">구매 정보</h2>
                   <article>
@@ -307,7 +333,8 @@
                       [EVENT]라운즈 회원님은 10일 이내 무료(CJ대한통운/우체국) 교환/반품!
                     </h4>
                     <p>
-                      - 라운즈 회원이라면 단순변심도 제품 수령 10일 내에 무료로 교환/반품 가능합니다.
+                      - 라운즈 회원이라면 단순변심도 제품 수령 10일 내에 무료로 교환/반품
+                      가능합니다.
                     </p>
                     <p>- ID당 1회 한정</p>
                     <p>- 고객 부주의로 인한 파손이나 구성물 분실 시 교환/반품 불가</p>
@@ -331,7 +358,9 @@
                   </article>
                   <article>
                     <h4 class="text-small-b">꼭 확인해주세요!</h4>
-                    <p>1. 온라인으로 구매하신 제품은 오프라인 매장에서 교환/반품하실 수 없습니다.</p>
+                    <p>
+                      1. 온라인으로 구매하신 제품은 오프라인 매장에서 교환/반품하실 수 없습니다.
+                    </p>
                     <p>
                       2. 렌즈 옵션 추가 상품, 수령 후 10일이 지난 상품, 구성품이 분실/훼손된 상품은
                       교환/반품이 어렵습니다.
@@ -346,10 +375,12 @@
                     <h4 class="text-small-b">A/S 안내</h4>
                     <p>- 라운즈에서 구매하신 상품에 한하여 가능합니다.</p>
                     <p>
-                      - 제품 자체의 불량인 경우 1년 안에는 무상 처리되며, 단종이나 부품 수급이 어려운
-                      경우 A/S가 어렵습니다.
+                      - 제품 자체의 불량인 경우 1년 안에는 무상 처리되며, 단종이나 부품 수급이
+                      어려운 경우 A/S가 어렵습니다.
                     </p>
-                    <p>- 고객님 과실에 의한 A/S는 비용이 청구되며, 수리기간은 사전에 안내드립니다.</p>
+                    <p>
+                      - 고객님 과실에 의한 A/S는 비용이 청구되며, 수리기간은 사전에 안내드립니다.
+                    </p>
                   </article>
                 </div>
               </section>
@@ -361,7 +392,12 @@
 
     <section class="bottom-buy-section" aria-label="구매 버튼">
       <div class="bottom-buy-wrap">
-        <button class="bottom-sheet-handle" type="button" aria-label="구매 옵션 열기" aria-expanded="false">
+        <button
+          class="bottom-sheet-handle"
+          type="button"
+          aria-label="구매 옵션 열기"
+          aria-expanded="false"
+        >
           <span class="home-indicator"></span>
         </button>
 

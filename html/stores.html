@@ -14,10 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-    <script
-      type="text/javascript"
-      src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=67f8f6f1d9641a1e9e51cadd68120bd0&libraries=services"
-    ></script>
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=67f8f6f1d9641a1e9e51cadd68120bd0&libraries=services&autoload=false"></script>
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/flex-utility.css" />
     <link rel="stylesheet" href="../css/stores.css" />
@@ -26,6 +23,7 @@
     <header class="header"></header>
     <main>
       <section class="store-hero text-center">
+        <h1 class="hidden">라운즈 안경원</h1>
         <p class="text-small-m">세상에 없던 안경 쇼핑</p>
         <h2 class="text-title-xs"><strong>라운즈</strong> 안경원</h2>
       </section>
@@ -63,7 +61,7 @@
       <section class="info-banners" aria-label="라운즈 안경원 안내">
         <article class="info-card">
           <div class="d-flex flex-column justify-content-between g-10">
-            <h3 class="text-large-b">어디서나 같은 가격&nbsp<br />즐거운 안경 쇼핑</h3>
+            <h3 class="text-large-b">어디서나 같은 가격<br />즐거운 안경 쇼핑</h3>
             <p>
               라운즈 안경원은 온/오프라인 동일한 회원 혜택을 제공합니다.<br />1:1 렌즈 맞춤
               컨설팅으로<br />
@@ -79,7 +77,7 @@
 
         <article class="info-card">
           <div class="d-flex flex-column justify-content-between g-10">
-            <h3 class="text-large-b">렌즈도 미리&nbsp<br />비교하고 고르기</h3>
+            <h3 class="text-large-b">렌즈도 미리<br />비교하고 고르기</h3>
             <p>
               이제 안경 렌즈도 가격부터 성능까지 미리 비교해 보세요!<br />자외선과 블루라이트 차단은
               기본. 합리적인 가격대의<br />라운즈 렌즈를 소개합니다.
@@ -91,7 +89,7 @@
 
         <article class="info-card">
           <div class="d-flex flex-column justify-content-between g-10">
-            <h3 class="text-large-b">가족까지 누리는&nbsp<br />스페셜 할인 혜택</h3>
+            <h3 class="text-large-b">가족까지 누리는<br />스페셜 할인 혜택</h3>
             <p>
               라운즈 제휴 기업 임직원이라면 누구나!<br />가족과 함께 라운즈에서 특별 할인 혜택을
               누리세요.
@@ -103,13 +101,14 @@
       </section>
 
       <section class="reservation d-flex align-items-center justify-content-center g-20">
+        <h2 class="hidden">예약하기</h2>
         <p>원하는 날짜와 시간을 선택하여 <br />편안하게 방문하세요</p>
         <a href="#reservation-modal">예약하기</a>
       </section>
 
       <section class="reservation-layer" id="reservation-modal" aria-hidden="true">
         <a class="reservation-dim" href="#" aria-label="닫기"></a>
-        <article
+        <div
           class="reservation-panel"
           role="dialog"
           aria-modal="true"
@@ -182,14 +181,15 @@
               <button type="button">예약 신청하기</button>
             </form>
           </div>
-        </article>
+        </div>
       </section>
 
       <section class="store-list-section">
+        <h2 class="hidden">안경원 리스트</h2>
         <div class="list-controls d-flex align-items-center justify-content-between">
           <div class="store-tabs" role="tablist" aria-label="안경원 유형">
-            <button class="active rounz-store" type="button">라운즈 안경원</button>
-            <button type="button partner-store">파트너 안경원</button>
+            <button class="active" type="button">라운즈 안경원</button>
+            <button type="button">파트너 안경원</button>
           </div>
           <div class="select-group">
             <select aria-label="시/도 선택">
@@ -225,6 +225,7 @@
       </section>
 
       <section class="store-detail-layer" id="store-detail" aria-hidden="true">
+        <h2 class="hidden">안경원 상세</h2>
         <button class="store-detail-dim"></button>
         <!-- <article
           class="store-detail-panel"

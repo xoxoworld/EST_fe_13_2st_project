@@ -1,7 +1,10 @@
 import { renderHeader } from "./modules/header.js";
 import { renderFooter } from "./modules/footer.js";
+import { initSidebar } from "./modules/menuToggle.js";
+
 document.addEventListener("DOMContentLoaded",()=>{
   renderHeader();
+  initSidebar();
   renderFooter();
 });
 
@@ -1363,34 +1366,34 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /*사이드바*/
-$(function(){
-  const $menuBtn = $(".header-btn-menu");
-  const $sidebar = $(".sidebar");
-  const $overlay = $(".sidebar-overlay");
-  const $close = $(".sidebar-close");
-  // 열기
-  $menuBtn.on("click", function(){
-    $sidebar.toggleClass("active");
-    $overlay.toggleClass("active");
-  });
-  // 닫기
-  $close.on("click", function(){
-    $sidebar.removeClass("active");
-    $overlay.removeClass("active");
-  });
-  // 바깥 클릭 닫기
-  $overlay.on("click", function(){
-    $sidebar.removeClass("active");
-    $overlay.removeClass("active");
-  });
-  // 닫기
-  $(document).on("keydown", function(e){
-    if(e.key === "Escape"){
-      $sidebar.removeClass("active");
-      $overlay.removeClass("active");
-    }
-  });
-});
+// $(function(){
+//   const $menuBtn = $(".header-btn-menu");
+//   const $sidebar = $(".sidebar");
+//   const $overlay = $(".sidebar-overlay");
+//   const $close = $(".sidebar-close");
+//   // 열기
+//   $menuBtn.on("click", function(){
+//     $sidebar.toggleClass("active");
+//     $overlay.toggleClass("active");
+//   });
+//   // 닫기
+//   $close.on("click", function(){
+//     $sidebar.removeClass("active");
+//     $overlay.removeClass("active");
+//   });
+//   // 바깥 클릭 닫기
+//   $overlay.on("click", function(){
+//     $sidebar.removeClass("active");
+//     $overlay.removeClass("active");
+//   });
+//   // 닫기
+//   $(document).on("keydown", function(e){
+//     if(e.key === "Escape"){
+//       $sidebar.removeClass("active");
+//       $overlay.removeClass("active");
+//     }
+//   });
+// });
 /*사이드바*/
 
 /*배너 슬라이드 스와이퍼*/
@@ -1437,16 +1440,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /*제니 컬렉션 상품*/
 document.addEventListener('DOMContentLoaded', () => {
-  // Config
+
   const API = "./data/products.json";
   const CHUNK_SIZE = 3;
   let isLoading = false;
   let productSwiper;
-  
-  const productWrapper = document.querySelector(".product-wrapper");
-  
-  // Skeleton
+  const jennySection = document.querySelector(".jenny-collection");
+  const productWrapper =
+    jennySection.querySelector(".product-wrapper");
+
+  const targetBrands = [
+    "Ray-Ban"
+  ];
+
   function renderSkeleton() {
+
     productWrapper.innerHTML = `
       <div class="swiper-slide">
         <ul class="product-slide-list">
@@ -1458,7 +1466,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   <figure class="product-card__figure">
                     <div class="skeleton skeleton-image"></div>
                   </figure>
-  
+
                   <div class="product-card-text-box d-flex flex-column">
                     <div class="skeleton skeleton-brand"></div>
                     <div class="skeleton skeleton-name"></div>
@@ -1473,30 +1481,32 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
   }
-  
-  // API
+
   async function fetchProducts() {
-    if (isLoading) return;
-  
-    isLoading = true;
-  
-    renderSkeleton();
-  
-    try {
-      const res = await fetch(API);
-  
-      if (!res.ok) {
-        throw new Error(`API 오류 : ${res.status}`);
-      }
-  
-      const data = await res.json();
-  
-      renderSlides(data.products);
-  
-      initSwiper();
-    } catch (error) {
+
+  if (isLoading) return;
+
+  isLoading = true;
+
+  renderSkeleton();
+
+  try {
+    const res = await fetch(API);
+    if (!res.ok) {
+      throw new Error(`API 오류 : ${res.status}`);
+    }
+
+    const data = await res.json();
+    // 스켈레톤 최소 노출 시간
+    await new Promise(resolve =>
+      setTimeout(resolve, 600)
+    );
+
+    renderSlides(data.products);
+    initSwiper();
+
+    } catch(error){
       console.error(error);
-  
       productWrapper.innerHTML = `
         <div class="swiper-slide">
           <ul class="product-slide-list">
@@ -1506,41 +1516,52 @@ document.addEventListener('DOMContentLoaded', () => {
           </ul>
         </div>
       `;
+
     } finally {
       isLoading = false;
     }
-  }
-  
-  // 슬라이드
+}
+
+
   function renderSlides(products) {
     productWrapper.innerHTML = "";
-  
-    const limitedProducts = products.slice(0, 12);
-  
-    for (let i = 0; i < limitedProducts.length; i += CHUNK_SIZE) {
-      const slideProducts = limitedProducts.slice(i, i + CHUNK_SIZE);
-  
+
+    const filteredProducts = products.filter(product =>
+      targetBrands.includes(product.brand)
+    );
+
+    const limitedProducts = filteredProducts.slice(0,12);
+
+    for(let i = 0; i < limitedProducts.length; i += CHUNK_SIZE){
+      const slideProducts =
+        limitedProducts.slice(i, i + CHUNK_SIZE);
       const slide = document.createElement("div");
       slide.className = "swiper-slide";
-  
+
       const list = document.createElement("ul");
       list.className = "product-slide-list";
-  
+
       slideProducts.forEach(product => {
-        list.appendChild(productCard(product));
+        const card = productCard(product);
+        if(card){
+          list.appendChild(card);
+        }
       });
-  
+
       slide.appendChild(list);
       productWrapper.appendChild(slide);
     }
   }
-  
-  // 상품카드
+
   function productCard(product) {
+
+    if(!targetBrands.includes(product.brand)){
+      return null;
+    }
+
     const item = document.createElement("li");
-  
     item.className = "product-product-item";
-  
+
     item.innerHTML = `
       <article class="product-card">
         <figure class="product-card__figure">
@@ -1551,16 +1572,14 @@ document.addEventListener('DOMContentLoaded', () => {
             loading="lazy"
           />
         </figure>
-  
+
         <div class="product-card-text-box d-flex flex-column">
           <span class="product-card__brand text-small-b">
             ${escapeHTML(product.brand)}
           </span>
-  
           <p class="product-card__name">
             ${escapeHTML(product.title)}
           </p>
-  
           <strong class="product-card__price">
             ${product.price.final.toLocaleString()}
             <span>원</span>
@@ -1568,63 +1587,61 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       </article>
     `;
-  
+
     return item;
+
   }
-  
-  // 스와이퍼
-  function initSwiper() {
-    if (productSwiper) {
-      productSwiper.destroy(true, true);
+  function initSwiper(){
+    if(productSwiper){
+      productSwiper.destroy(true,true);
     }
-  
-    const progressFill = document.querySelector(
-      ".product-pagination__fill"
-    );
-  
-    productSwiper = new Swiper(".product-swiper", {
-      slidesPerView: 1,
-      spaceBetween: 0,
-      speed: 600,
-  
-      observer: true,
-      observeParents: true,
-  
-      on: {
-        init(swiper) {
-          if (progressFill) updateProgress(swiper);
-        },
-  
-        slideChange(swiper) {
-          if (progressFill) updateProgress(swiper);
+
+    const progressFill =
+      document.querySelector(".product-pagination__fill");
+
+    productSwiper = new Swiper(
+      ".jenny-collection .product-swiper",
+      {
+        slidesPerView:1,
+        spaceBetween:0,
+        speed:600,
+        observer:true,
+        observeParents:true,
+        on:{
+          init(swiper){
+            if(progressFill)
+              updateProgress(swiper);
+          },
+
+          slideChange(swiper){
+            if(progressFill)
+              updateProgress(swiper);
+          }
         }
       }
-    });
-  
-    function updateProgress(swiper) {
-    if (!progressFill) return;
-  
-    const totalSlides = swiper.slides.length;
-    const currentSlide = swiper.activeIndex;
-  
-    const segmentWidth = 100 / totalSlides;
-  
-    progressFill.style.width = `${segmentWidth}%`;
-    progressFill.style.left = `${currentSlide * segmentWidth}%`;
+    );
+
+    function updateProgress(swiper){
+      if(!progressFill) return;
+      const totalSlides = swiper.slides.length;
+      const currentSlide = swiper.activeIndex;
+      const segmentWidth = 100 / totalSlides;
+
+      progressFill.style.width =
+        `${segmentWidth}%`;
+      progressFill.style.left =
+        `${currentSlide * segmentWidth}%`;
+    }
   }
-  }
-  
-  // Utils
-  function escapeHTML(str) {
+
+  function escapeHTML(str){
     return String(str)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
   }
-  
-  // Init
   fetchProducts();
 });
 
@@ -1789,22 +1806,43 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     const categoryMap={
       "선글라스":"sunglasses",
-      "안경":"glasses",
-      "렌즈":"contact"
+      "안경":"frame",
+      "블루라이트 차단":"frame",
+      "스포츠고글":"sunglasses"
+    };
+
+    const brandMap={
+      "라운즈ONLY":[
+        "ROUNZ BASIC",
+        "STYLE:WORK",
+        "TART OPTICAL",
+        "1.618",
+        "ROUNZ STANDARD",
+        "ROUNZ ABSOLUTE"
+      ]
     };
 
     const category =
     categoryMap[text] || text.toLowerCase();
+
+    const brand =
+    brandMap[text] || null;
 
     const filtered =
     category === "all"
     ? products
     : products.filter(item=>{
 
+        if(brand){
+            return brand.includes(item.brand);
+          }
+
         return item.category === category;
       });
 
-    console.log("버튼:", category);
+    console.log("버튼:", text);
+    console.log("카테고리:", category);
+    console.log("브랜드:", brand);
     console.log("결과:", filtered.length);
 
     renderProducts(filtered);

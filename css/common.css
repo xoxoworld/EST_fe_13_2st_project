@@ -446,6 +446,7 @@ button {
 .product-card__name {
   font-size: var(--base-font);
   margin: 0;
+  line-height: 20px;
   font-weight: 400;
   color: var(--gray-1);
   overflow: hidden;
@@ -750,6 +751,9 @@ button {
   border: 0;
   background: none;
 }
+.sidebar-auth {
+  color: var(--gray-1);
+}
 
 /* 메뉴 */
 .sidebar-nav {
@@ -770,9 +774,11 @@ button {
 }
 .sidebar-menu-list li:hover {
   background-color: var(--white-1);
+  color: var(--primary)
 }
 .sidebar-menu-list li.active {
   background-color: var(--white-1);
+  color: var(--primary)
 }
 .sidebar-menu-list-right li {
   width: 282px;
@@ -809,19 +815,34 @@ button {
   font-weight: 600;
 }
 
-/* 태블릿 반응형 수정중*/
-/* @media(min-width:624px){
- .sidebar{
-   max-width:624px;
- }
-} */
+/* 태블릿 반응형*/
+/* 480px 이상 */
+@media(min-width:480px){
+  .sidebar{
+    width:480px;
+    max-width:480px;
+  }
+  .sidebar-menu-list-right li{
+    width: 360px;
+  }
+  .sidebar-menu-list-right li a .event-banner{
+    width: 280px;
+  }
+}
 
-/* 웹 반응형 수정중 */
-/* @media(min-width:480px){
- .sidebar{
-   max-width:480px;
- }
-} */
+
+/* 624px 이상 */
+@media(min-width:624px){
+  .sidebar-menu-list-left{
+    width:160px;
+  }
+  .sidebar-menu-list li{
+    width:160px;
+  }
+  .sidebar-menu-list-right li{
+    width: 320px;
+  }
+}
 
 /* 푸터 */
 .footer {
