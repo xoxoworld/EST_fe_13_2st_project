@@ -10,6 +10,16 @@ const priceRange = document.querySelector(".price-range input[type='range']");
 const currentPrice = document.querySelector(".current-price");
 const moreButtons = document.querySelectorAll(".f-more-btn");
 const genderInputs = document.querySelectorAll(".gender input[type='checkbox']");
+const pageList = document.querySelector(".page-list");
+const prevBtn = document.querySelector(".prev-btn");
+const nextBtn = document.querySelector(".next-btn");
+const isDesktop = window.innerWidth >= 1272;
+const bannerImages = [
+  "../assets/images/promotion_banner_1.webp",
+  "../assets/images/promotion_banner_2.png",
+  "../assets/images/promotion_banner_4.png",
+  "../assets/images/promotion_banner_2.png",
+];
 
 let currentCount = countPerPage;
 let products = [];
@@ -20,6 +30,7 @@ let selectedCategories = [];
 let selectedFrames = [];
 let selectedPrice = 500000;
 let selectedGenders = [];
+let currentPage = 1;
 
 // 더보기 버튼
 moreBtn.addEventListener("click", () => {
@@ -101,19 +112,40 @@ sortButtons.forEach(button => {
 // 상품 리스트
 function renderProducts(products) {
   const productList = document.querySelector(".sunglasses-page");
+  const bannerImage1 =
+    bannerImages[(currentPage - 1) % bannerImages.length];
+  const bannerImage2 =
+    bannerImages[currentPage % bannerImages.length];
 
-  const html = products
-    .slice(0, currentCount)
+  let visibleProducts;
+
+  if (isDesktop) {
+    const start = (currentPage - 1) * countPerPage;
+    const end = start + countPerPage;
+    visibleProducts = products.slice(start, end);
+  } else {
+    visibleProducts = products.slice(0, currentCount);
+  }
+
+  const html = visibleProducts
     .map((product, index) => {
       let card = `
       <article class="product-list-card">
         <a href="./productDetail.html?id=${product.id}" class="product-list-link">
           <div class="product-list-image">
-            <img
-              src="${product.images.thumbnail}"
-              alt="${product.title}"
-              class="product-list-img"
-            >
+            <div class="product-list-image">
+              <img
+                src="${product.images.thumbnail}"
+                alt="${product.title}"
+                class="product-list-img default-img"
+              >
+
+              <img
+                src="${product.images.gallery?.[0] || product.images.thumbnail}"
+                alt="${product.title}"
+                class="product-list-img hover-img"
+              >
+            </div>
           </div>
           <div class="product-list-info d-flex flex-column g-5">
             <p class="product-list-brand text-small-b">
@@ -131,24 +163,34 @@ function renderProducts(products) {
     `;
       if (index === 5) {
         card += `
-        <article class="promotion-banner">
-          <img src="../assets/images/timesale.jpg"  alt="">
-        </article>
-      `;
+          <article class="promotion-banner">
+            <img src="${bannerImage1}" alt="">
+          </article>
+        `;
       }
-      if (index === 12) {
+
+      if (
+        (isDesktop && index === 9) ||
+        (!isDesktop && index === 11)
+      ) {
         card += `
-        <article class="promotion-banner">
-          <img src="../assets/images/brand_banner.png" alt="">
-        </article>
-      `;
+          <article class="promotion-banner">
+            <img src="${bannerImage2}" alt="">
+          </article>
+        `;
       }
+
       return card;
     })
     .join("");
 
 
   productList.innerHTML = html;
+  renderPagination();
+
+  if (isDesktop) {
+    renderPagination();
+  }
 }
 
 
@@ -217,9 +259,11 @@ function applyFilter() {
     );
   }
 
+  // 필터 결과 저장
   filteredData = result;
-  currentCount = countPerPage;
-
+  // 필터 적용하면 1페이지로 이동
+  currentPage = 1;
+  // 다시 렌더링
   renderProducts(filteredData);
 }
 
@@ -318,5 +362,61 @@ moreButtons.forEach(button => {
   });
 });
 
-fetchProducts();
+// 데스크탑 페이지네이션
+function renderPagination() {
+  const totalPages = Math.ceil(
+    filteredData.length / countPerPage
+  );
+  pageList.innerHTML = "";
+  for (let i = 1; i <= totalPages; i++) {
+    pageList.innerHTML += `
+      <button
+        class="page-number ${i === currentPage ? "active" : ""
+      }"
+        data-page="${i}"
+      >
+        ${i}
+      </button>
+    `;
+  }
+  // 페이지 숫자
+  document
+    .querySelectorAll(".page-number")
+    .forEach(btn => {
+      btn.addEventListener("click", () => {
+        currentPage = Number(btn.dataset.page);
+
+        renderProducts(filteredData);
+        renderPagination();
+      });
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+    }
+// 오른쪽 페이지
+prevBtn.addEventListener("click", () => {
+      if (currentPage > 1) {
+        currentPage--;
+
+        renderProducts(filteredData);
+        renderPagination();
+      }
+    });
+  // 왼쪽 페이지
+  nextBtn.addEventListener("click", () => {
+    const totalPages = Math.ceil(
+      filteredData.length / countPerPage
+    );
+
+    if (currentPage < totalPages) {
+      currentPage++;
+
+      renderProducts(filteredData);
+      renderPagination();
+    }
+  });
+
+  fetchProducts();
 

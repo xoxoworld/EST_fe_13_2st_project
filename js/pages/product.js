@@ -19,7 +19,7 @@ async function fetchProduct() {
 
   if (!productID) {
     alert("잘못된 접근입니다. 홈으로 이동.");
-    location.href = "./index.html";
+    location.href = "../index.html";
     return;
   }
 

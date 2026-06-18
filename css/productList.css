@@ -158,20 +158,21 @@ body {
   color: var(--black-2);
 }
 .promotion-banner {
-  width: 370px;
-  height: 212px;
-  grid-column: 1 / -1;
+  grid-column: span 3;
+  width: 100%;
+  height: auto;
+}
+.promotion-banner img {
+  width: 100%;
+  height: 100%;
+  width: 100%;
+  display: block;
+  object-fit: cover;
 }
 .promotion-banner a {
   display: block;
   width: 100%;
   height: 100%;
-}
-.promotion-banner img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 /* 페이지네이션/더보기 */
@@ -575,8 +576,7 @@ body {
   }
   .promotion-banner {
     grid-column: span 2;
-    width: 480px;
-    height: 374px;
+    width: 100%;
   }
   .product-list-card:hover .default-img {
     opacity: 0;
@@ -588,7 +588,36 @@ body {
   /* 페이지네이션 */
   .pagination {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 40px;
   }
+  .page-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .page-number,
+  .page-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  .page-number {
+    color: var(--gray-4);
+  }
+  .page-btn {
+    color: var(--black-2);
+  }
+  .page-number.active {
+    font-weight: 700;
+    color: var(--black-2);
+  }
+
   .more-wrap {
     display: none;
   }

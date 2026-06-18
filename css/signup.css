@@ -1,23 +1,68 @@
-/* 4. 회원가입 전용 폼 스타일 (다른 CSS와 겹치지 않게 이름 분리) */
+/* ========================================================
+   [1] 레이아웃 및 전체 구조 (Box 모델 중심)
+   ======================================================== */
 .signup-box {
-  width: 100%;
-  max-width: 354px; /* 로그인 박스와 동일한 기준 */
-  padding: 40px 24px;
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
 
-/* 5. 내부 섹션 숨김/표시 */
+/* ========================================================
+   [2] 섹션 전환 상태 (기능적 클래스)
+   ======================================================== */
 .step-section {
   display: none;
   flex-direction: column;
   width: 100%;
 }
+
 .step-section.active {
   display: flex;
+}
+
+/* ========================================================
+   [3] 컴포넌트 스타일 (내부 상세 요소)
+   ======================================================== */
+/* agree-list 리스트 스타일 */
+.agree-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+/* 개별 리스트 아이템 */
+.agree-list li {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+/* 체크박스와 텍스트를 감싸는 label 정렬 */
+.agree-list label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* 체크박스 스타일 (이게 빠지면 체크박스가 투박합니다) */
+.agree-list input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+/* "모두 동의합니다" 특별 케이스 */
+.agree-all-item {
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 15px;
+  padding-bottom: 15px !important;
+  font-weight: 700;
+  color: #111;
+}
+
+/* 일반 동의 항목 스타일 (선택사항) */
+.agree-sub-item {
+  color: #555;
 }
