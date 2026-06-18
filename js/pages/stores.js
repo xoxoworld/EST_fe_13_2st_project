@@ -12,6 +12,9 @@ const storesGrid = document.querySelector(".store-grid");
 const storeDetailLayer = document.querySelector(".store-detail-layer");
 const moreButton = document.querySelector(".more-button");
 const tabButtons = document.querySelectorAll(".store-tabs button");
+const reservationOpenButton = document.querySelector(".reservation-open");
+const reservationLayer = document.querySelector(".reservation-layer");
+const reservationCloseButtons = document.querySelectorAll(".reservation-dim, .reservation-close");
 
 let storeData = null;
 let stores = [];
@@ -44,6 +47,21 @@ async function fetchStores() {
 }
 
 fetchStores();
+
+// 예약 모달 열고 닫기
+reservationOpenButton?.addEventListener("click", event => {
+  event.preventDefault();
+  reservationLayer?.classList.add("open");
+  reservationLayer?.setAttribute("aria-hidden", "false");
+});
+
+reservationCloseButtons.forEach(button => {
+  button.addEventListener("click", event => {
+    event.preventDefault();
+    reservationLayer?.classList.remove("open");
+    reservationLayer?.setAttribute("aria-hidden", "true");
+  });
+});
 
 // 안경원 카드
 function storesCard(data) {
