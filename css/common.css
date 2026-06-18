@@ -636,7 +636,7 @@ button {
 /* 헤더 반응형 */
 @media (min-width: 768px) {
   .header {
-    max-width: 768px;
+    max-width: 100%;
     margin-inline: auto;
     padding-inline: 0;
   }
@@ -746,8 +746,8 @@ body.sidebar-open {
 
 /* 사이드바 헤더 */
 .sidebar-header {
-  height: 46px;
-  padding: 0 16px;
+  height: 56px;
+  padding: 0 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -800,7 +800,7 @@ body.sidebar-open {
 }
 
 .sidebar-menu-list li a {
-  font-size: var(--medium);
+  font-size: var(--normal);
   font-weight: 600;
 }
 
@@ -833,7 +833,7 @@ body.sidebar-open {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: var(--medium);
+  font-size: var(--normal);
   font-weight: 600;
 }
 

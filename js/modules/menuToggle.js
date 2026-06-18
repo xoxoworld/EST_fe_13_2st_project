@@ -19,7 +19,7 @@ export function initSidebar(){
             <img src="${basePath}/assets/icons/sidebar_arrow_forward.svg" alt="닫기">
           </button>
 
-          <div class="sidebar-auth d-flex g-10 text-medium-r">
+          <div class="sidebar-auth d-flex g-10 text-normal-r">
 
             <a href="${isSubPage ? "./login.html" : "./html/login.html"}">
               로그인
