@@ -138,7 +138,7 @@ const bannerImage2 = bannerImages[randomIndex2];
     .map((product, index) => {
       let card = `
       <article class="product-list-card">
-        <a href="../html/product.html" id=${product.id}" class="product-list-link">
+        <a href="../html/product.html?id=${product.id}" class="product-list-link">
           <div class="product-list-image">
             <div class="product-list-image">
               <img
