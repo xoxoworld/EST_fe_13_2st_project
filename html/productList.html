@@ -20,7 +20,9 @@
   <main class="container product-list-page">
     <section class="breadcrumb-section">
       <nav class="breadcrumb d-flex align-items-center">
-        <a href="../index.html" class="material-icons home">home</a>
+        <a href="../index.html" class="material-icons home" aria-label="홈으로 이동">
+          home
+        </a>
         <span class="material-icons chevron_right">chevron_right</span>
         <span class="breadcrumb-home">선글라스</span>
       </nav>
@@ -120,7 +122,7 @@
           <label for="brand-search" class="sr-only">
             브랜드 검색
           </label>
-          <input type="text" class="brand-search text-small-m" placeholder="브랜드 검색" />
+          <input id="brand-search" type="text" class="brand-search text-small-m" placeholder="브랜드 검색" />
           <ul class="filter-list text-medium-r">
             <li class="filter-item">
               <label>
@@ -237,7 +239,7 @@
           <label for="price-range">
             가격대
           </label>
-          <input type="range" min="0" max="500000" value="200000">
+          <input id="price-range" type="range" min="0" max="500000" value="200000">
           <div class="price-label text-medium-r">
             <span class="current-price">200,000원</span>
           </div>
@@ -517,13 +519,11 @@
           </button>
         </div>
         <nav class="pagination">
-          <button type="button" class="page-btn prev-btn">
+          <button type="button" class="page-btn prev-btn" aria-label="이전 페이지">
             <span class="material-icons">chevron_left</span>
           </button>
-          <div class="page-list">
 
-          </div>
-          <button type="button" class="page-btn next-btn">
+          <button type="button" class="page-btn next-btn" aria-label="다음 페이지">
             <span class="material-icons">chevron_right</span>
           </button>
         </nav>
