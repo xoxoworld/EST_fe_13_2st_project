@@ -1,3 +1,11 @@
+import { getFilteredStores, getSidoList, getSigunguList } from "../common.js";
+import { renderHeader } from "../modules/header.js";
+import { renderFooter } from "../modules/footer.js";
+document.addEventListener("DOMContentLoaded", () => {
+  renderHeader();
+  renderFooter();
+});
+
 const cartList = document.querySelector(".cart-list");
 const cartCount = document.querySelector(".cart-count");
 const productCount = document.querySelector(".product-count");

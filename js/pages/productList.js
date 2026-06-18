@@ -1,3 +1,11 @@
+import { getFilteredStores, getSidoList, getSigunguList } from "../common.js";
+import { renderHeader } from "../modules/header.js";
+import { renderFooter } from "../modules/footer.js";
+document.addEventListener("DOMContentLoaded", () => {
+  renderHeader();
+  renderFooter();
+});
+
 const sortButtons = document.querySelectorAll(".filter-btn");
 const countPerPage = 12;
 const moreBtn = document.querySelector(".more-btn");
@@ -101,22 +109,23 @@ sortButtons.forEach(button => {
 function renderProducts(products) {
   const productList = document.querySelector(".sunglasses-page");
   // 배너 랜덤
-const randomIndex1 =
-  Math.floor(Math.random() * bannerImages.length);
-let randomIndex2;
-do {
-  randomIndex2 =
+  const randomIndex1 =
     Math.floor(Math.random() * bannerImages.length);
-} while (randomIndex1 === randomIndex2);
+  let randomIndex2;
+  do {
+    randomIndex2 =
+      Math.floor(Math.random() * bannerImages.length);
+  } while (randomIndex1 === randomIndex2);
 
-const bannerImage1 = bannerImages[randomIndex1];
-const bannerImage2 = bannerImages[randomIndex2];
+  const bannerImage1 = bannerImages[randomIndex1];
+  const bannerImage2 = bannerImages[randomIndex2];
 
   let visibleProducts;
 
-  if (isDesktop) {
+  if (window.innerWidth >= 1272) {
     const start = (currentPage - 1) * countPerPage;
     const end = start + countPerPage;
+
     visibleProducts = products.slice(start, end);
   } else {
     visibleProducts = products.slice(0, currentCount);
@@ -158,13 +167,16 @@ const bannerImage2 = bannerImages[randomIndex2];
     `;
       if (index === 5) {
         card += `
-        <article class="promotion-banner">
-          <img src="../assets/images/promotion_banner_1.webp" alt="">
-        </article>
-          `;
+          <article class="promotion-banner">
+            <img src="${bannerImage1}" alt="">
+          </article>
+        `;
       }
 
-      if ((isDesktop && index === 9) || (!isDesktop && index === 11)) {
+      if (
+        (window.innerWidth >= 1272 && index === 9) ||
+        (window.innerWidth < 1272 && index === 11)
+      ) {
         card += `
           <article class="promotion-banner">
             <img src="${bannerImage2}" alt="">
@@ -178,7 +190,7 @@ const bannerImage2 = bannerImages[randomIndex2];
 
   productList.innerHTML = html;
 
-  if (isDesktop) {
+  if (window.innerWidth >= 1272) {
     renderPagination();
   }
 }
@@ -332,39 +344,19 @@ function renderPagination() {
       </button>
     `;
   }
+
   document.querySelectorAll(".page-number").forEach(btn => {
     btn.addEventListener("click", () => {
       currentPage = Number(btn.dataset.page);
 
       renderProducts(filteredData);
-      renderPagination();
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     });
   });
-}
-prevBtn.addEventListener("click", () => {
-  if (currentPage > 1) {
-    currentPage--;
-    renderProducts(filteredData);
-    renderPagination();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
-});
-
-nextBtn.addEventListener("click", () => {
-  const totalPages = Math.ceil(filteredData.length / countPerPage);
-
-  if (currentPage < totalPages) {
-    currentPage++;
-    renderProducts(filteredData);
-    renderPagination();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
-});
+} 
 
 fetchProducts();

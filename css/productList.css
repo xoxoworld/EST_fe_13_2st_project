@@ -5,13 +5,15 @@
 
 body {
   min-width: 320px;
-  padding-bottom: 118px;
   background: var(--white-1);
   color: var(--black-2);
   font-size: var(--base-font);
   letter-spacing: 0;
   padding: 0;
   margin: 0;
+}
+.product-list-page {
+  padding-bottom: 30px;
 }
 
 /* nav */
@@ -207,7 +209,6 @@ body {
 /* Tablet */
 @media (min-width: 768px) {
   body {
-    padding-bottom: 118px;
     font-size: 13px;
   }
   .container {
@@ -228,6 +229,7 @@ body {
   }
   .product-list-page {
     max-width: none;
+    padding-bottom: 120px;
   }
   .promotion-text {
     gap: 10px;
@@ -360,12 +362,11 @@ body {
 
 /* Desktop */
 @media (min-width: 1272px) {
-  body {
-    padding: 118px 0;
-  }
   .container {
     max-width: 1272px;
-    padding: 0;
+  }
+  .product-list-page {
+    padding-bottom: 118px;
   }
 
   .sunglasses-page {
@@ -376,6 +377,7 @@ body {
   }
   .breadcrumb {
     gap: 10px;
+    padding: 50px 0;
   }
   .breadcrumb .material-icons,
   .breadcrumb-home {
