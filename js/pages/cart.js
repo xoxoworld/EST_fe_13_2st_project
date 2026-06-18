@@ -10,20 +10,6 @@ const discountAmount = document.querySelector(".discount-amount");
 const pointAmount = document.querySelector(".point-amount");
 
 let cart = readCart();
-
-if (cart.length === 0) {
-  cart = [
-    {
-      id: 1,
-      brand: "Ray-Ban",
-      title: "레이벤 선글라스",
-      thumb: "../assets/images/productlist_1.webp",
-      price: 204800,
-      qty: 1,
-    },
-  ];
-}
-
 let cartHTML = [];
 let selectedIds = new Set();
 
@@ -342,6 +328,20 @@ const collectionSwiper = new Swiper(".collection-swiper", {
       slidesPerView: 4,
     },
   },
+});
+
+// 로그인 팝업창
+const orderButtons = document.querySelectorAll(".order-btn");
+orderButtons.forEach(button => {
+  button.addEventListener("click", e => {
+    e.preventDefault();
+    const isLogin = confirm(
+      "로그인이 필요합니다.\n로그인 페이지로 이동하시겠습니까?"
+    );
+    if (isLogin) {
+      location.href = "../html/login.html";
+    }
+  });
 });
 
 // 함수 실행
