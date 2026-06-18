@@ -21,7 +21,7 @@ async function fetchProduct() {
 
   if (!productID) {
     alert("잘못된 접근입니다. 홈으로 이동.");
-    location.href = "./index.html";
+    location.href = "../index.html";
     return;
   }
 
@@ -34,12 +34,13 @@ async function fetchProduct() {
 
     if (!product) {
       alert("존재하지 않는 상품입니다");
-      location.href = "./index.html";
+      location.href = "../index.html";
       return;
     }
-
+    // 컨텐츠 생성 함수 실행
     createContent(product, data.products);
 
+    // 추천 상품 리스트 함수 실행
     if (typeof createRecommendLists === "function") {
       createRecommendLists(data.products, product.category, Number(productID));
     }
@@ -50,7 +51,7 @@ async function fetchProduct() {
 
 // 상품 상세 페이지 콘텐츠 생성
 function createContent(data, products) {
-  const title = document.querySelector(".product-title"),
+  const title = document.querySelector(".title"),
     brand = document.querySelector(".brand-path"),
     favorite = document.querySelector(".favorite"),
     reviewTop = document.querySelector(".review-top"),
@@ -84,6 +85,7 @@ function createContent(data, products) {
 
   const galleryImages = [data.images.thumbnail, ...data.images.gallery];
 
+  // 렌더 함수 실행
   renderVisualSwiper(visualWrap, visualCount, data, galleryImages);
   renderDetailImages(detailWrap, data);
   renderColorChips(colorBlock, colorList, data.otherColors);
@@ -211,10 +213,8 @@ function renderRelatedProducts(relatedList, products, currentProduct) {
 
     img.setAttribute("src", product.images.thumbnail);
     img.setAttribute("alt", product.title);
-    brand.classList.add("text-small-b");
     brand.textContent = product.brand;
     title.textContent = product.title;
-    price.classList.add("text-small-b");
     price.textContent = `${product.price.final.toLocaleString()}원`;
 
     article.append(img, brand, title, price);
