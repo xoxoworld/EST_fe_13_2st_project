@@ -10,6 +10,15 @@ const priceRange = document.querySelector(".price-range input[type='range']");
 const currentPrice = document.querySelector(".current-price");
 const moreButtons = document.querySelectorAll(".f-more-btn");
 const genderInputs = document.querySelectorAll(".gender input[type='checkbox']");
+const pageList = document.querySelector(".page-list");
+const prevBtn = document.querySelector(".prev-btn");
+const nextBtn = document.querySelector(".next-btn");
+const isDesktop = window.innerWidth >= 1272;
+const bannerImages = [
+  "../assets/images/promotion_banner_2.png",
+  "../assets/images/promotion_banner_3.png",
+  "../assets/images/promotion_banner_4.png",
+];
 
 let currentCount = countPerPage;
 let products = [];
@@ -20,6 +29,7 @@ let selectedCategories = [];
 let selectedFrames = [];
 let selectedPrice = 500000;
 let selectedGenders = [];
+let currentPage = 1;
 
 // 더보기 버튼
 moreBtn.addEventListener("click", () => {
@@ -101,19 +111,31 @@ sortButtons.forEach(button => {
 // 상품 리스트
 function renderProducts(products) {
   const productList = document.querySelector(".sunglasses-page");
+  const bannerImage = bannerImages[(currentPage - 1) % bannerImages.length];
+
+  const start = (currentPage - 1) * countPerPage;
+  const end = start + countPerPage;
 
   const html = products
-    .slice(0, currentCount)
+    .slice(start, end)
     .map((product, index) => {
       let card = `
       <article class="product-list-card">
         <a href="./productDetail.html?id=${product.id}" class="product-list-link">
           <div class="product-list-image">
-            <img
-              src="${product.images.thumbnail}"
-              alt="${product.title}"
-              class="product-list-img"
-            >
+            <div class="product-list-image">
+              <img
+                src="${product.images.thumbnail}"
+                alt="${product.title}"
+                class="product-list-img default-img"
+              >
+
+              <img
+                src="${product.images.gallery?.[0] || product.images.thumbnail}"
+                alt="${product.title}"
+                class="product-list-img hover-img"
+              >
+            </div>
           </div>
           <div class="product-list-info d-flex flex-column g-5">
             <p class="product-list-brand text-small-b">
@@ -129,26 +151,32 @@ function renderProducts(products) {
         </a>
       </article>
     `;
-      if (index === 5) {
+        if (index === 5) {
         card += `
         <article class="promotion-banner">
-          <img src="../assets/images/timesale.jpg"  alt="">
+          <img src="../assets/images/promotion_banner_1.webp" alt="">
         </article>
-      `;
-      }
-      if (index === 12) {
+          `;
+        }
+
+        if (
+        (isDesktop && index === 9) ||
+        (!isDesktop && index === 11)
+        ) {
         card += `
-        <article class="promotion-banner">
-          <img src="../assets/images/brand_banner.png" alt="">
-        </article>
-      `;
-      }
+          <article class="promotion-banner">
+            <img src="${bannerImage}" alt="">
+          </article>
+        `;
+        }
+        
       return card;
     })
     .join("");
 
 
   productList.innerHTML = html;
+  renderPagination();
 }
 
 
@@ -217,9 +245,11 @@ function applyFilter() {
     );
   }
 
+  // 필터 결과 저장
   filteredData = result;
-  currentCount = countPerPage;
-
+  // 필터 적용하면 1페이지로 이동
+  currentPage = 1;
+  // 다시 렌더링
   renderProducts(filteredData);
 }
 
@@ -316,6 +346,54 @@ moreButtons.forEach(button => {
       button.textContent = "더보기 +";
     }
   });
+});
+
+function renderPagination() {
+  const totalPages = Math.ceil(
+    filteredData.length / countPerPage
+  );
+  pageList.innerHTML = "";
+  for (let i = 1; i <= totalPages; i++) {
+    pageList.innerHTML += `
+      <button
+        class="page-number ${i === currentPage ? "active" : ""
+      }"
+        data-page="${i}"
+      >
+        ${i}
+      </button>
+    `;
+  }
+  document
+    .querySelectorAll(".page-number")
+    .forEach(btn => {
+      btn.addEventListener("click", () => {
+        currentPage = Number(btn.dataset.page);
+
+        renderProducts(filteredData);
+        renderPagination();
+      });
+    });
+}
+prevBtn.addEventListener("click", () => {
+  if (currentPage > 1) {
+    currentPage--;
+
+    renderProducts(filteredData);
+    renderPagination();
+  }
+});
+nextBtn.addEventListener("click", () => {
+  const totalPages = Math.ceil(
+    filteredData.length / countPerPage
+  );
+
+  if (currentPage < totalPages) {
+    currentPage++;
+
+    renderProducts(filteredData);
+    renderPagination();
+  }
 });
 
 fetchProducts();
