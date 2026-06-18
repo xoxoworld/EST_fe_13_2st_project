@@ -26,16 +26,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (termsList && step1NextBtn) {
     termsList.innerHTML = termsData
-      .map(
-        term => `
-        <li>
-          <label>
-            <input type="checkbox" id="${term.id}" class="${term.id === "all" ? "all-check" : "sub-check"}" data-required="${term.isRequired}">
-            <span>${term.text}</span>
-          </label>
-        </li>
-      `,
-      )
+      .map(term => {
+        // [수정 포인트] 여기서 isAll 변수를 먼저 정의해야 합니다.
+        const isAll = term.id === "all";
+
+        return `
+          <li class="${isAll ? "agree-all-item" : "agree-sub-item"}">
+            <label>
+              <input type="checkbox" id="${term.id}" 
+                     class="${isAll ? "all-check" : "sub-check"}" 
+                     data-required="${term.isRequired}">
+              <span>${term.text}</span>
+            </label>
+          </li>
+        `;
+      })
       .join("");
 
     const allCheck = termsList.querySelector(".all-check");
