@@ -23,14 +23,6 @@ const eyewearData = {
     image: "../assets/images/brand_product_03.png",
     detailUrl: "./product.html",
   },
-  // 4: {
-  //   id: 4,
-  //   brand: "TOM FORD",
-  //   name: "FT5783-B 001",
-  //   price: 389000,
-  //   image: "../assets/images/brand_product_04.png",
-  //   detailUrl: "./product.html",
-  // },
 };
 
 // 현재 선택된 상품 ID 상태 관리
@@ -38,8 +30,56 @@ let selectedEyewear = {
   0: 1,
   1: 2,
   2: 3,
-  // 3: 4,
 };
+
+// 드롭다운 메뉴 생성 함수
+function createDropdownMenu(columnIndex) {
+  const menu = document.createElement("ul");
+  menu.className = "dropdown-menu";
+
+  Object.values(eyewearData).forEach(product => {
+    const li = document.createElement("li");
+    li.textContent = product.name;
+    li.style.cursor = "pointer";
+
+    li.addEventListener("click", () => {
+      changeEyewear(columnIndex, product.id);
+      menu.classList.remove("show");
+    });
+
+    menu.appendChild(li);
+  });
+
+  return menu;
+}
+
+// 드롭다운 초기화 및 이벤트 바인딩
+function initDropdownEvents() {
+  document.querySelectorAll(".dropdown-select-btn").forEach((btn, index) => {
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+
+      let menu = this.parentNode.querySelector(".dropdown-menu");
+
+      if (!menu) {
+        menu = createDropdownMenu(index);
+        this.parentNode.appendChild(menu);
+      }
+
+      // 다른 열려있는 드롭다운 닫기
+      document.querySelectorAll(".dropdown-menu").forEach(m => {
+        if (m !== menu) m.classList.remove("show");
+      });
+
+      menu.classList.toggle("show");
+    });
+  });
+
+  // 외부 클릭 시 메뉴 닫기
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".dropdown-menu").forEach(m => m.classList.remove("show"));
+  });
+}
 
 // 가격 포맷팅
 function formatPrice(price) {
@@ -66,14 +106,14 @@ function renderColumn(columnIndex) {
   img.src = product.image;
   img.alt = product.name;
 
-  column.querySelector(".dropdown-select-btn span").textContent = product.brand;
+  const btnSpan = column.querySelector(".dropdown-select-btn span");
+  if (btnSpan) btnSpan.textContent = product.brand;
 
-  // 버튼 데이터 속성 저장
   const buyBtn = column.querySelector(".btn-buy");
   const moreBtn = column.querySelector(".btn-more");
 
-  buyBtn.dataset.id = product.id;
-  moreBtn.dataset.id = product.id;
+  if (buyBtn) buyBtn.dataset.id = product.id;
+  if (moreBtn) moreBtn.dataset.id = product.id;
 }
 
 // 전체 렌더링
@@ -89,20 +129,20 @@ function changeEyewear(columnIndex, eyewearId) {
   renderColumn(columnIndex);
 }
 
-// 구매하기: 장바구니에 담고 장바구니 페이지로 이동
+// 구매 로직
 function handleBuy(productId) {
   const product = eyewearData[productId];
   if (!product) return;
 
   let cart = [];
   try {
-    const parsed = JSON.parse(localStorage.getItem("cart"));
-    if (Array.isArray(parsed)) cart = parsed;
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) cart = JSON.parse(savedCart);
   } catch (e) {
-    console.warn("장바구니 파싱 오류, 초기화합니다.");
+    console.warn("장바구니 파싱 오류");
   }
-  const exists = cart.find(item => item.id === productId);
 
+  const exists = cart.find(item => item.id === productId);
   if (!exists) {
     cart.push({
       id: product.id,
@@ -114,57 +154,44 @@ function handleBuy(productId) {
     });
     localStorage.setItem("cart", JSON.stringify(cart));
   }
-
   window.location.href = "../../html/cart.html";
 }
 
-// 더 알아보기: 상품 ID를 URL 파라미터로 전달하여 상세 페이지로 이동
+// 상세 페이지 이동 로직
 function handleMore(productId) {
   const product = eyewearData[productId];
-
   if (product && product.detailUrl) {
-    // 1. eyewearData에 정의된 경로로 이동
     window.location.href = product.detailUrl + `?id=${productId}`;
   } else {
-    // 2. 정의된 경로가 없을 경우에 대한 예외 처리
-    console.error("해당 상품의 상세 페이지 경로가 없습니다.");
     alert("상세 페이지를 준비 중입니다.");
   }
 }
 
-// 이벤트 바인딩
-function bindEvents() {
-  // 구매 버튼 이벤트
+// 버튼 이벤트 바인딩
+function bindBtnEvents() {
   document.querySelectorAll(".btn-buy").forEach(button => {
-    // 기존 리스너 제거 및 초기화
-    button.replaceWith(button.cloneNode(true));
+    button.replaceWith(button.cloneNode(true)); // 기존 리스너 제거
+  });
+  document.querySelectorAll(".btn-buy").forEach(button => {
+    button.addEventListener("click", e => handleBuy(Number(e.currentTarget.dataset.id)));
   });
 
-  document.querySelectorAll(".btn-buy").forEach(button => {
-    button.addEventListener("click", e => {
-      const id = e.currentTarget.dataset.id;
-      handleBuy(Number(id));
-    });
-  });
-
-  // 더 알아보기 버튼 이벤트
   document.querySelectorAll(".btn-more").forEach(button => {
     button.replaceWith(button.cloneNode(true));
   });
-
   document.querySelectorAll(".btn-more").forEach(button => {
     button.addEventListener("click", e => {
       e.preventDefault();
-      const id = e.currentTarget.dataset.id;
-      handleMore(Number(id));
+      handleMore(Number(e.currentTarget.dataset.id));
     });
   });
 }
 
-// DOMContentLoaded 실행
+// 초기화
 document.addEventListener("DOMContentLoaded", () => {
-  renderComparePage(); // 1. 화면 먼저 그리기
-  bindEvents(); // 2. 이벤트 붙이기
+  renderComparePage();
+  initDropdownEvents();
+  bindBtnEvents();
 });
 
 // products.json 변환
