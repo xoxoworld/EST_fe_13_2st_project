@@ -169,26 +169,33 @@ function renderProducts(products) {
         </a>
       </article>
     `;
-    // 상품 배열
-      if (index === 5) {
-        card += `
-          <article class="promotion-banner">
-            <img src="${bannerImage1}" alt="">
-          </article>
-        `;
+      // 상품 배열
+      if (window.innerWidth >= 1272) {
+        // 데스크탑 기존 유지
+        if (index === 5) {
+          card += `
+      <article class="promotion-banner">
+        <img src="${bannerImage1}" alt="">
+      </article>
+    `;
+        }
+        if (index === 9) {
+          card += `
+      <article class="promotion-banner">
+        <img src="${bannerImage2}" alt="">
+      </article>
+    `;
+        }
+      } else {
+        // 모바일/태블릿
+        if ((index + 1) % 6 === 0) {
+          card += `
+      <article class="promotion-banner">
+        <img src="${bannerImages[Math.floor(Math.random() * bannerImages.length)]}" alt="">
+      </article>
+    `;
+        }
       }
-
-      if (
-        (window.innerWidth >= 1272 && index === 9) ||
-        (window.innerWidth < 1272 && index === 11)
-      ) {
-        card += `
-          <article class="promotion-banner">
-            <img src="${bannerImage2}" alt="">
-          </article>
-        `;
-      }
-
       return card;
     })
     .join("");
