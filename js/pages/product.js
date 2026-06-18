@@ -1,8 +1,10 @@
 import { updateCartCount, addToCart, addToCompare } from "../common.js";
 import { renderHeader } from "../modules/header.js";
 import { renderFooter } from "../modules/footer.js";
+import { initSidebar } from "../modules/menuToggle.js";
 document.addEventListener("DOMContentLoaded", () => {
   renderHeader();
+  initSidebar();
   renderFooter();
 });
 
