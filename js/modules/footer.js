@@ -77,12 +77,12 @@ export function renderFooter() {
           </div>
 
           <ul class="social-links">
-            <li><img src="assets/icons/bg_blog.png" alt="라운즈 블로그" loading="lazy" /></li>
-            <li><img src="assets/icons/bg_fb.png" alt="라운즈 페이스북" loading="lazy" /></li>
+            <li><img src="../assets/icons/bg_blog.png" alt="라운즈 블로그" loading="lazy" /></li>
+            <li><img src="../assets/icons/bg_fb.png" alt="라운즈 페이스북" loading="lazy" /></li>
             <li>
-              <img src="assets/icons/bg_insta.png" alt="라운즈 인스타그램" loading="lazy" />
+              <img src="../assets/icons/bg_insta.png" alt="라운즈 인스타그램" loading="lazy" />
             </li>
-            <li><img src="assets/icons/btn_kcp.png" alt="KCP 인증 마크" loading="lazy" /></li>
+            <li><img src="../assets/icons/btn_kcp.png" alt="KCP 인증 마크" loading="lazy" /></li>
           </ul>
         </div>
       </div>
