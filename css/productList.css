@@ -497,6 +497,7 @@ body {
   .shape-img {
     width: 40px;
     height: 40px;
+    cursor: pointer;
   }
 
   /* 가격대 */
@@ -518,6 +519,13 @@ body {
   }
   .price-labels span {
     color: var(--gray-2);
+  }
+
+  .hidden-item {
+    display: none;
+  }
+  .hidden-item.show {
+    display: block;
   }
 
   /* ai추천 필터 */
