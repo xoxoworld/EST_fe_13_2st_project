@@ -1,3 +1,11 @@
+import { getFilteredStores, getSidoList, getSigunguList } from "../common.js";
+import { renderHeader } from "../modules/header.js";
+import { renderFooter } from "../modules/footer.js";
+document.addEventListener("DOMContentLoaded", () => {
+  renderHeader();
+  renderFooter();
+});
+
 const sortButtons = document.querySelectorAll(".filter-btn");
 const countPerPage = 12;
 const moreBtn = document.querySelector(".more-btn");
@@ -101,16 +109,16 @@ sortButtons.forEach(button => {
 function renderProducts(products) {
   const productList = document.querySelector(".sunglasses-page");
   // 배너 랜덤
-const randomIndex1 =
-  Math.floor(Math.random() * bannerImages.length);
-let randomIndex2;
-do {
-  randomIndex2 =
+  const randomIndex1 =
     Math.floor(Math.random() * bannerImages.length);
-} while (randomIndex1 === randomIndex2);
+  let randomIndex2;
+  do {
+    randomIndex2 =
+      Math.floor(Math.random() * bannerImages.length);
+  } while (randomIndex1 === randomIndex2);
 
-const bannerImage1 = bannerImages[randomIndex1];
-const bannerImage2 = bannerImages[randomIndex2];
+  const bannerImage1 = bannerImages[randomIndex1];
+  const bannerImage2 = bannerImages[randomIndex2];
 
   let visibleProducts;
 

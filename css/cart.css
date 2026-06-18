@@ -6,9 +6,10 @@
 
 body {
   min-width: 320px;
-  padding-bottom: 118px;
   letter-spacing: 0;
-  padding: 48px 0;
+}
+.cart-page {
+  padding: 30px;
 }
 
 /* 제목 */
@@ -282,8 +283,11 @@ body {
 @media (min-width: 768px) {
   .container {
     max-width: 708px;
-    padding: 0;
   }
+  .cart-page {
+    padding-bottom: 120px;
+  }
+
   .mobile-total {
     display: none;
   }
@@ -390,13 +394,12 @@ body {
 
 /* Desktop */
 @media (min-width: 1272px) {
-  body {
-    padding-bottom: 0;
-  }
-
   .container {
     max-width: 1272px;
     padding: 0;
+  }
+  .cart-page {
+    padding-bottom: 118px;
   }
 
   .cart-layout {
@@ -487,7 +490,7 @@ body {
     color: var(--black-2);
   }
   .product-list-name {
-    font-size: var( --normal);
+    font-size: var(--normal);
     font-weight: 400;
     color: var(--gray-1);
   }
