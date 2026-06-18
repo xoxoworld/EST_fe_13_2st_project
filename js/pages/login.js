@@ -1,9 +1,9 @@
 import { renderHeader } from "../modules/header.js";
-document.addEventListener("DOMContentLoaded", () => {
-  renderHeader();
-});
 
 document.addEventListener("DOMContentLoaded", () => {
+  // 헤더 렌더링
+  renderHeader();
+
   // 1. 요소 선택
   const loginForm = document.getElementById("login-form");
   const emailInput = document.getElementById("useremail");
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .join("");
   }
 
-  // 3. 유효성 검사 및 버튼 활성화 로직
+  // 3. 실시간 유효성 검사 및 버튼 활성화 로직
   const validateForm = () => {
     if (!emailInput || !passwordInput || !loginBtn) return;
 
@@ -41,6 +41,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const isEmailValid = emailRegex.test(emailValue);
     const isPasswordValid = passwordValue.length >= 8;
 
+    // 실시간으로 입력창의 에러 스타일 초기화
+    emailInput.classList.remove("is-invalid");
+    passwordInput.classList.remove("is-invalid");
+
+    // 버튼 활성화 상태 업데이트
     loginBtn.disabled = !(isEmailValid && isPasswordValid);
   };
 
@@ -50,26 +55,49 @@ document.addEventListener("DOMContentLoaded", () => {
     passwordInput.addEventListener("input", validateForm);
   }
 
-  // 4. 폼 제출(Submit) 이벤트 핸들러
+  // 4. 폼 제출(Submit) 이벤트 핸들러 (Alert 대신 UI 피드백 적용)
   if (loginForm) {
     loginForm.addEventListener("submit", e => {
       e.preventDefault(); // 페이지 새로고침 방지
 
-      const formData = new FormData(loginForm);
-      const data = Object.fromEntries(formData.entries());
+      const emailVal = emailInput.value.trim();
+      const passVal = passwordInput.value.trim();
 
-      alert("로그인 시도 데이터: " + JSON.stringify(data));
+      // 유효성 검사 상태 초기화
+      let isValid = true;
 
-      console.log("로그인 시도 데이터:", data);
+      // 이메일 검사 (빈 값일 경우 에러 표시)
+      if (emailVal === "") {
+        emailInput.classList.add("is-invalid");
+        isValid = false;
+      } else {
+        emailInput.classList.remove("is-invalid");
+      }
 
-      // 실제 서버 연동 시 아래와 같이 사용하세요.
-      /*
-      fetch('/login-process', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      }).then(res => console.log(res));
-      */
+      // 비밀번호 검사 (빈 값일 경우 에러 표시)
+      if (passVal === "") {
+        passwordInput.classList.add("is-invalid");
+        isValid = false;
+      } else {
+        passwordInput.classList.remove("is-invalid");
+      }
+
+      // 최종 유효성 통과 시 처리
+      if (isValid) {
+        const formData = new FormData(loginForm);
+        const data = Object.fromEntries(formData.entries());
+
+        console.log("로그인 데이터 전송:", data);
+
+        // 실제 서버 연동 시 아래와 같이 사용하세요.
+        /*
+        fetch('/login-process', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        }).then(res => console.log(res));
+        */
+      }
     });
   }
 });

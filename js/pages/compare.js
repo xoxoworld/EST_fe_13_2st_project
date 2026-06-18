@@ -168,20 +168,20 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // products.json 변환
-async function fetchProducts() {
-  try {
-    const res = await fetch("../data/products.json");
-    const data = await res.json();
+// async function fetchProducts() {
+//   try {
+//     const res = await fetch("../data/products.json");
+//     const data = await res.json();
 
-    products = data.products;
+//     products = data.products;
 
-    console.log(products.filter(item => item.gender === "women").length);
-    console.log([...new Set(products.map(item => item.gender))]);
+//     console.log(products.filter(item => item.gender === "women").length);
+//     console.log([...new Set(products.map(item => item.gender))]);
 
-    filteredData = [...products];
+//     filteredData = [...products];
 
-    renderProducts(filteredData);
-  } catch (error) {
-    console.error(error);
-  }
-}
+//     renderProducts(filteredData);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }

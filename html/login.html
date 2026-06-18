@@ -36,7 +36,7 @@
               <h2 class="text-subtitle-xl">로그인</h2>
             </div>
 
-            <form id="login-form" action="/login-process" method="POST">
+            <form id="login-form">
               <div class="input-group">
                 <input
                   type="text"
@@ -44,12 +44,15 @@
                   name="useremail"
                   placeholder="example@gmail.com"
                 />
+                <span class="error-message" id="email-error">이메일을 입력해주세요.</span>
+
                 <input
                   type="password"
                   id="userpassword"
                   name="userpassword"
                   placeholder="비밀번호 입력"
                 />
+                <span class="error-message" id="password-error">비밀번호를 입력해주세요.</span>
               </div>
 
               <nav class="text-links" aria-label="계정 메뉴">
@@ -62,7 +65,7 @@
 
               <div class="social-group" id="social-container"></div>
 
-              <button type="submit" class="primary-btn" id="login-btn">로그인</button>
+              <button type="submit" id="login-btn" class="primary-btn">로그인</button>
             </form>
           </div>
         </section>
