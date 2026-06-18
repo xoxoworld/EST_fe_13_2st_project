@@ -27,6 +27,7 @@
   list-style: none;
   padding: 0;
   margin: 20px 0;
+  width: 100%;
 }
 
 /* 개별 리스트 아이템 */
@@ -35,6 +36,7 @@
   align-items: center;
   padding: 10px 0;
   font-size: 14px;
+  width: 100%;
 }
 
 /* 체크박스와 텍스트를 감싸는 label 정렬 */
