@@ -1,8 +1,10 @@
 import { getFilteredStores, getSidoList, getSigunguList } from "../common.js";
 import { renderHeader } from "../modules/header.js";
 import { renderFooter } from "../modules/footer.js";
+import { initSidebar } from "../modules/menuToggle.js";
 document.addEventListener("DOMContentLoaded", () => {
   renderHeader();
+  initSidebar();
   renderFooter();
 });
 
@@ -51,6 +53,7 @@ moreBtn.addEventListener("click", () => {
   }
 });
 
+//  products.json 파일 가져오기
 async function fetchProducts() {
   try {
     const res = await fetch("../data/products.json");
@@ -131,6 +134,7 @@ function renderProducts(products) {
     visibleProducts = products.slice(0, currentCount);
   }
 
+  // 상품 리스트
   const html = visibleProducts
     .map((product, index) => {
       let card = `
@@ -165,6 +169,7 @@ function renderProducts(products) {
         </a>
       </article>
     `;
+    // 상품 배열
       if (index === 5) {
         card += `
           <article class="promotion-banner">
@@ -347,6 +352,7 @@ function renderPagination() {
     `;
   }
 
+  // 페이지 번호 클릭
   document.querySelectorAll(".page-number").forEach(btn => {
     btn.addEventListener("click", () => {
       currentPage = Number(btn.dataset.page);
