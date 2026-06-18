@@ -451,7 +451,7 @@ button {
 .product-card__name {
   font-size: var(--base-font);
   margin: 0;
-  line-height: 20px;
+  line-height: 18px;
   font-weight: 400;
   color: var(--gray-1);
   overflow: hidden;
