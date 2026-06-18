@@ -1,6 +1,25 @@
 /* =========================
    Banner
 ========================= */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body, #wrap {
+  min-width: 320px; /* 창을 이보다 줄여도 더이상 내부 요소가 줄어들지 않고 스크롤바가 생김 */
+}
+body {
+  overflow-x: hidden;
+}
+img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
 
 .banner {
   position: relative;
@@ -29,12 +48,14 @@
   position: relative;
   flex-shrink: 0;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .banner-carousel .swiper-slide img {
   display: block;
   width: 100%;
-  max-width: 100%;
   height: 100%;
   object-fit: cover;
 }
@@ -239,14 +260,14 @@
   }
   .banner-badge {
     margin: 0;
-    font-size: 30px;
+    font-size: var(--title--x-s);
     font-weight: 700;
     letter-spacing: 0.05em;
   }
 
   .banner-title {
     margin: 0;
-    font-size: 56px;
+    font-size: var(--heading--l);
     padding-top: 16px;
     padding-bottom: 30px;
     line-height: 1.05;
@@ -255,7 +276,7 @@
 
   .banner-description {
     margin: 0;
-    font-size: 24px;
+    font-size: var(--sub-title--m);
     padding-bottom: 30px;
     font-weight: 400;
   }
@@ -342,7 +363,7 @@
 /* 카테고리 섹션 */
 .category {
   padding: 24px 0;
-  background-color: #fff;
+  background-color: var(--white-1);
 }
 
 .category__list {
@@ -358,7 +379,7 @@
   min-height: 100px;
   padding: 0 12px;
   border-radius: 10px;
-  background-color: #eef0f8;
+  background-color: var(--secondary);
   display: flex;
   align-items: center;
   gap: 12px;
@@ -385,14 +406,17 @@
 
 .category-card__description {
   margin: 0;
-  font-size: 12px;
+  font-size: var(--base-font);
   line-height: 1.4;
-  color: #6c7284;
+  color: var(--gray-2);
   word-break: keep-all;
 }
 @media (min-width: 768px) {
   .category {
-    padding: 80px 0 0 0;
+    padding: 80px 0 80px 0;
+  }
+  .category__inner {
+    padding: 0 30px;
   }
   .category__list {
     grid-template-columns: repeat(2, 1fr);
@@ -401,7 +425,7 @@
     min-height: 100px;
     padding: 0 20px;
     border-radius: 10px;
-    background-color: #eef0f8;
+    background-color: var(--secondary);
     display: flex;
     align-items: center;
     gap: 20px;
@@ -413,9 +437,9 @@
   }
   .category-card__description {
     margin: 0;
-    font-size: 16px;
+    font-size: var(--normal);
     line-height: 1.4;
-    color: #6c7284;
+    color: var(--gray-2);
     word-break: keep-all;
   }
   .category-card__icon {
@@ -485,23 +509,26 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 0 16px;
 }
 
 .timesale__label {
   display: inline-block;
   margin: 0;
-  font-size: 18px;
+  font-size: var(--medium);
   font-weight: 600;
   text-transform: uppercase;
-  color: #1729ec;
+  color: var(--primary);
 }
 
 .timesale__timer {
   margin: 0;
   font-size: 65px;
-  font-weight: 600;
-  color: #111827;
+  font-weight: 700;
+  color: var(--black-2);
+  display: block;
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 .timesale__content {
@@ -519,16 +546,19 @@
   overflow: hidden;
 }
 .img-box {
-  width: 402px;
+  width: 100%;
+  max-width: 402px;
   position: relative;
-  display: inline-block;
+  display: block;
+  margin: 0 auto;
   overflow: hidden;
 }
 .timesale__image-web {
-  display: block;
-  width: 732px;
-  height: 190px;
   display: none;
+  width: 100%;
+  max-width: 732px;
+  height: 190px;
+  object-fit: cover;
 }
 .img-box::after {
   content: "";
@@ -555,7 +585,7 @@
 
 @media (min-width: 768px) {
   .timesale {
-    padding: 120px 0;
+    padding: 80px 30px;
   }
   .timesale__container {
     gap: 20px;
@@ -580,7 +610,8 @@
     display: none;
   }
   .img-box {
-    width: 732px;
+    width: 100%;
+    max-width: none;
     height: 190px;
   }
   .timesale__image {
@@ -679,10 +710,10 @@
 @media (min-width: 768px) {
   .jenny-collection {
     padding: 0;
-    margin: 80px auto;
+    margin: 0 auto;
   }
   .jenny-collection .container {
-    padding: 0;
+    padding: 80px 24px 80px 24px;;
   }
   .jenny-contents {
     padding: 0;
@@ -752,7 +783,7 @@
    BEST PRODUCT
 ========================= */
 .best-product .container {
-  padding: 24px 0;
+  padding: 24px 16px;
 }
 .product-slide-list .product-product-item:nth-child(n + 7) {
   display: none;
@@ -764,7 +795,7 @@
     margin: 0 auto;
   }
   .best-product .container {
-    padding: 80px 0;
+    padding: 80px 24px 80px 24px;
     gap: 27px;
   }
 
@@ -786,12 +817,12 @@
   .best-product {
     max-width: 1272px;
     margin: auto;
-    padding: 0 0 120px 0;
+    padding: 0 16px 120px 16px;
     gap: 27px;
   }
   .best-product .container {
     gap: 27px;
-    padding: 0;
+    padding: 0 16px;
   }
   .product-slide-list .product-product-item:nth-child(n + 1) {
     display: list-item;
@@ -1288,6 +1319,9 @@
     background-color 0.25s ease,
     transform 0.25s ease;
 }
+.new-product .new-product-container .more-button {
+    display: none;
+}
 
 .new-product-more-btn .more-text {
   display: none;
@@ -1580,7 +1614,7 @@
   }
 
   .new-product-progress-container {
-    display: block;
+    display: none;
     width: 100%;
     height: 3px;
     background-color: #e5e7eb;
@@ -1625,6 +1659,9 @@
   .new-product-load-more-btn:hover {
     background-color: #f9fafb;
     border-color: #9ca3af;
+  }
+  .new-product .new-product-container .more-button {
+    display: flex;
   }
 }
 
@@ -1715,8 +1752,9 @@
 }
 
 .ai-cta-visual {
-  width: 440px;
-  height: 380px;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 11 / 9;
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -1905,6 +1943,9 @@
 .brand-load-more-btn {
   display: none;
 }
+.recommended-brand .recommended-brand-container .more-button {
+  display: none;
+}
 
 .recommended-brand-title {
   font-size: clamp(20px, 2.5vw + 10px, 32px);
@@ -1971,7 +2012,8 @@
 /* Side Banners */
 .carousel-slide.prev,
 .carousel-slide.next {
-  width: 302px;
+  width: 100%;
+  max-width: 302px;
   background-color: #f2f2f2;
   transform: scale(0.92);
   cursor: pointer;
@@ -2305,6 +2347,9 @@
   .brand-load-more-btn:hover {
     background-color: #f9fafb;
     border-color: #9ca3af;
+  }
+  .recommended-brand .recommended-brand-container .more-button {
+    display: flex;
   }
 }
 
@@ -2783,7 +2828,8 @@
 }
 
 .store-detail-image-box {
-  width: 432px;
+  width: 100%;
+  max-width: 432px;
   border-radius: 16px;
   overflow: hidden;
   aspect-ratio: 432 / 302;
