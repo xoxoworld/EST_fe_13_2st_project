@@ -148,7 +148,11 @@ body {
   flex-direction: column;
   gap: 4px;
 }
-
+.product-list-name {
+  font-size: var(--base-font);
+  font-weight: 400;
+  color: var(--gray-4);
+}
 .product-list-brand,
 .product-list-price {
   color: var(--black-2);
@@ -493,6 +497,7 @@ body {
   .shape-img {
     width: 40px;
     height: 40px;
+    cursor: pointer;
   }
 
   /* 가격대 */
@@ -514,6 +519,13 @@ body {
   }
   .price-labels span {
     color: var(--gray-2);
+  }
+
+  .hidden-item {
+    display: none;
+  }
+  .hidden-item.show {
+    display: block;
   }
 
   /* ai추천 필터 */
