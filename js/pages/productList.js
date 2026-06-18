@@ -122,9 +122,10 @@ function renderProducts(products) {
 
   let visibleProducts;
 
-  if (isDesktop) {
+  if (window.innerWidth >= 1272) {
     const start = (currentPage - 1) * countPerPage;
     const end = start + countPerPage;
+
     visibleProducts = products.slice(start, end);
   } else {
     visibleProducts = products.slice(0, currentCount);
@@ -166,13 +167,16 @@ function renderProducts(products) {
     `;
       if (index === 5) {
         card += `
-        <article class="promotion-banner">
-          <img src="../assets/images/promotion_banner_1.webp" alt="">
-        </article>
-          `;
+          <article class="promotion-banner">
+            <img src="${bannerImage1}" alt="">
+          </article>
+        `;
       }
 
-      if ((isDesktop && index === 9) || (!isDesktop && index === 11)) {
+      if (
+        (window.innerWidth >= 1272 && index === 9) ||
+        (window.innerWidth < 1272 && index === 11)
+      ) {
         card += `
           <article class="promotion-banner">
             <img src="${bannerImage2}" alt="">
@@ -186,7 +190,7 @@ function renderProducts(products) {
 
   productList.innerHTML = html;
 
-  if (isDesktop) {
+  if (window.innerWidth >= 1272) {
     renderPagination();
   }
 }
@@ -340,39 +344,19 @@ function renderPagination() {
       </button>
     `;
   }
+
   document.querySelectorAll(".page-number").forEach(btn => {
     btn.addEventListener("click", () => {
       currentPage = Number(btn.dataset.page);
 
       renderProducts(filteredData);
-      renderPagination();
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     });
   });
-}
-prevBtn.addEventListener("click", () => {
-  if (currentPage > 1) {
-    currentPage--;
-    renderProducts(filteredData);
-    renderPagination();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
-});
-
-nextBtn.addEventListener("click", () => {
-  const totalPages = Math.ceil(filteredData.length / countPerPage);
-
-  if (currentPage < totalPages) {
-    currentPage++;
-    renderProducts(filteredData);
-    renderPagination();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
-});
+} 
 
 fetchProducts();
