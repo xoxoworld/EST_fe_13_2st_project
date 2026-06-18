@@ -63,35 +63,41 @@ function updateTotalAmount() {
   const discount = total >= 200000 ? 10000 : 0;
   const finalPrice = total - discount;
   const point = Math.floor(finalPrice * 0.1);
+  const mobileTotalPrice = document.querySelector(".mobile-total-price");
 
   productCount.textContent = `${getCartCount()}개`;
   productAmount.textContent = `${total.toLocaleString("ko-KR")}원`;
   discountAmount.textContent = `-${discount.toLocaleString("ko-KR")}원`;
   totalAmount.textContent = `${finalPrice.toLocaleString("ko-KR")}원`;
   pointAmount.textContent = `${point.toLocaleString("ko-KR")}원`;
+
+  if (mobileTotalPrice) {
+    mobileTotalPrice.textContent =
+      `${finalPrice.toLocaleString("ko-KR")}원`;
+  }
 }
 
-function renderCart() {
-  // 기존 상품 제거
-  cartList.innerHTML = "";
+  function renderCart() {
+    // 기존 상품 제거
+    cartList.innerHTML = "";
 
-  // 장바구니가 비어있는 경우
-  if (cart.length === 0) {
-    cartList.innerHTML = `
+    // 장바구니가 비어있는 경우
+    if (cart.length === 0) {
+      cartList.innerHTML = `
       <article class="empty-cart">
         <p>장바구니가 비어 있습니다.</p>
       </article>
     `;
 
-    selectAllText.textContent = "전체선택 (0/0)";
-    selectAll.querySelector("input").checked = false;
+      selectAllText.textContent = "전체선택 (0/0)";
+      selectAll.querySelector("input").checked = false;
 
-    return;
-  }
+      return;
+    }
 
-  // 상품 HTML 생성
-  cartHTML = cart.map(
-    item => `
+    // 상품 HTML 생성
+    cartHTML = cart.map(
+      item => `
           <article class="cart-item d-flex flex-column" data-id="${item.id}">
             <p class="brand-name">${item.brand}</p>
             <div class="cart-item-content">
@@ -130,154 +136,147 @@ function renderCart() {
                 ✕
               </button>
             </div>
-            
-            <div class="mobile-total d-flex justify-content-between">
-              <span>총 금액</span>
-              <strong class="mobile-total-price">
-                ${(item.price * item.qty).toLocaleString("ko-KR")}원
-              </strong>
-            </div>
           </article>
   `,
-  );
-  // 화면에 출력
-  cartList.innerHTML = cartHTML.join("");
-}
+    );
+    // 화면에 출력
+    cartList.innerHTML = cartHTML.join("");
+  }
 
-// 수량 변경 / 삭제
-cartList.addEventListener("click", e => {
-  const cartItem = e.target.closest(".cart-item");
+  // 수량 변경 / 삭제
+  cartList.addEventListener("click", e => {
+    const cartItem = e.target.closest(".cart-item");
 
-  if (!cartItem) return;
+    if (!cartItem) return;
 
-  const id = Number(cartItem.dataset.id);
-  const targetItem = cart.find(item => item.id === id);
+    const id = Number(cartItem.dataset.id);
+    const targetItem = cart.find(item => item.id === id);
 
-  // 수량 감소
-  if (e.target.closest(".minusBtn")) {
-    if (targetItem.qty > 1) {
-      targetItem.qty--;
+    // 수량 감소
+    if (e.target.closest(".minusBtn")) {
+      if (targetItem.qty > 1) {
+        targetItem.qty--;
+
+        saveCart();
+        renderCart();
+        updateSelectState();
+      }
+      return;
+    }
+
+    // 수량 증가
+    if (e.target.closest(".plusBtn")) {
+      targetItem.qty++;
 
       saveCart();
       renderCart();
       updateSelectState();
+
+      return;
     }
-    return;
+
+    // 상품 삭제
+    if (e.target.closest(".delete-btn")) {
+      cart = cart.filter(item => item.id !== id);
+
+      saveCart();
+      renderCart();
+      updateSelectState();
+
+      return;
+    }
+  });
+
+  // 상품 클릭 시 상세페이지 이동
+  cartList.addEventListener("click", e => {
+    const cartItem = e.target.closest(".cart-item");
+
+    if (!cartItem) return;
+
+    if (
+      e.target.closest(".product-image") ||
+      e.target.closest(".product-info")
+    ) {
+      const id = cartItem.dataset.id;
+
+      location.href = `./product.html?id=${id}`;
+    }
+  });
+
+  function updateSelectState() {
+    const checkboxes = getCheckBoxes();
+    const checkedCount = checkboxes.filter(checkbox => checkbox.checked).length;
+    selectAllText.textContent = `전체선택 (${checkedCount}/${checkboxes.length})`;
+    selectAll.querySelector("input").checked = checkedCount > 0 && checkedCount === checkboxes.length;
+    selectedIds = new Set(getCheckedIds());
   }
 
-  // 수량 증가
-  if (e.target.closest(".plusBtn")) {
-    targetItem.qty++;
+  // 선택 삭제
+  selectDeleteBtn.addEventListener("click", () => {
+    const checkedIds = getCheckedIds();
+    if (checkedIds.length === 0) return;
+    cart = cart.filter(item => !checkedIds.includes(item.id));
 
     saveCart();
     renderCart();
     updateSelectState();
+  });
 
-    return;
+  function getCheckBoxes() {
+    return [...cartList.querySelectorAll(".cart-item input")];
   }
 
-  // 상품 삭제
-  if (e.target.closest(".delete-btn")) {
-    cart = cart.filter(item => item.id !== id);
-
-    saveCart();
-    renderCart();
+  selectAll.querySelector("input").addEventListener("change", e => {
+    const checkbox = getCheckBoxes();
+    if (e.target.checked) {
+      checkbox.forEach(checkbox => (checkbox.checked = true));
+    } else {
+      checkbox.forEach(checkbox => (checkbox.checked = false));
+    }
     updateSelectState();
+  });
 
-    return;
+  function getCheckedIds() {
+    const checkbox = getCheckBoxes();
+    return checkbox
+      .filter(checkbox => checkbox.checked)
+      .map(checkbox => Number(checkbox.closest(".cart-item").dataset.id));
   }
-});
 
-// 상품 클릭 시 상세페이지 이동
-cartList.addEventListener("click", e => {
-  const cartItem = e.target.closest(".cart-item");
+  cartList.addEventListener("change", e => {
+    if (e.target.matches(".cart-item input")) {
+      updateSelectState();
+    }
+  });
 
-  if (!cartItem) return;
-
-  if (
-    e.target.closest(".product-image") ||
-    e.target.closest(".product-info")
-  ) {
-    const id = cartItem.dataset.id;
-
-    location.href = `./product.html?id=${id}`;
+  async function fetchProducts() {
+    try {
+      const res = await fetch("../data/products.json");
+      const data = await res.json();
+      renderProducts(data.products);
+    } catch (error) {
+      console.error(error);
+    }
   }
-});
+  fetchProducts();
 
-function updateSelectState() {
-  const checkboxes = getCheckBoxes();
-  const checkedCount = checkboxes.filter(checkbox => checkbox.checked).length;
-  selectAllText.textContent = `전체선택 (${checkedCount}/${checkboxes.length})`;
-  selectAll.querySelector("input").checked = checkedCount > 0 && checkedCount === checkboxes.length;
-  selectedIds = new Set(getCheckedIds());
-}
-
-// 선택 삭제
-selectDeleteBtn.addEventListener("click", () => {
-  const checkedIds = getCheckedIds();
-  if (checkedIds.length === 0) return;
-  cart = cart.filter(item => !checkedIds.includes(item.id));
-
-  saveCart();
-  renderCart();
-  updateSelectState();
-});
-
-function getCheckBoxes() {
-  return [...cartList.querySelectorAll(".cart-item input")];
-}
-
-selectAll.querySelector("input").addEventListener("change", e => {
-  const checkbox = getCheckBoxes();
-  if (e.target.checked) {
-    checkbox.forEach(checkbox => (checkbox.checked = true));
-  } else {
-    checkbox.forEach(checkbox => (checkbox.checked = false));
+  function renderProducts(products) {
+    const productLists = document.querySelectorAll(".product-list");
+    // 함께 구매하면 좋은 상품
+    productLists[0].innerHTML = createCards(
+      products.slice(0, 8)
+    );
+    // 당신을 위한 컬렉션
+    productLists[1].innerHTML = createCards(
+      products.slice(9, 16)
+    );
   }
-  updateSelectState();
-});
 
-function getCheckedIds() {
-  const checkbox = getCheckBoxes();
-  return checkbox
-    .filter(checkbox => checkbox.checked)
-    .map(checkbox => Number(checkbox.closest(".cart-item").dataset.id));
-}
-
-cartList.addEventListener("change", e => {
-  if (e.target.matches(".cart-item input")) {
-    updateSelectState();
-  }
-});
-
-async function fetchProducts() {
-  try {
-    const res = await fetch("../data/products.json");
-    const data = await res.json();
-    renderProducts(data.products);
-  } catch (error) {
-    console.error(error);
-  }
-}
-fetchProducts();
-
-function renderProducts(products) {
-  const productLists = document.querySelectorAll(".product-list");
-  // 함께 구매하면 좋은 상품
-  productLists[0].innerHTML = createCards(
-    products.slice(0, 8)
-  );
-  // 당신을 위한 컬렉션
-  productLists[1].innerHTML = createCards(
-    products.slice(9, 16)
-  );
-}
-
-// 상품 카드
-function createCards(products) {
-  return products
-    .map(
-      product => `
+  // 상품 카드
+  function createCards(products) {
+    return products
+      .map(
+        product => `
          <article class="swiper-slide product-list-card">
           <a href="./product.html?id=${product.id}" class="product-list-link">
 
@@ -306,71 +305,71 @@ function createCards(products) {
           </a>
         </article>
       `
-    )
-    .join("");
-}
+      )
+      .join("");
+  }
 
 
-// 배너 스와이퍼
-const swiper = new Swiper(".cart-banner", {
-  loop: true,
+  // 배너 스와이퍼
+  const swiper = new Swiper(".cart-banner", {
+    loop: true,
 
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-  },
-});
-
-// 추천 상품 스와이퍼
-const recommendSwiper = new Swiper(".recommend-swiper", {
-  slidesPerView: 2.2,
-  spaceBetween: 16,
-  navigation: {
-    nextEl: ".recommend-next",
-    prevEl: ".recommend-prev",
-  },
-  breakpoints: {
-    768: {
-      slidesPerView: 3,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
     },
-    1272: {
-      slidesPerView: 4,
-    },
-  },
-});
-
-const collectionSwiper = new Swiper(".collection-swiper", {
-  slidesPerView: 2.2,
-  spaceBetween: 16,
-  navigation: {
-    nextEl: ".collection-next",
-    prevEl: ".collection-prev",
-  },
-  breakpoints: {
-    768: {
-      slidesPerView: 3,
-    },
-    1272: {
-      slidesPerView: 4,
-    },
-  },
-});
-
-// 로그인 팝업창
-const orderButtons = document.querySelectorAll(".order-btn");
-orderButtons.forEach(button => {
-  button.addEventListener("click", e => {
-    e.preventDefault();
-    const isLogin = confirm(
-      "로그인이 필요합니다.\n로그인 페이지로 이동하시겠습니까?"
-    );
-    if (isLogin) {
-      location.href = "../html/login.html";
-    }
   });
-});
 
-// 함수 실행
-renderCart();
-updateTotalAmount();
-updateSelectState();
+  // 추천 상품 스와이퍼
+  const recommendSwiper = new Swiper(".recommend-swiper", {
+    slidesPerView: 2.2,
+    spaceBetween: 16,
+    navigation: {
+      nextEl: ".recommend-next",
+      prevEl: ".recommend-prev",
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 3,
+      },
+      1272: {
+        slidesPerView: 4,
+      },
+    },
+  });
+
+  const collectionSwiper = new Swiper(".collection-swiper", {
+    slidesPerView: 2.2,
+    spaceBetween: 16,
+    navigation: {
+      nextEl: ".collection-next",
+      prevEl: ".collection-prev",
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 3,
+      },
+      1272: {
+        slidesPerView: 4,
+      },
+    },
+  });
+
+  // 로그인 팝업창
+  const orderButtons = document.querySelectorAll(".order-btn");
+  orderButtons.forEach(button => {
+    button.addEventListener("click", e => {
+      e.preventDefault();
+      const isLogin = confirm(
+        "로그인이 필요합니다.\n로그인 페이지로 이동하시겠습니까?"
+      );
+      if (isLogin) {
+        location.href = "../html/login.html";
+      }
+    });
+  });
+
+  // 함수 실행
+  renderCart();
+  updateTotalAmount();
+  updateSelectState();
