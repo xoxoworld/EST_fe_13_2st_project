@@ -1217,18 +1217,17 @@
 }
 
 .new-product-sub-header {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 32px;
-  flex-wrap: wrap;
   gap: 16px;
 }
 
 .new-product-filters {
   display: flex;
   gap: 8px;
-  flex-wrap: wrap;
+  /* min-width: 0; */
+  /* flex-wrap: wrap; */
 }
 
 .filter-chip {
@@ -1239,6 +1238,7 @@
   border-radius: 100px;
   font-size: 14px;
   font-weight: 600;
+  white-space: nowrap;
   cursor: pointer;
   transition: all 0.25s ease;
   line-height: 1;
@@ -1436,8 +1436,6 @@
 
   .new-product-sub-header {
     margin-bottom: 32px;
-    flex-wrap: nowrap;
-    justify-content: space-between;
     gap: 16px;
   }
   .new-product-filters {
@@ -1702,7 +1700,7 @@
 }
 
 .ai-cta-phone-img {
-  height: 470px;
+  height: 380px;
   width: auto;
   object-fit: contain;
   display: block;
@@ -1733,7 +1731,7 @@
     height: 320px;
   }
   .ai-cta-phone-img {
-    height: 390px;
+    height: 320px;
   }
 }
 
@@ -1781,7 +1779,7 @@
     justify-content: center;
   }
   .ai-cta-phone-img {
-    height: 350px;
+    height: 280px;
   }
 }
 
@@ -2131,7 +2129,7 @@
   }
 
   .brand-more-btn {
-    display: block;
+    display: none;
   }
   .recommended-brand-filters {
     display: flex;
@@ -2182,7 +2180,11 @@
 
 @media (width <= 480px) {
   .brand-more-btn {
+    display: block;
     font-size: 12px;
+  }
+  .more-web-btn {
+    display: none;
   }
   .brand-product-grid {
     display: flex;
@@ -2327,20 +2329,18 @@
 }
 
 .about-us-image-wrapper {
+  position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
 .about-us-image {
   width: 100%;
   height: 100%;
+  display: block;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.about-us-card:hover .about-us-image {
-  transform: scale(1.05);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+   filter 0.4s ease;
 }
 
 .about-us-card-overlay {
@@ -2361,16 +2361,20 @@
   flex-direction: column;
   justify-content: flex-end;
   box-sizing: border-box;
+   transition: all 0.4s ease;
 }
 
-.about-us-card-title {
+.about-us-card-title,
+.about-us-card-title-active {
   color: var(--white-1);
   font-size: 30px;
-  font-weight: 800;
+  font-weight: 700;
   margin-bottom: 12px;
   line-height: 1.25;
   letter-spacing: -0.5px;
-  transition: transform 0.3s ease;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
 }
 
 .about-us-card-subtitle {
@@ -2379,7 +2383,85 @@
   font-weight: 400;
   line-height: 1.4;
   letter-spacing: -0.2px;
-  transition: transform 0.3s ease;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+/* 제목 중앙 정렬 */
+.about-us-card:hover .about-us-card-overlay {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* 모든 카드 공통 */
+.about-us-card {
+  position: relative;
+}
+
+.about-us-card-overlay {
+  transition: background 0.4s ease;
+}
+
+.about-us-card-title {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.about-us-card-subtitle {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* 이미지 */
+.about-us-card:hover .about-us-image {
+  transform: scale(1.05);
+  filter: brightness(0.6);
+}
+
+/* Card 2, 3 공통 */
+.about-us-card:not(:first-child):hover .about-us-card-title {
+  transform: translateY(-8px);
+}
+
+.about-us-card:not(:first-child):hover .about-us-card-subtitle {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+}
+
+/* Card 1 전용 */
+.about-us-card-title-active {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  opacity: 0;
+  transform: translate(-50%, -40%);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.about-us-card:first-child:hover .about-us-card-title-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%);
+}
+
+.about-us-card:first-child:hover .about-us-card-title-active + .about-us-card-title {
+  opacity: 0;
+  display: none;
+  visibility: hidden;
+  transform: translateY(-12px);
+}
+
+.about-us-card:first-child:hover .about-us-card-subtitle {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
 }
 
 @media (width <= 1024px) {
@@ -2391,6 +2473,9 @@
     gap: 16px;
   }
   .about-us-card-title {
+    font-size: 24px;
+  }
+  .about-us-card-title-active{
     font-size: 24px;
   }
 }
@@ -2440,6 +2525,9 @@
   .about-us-card-title {
     font-size: 30px;
   }
+  .about-us-card-title-active{
+    font-size: 30px;
+  }
   .about-us-card-subtitle {
     font-size: 15px;
   }
@@ -2480,6 +2568,10 @@
     aspect-ratio: 1 / 1.1;
   }
   .about-us-card-title {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  .about-us-card-title-active{
     font-size: 24px;
     margin-bottom: 8px;
   }
