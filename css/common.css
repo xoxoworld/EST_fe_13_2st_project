@@ -710,7 +710,7 @@ body.sidebar-open {
   position: fixed;
   top: 0;
   left: 0;
-   width: clamp(320px, 85vw, 480px);
+  width: clamp(320px, 85vw, 480px);
   max-width: 624px;
   height: 100vh;
   background: var(--white-1);
@@ -847,7 +847,6 @@ body.sidebar-open {
     display: block;
   }
 }
-
 
 @media (min-width: 624px) {
   .sidebar-menu-list-right li {
