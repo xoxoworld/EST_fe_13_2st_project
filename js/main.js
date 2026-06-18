@@ -1330,8 +1330,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const newProductSliderWrapper = document.querySelector('.new-product-slider-wrapper');
   const newProductSwiperWrapper = document.querySelector('.new-product-swiper-wrapper');
-  const newPrevBtn = document.querySelector('.new-product-controls .ctrl-prev');
-  const newNextBtn = document.querySelector('.new-product-controls .ctrl-next');
+  const newPrevBtn = document.querySelector('.new-product .control-btn .ctrl-prev');
+  const newNextBtn = document.querySelector('.new-product .control-btn .ctrl-next');
   const newDotsContainer = document.querySelector('.new-product-pagination');
   const filterChips = document.querySelectorAll('.new-product-filters .filter-chip');
 
@@ -1453,15 +1453,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function initSwiper() {
-      newProductSwiper = new Swiper(newProductSliderWrapper, {
+      newProductSwiper = new Swiper('.new-product-slider-wrapper', {
         slidesPerView: 1,
         spaceBetween: 0,
         speed: 600,
         observer: true,
         observeParents: true,
         navigation: {
-          prevEl: newPrevBtn,
-          nextEl: newNextBtn
+          prevEl: '.new-product .ctrl-prev',
+          nextEl: '.new-product .ctrl-next'
         },
         on: {
           slideChange(swiper) {
