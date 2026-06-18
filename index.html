@@ -196,13 +196,21 @@
         </nav>
       </div> -->
     </header>
+
     <!-- sidebar -->
     <div class="sidebar-overlay"></div>
     <aside class="sidebar">
       <div class="sidebar-header">
-        <button class="sidebar-close" type="button" aria-label="메뉴 닫기">
-          <img src="./assets/icons/sidebar_arrow_forward.svg" alt="닫기" />
-        </button>
+        <div class="menu-form d-flex g-24">
+          <button class="sidebar-close" type="button" aria-label="메뉴 닫기">
+            <img src="./assets/icons/sidebar_arrow_forward.svg" alt="닫기" />
+          </button>
+          <div class="sidebar-auth d-flex g-10 text-medium-r">
+          <a href="#">로그인</a>
+          <span>|</span>
+          <a href="#">회원가입</a>
+          </div>
+        </div>
         <button class="sidebar-close" type="button" aria-label="검색">
           <img src="./assets/icons/sidebar_search.svg" alt="검색" />
         </button>
@@ -229,7 +237,7 @@
           <li><a href="#">전 제품보기<img src="./assets/icons/sidebar_arrow_right.svg" alt=""></a></li>
           <li class="sidebar_event-img d-flex flex-column">
             <strong class="text-subtitle-s">WELCOME BENEFITS</strong>
-            <a href="#"><img src="./assets/images/sidebar_event.png" alt=""></a>
+            <a href="#"><img class="event-banner" src="./assets/images/sidebar_event.png" alt=""></a>
           </li>
         </ul>
       </nav>
@@ -773,17 +781,7 @@
           <div class="new-product-title-area">
             <h2 class="new-product-title">NEW 새롭게 도착한 안경</h2>
           </div>
-
-
-
-
-
           <div class="new-product-sub-header">
-
-
-
-
-
             <div class="new-product-filters">
 
 
@@ -827,11 +825,6 @@
 
 
             </div>
-
-
-
-
-
             <div class="new-product-controls">
 
 
@@ -1079,86 +1072,20 @@
 
 
             </div>
-
-
-
-
-
           </div>
-
-
-
-
-
-
-
-
-
-
-
           <div class="new-product-slider-wrapper swiper">
             <div class="new-product-swiper-wrapper swiper-wrapper">
               <div class="swiper-slide">
                 <div class="new-product-grid">
-
-
-
-
-
             <!-- Product Card 1 -->
-
-
-
-
-
             <div class="product-card">
-
-
-
-
-
               <a href="#" class="product-link">
-
-
-
-
-
                 <div class="product-image-box">
-
-
-
-
-
                   <img
-
-
-
-
-
                     src="assets/images/new_product_01.png"
-
-
-
-
-
                     alt="PUBLIC BEACON 블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스"
-
-
-
-
-
                     class="product-img"
-
-
-
-
-
                     loading="lazy"
-
-
-
-
-
                   />
 
 
@@ -1209,16 +1136,7 @@
 
             </div>
 
-
-
-
-
             <!-- Product Card 2 -->
-
-
-
-
-
             <div class="product-card">
 
 
@@ -1317,16 +1235,7 @@
 
             </div>
 
-
-
-
-
             <!-- Product Card 3 -->
-
-
-
-
-
             <div class="product-card">
 
 
@@ -1424,17 +1333,7 @@
 
 
             </div>
-
-
-
-
-
             <!-- Product Card 4 -->
-
-
-
-
-
             <div class="product-card">
 
 
@@ -1532,11 +1431,6 @@
 
 
             </div>
-
-
-
-
-
           </div>
         </div>
       </div>
@@ -2889,7 +2783,6 @@
         </div>
       </div> -->
     </footer>
-    <script type="module" src="./js/main.js"></script>
     <script type="module" src="js/main.js"></script>
   </body>
 </html>
