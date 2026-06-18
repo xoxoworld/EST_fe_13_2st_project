@@ -2,6 +2,8 @@ export function initSidebar(){
   const sidebarWrap = document.querySelector(".sidebar-wrap");
   if(!sidebarWrap) return;
 
+  const isSubPage = location.pathname.includes("/html/");
+
   sidebarWrap.innerHTML = `
     <div class="sidebar-overlay"></div>
 
@@ -12,18 +14,18 @@ export function initSidebar(){
         <div class="menu-form d-flex g-24">
 
           <button class="sidebar-close" type="button" aria-label="메뉴 닫기">
-            <img src="./assets/icons/sidebar_arrow_forward.svg" alt="닫기">
+            <img src="../assets/icons/sidebar_arrow_forward.svg" alt="닫기">
           </button>
 
           <div class="sidebar-auth d-flex g-10 text-medium-r">
 
-            <a href="html/login.html">
+            <a href="${isSubPage ? "./login.html" : "./html/login.html"}">
               로그인
             </a>
 
             <span>|</span>
 
-            <a href="html/signup.html">
+            <a href="${isSubPage ? "./signup.html" : "./html/signup.html"}">
               회원가입
             </a>
 
@@ -33,7 +35,7 @@ export function initSidebar(){
 
 
         <button class="sidebar-search" type="button" aria-label="검색">
-          <img src="./assets/icons/sidebar_search.svg" alt="검색">
+          <img src="../assets/icons/sidebar_search.svg" alt="검색">
         </button>
 
 
@@ -61,7 +63,7 @@ export function initSidebar(){
             <li><a href="#">라운즈ONLY</a></li>
 
             <li>
-              <a href="html/stores.html">
+              <a href="${isSubPage ? "./stores.html" : "./html/stores.html"}">
                 안경원
               </a>
             </li>
@@ -81,12 +83,12 @@ export function initSidebar(){
 
           <li>
 
-            <a href="html/productList.html">
+            <a href="${isSubPage ? "./productList.html" : "./html/productList.html"}">
 
               전 제품보기
 
               <img 
-                src="./assets/icons/sidebar_arrow_right.svg" 
+                src="../assets/icons/sidebar_arrow_right.svg" 
                 alt=""
               >
 
@@ -98,12 +100,12 @@ export function initSidebar(){
 
           <li>
 
-            <a href="html/compare.html">
+            <a href="${isSubPage ? "./compare.html" : "./html/compare.html"}">
 
               모델 비교하기
 
               <img 
-                src="./assets/icons/sidebar_arrow_right.svg" 
+                src="../assets/icons/sidebar_arrow_right.svg" 
                 alt=""
               >
 
@@ -125,7 +127,7 @@ export function initSidebar(){
 
               <img
                 class="event-banner"
-                src="./assets/images/sidebar_event.png"
+                src="../assets/images/sidebar_event.png"
                 alt=""
               >
 
