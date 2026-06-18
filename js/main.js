@@ -1,7 +1,10 @@
 import { renderHeader } from "./modules/header.js";
 import { renderFooter } from "./modules/footer.js";
+import { initSidebar } from "./modules/menuToggle.js";
+
 document.addEventListener("DOMContentLoaded",()=>{
   renderHeader();
+  initSidebar();
   renderFooter();
 });
 
@@ -1363,34 +1366,34 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /*사이드바*/
-$(function(){
-  const $menuBtn = $(".header-btn-menu");
-  const $sidebar = $(".sidebar");
-  const $overlay = $(".sidebar-overlay");
-  const $close = $(".sidebar-close");
-  // 열기
-  $menuBtn.on("click", function(){
-    $sidebar.toggleClass("active");
-    $overlay.toggleClass("active");
-  });
-  // 닫기
-  $close.on("click", function(){
-    $sidebar.removeClass("active");
-    $overlay.removeClass("active");
-  });
-  // 바깥 클릭 닫기
-  $overlay.on("click", function(){
-    $sidebar.removeClass("active");
-    $overlay.removeClass("active");
-  });
-  // 닫기
-  $(document).on("keydown", function(e){
-    if(e.key === "Escape"){
-      $sidebar.removeClass("active");
-      $overlay.removeClass("active");
-    }
-  });
-});
+// $(function(){
+//   const $menuBtn = $(".header-btn-menu");
+//   const $sidebar = $(".sidebar");
+//   const $overlay = $(".sidebar-overlay");
+//   const $close = $(".sidebar-close");
+//   // 열기
+//   $menuBtn.on("click", function(){
+//     $sidebar.toggleClass("active");
+//     $overlay.toggleClass("active");
+//   });
+//   // 닫기
+//   $close.on("click", function(){
+//     $sidebar.removeClass("active");
+//     $overlay.removeClass("active");
+//   });
+//   // 바깥 클릭 닫기
+//   $overlay.on("click", function(){
+//     $sidebar.removeClass("active");
+//     $overlay.removeClass("active");
+//   });
+//   // 닫기
+//   $(document).on("keydown", function(e){
+//     if(e.key === "Escape"){
+//       $sidebar.removeClass("active");
+//       $overlay.removeClass("active");
+//     }
+//   });
+// });
 /*사이드바*/
 
 /*배너 슬라이드 스와이퍼*/

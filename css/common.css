@@ -703,12 +703,12 @@ button {
 /* 사이드바 */
 .sidebar {
   position: fixed;
-  max-width: 402px;
   top:0;
   left:0;
-  width:480px;
+  width:100%;
+  max-width:402px;
   height:100vh;
-  background: var(--white-1);
+  background:var(--white-1);
   transform:translateX(-100%);
   transition:.3s ease;
   z-index:2000;
@@ -811,19 +811,34 @@ button {
   font-weight:600;
 }
 
-/* 태블릿 반응형 수정중*/
-/* @media(min-width:624px){
- .sidebar{
-   max-width:624px;
- }
-} */
+/* 태블릿 반응형*/
+/* 480px 이상 */
+@media(min-width:480px){
+  .sidebar{
+    width:480px;
+    max-width:480px;
+  }
+  .sidebar-menu-list-right li{
+    width: 360px;
+  }
+  .sidebar-menu-list-right li a .event-banner{
+    width: 280px;
+  }
+}
 
-/* 웹 반응형 수정중 */
-/* @media(min-width:480px){
- .sidebar{
-   max-width:480px;
- }
-} */
+
+/* 624px 이상 */
+@media(min-width:624px){
+  .sidebar-menu-list-left{
+    width:160px;
+  }
+  .sidebar-menu-list li{
+    width:160px;
+  }
+  .sidebar-menu-list-right li{
+    width: 320px;
+  }
+}
 
 /* 푸터 */
 .footer {
