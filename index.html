@@ -12,8 +12,189 @@
     <link rel="stylesheet" href="./css/index.css">
   </head>
   <body>
+    <!-- 헤더 -->
     <header class="header d-flex align-items-center">
+      <!-- <div class="header-container d-flex justify-content-between">
+        <nav class="header-left d-flex align-items-center justify-content-between g-10">
+          <button class="header-btn header-btn-menu" type="button" aria-label="메뉴 열기">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <mask
+                id="mask0_261_3135"
+                style="mask-type: alpha"
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0"
+                width="24"
+                height="24"
+              >
+                <rect width="24" height="24" fill="#D9D9D9" />
+              </mask>
+              <g mask="url(#mask0_261_3135)">
+                <path
+                  d="M4 17.2693V16.2693H20V17.2693H4ZM4 12.5V11.5H20V12.5H4ZM4 7.73077V6.73077H20V7.73077H4Z"
+                  fill="#1C1B1F"
+                />
+              </g>
+            </svg>
+          </button>
+          <h1 class="header-logo">
+            <a href="" aria-label="홈으로 이동">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="80"
+                height="16"
+                viewBox="0 0 80 16"
+                fill="none"
+              >
+                <g clip-path="url(#clip0_261_3278)">
+                  <path
+                    d="M23.8722 15.466C22.3893 15.466 21.0498 15.1353 19.8527 14.4748C18.6922 13.8364 17.726 12.8958 17.0566 11.7529C16.3902 10.5851 16.0566 9.27775 16.0566 7.82897C16.0566 6.38019 16.3902 5.07872 17.0566 3.92555C17.7211 2.77325 18.688 1.82458 19.8527 1.18214C21.0498 0.522625 22.3893 0.190918 23.8722 0.190918C25.3551 0.190918 26.6878 0.52165 27.8722 1.18214C29.0366 1.82472 30.0031 2.77338 30.6673 3.92555C31.3473 5.07872 31.6878 6.38019 31.6878 7.82799C31.6878 9.27775 31.3473 10.5851 30.6673 11.7529C29.9979 12.8958 29.0317 13.8364 27.8712 14.4748C26.6878 15.1353 25.3551 15.466 23.8722 15.466ZM23.8722 12.5548C24.7151 12.5548 25.4771 12.3577 26.1571 11.9636C26.834 11.5594 27.3852 10.9751 27.7493 10.2758C28.1434 9.55872 28.3405 8.74311 28.3405 7.82897C28.3405 6.91385 28.1434 6.09824 27.7493 5.38116C27.3884 4.68514 26.836 4.10693 26.1571 3.71482C25.4771 3.30604 24.7151 3.10214 23.8722 3.10214C23.0283 3.10214 22.2663 3.30702 21.5863 3.71482C20.9049 4.11001 20.3469 4.68696 19.9746 5.38116C19.5941 6.09824 19.4029 6.91385 19.4029 7.82897C19.4029 8.74311 19.5941 9.55872 19.9746 10.2758C20.3501 10.9732 20.9069 11.5564 21.5863 11.9636C22.2663 12.3577 23.0283 12.5548 23.8722 12.5548ZM10.7902 15.466L7.61951 10.8456H3.41463V15.466H0V0.190918H7.45171C8.75902 0.190918 9.88976 0.408479 10.8449 0.844577C11.8146 1.28067 12.559 1.90019 13.079 2.70116C13.599 3.50311 13.8595 4.45238 13.8595 5.54994C13.8595 6.6475 13.5922 7.59677 13.0585 8.39872C12.5385 9.18604 11.7932 9.79092 10.8244 10.2134L14.4585 15.466H10.7902ZM10.4029 5.54994C10.4029 4.72067 10.1356 4.08653 9.60195 3.65141C9.06732 3.20067 8.2878 2.97628 7.26244 2.97628H3.41463V8.12263H7.26244C8.2878 8.12263 9.06732 7.89824 9.60195 7.4475C10.1356 6.99775 10.402 6.36458 10.402 5.54897L10.4029 5.54994ZM80 12.3529V15.1373H67.1015V12.9226L75.1951 3.15385H67.2702V0.368479H79.6839V2.58311L71.6117 12.3529H80ZM40.8556 15.3909C38.7483 15.3909 37.1034 14.8065 35.9229 13.6397C34.7571 12.4719 34.1737 10.8056 34.1737 8.63872V0.368479H37.5883V8.51287C37.5883 11.1568 38.6839 12.4787 40.8761 12.4787C41.9444 12.4787 42.759 12.1626 43.321 11.5295C43.8829 10.8826 44.1639 9.87677 44.1639 8.51287V0.368479H47.5366V8.6397C47.5366 10.8056 46.9463 12.4738 45.7659 13.6407C44.6 14.8075 42.9629 15.3919 40.8556 15.3919V15.3909ZM64.2039 0.368479V15.1373H61.401L54.0449 6.17141V15.1373H50.6732V0.368479H53.4976L60.8312 9.33531V0.369455H64.2039V0.368479Z"
+                    fill="black"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_261_3278">
+                    <rect width="80" height="16" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </a>
+          </h1>
+        </nav>
+
+        <nav class="header-right d-flex align-items-center g-10" aria-label="유틸리티 메뉴">
+          <form class="search-form">
+            <div class="search-box d-flex align-items-center justify-content-between">
+              <input
+                type="search"
+                class="search-input"
+                placeholder="검색어를 입력하세요"
+                aria-label="검색"
+              />
+              <button class="header-btn header-btn-search-form" type="button" aria-label="검색">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <mask
+                    id="mask0_261_3087"
+                    style="mask-type: alpha"
+                    maskUnits="userSpaceOnUse"
+                    x="0"
+                    y="0"
+                    width="24"
+                    height="24"
+                  >
+                    <rect width="24" height="24" fill="#D9D9D9" />
+                  </mask>
+                  <g mask="url(#mask0_261_3087)">
+                    <path
+                      d="M19.4844 20.1537L13.2229 13.8922C12.7229 14.3179 12.1479 14.6474 11.4979 14.8807C10.8479 15.1141 10.1947 15.2307 9.53837 15.2307C7.9397 15.2307 6.58487 14.6753 5.47387 13.5645C4.36303 12.4535 3.80762 11.0986 3.80762 9.49998C3.80762 7.90131 4.36303 6.54648 5.47387 5.43548C6.58487 4.32464 7.9397 3.76923 9.53837 3.76923C11.137 3.76923 12.4919 4.32464 13.6029 5.43548C14.7137 6.54648 15.2691 7.90131 15.2691 9.49998C15.2691 10.1948 15.146 10.8672 14.8999 11.5172C14.6537 12.1672 14.3306 12.723 13.9306 13.1845L20.1921 19.4462L19.4844 20.1537ZM9.53837 14.2307C10.8652 14.2307 11.9854 13.774 12.8989 12.8605C13.8124 11.9471 14.2691 10.827 14.2691 9.49998C14.2691 8.17298 13.8124 7.05281 12.8989 6.13948C11.9854 5.22598 10.8652 4.76923 9.53837 4.76923C8.21137 4.76923 7.0912 5.22598 6.17787 6.13948C5.26437 7.05281 4.80762 8.17298 4.80762 9.49998C4.80762 10.827 5.26437 11.9471 6.17787 12.8605C7.0912 13.774 8.21137 14.2307 9.53837 14.2307Z"
+                      fill="#1C1B1F"
+                    />
+                  </g>
+                </svg>
+              </button>
+            </div>
+          </form>
+
+          <button class="header-btn header-btn-search" type="button" aria-label="검색">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <mask
+                id="mask0_261_3087"
+                style="mask-type: alpha"
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0"
+                width="24"
+                height="24"
+              >
+                <rect width="24" height="24" fill="#D9D9D9" />
+              </mask>
+              <g mask="url(#mask0_261_3087)">
+                <path
+                  d="M19.4844 20.1537L13.2229 13.8922C12.7229 14.3179 12.1479 14.6474 11.4979 14.8807C10.8479 15.1141 10.1947 15.2307 9.53837 15.2307C7.9397 15.2307 6.58487 14.6753 5.47387 13.5645C4.36303 12.4535 3.80762 11.0986 3.80762 9.49998C3.80762 7.90131 4.36303 6.54648 5.47387 5.43548C6.58487 4.32464 7.9397 3.76923 9.53837 3.76923C11.137 3.76923 12.4919 4.32464 13.6029 5.43548C14.7137 6.54648 15.2691 7.90131 15.2691 9.49998C15.2691 10.1948 15.146 10.8672 14.8999 11.5172C14.6537 12.1672 14.3306 12.723 13.9306 13.1845L20.1921 19.4462L19.4844 20.1537ZM9.53837 14.2307C10.8652 14.2307 11.9854 13.774 12.8989 12.8605C13.8124 11.9471 14.2691 10.827 14.2691 9.49998C14.2691 8.17298 13.8124 7.05281 12.8989 6.13948C11.9854 5.22598 10.8652 4.76923 9.53837 4.76923C8.21137 4.76923 7.0912 5.22598 6.17787 6.13948C5.26437 7.05281 4.80762 8.17298 4.80762 9.49998C4.80762 10.827 5.26437 11.9471 6.17787 12.8605C7.0912 13.774 8.21137 14.2307 9.53837 14.2307Z"
+                  fill="#1C1B1F"
+                />
+              </g>
+            </svg>
+          </button>
+
+          <a href="" class="header-btn header-btn-account" aria-label="로그인으로 이동">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <mask
+                id="mask0_261_3093"
+                style="mask-type: alpha"
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0"
+                width="24"
+                height="24"
+              >
+                <rect width="24" height="24" fill="#D9D9D9" />
+              </mask>
+              <g mask="url(#mask0_261_3093)">
+                <path
+                  d="M9.877 10.5078C9.29233 9.9231 9 9.21535 9 8.38452C9 7.55385 9.29233 6.84619 9.877 6.26152C10.4615 5.67686 11.1692 5.38452 12 5.38452C12.8308 5.38452 13.5385 5.67686 14.123 6.26152C14.7077 6.84619 15 7.55385 15 8.38452C15 9.21535 14.7077 9.9231 14.123 10.5078C13.5385 11.0923 12.8308 11.3845 12 11.3845C11.1692 11.3845 10.4615 11.0923 9.877 10.5078ZM5 18.6155V16.9693C5 16.5564 5.12017 16.1702 5.3605 15.8105C5.601 15.451 5.92442 15.1719 6.33075 14.973C7.27442 14.5205 8.21867 14.1811 9.1635 13.9548C10.1083 13.7286 11.0538 13.6155 12 13.6155C12.9462 13.6155 13.8917 13.7286 14.8365 13.9548C15.7813 14.1811 16.7256 14.5205 17.6693 14.973C18.0756 15.1719 18.399 15.451 18.6395 15.8105C18.8798 16.1702 19 16.5564 19 16.9693V18.6155H5ZM6 17.6155H18V16.9693C18 16.7474 17.9285 16.5391 17.7855 16.3443C17.6427 16.1494 17.4449 15.9847 17.1923 15.85C16.3693 15.4514 15.5207 15.1459 14.6465 14.9338C13.7723 14.7216 12.8902 14.6155 12 14.6155C11.1098 14.6155 10.2277 14.7216 9.3535 14.9338C8.47933 15.1459 7.63075 15.4514 6.80775 15.85C6.55508 15.9847 6.35733 16.1494 6.2145 16.3443C6.0715 16.5391 6 16.7474 6 16.9693V17.6155ZM13.4125 9.79702C13.8042 9.40535 14 8.93452 14 8.38452C14 7.83452 13.8042 7.36369 13.4125 6.97202C13.0208 6.58035 12.55 6.38452 12 6.38452C11.45 6.38452 10.9792 6.58035 10.5875 6.97202C10.1958 7.36369 10 7.83452 10 8.38452C10 8.93452 10.1958 9.40535 10.5875 9.79702C10.9792 10.1887 11.45 10.3845 12 10.3845C12.55 10.3845 13.0208 10.1887 13.4125 9.79702Z"
+                  fill="#1C1B1F"
+                />
+              </g>
+            </svg>
+          </a>
+
+          <a href="" class="header-btn header-btn-cart" aria-label="장바구니로 이동">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <mask
+                id="mask0_261_3123"
+                style="mask-type: alpha"
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0"
+                width="24"
+                height="24"
+              >
+                <rect width="24" height="24" fill="#D9D9D9" />
+              </mask>
+              <g mask="url(#mask0_261_3123)">
+                <path
+                  d="M6.6155 21C6.15517 21 5.77083 20.8458 5.4625 20.5375C5.15417 20.2292 5 19.8448 5 19.3845V8.6155C5 8.15517 5.15417 7.77083 5.4625 7.4625C5.77083 7.15417 6.15517 7 6.6155 7H8.5V6.5C8.5 5.52817 8.84042 4.70192 9.52125 4.02125C10.2019 3.34042 11.0282 3 12 3C12.9718 3 13.7981 3.34042 14.4788 4.02125C15.1596 4.70192 15.5 5.52817 15.5 6.5V7H17.3845C17.8448 7 18.2292 7.15417 18.5375 7.4625C18.8458 7.77083 19 8.15517 19 8.6155V19.3845C19 19.8448 18.8458 20.2292 18.5375 20.5375C18.2292 20.8458 17.8448 21 17.3845 21H6.6155ZM6.6155 20H17.3845C17.5385 20 17.6796 19.9359 17.8077 19.8078C17.9359 19.6796 18 19.5385 18 19.3845V8.6155C18 8.4615 17.9359 8.32042 17.8077 8.19225C17.6796 8.06408 17.5385 8 17.3845 8H15.5V10.5C15.5 10.6423 15.4523 10.7613 15.3568 10.8568C15.2613 10.9523 15.1423 11 15 11C14.8577 11 14.7387 10.9523 14.6432 10.8568C14.5477 10.7613 14.5 10.6423 14.5 10.5V8H9.5V10.5C9.5 10.6423 9.45225 10.7613 9.35675 10.8568C9.26125 10.9523 9.14233 11 9 11C8.85767 11 8.73875 10.9523 8.64325 10.8568C8.54775 10.7613 8.5 10.6423 8.5 10.5V8H6.6155C6.4615 8 6.32042 8.06408 6.19225 8.19225C6.06408 8.32042 6 8.4615 6 8.6155V19.3845C6 19.5385 6.06408 19.6796 6.19225 19.8078C6.32042 19.9359 6.4615 20 6.6155 20ZM9.5 7H14.5V6.5C14.5 5.79617 14.2593 5.2035 13.778 4.722C13.2965 4.24067 12.7038 4 12 4C11.2962 4 10.7035 4.24067 10.222 4.722C9.74067 5.2035 9.5 5.79617 9.5 6.5V7Z"
+                  fill="#1C1B1F"
+                />
+              </g>
+            </svg>
+          </a>
+        </nav>
+      </div> -->
     </header>
+
+    <!-- sidebar -->
     <div class="sidebar-overlay"></div>
     <aside class="sidebar">
       <div class="sidebar-header">
@@ -22,9 +203,9 @@
             <img src="./assets/icons/sidebar_arrow_forward.svg" alt="닫기">
           </button>
           <div class="sidebar-auth d-flex g-10 text-medium-r">
-            <a href="#">로그인</a>
-            <span>|</span>
-            <a href="#">회원가입</a>
+          <a href="#">로그인</a>
+          <span>|</span>
+          <a href="#">회원가입</a>
           </div>
         </div>
         <button class="sidebar-close" type="button" aria-label="검색">
@@ -63,6 +244,7 @@
     </aside>
 
     <main>
+      <!-- 메인 배너 섹션 -->
       <section class="banner" aria-label="프로모션 배너">
         <section
           class="banner-carousel swiper banner-swiper"
@@ -97,7 +279,7 @@
                 <h2 class="banner-description is-narrow">
                   세상에 없던 안경 쇼핑,실시간 가상피팅으로 완성하는 나만의 안경
                 </h2>
-                <a href="#" class="link">자세히보기</a>
+                <a href="html/productList.html" class="link">자세히보기</a>
                 <div class="banner-btn-box">
                   <button type="button"
                     class="banner-btn banner__btn--primary d-flex justify-content-center align-items-center g-10"
@@ -123,20 +305,10 @@
                     aria-label="자세히 보기"
                   >
                     <span class="banner-btn-text text-medium-r">자세히 보기</span>
-                    <span class="banner-btn-icon" aria-hidden="true"
-                      ><svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="7"
-                        height="10"
-                        viewBox="0 0 7 10"
-                        fill="none"
-                      >
-                        <path
-                          d="M0 8.82812L3.82812 5L0 1.17188L1.17188 0L6.17188 5L1.17188 10L0 8.82812Z"
-                          fill="white"
-                        /></svg
-                    ></span>
-                  </button>
+                    <span class="banner-btn-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="7" height="10" viewBox="0 0 7 10" fill="none">
+  <path d="M0 8.82812L3.82812 5L0 1.17188L1.17188 0L6.17188 5L1.17188 10L0 8.82812Z" fill="white"/>
+  </svg></span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -172,20 +344,10 @@
                     aria-label="자세히 보기"
                   >
                     <span class="banner-btn-text text-medium-r">자세히 보기</span>
-                    <span class="banner-btn-icon" aria-hidden="true"
-                      ><svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="7"
-                        height="10"
-                        viewBox="0 0 7 10"
-                        fill="none"
-                      >
-                        <path
-                          d="M0 8.82812L3.82812 5L0 1.17188L1.17188 0L6.17188 5L1.17188 10L0 8.82812Z"
-                          fill="white"
-                        /></svg
-                    ></span>
-                  </button>
+                    <span class="banner-btn-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="7" height="10" viewBox="0 0 7 10" fill="none">
+  <path d="M0 8.82812L3.82812 5L0 1.17188L1.17188 0L6.17188 5L1.17188 10L0 8.82812Z" fill="white"/>
+  </svg></span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -221,20 +383,10 @@
                     aria-label="자세히 보기"
                   >
                     <span class="banner-btn-text text-medium-r">자세히 보기</span>
-                    <span class="banner-btn-icon" aria-hidden="true"
-                      ><svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="7"
-                        height="10"
-                        viewBox="0 0 7 10"
-                        fill="none"
-                      >
-                        <path
-                          d="M0 8.82812L3.82812 5L0 1.17188L1.17188 0L6.17188 5L1.17188 10L0 8.82812Z"
-                          fill="white"
-                        /></svg
-                    ></span>
-                  </button>
+                    <span class="banner-btn-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="7" height="10" viewBox="0 0 7 10" fill="none">
+  <path d="M0 8.82812L3.82812 5L0 1.17188L1.17188 0L6.17188 5L1.17188 10L0 8.82812Z" fill="white"/>
+  </svg></span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -247,12 +399,21 @@
               aria-label="슬라이드 1"
             ></button>
 
-            <button class="banner__pagination-btn" type="button" aria-label="슬라이드 2"></button>
+            <button
+              class="banner__pagination-btn"
+              type="button"
+              aria-label="슬라이드 2"
+            ></button>
 
-            <button class="banner__pagination-btn" type="button" aria-label="슬라이드 3"></button>
+            <button
+              class="banner__pagination-btn"
+              type="button"
+              aria-label="슬라이드 3"
+            ></button>
           </div>
         </section>
       </section>
+      <!-- 카테고리 섹션 -->
       <section class="category" aria-labelledby="category-heading">
         <div class="container category__inner">
           <h2 id="category-heading" class="category__title hidden">서비스 카테고리</h2>
@@ -302,13 +463,14 @@
           </ul>
         </div>
       </section>
+      <!-- 타임세일 섹션 -->
       <section class="timesale" aria-labelledby="timesale-heading">
         <div class="container timesale__container">
           <header class="timesale__header">
             <span class="timesale__label">timedeal</span>
             <strong class="timesale__timer">17 : 41 : 25</strong>
           </header>
-
+  
           <div class="timesale__content">
             <div class="timesale__image-wrap">
               <div class="img-box">
@@ -336,19 +498,22 @@
                 </svg>
               </button>
             </div>
-            <a href="#" class="more-button d-flex justify-content-center align-items-center m-link text-small-r text-center" aria-label="타임세일 전체보기">
-              타임세일 전체보기 &gt;
-            </a>
+            <button class="more-button d-flex justify-content-center align-items-center">
+              <a href="#" class="m-link text-small-r text-center" aria-label="타임세일 전체보기">타임세일 전체보기 &gt;</a>
+            </button>
           </div>
         </div>
       </section>
+      <!-- 제니 컬렉션 섹션 -->
       <section class="jenny-collection" aria-labelledby="jenny-collection-heading">
         <div class="container jenny-collection__container">
-          <header
-            class="product-header jenny-product-header d-flex justify-content-between align-items-center"
-          >
-            <h2 class="product-title">jenny, Collection</h2>
-            <a href="#" class="All-more-link" aria-label="jenny collection 전체보기">전체보기</a>
+          <header class="product-header jenny-product-header d-flex justify-content-between align-items-center">
+            <h2 class="product-title">
+              jenny, Collection
+            </h2>
+            <a href="#" class="All-more-link" aria-label="jenny collection 전체보기"
+              >전체보기</a
+            >
           </header>
           <div class="jenny-contents">
             <figure class="jenny-collection__figure">
@@ -359,16 +524,65 @@
                 playsinline
               ></video>
             </figure>
-
+    
             <div class="product-contents">
               <div class="product-swiper swiper">
                 <div class="product-wrapper swiper-wrapper">
+                  <!-- Slide 1: 3 items -->
                   <div class="swiper-slide">
                     <ul class="product-slide-list">
+                      <!-- <li class="product-product-item">
+                        <article class="product-card">
+                          <figure class="product-card__figure">
+                            <img
+                              class="product-card__img"
+                              src=""
+                              alt="아리스타 보잉 RB6489 2500 58mm 레이밴 안경"
+                            />
+                          </figure>
+                          <div class="product-card-text-box d-flex flex-column">
+                            <span class="product-card__brand text-small-b">RAY-BAN</span>
+                            <p class="product-card__name">아리스타 보잉 RB6489 2500 58mm...</p>
+                            <strong class="product-card__price">194,000<span>원</span></strong>
+                          </div>
+                        </article>
+                      </li>
+                      <li class="product-product-item">
+                        <article class="product-card">
+                          <figure class="product-card__figure">
+                            <img
+                              class="product-card__img"
+                              src=""
+                              alt="버건디 캣아이 RB5449D 846 54mm 레이밴 안경"
+                            />
+                          </figure>
+                          <div class="product-card-text-box d-flex flex-column">
+                            <span class="product-card__brand text-small-b">RAY-BAN</span>
+                            <p class="product-card__name">아리스타 보잉 RB6489 2500 58mm...</p>
+                            <strong class="product-card__price">194,000<span>원</span></strong>
+                          </div>
+                        </article>
+                      </li>
+                      <li class="product-product-item">
+                        <article class="product-card">
+                          <figure class="product-card__figure">
+                            <img
+                              class="product-card__img"
+                              src=""
+                              alt="블랙 RB5449D 2000 54mm 레이밴 안경"
+                            />
+                          </figure>
+                          <div class="product-card-text-box d-flex flex-column">
+                            <span class="product-card__brand text-small-b">RAY-BAN</span>
+                            <p class="product-card__name">아리스타 보잉 RB6489 2500 58mm...</p>
+                            <strong class="product-card__price">194,000<span>원</span></strong>
+                          </div>
+                        </article>
+                      </li> -->
                     </ul>
                   </div>
                 </div>
-
+  
                 <div class="product-pagination">
                   <div class="product-pagination__track">
                     <div class="product-pagination__fill"></div>
@@ -379,15 +593,18 @@
           </div>
         </div>
       </section>
+      <!-- 베스트 상품 섹션 -->
       <section class="best-product" aria-labelledby="best-product-title">
         <div class="best-product-container container d-flex g-16 flex-column">
-          <header
-            class="product-header best-product-header d-flex justify-content-between align-items-center"
-          >
-            <h2 class="product-title">실시간 BEST 상품</h2>
-            <a href="#" class="All-more-link"> 전체보기 </a>
+          <header class="product-header best-product-header d-flex justify-content-between align-items-center">
+            <h2 class="product-title">
+              실시간 BEST 상품
+            </h2>
+            <a href="#" class="All-more-link">
+              전체보기
+            </a>
           </header>
-
+  
           <div class="filter-more-btn d-flex justify-content-between">
             <div class="filter d-flex g-10">
               <button type="button" class="filter-btn active">ALL</button>
@@ -398,99 +615,183 @@
               <button type="button" class="filter-btn">블루라이트 차단</button>
             </div>
             <div class="control-btn d-flex g-10">
-              <button
-                type="button"
-                class="ctrl-btn ctrl-prev d-flex align-items-center justify-content-center"
-                aria-label="이전 상품 보기"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="12"
-                  height="20"
-                  viewBox="0 0 12 20"
-                  fill="none"
-                >
-                  <path
-                    d="M9.65375 19.3075L0 9.65375L9.65375 0L11.073 1.41925L2.83825 9.65375L11.073 17.8883L9.65375 19.3075Z"
-                    fill="#9CA3AF"
-                  />
-                </svg>
+              <button type="button" class="ctrl-btn ctrl-prev d-flex align-items-center justify-content-center" aria-label="이전 상품 보기">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none">
+<path d="M9.65375 19.3075L0 9.65375L9.65375 0L11.073 1.41925L2.83825 9.65375L11.073 17.8883L9.65375 19.3075Z" fill="#9CA3AF"/>
+</svg>
               </button>
-              <button
-                type="button"
-                class="ctrl-btn ctrl-next d-flex align-items-center justify-content-center"
-                aria-label="다음 상품 보기"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="12"
-                  height="20"
-                  viewBox="0 0 12 20"
-                  fill="none"
-                >
-                  <path
-                    d="M1.41925 19.3075L0 17.8883L8.2345 9.65375L0 1.41925L1.41925 0L11.073 9.65375L1.41925 19.3075Z"
-                    fill="#9CA3AF"
-                  />
-                </svg>
+              <button type="button" class="ctrl-btn ctrl-next d-flex align-items-center justify-content-center" aria-label="다음 상품 보기">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none">
+<path d="M1.41925 19.3075L0 17.8883L8.2345 9.65375L0 1.41925L1.41925 0L11.073 9.65375L1.41925 19.3075Z" fill="#9CA3AF"/>
+</svg>
               </button>
-              <a href="#" class="more-web-btn d-flex justify-content-center align-items-center" aria-label="베스트 상품 더보기">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="17"
-                  height="17"
-                  viewBox="0 0 17 17"
-                  fill="none"
-                >
-                  <path
-                    d="M7.75 17V9.25H0V7.75H7.75V0H9.25V7.75H17V9.25H9.25V17H7.75Z"
-                    fill="white"
-                  />
-                </svg>
-              </a>
+              <button  class="more-web-btn d-flex justify-content-center align-items-center">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+      <path d="M7.75 17V9.25H0V7.75H7.75V0H9.25V7.75H17V9.25H9.25V17H7.75Z" fill="white"/>
+      </svg></a>
+              </button>
             </div>
           </div>
 
           <div class="product-contents">
-            <div class="product-swiper swiper">
-              <div class="product-wrapper swiper-wrapper">
+              <div class="product-swiper swiper">
+                <div class="product-wrapper swiper-wrapper">
+                  <!-- Slide 1: 3 items -->
+                  <!-- <div class="swiper-slide">
+                    <ul class="product-slide-list">
+                      <li class="product-product-item">
+                        <article class="product-card">
+                          <figure class="product-card__figure">
+                            <img
+                              class="product-card__img"
+                              src=""
+                              alt="아리스타 보잉 RB6489 2500 58mm 레이밴 안경"
+                            />
+                          </figure>
+                          <div class="product-card-text-box d-flex flex-column">
+                            <span class="product-card__brand text-small-b">RAY-BAN</span>
+                            <p class="product-card__name">아리스타 보잉 RB6489 2500 58mm...</p>
+                            <strong class="product-card__price">194,000<span>원</span></strong>
+                          </div>
+                        </article>
+                      </li>
+                      <li class="product-product-item">
+                        <article class="product-card">
+                          <figure class="product-card__figure">
+                            <img
+                              class="product-card__img"
+                              src=""
+                              alt="아리스타 보잉 RB6489 2500 58mm 레이밴 안경"
+                            />
+                          </figure>
+                          <div class="product-card-text-box d-flex flex-column">
+                            <span class="product-card__brand text-small-b">RAY-BAN</span>
+                            <p class="product-card__name">아리스타 보잉 RB6489 2500 58mm...</p>
+                            <strong class="product-card__price">194,000<span>원</span></strong>
+                          </div>
+                        </article>
+                      </li>
+                      <li class="product-product-item">
+                        <article class="product-card">
+                          <figure class="product-card__figure">
+                            <img
+                              class="product-card__img"
+                              src=""
+                              alt="아리스타 보잉 RB6489 2500 58mm 레이밴 안경"
+                            />
+                          </figure>
+                          <div class="product-card-text-box d-flex flex-column">
+                            <span class="product-card__brand text-small-b">RAY-BAN</span>
+                            <p class="product-card__name">아리스타 보잉 RB6489 2500 58mm...</p>
+                            <strong class="product-card__price">194,000<span>원</span></strong>
+                          </div>
+                        </article>
+                      </li>
+                      <li class="product-product-item">
+                        <article class="product-card">
+                          <figure class="product-card__figure">
+                            <img
+                              class="product-card__img"
+                              src=""
+                              alt="아리스타 보잉 RB6489 2500 58mm 레이밴 안경"
+                            />
+                          </figure>
+                          <div class="product-card-text-box d-flex flex-column">
+                            <span class="product-card__brand text-small-b">RAY-BAN</span>
+                            <p class="product-card__name">아리스타 보잉 RB6489 2500 58mm...</p>
+                            <strong class="product-card__price">194,000<span>원</span></strong>
+                          </div>
+                        </article>
+                      </li>
+                      <li class="product-product-item">
+                        <article class="product-card">
+                          <figure class="product-card__figure">
+                            <img
+                              class="product-card__img"
+                              src=""
+                              alt="아리스타 보잉 RB6489 2500 58mm 레이밴 안경"
+                            />
+                          </figure>
+                          <div class="product-card-text-box d-flex flex-column">
+                            <span class="product-card__brand text-small-b">RAY-BAN</span>
+                            <p class="product-card__name">아리스타 보잉 RB6489 2500 58mm...</p>
+                            <strong class="product-card__price">194,000<span>원</span></strong>
+                          </div>
+                        </article>
+                      </li>
+                      <li class="product-product-item">
+                        <article class="product-card">
+                          <figure class="product-card__figure">
+                            <img
+                              class="product-card__img"
+                              src=""
+                              alt="아리스타 보잉 RB6489 2500 58mm 레이밴 안경"
+                            />
+                          </figure>
+                          <div class="product-card-text-box d-flex flex-column">
+                            <span class="product-card__brand text-small-b">RAY-BAN</span>
+                            <p class="product-card__name">아리스타 보잉 RB6489 2500 58mm...</p>
+                            <strong class="product-card__price">194,000<span>원</span></strong>
+                          </div>
+                        </article>
+                      </li>
+                      <li class="product-product-item">
+                        <article class="product-card">
+                          <figure class="product-card__figure">
+                            <img
+                              class="product-card__img"
+                              src=""
+                              alt="아리스타 보잉 RB6489 2500 58mm 레이밴 안경"
+                            />
+                          </figure>
+                          <div class="product-card-text-box d-flex flex-column">
+                            <span class="product-card__brand text-small-b">RAY-BAN</span>
+                            <p class="product-card__name">아리스타 보잉 RB6489 2500 58mm...</p>
+                            <strong class="product-card__price">194,000<span>원</span></strong>
+                          </div>
+                        </article>
+                      </li>
+                      <li class="product-product-item">
+                        <article class="product-card">
+                          <figure class="product-card__figure">
+                            <img
+                              class="product-card__img"
+                              src=""
+                              alt="아리스타 보잉 RB6489 2500 58mm 레이밴 안경"
+                            />
+                          </figure>
+                          <div class="product-card-text-box d-flex flex-column">
+                            <span class="product-card__brand text-small-b">RAY-BAN</span>
+                            <p class="product-card__name">아리스타 보잉 RB6489 2500 58mm...</p>
+                            <strong class="product-card__price">194,000<span>원</span></strong>
+                          </div>
+                        </article>
+                      </li>
+                    </ul>
+                  </div> -->
+                </div>
               </div>
-            </div>
           </div>
-
-          <a
-            href="#"
-            class="more-button m-link d-flex justify-content-center align-items-center text-small-r text-center"
-            aria-label="더보기"
-          >
-            더보기
-          </a>
+  
+          <button class="more-button d-flex justify-content-center align-items-center">
+              <a href="#" class="m-link text-small-r text-center" aria-label="더보기">더보기</a>
+          </button>
         </div>
       </section>
+
+      <!-- STYLE MAGAZINE 섹션: 최신 아이웨어 트렌드 및 스타일 매거진 컨텐츠 카드 노출 -->
       <section class="style-magazine">
         <div class="style-magazine-container">
           <div class="style-magazine-header">
             <h2 class="style-magazine-title">STYLE MAGAZINE</h2>
-            <a
-              href="#"
-              class="more-web-btn d-flex justify-content-center align-items-center"
-              aria-label="스타일 매거진 더보기"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="17"
-                height="17"
-                viewBox="0 0 17 17"
-                fill="none"
-              >
-                <path
-                  d="M7.75 17V9.25H0V7.75H7.75V0H9.25V7.75H17V9.25H9.25V17H7.75Z"
-                  fill="white"
-                />
-              </svg>
-            </a>
+            <button  class="more-web-btn d-flex justify-content-center align-items-center">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+      <path d="M7.75 17V9.25H0V7.75H7.75V0H9.25V7.75H17V9.25H9.25V17H7.75Z" fill="white"/>
+      </svg></a>
+            </button>
           </div>
           <div class="style-magazine-grid">
+            <!-- 여름 선글라스 추천 -->
             <a href="#" class="magazine-card">
               <div class="card-image-wrapper">
                 <img
@@ -503,6 +804,7 @@
                 <p class="card-tags">#선글라스 #여름코디 #트렌드</p>
               </div>
             </a>
+            <!-- 직장인 안경 스타일링 -->
             <a href="#" class="magazine-card">
               <div class="card-image-wrapper">
                 <img
@@ -515,6 +817,7 @@
                 <p class="card-tags">#데일리룩 #안경코디 #남자안경</p>
               </div>
             </a>
+            <!-- 얼굴형별 안경 스타일 -->
             <a href="#" class="magazine-card">
               <div class="card-image-wrapper">
                 <img
@@ -530,6 +833,8 @@
           </div>
         </div>
       </section>
+
+      <!-- NEW PRODUCT 섹션: 신상품 슬라이더 및 필터(브랜드별) 칩 제공 -->
       <section class="new-product">
         <div class="new-product-container">
           <div class="new-product-title-area">
@@ -538,56 +843,28 @@
           <div class="new-product-sub-header d-flex">
             <div class="new-product-filters">
               <button type="button" class="filter-chip active">ALL</button>
-              <button type="button" class="filter-chip">PUBLIC BEACON</button>
+              <button type="button" class="filter-chip">public beacon</button>
+              <button type="button" class="filter-chip">ESCADA</button>
               <button type="button" class="filter-chip">OAKLEY</button>
-              <button type="button" class="filter-chip">Ray-Ban</button>
-              <button type="button" class="filter-chip">FAKEME</button>
-              <button type="button" class="filter-chip">PRADA</button>
+              <button type="button" class="filter-chip">POLICE</button>
+              <button type="button" class="filter-chip">OLIVER PEOPLES</button>
             </div>
-            <div class="new-product-controls">
-              <button type="button" class="ctrl-btn ctrl-prev" aria-label="이전 상품 보기">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z"
-                    fill="#666"
-                  />
-                </svg>
+            <div class="control-btn d-flex g-10">
+              <button type="button" class="ctrl-btn ctrl-prev d-flex align-items-center justify-content-center" aria-label="이전 상품 보기">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none">
+<path d="M9.65375 19.3075L0 9.65375L9.65375 0L11.073 1.41925L2.83825 9.65375L11.073 17.8883L9.65375 19.3075Z" fill="#9CA3AF"/>
+</svg>
               </button>
-
-              <button type="button" class="ctrl-btn ctrl-next" aria-label="다음 상품 보기">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z"
-                    fill="#666"
-                  />
-                </svg>
+              <button type="button" class="ctrl-btn ctrl-next d-flex align-items-center justify-content-center" aria-label="다음 상품 보기">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none">
+<path d="M1.41925 19.3075L0 17.8883L8.2345 9.65375L0 1.41925L1.41925 0L11.073 9.65375L1.41925 19.3075Z" fill="#9CA3AF"/>
+</svg>
               </button>
-
-              <a href="#" class="new-product-more-btn" aria-label="신상품 더보기">
-                <span class="more-text">전체보기</span>
-
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path d="M11 13H5V11H11V5H13V11H19V13H13V19H11V13Z" fill="white" />
-                </svg>
-              </a>
+              <button  class="more-web-btn d-flex justify-content-center align-items-center">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+      <path d="M7.75 17V9.25H0V7.75H7.75V0H9.25V7.75H17V9.25H9.25V17H7.75Z" fill="white"/>
+      </svg></a>
+              </button>
             </div>
           </div>
           <div class="new-product-slider-wrapper swiper">
@@ -717,6 +994,15 @@
                   alt="추천 브랜드 대표 배너"
                   loading="lazy">
               </div>
+              <!-- Slide 2 (Center) -->
+              <div class="carousel-slide active">
+                <img
+                  src="assets/images/brand_banner.png"
+                  alt="추천 브랜드 대표 배너"
+                  loading="lazy"
+                />
+              </div>
+              <!-- Slide 3 (Right) -->
               <div class="carousel-slide next">
                 <img
                   src="assets/images/brand_banner_rayban.png"
@@ -725,41 +1011,304 @@
               </div>
             </div>
           </div>
+          <!-- Product Slider Wrapper -->
           <div class="brand-product-slider-wrapper">
-            <div class="brand-product-grid"></div>
+            <!-- Product Grid (5 columns, sliding on desktop) -->
+            <div class="brand-product-grid">
+              <!-- Product Card 1 -->
+              <div class="brand-product-card">
+                <a href="#" class="brand-product-link">
+                  <div class="brand-product-image-box">
+                    <img
+                      src="assets/images/brand_product_01.png"
+                      alt="STYLE:WORK 매트블랙 고글 STYLE19 BK 스타일워크 스포츠 선글라스"
+                      class="brand-product-img"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="brand-product-info">
+                    <span class="brand-product-brand">STYLE:WORK</span>
+                    <p class="brand-product-name">
+                      매트블랙 고글 STYLE19 BK 스타일워크 스포츠 선글라스
+                    </p>
+                    <span class="brand-product-price">69,000원</span>
+                  </div>
+                </a>
+              </div>
+              <!-- Product Card 2 -->
+              <div class="brand-product-card">
+                <a href="#" class="brand-product-link">
+                  <div class="brand-product-image-box">
+                    <img
+                      src="assets/images/brand_product_02.png"
+                      alt="RAY-BAN 블랙 RB0832SF 601/31 55mm 레이밴 메가 웨이페어러 선글라스"
+                      class="brand-product-img"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="brand-product-info">
+                    <span class="brand-product-brand">RAY-BAN</span>
+                    <p class="brand-product-name">
+                      블랙 RB0832SF 601/31 55mm 레이밴 메가 웨이페어러 선글라스
+                    </p>
+                    <span class="brand-product-price">272,000원</span>
+                  </div>
+                </a>
+              </div>
+              <!-- Product Card 3 -->
+              <div class="brand-product-card">
+                <a href="#" class="brand-product-link">
+                  <div class="brand-product-image-box">
+                    <img
+                      src="assets/images/brand_product_03.png"
+                      alt="TART OPTICAL 브라운 페이드 ARNEL HERITAGE BROWN FADE 42mm 타르트옵티컬 안경"
+                      class="brand-product-img"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="brand-product-info">
+                    <span class="brand-product-brand">TART OPTICAL</span>
+                    <p class="brand-product-name">
+                      브라운 페이드 ARNEL HERITAGE BROWN FADE 42mm 타르트옵티컬 안경
+                    </p>
+                    <span class="brand-product-price">395,000원</span>
+                  </div>
+                </a>
+              </div>
+              <!-- Product Card 4 -->
+              <div class="brand-product-card">
+                <a href="#" class="brand-product-link">
+                  <div class="brand-product-image-box">
+                    <img
+                      src="assets/images/brand_product_04.png"
+
+
+
+
+
+                      alt="NINE ACCORD 투명 HORN ELISA C4 48mm 나인어코드 혼 엘리사 안경테"
+
+
+
+
+
+                      class="brand-product-img"
+
+
+
+
+
+                      loading="lazy"
+
+
+
+
+
+                    />
+
+
+
+
+
+                  </div>
+
+
+
+
+
+                  <div class="brand-product-info">
+
+
+
+
+
+                    <span class="brand-product-brand">NINE ACCORD</span>
+
+
+
+
+
+                    <p class="brand-product-name">
+
+
+
+
+
+                      투명 HORN ELISA C4 48mm 나인어코드 혼 엘리사 안경테
+
+
+
+
+
+                    </p>
+
+
+
+
+
+                    <span class="brand-product-price">218,000원</span>
+
+
+
+
+
+                  </div>
+
+
+
+
+
+                </a>
+
+
+
+
+
+              </div>
+              <!-- Product Card 5 -->
+              <div class="brand-product-card">
+
+
+
+
+
+                <a href="#" class="brand-product-link">
+
+
+
+
+
+                  <div class="brand-product-image-box">
+
+
+
+
+
+                    <img
+
+
+
+
+
+                      src="assets/images/brand_product_05.png"
+
+
+
+
+
+                      alt="OAKLEY 오클리 수트로 스포츠 고글 선글라스 OO9406A-04"
+
+
+
+
+
+                      class="brand-product-img"
+
+
+
+
+
+                      loading="lazy"
+
+
+
+
+
+                    />
+
+
+
+
+
+                  </div>
+
+
+
+
+
+                  <div class="brand-product-info">
+
+
+
+
+
+                    <span class="brand-product-brand">OAKLEY</span>
+
+
+
+
+
+                    <p class="brand-product-name">오클리 수트로 스포츠 고글 선글라스 OO9406A-04</p>
+
+
+
+
+
+                    <span class="brand-product-price">229,000원</span>
+
+
+
+
+
+                  </div>
+
+
+
+
+
+                </a>
+
+
+
+
+
+              </div>
+            </div>
           </div>
+          <!-- Pagination Dots -->
           <div class="recommended-brand-pagination">
+
+
+
+
+
             <button type="button" class="dot active" aria-label="1페이지"></button>
+
+
+
+
+
             <button type="button" class="dot" aria-label="2페이지"></button>
+
+
+
+
+
             <button type="button" class="dot" aria-label="3페이지"></button>
+
+
+
+
+
           </div>
+          <!-- Load More Button (Mobile Only) -->
           <button type="button" class="brand-load-more-btn">더보기</button>
         </div>
       </section>
+
+      <!-- ABOUT US 섹션: 브랜드 미션 및 아이웨어 쇼핑 가치 소개 카드 -->
       <section class="about-us">
         <div class="about-us-container">
           <div class="about-us-header">
             <h2 class="about-us-title">ABOUT US</h2>
-            <a
-              href="#"
-              class="more-web-btn d-flex justify-content-center align-items-center"
-              aria-label="ABOUT US 더보기"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="17"
-                height="17"
-                viewBox="0 0 17 17"
-                fill="none"
-              >
-                <path
-                  d="M7.75 17V9.25H0V7.75H7.75V0H9.25V7.75H17V9.25H9.25V17H7.75Z"
-                  fill="white"
-                />
-              </svg>
-            </a>
+            <button  class="more-web-btn d-flex justify-content-center align-items-center">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+      <path d="M7.75 17V9.25H0V7.75H7.75V0H9.25V7.75H17V9.25H9.25V17H7.75Z" fill="white"/>
+      </svg></a>
+            </button>
           </div>
           <div class="about-us-grid">
+            <!-- Card 1 -->
             <a href="#" class="about-us-card">
               <div class="about-us-image-wrapper">
                 <img
@@ -774,6 +1323,7 @@
                 <p class="about-us-card-subtitle">새로운 경험, 실시간 가상피팅</p>
               </div>
             </a>
+            <!-- Card 2 -->
             <a href="#" class="about-us-card">
               <div class="about-us-image-wrapper">
                 <img
@@ -787,6 +1337,7 @@
                 <p class="about-us-card-subtitle">A.I 딥러닝, AR 증강현실</p>
               </div>
             </a>
+            <!-- Card 3 -->
             <a href="#" class="about-us-card">
               <div class="about-us-image-wrapper">
                 <img
@@ -801,11 +1352,19 @@
               </div>
             </a>
           </div>
+          <!-- Horizontal Scroll Progress Indicator (Mobile Only) -->
+          <!-- <div class="product-pagination">
+                  <div class="product-pagination__track">
+                    <div class="product-pagination__fill"></div>
+                  </div>
+          </div> -->
           <div class="about-us-progress-container">
             <div class="about-us-progress-bar"></div>
           </div>
         </div>
       </section>
+
+      <!-- ROUNZ STORE 섹션: 지역별 라운즈 매장 검색 기능 및 매장 상세 정보 카드 -->
       <section class="rounz-store">
         <div class="rounz-store-container">
           <div class="rounz-store-title-area">
@@ -814,6 +1373,8 @@
               라운즈 플래그십 스토어와 파트너 안경원에서 아이웨어 쇼핑을 즐겨보세요.
             </p>
           </div>
+
+          <!-- Filter Dropdowns -->
           <div class="rounz-store-filters">
             <div
               class="store-filter-box"
@@ -834,6 +1395,7 @@
               >
                 <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="#111" />
               </svg>
+              <!-- Sido Dropdown Popup -->
               <div class="filter-dropdown-menu" id="sido-dropdown">
                 <ul class="filter-dropdown-list"></ul>
               </div>
@@ -857,12 +1419,16 @@
               >
                 <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="#111" />
               </svg>
+              <!-- Sigungu Dropdown Popup -->
               <div class="filter-dropdown-menu" id="sigungu-dropdown">
                 <ul class="filter-dropdown-list"></ul>
               </div>
             </div>
           </div>
+
+          <!-- Store Card Details -->
           <div class="store-detail-card">
+            <!-- Left: Store storefront image -->
             <div class="store-detail-image-box">
               <img
                 src="./assets/images/store_rounz_000.png"
@@ -870,6 +1436,7 @@
                 class="store-detail-img"
                 loading="lazy">
             </div>
+            <!-- Right: Store information text -->
             <div class="store-detail-info">
               <div class="store-info-content">
                 <h3 class="store-name">라운즈 강남점</h3>
@@ -911,7 +1478,7 @@
                   </svg>
                   <span>전화걸기</span>
                 </a>
-                <a href="#" class="action-btn reserve-action">
+                <a href="html/stores.html" class="action-btn reserve-action">
                   <span>라운즈 방문 예약</span>
                 </a>
               </div>
@@ -920,7 +1487,90 @@
         </div>
       </section>
     </main>
+    <!-- 푸터 영역: 매장 찾기 링크, 약관/개인정보 처리방침, 사업자 정보 노출 -->
     <footer class="footer">
+      <!-- <div class="footer-inner">
+        <div class="footer-top">
+          <a href="html/stores.html" class="store-link">라운즈 플래그십 스토어</a>
+          <span class="vertical-bar" aria-hidden="true">|</span>
+          <a href="html/stores.html" class="store-link">라운즈 파트너 안경원</a>
+        </div>
+
+        <nav class="footer-nav">
+          <ul class="nav-list">
+            <li><a href="#">고객센터</a></li>
+            <li><a href="#" class="policy-bold">개인정보처리방침</a></li>
+            <li><a href="#">이용약관</a></li>
+            <li><a href="#">라운즈앱</a></li>
+            <li><a href="#">라운즈 해외</a></li>
+            <li><a href="#">라운즈 파트너스</a></li>
+            <li><a href="#">글라스박스</a></li>
+            <li><a href="#">가맹문의</a></li>
+            <li><a href="#">사업자정보확인</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-bottom">
+          <div class="company-info">
+            <h2 class="footer-logo">ROUNZ</h2>
+
+            <!-- Business Info Toggle (Mobile Only) -->
+            <div
+              class="footer-company-toggle"
+              role="button"
+              aria-expanded="false"
+              aria-controls="footer-address"
+            >
+              <span>(주)라운즈 ROUNZ 사업자정보</span>
+              <svg
+                class="toggle-arrow"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M6 9L12 15L18 9"
+                  stroke="#4B5563"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+
+            <address class="address-text" id="footer-address">
+              <span>상호명 : 주식회사 라운즈</span>
+              <span class="bar" aria-hidden="true">|</span>
+              <span>대표 : 김세민, 김명섭</span><br />
+
+              <span>플래그십 스토어 : 서울시 강남구 역삼로 109 1층 (라운즈 강남역점)</span>
+              <span class="bar" aria-hidden="true">|</span>
+              <span>경기도 성남시 분당구 판교역로 192번길 12 1층 (라운즈 판교점)</span><br />
+
+              <span>사업자등록번호 : 119-86-02418</span>
+              <span class="bar" aria-hidden="true">|</span>
+              <span>통신판매업 신고 : 2016-서울강남-03811호</span><br />
+
+              <span>사업자 주소 : 서울특별시 강남구 강남대로94길 34, K&Y빌딩 4층</span>
+              <span class="bar" aria-hidden="true">|</span>
+              <span>개인정보관리책임자 : 김명섭</span>
+            </address>
+
+            <p class="copyright">&copy;ROUNZ</p>
+          </div>
+
+          <ul class="social-links">
+            <li><img src="assets/icons/bg_blog.png" alt="라운즈 블로그" loading="lazy" /></li>
+            <li><img src="assets/icons/bg_fb.png" alt="라운즈 페이스북" loading="lazy" /></li>
+            <li>
+              <img src="assets/icons/bg_insta.png" alt="라운즈 인스타그램" loading="lazy" />
+            </li>
+            <li><img src="assets/icons/btn_kcp.png" alt="KCP 인증 마크" loading="lazy" /></li>
+          </ul>
+        </div>
+      </div> -->
     </footer>
     <script type="module" src="js/main.js"></script>
   </body>

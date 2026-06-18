@@ -1,7 +1,9 @@
 ﻿import { getFilteredStores, getSidoList, getSigunguList } from "../common.js";
 import { renderHeader } from "../modules/header.js";
+import { renderFooter } from "../modules/footer.js";
 document.addEventListener("DOMContentLoaded", () => {
   renderHeader();
+  renderFooter();
 });
 
 const storesGrid = document.querySelector(".store-grid");
@@ -254,7 +256,10 @@ async function renderStoreMap(store) {
     await loadKakaoMapSdk();
   } catch (error) {
     console.error(error);
-    showMapMessage(container, "지도를 불러오지 못했습니다. Kakao 앱키와 등록 도메인을 확인해 주세요.");
+    showMapMessage(
+      container,
+      "지도를 불러오지 못했습니다. Kakao 앱키와 등록 도메인을 확인해 주세요.",
+    );
     return;
   }
 
