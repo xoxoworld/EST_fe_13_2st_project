@@ -286,7 +286,7 @@ button {
 /* web 컨트롤 방향 버튼 */
 .control-btn {
   background-color: var(--white-1);
-  width: 200px;
+  width: auto;
   align-items: center;
   justify-content: flex-end;
 }
