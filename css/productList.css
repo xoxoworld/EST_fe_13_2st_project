@@ -56,7 +56,6 @@ body {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 100px;
   height: 100%;
   object-fit: cover;
 }
@@ -68,6 +67,9 @@ body {
 }
 .card-text p:nth-child(2) {
   display: none;
+}
+.card-text .text-small-b {
+  color: var(--primary);
 }
 
 .chevron_right {
@@ -248,15 +250,16 @@ body {
     font-weight: 600;
   }
   .w-card {
+    position: relative;
     width: 170px;
     height: 103px;
+    overflow: hidden;
+    border-radius: 16px;
   }
   .w-card img {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     height: 100%;
-    width: auto;
     object-fit: cover;
   }
   .promotion-card {
@@ -531,21 +534,38 @@ body {
 
   /* ai추천 필터 */
   .ai-filter-card {
-    background: var(--secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     width: 267px;
     height: 244px;
     padding: 30px;
     border-radius: var(--radius-xl);
+    position: relative;
+    overflow: hidden;
   }
+  .ai-filter-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   .ai-filter-content {
+    position: relative;
+    z-index: 1;
     gap: 30px;
   }
+
   .ai-filter-link {
     width: 220px;
     height: 47px;
     border-radius: 50px;
     background: var(--primary);
     color: var(--white-1);
+    position: relative;
+    z-index: 1;
   }
   .ai-filter-text {
     color: var(--gray-1);

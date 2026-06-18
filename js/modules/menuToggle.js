@@ -1,5 +1,4 @@
-export function initSidebar(){
-
+export function initSidebar() {
   const $menuBtn = $(".header-btn-menu");
   const $sidebar = $(".sidebar");
   const $overlay = $(".sidebar-overlay");
@@ -8,30 +7,35 @@ export function initSidebar(){
   console.log("메뉴버튼", $menuBtn.length);
   console.log("사이드바", $sidebar.length);
 
-  if(!$sidebar.length) return;
+  if (!$sidebar.length) return;
 
-  $menuBtn.off("click").on("click",function(){
+  $menuBtn.off("click").on("click", function () {
     console.log("열림");
+
     $sidebar.addClass("active");
     $overlay.addClass("active");
+    $("body").addClass("sidebar-open");
   });
 
-  $close.off("click").on("click",function(){
+  $close.off("click").on("click", function () {
     closeSidebar();
   });
 
-  $overlay.off("click").on("click",function(){
+  $overlay.off("click").on("click", function () {
     closeSidebar();
   });
 
-  $(document).off("keydown").on("keydown",function(e){
-    if(e.key === "Escape"){
-      closeSidebar();
-    }
-  });
+  $(document)
+    .off("keydown.sidebar")
+    .on("keydown.sidebar", function (e) {
+      if (e.key === "Escape") {
+        closeSidebar();
+      }
+    });
 
-  function closeSidebar(){
+  function closeSidebar() {
     $sidebar.removeClass("active");
     $overlay.removeClass("active");
+    $("body").removeClass("sidebar-open");
   }
 }

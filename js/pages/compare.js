@@ -94,7 +94,13 @@ function handleBuy(productId) {
   const product = eyewearData[productId];
   if (!product) return;
 
-  let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  let cart = [];
+  try {
+    const parsed = JSON.parse(localStorage.getItem("cart"));
+    if (Array.isArray(parsed)) cart = parsed;
+  } catch (e) {
+    console.warn("장바구니 파싱 오류, 초기화합니다.");
+  }
   const exists = cart.find(item => item.id === productId);
 
   if (!exists) {

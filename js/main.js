@@ -402,6 +402,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       });
 
+      if (typeof window.updateProductGrid === 'function') {
+        window.updateProductGrid(targetText);
+      }
     }
 
 
@@ -446,6 +449,9 @@ document.addEventListener('DOMContentLoaded', () => {
               c.classList.remove('active');
             }
           });
+          if (typeof window.updateProductGrid === 'function') {
+            window.updateProductGrid('ALL');
+          }
           return;
         }
 
@@ -528,101 +534,265 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const grid = document.querySelector('.brand-product-grid');
 
-  const cards = document.querySelectorAll('.brand-product-card');
-
   const dots = document.querySelectorAll('.recommended-brand-pagination .dot');
 
 
 
-  if (!grid || cards.length === 0 || dots.length === 0) return;
+  if (grid && dots.length > 0) {
+
+    let activeIndex = 0;
+
+    let cards = [];
+
+    let allProducts = [];
 
 
 
-  let activeIndex = 0;
+    function escapeHTML(str) {
 
+      return String(str)
 
+        .replaceAll("&", "&amp;")
 
-  function updateSlider() {
+        .replaceAll("<", "&lt;")
 
-    // If layout is desktop (width > 1200px) or mobile vertical (width <= 480px), reset transform
+        .replaceAll(">", "&gt;")
 
-    if (window.innerWidth > 1200 || window.innerWidth <= 480) {
+        .replaceAll('"', "&quot;")
 
-      grid.style.transform = '';
-
-      return;
+        .replaceAll("'", "&#039;");
 
     }
 
 
 
-    const cardWidth = cards[0].getBoundingClientRect().width;
+    function updateSlider() {
 
-    const style = window.getComputedStyle(grid);
+      if (cards.length === 0) return;
 
-    const gap = parseFloat(style.gap) || 20;
+      if (window.innerWidth > 1200 || window.innerWidth <= 480) {
 
+        grid.style.transform = '';
 
-
-    const offset = activeIndex * (cardWidth + gap);
-
-    grid.style.transform = `translateX(-${offset}px)`;
-
-
-
-    // Update pagination dots
-
-    dots.forEach((dot, index) => {
-
-      if (index === activeIndex) {
-
-        dot.classList.add('active');
-
-      } else {
-
-        dot.classList.remove('active');
+        return;
 
       }
 
+
+
+      const cardWidth = cards[0].getBoundingClientRect().width;
+
+      const style = window.getComputedStyle(grid);
+
+      const gap = parseFloat(style.gap) || 20;
+
+
+
+      const offset = activeIndex * (cardWidth + gap);
+
+      grid.style.transform = `translateX(-${offset}px)`;
+
+
+
+      dots.forEach((dot, index) => {
+
+        if (index === activeIndex) {
+
+          dot.classList.add('active');
+
+        } else {
+
+          dot.classList.remove('active');
+
+        }
+
+      });
+
+    }
+
+
+
+    dots.forEach((dot, index) => {
+
+      dot.addEventListener('click', () => {
+
+        activeIndex = index;
+
+        updateSlider();
+
+      });
+
     });
 
-  }
+
+
+    let resizeTimeout;
+
+    window.addEventListener('resize', () => {
+
+      clearTimeout(resizeTimeout);
+
+      resizeTimeout = setTimeout(updateSlider, 100);
+
+    });
 
 
 
-  // Add click event to dots
+    function renderBrandProducts(productsList) {
 
-  dots.forEach((dot, index) => {
+      grid.innerHTML = productsList.map(p => `
 
-    dot.addEventListener('click', () => {
+        <div class="brand-product-card">
 
-      activeIndex = index;
+          <a href="#" class="brand-product-link">
+
+            <div class="brand-product-image-box">
+
+              <img
+
+                src="${p.images?.thumbnail || ''}"
+
+                alt="${escapeHTML(p.brand)} ${escapeHTML(p.title)}"
+
+                class="brand-product-img"
+
+                loading="lazy"
+
+              />
+
+            </div>
+
+            <div class="brand-product-info">
+
+              <span class="brand-product-brand">${escapeHTML(p.brand)}</span>
+
+              <p class="brand-product-name">${escapeHTML(p.title)}</p>
+
+              <span class="brand-product-price">${Number(p.price?.final || 0).toLocaleString()}원</span>
+
+            </div>
+
+          </a>
+
+        </div>
+
+      `).join('');
+
+
+
+      cards = document.querySelectorAll('.brand-product-card');
+
+      activeIndex = 0;
 
       updateSlider();
 
-    });
-
-  });
+    }
 
 
 
-  // Handle window resize to re-calculate offsets
+    window.updateProductGrid = function(chipText) {
 
-  let resizeTimeout;
-
-  window.addEventListener('resize', () => {
-
-    clearTimeout(resizeTimeout);
-
-    resizeTimeout = setTimeout(updateSlider, 100);
-
-  });
+      if (!allProducts.length) return;
 
 
 
-  // Initial layout calculation
+      let filtered = [];
 
-  updateSlider();
+      if (chipText === 'ALL' || !chipText) {
+
+        const targetBrands = ["STYLE:WORK", "Ray-Ban", "TART OPTICAL", "NINE ACCORD", "OAKLEY"];
+
+        targetBrands.forEach(brandName => {
+
+          const match = allProducts.find(p => p.brand && p.brand.toLowerCase() === brandName.toLowerCase());
+
+          if (match) {
+
+            filtered.push(match);
+
+          }
+
+        });
+
+        while (filtered.length < 5 && allProducts.length > filtered.length) {
+
+          const nextProd = allProducts.find(p => !filtered.includes(p));
+
+          if (nextProd) filtered.push(nextProd);
+
+        }
+
+      } else if (chipText === '1.618') {
+
+        filtered = allProducts.filter(p => p.brand && p.brand.toLowerCase() === '1.618').slice(0, 5);
+
+        let fallbackIndex = 0;
+
+        while (filtered.length < 5 && allProducts.length > filtered.length) {
+
+          const nextProd = allProducts[fallbackIndex++];
+
+          if (nextProd && !filtered.includes(nextProd)) filtered.push(nextProd);
+
+        }
+
+      } else if (chipText === '59 HYSTERIC') {
+
+        filtered = allProducts.filter(p => p.brand && p.brand.toLowerCase() === 'museum by beacon').slice(0, 5);
+
+        let fallbackIndex = 0;
+
+        while (filtered.length < 5 && allProducts.length > filtered.length) {
+
+          const nextProd = allProducts[fallbackIndex++];
+
+          if (nextProd && !filtered.includes(nextProd)) filtered.push(nextProd);
+
+        }
+
+      } else if (chipText === 'ACCRUE') {
+
+        filtered = allProducts.filter(p => p.brand && p.brand.toLowerCase() === 'ray-ban').slice(0, 5);
+
+        let fallbackIndex = 0;
+
+        while (filtered.length < 5 && allProducts.length > filtered.length) {
+
+          const nextProd = allProducts[fallbackIndex++];
+
+          if (nextProd && !filtered.includes(nextProd)) filtered.push(nextProd);
+
+        }
+
+      }
+
+
+
+      renderBrandProducts(filtered);
+
+    };
+
+
+
+    fetch("./data/products.json")
+
+      .then(res => res.json())
+
+      .then(data => {
+
+        allProducts = Array.isArray(data) ? data : data.products;
+
+        const activeChip = document.querySelector('.recommended-brand-filters .filter-chip.active');
+
+        const activeText = activeChip ? activeChip.textContent.trim() : 'ALL';
+
+        window.updateProductGrid(activeText);
+
+      })
+
+      .catch(err => console.error("Error loading recommended brand products:", err));
+
+  }
 
 
 
@@ -1160,162 +1330,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const newProductSliderWrapper = document.querySelector('.new-product-slider-wrapper');
   const newProductSwiperWrapper = document.querySelector('.new-product-swiper-wrapper');
-  const newPrevBtn = document.querySelector('.new-product-controls .ctrl-prev');
-  const newNextBtn = document.querySelector('.new-product-controls .ctrl-next');
+  const newPrevBtn = document.querySelector('.new-product .control-btn .ctrl-prev');
+  const newNextBtn = document.querySelector('.new-product .control-btn .ctrl-next');
   const newDotsContainer = document.querySelector('.new-product-pagination');
   const filterChips = document.querySelectorAll('.new-product-filters .filter-chip');
 
   if (newProductSliderWrapper && newProductSwiperWrapper && newPrevBtn && newNextBtn && newDotsContainer && filterChips.length > 0) {
-
-    // Brand Data
-    const publicBeaconProducts = [
-      {
-        brand: "PUBLIC BEACON",
-        name: "블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스",
-        price: "235,000원",
-        img: "assets/images/new_product_01.png"
-      },
-      {
-        brand: "PUBLIC BEACON",
-        name: "블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스",
-        price: "235,000원",
-        img: "assets/images/new_product_02.png"
-      },
-      {
-        brand: "PUBLIC BEACON",
-        name: "블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스",
-        price: "235,000원",
-        img: "assets/images/new_product_03.png"
-      },
-      {
-        brand: "PUBLIC BEACON",
-        name: "블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스",
-        price: "235,000원",
-        img: "assets/images/new_product_04.png"
-      }
-    ];
-
-    const escadaProducts = [
-      {
-        brand: "ESCADA",
-        name: "N_SESF63B 0Z42_SU 에스까다 선글라스",
-        price: "235,000원",
-        img: "assets/images/escada_01.png"
-      },
-      {
-        brand: "ESCADA",
-        name: "N_SESF68B 0700_SU 에스까다 선글라스",
-        price: "235,000원",
-        img: "assets/images/escada_02.png"
-      },
-      {
-        brand: "ESCADA",
-        name: "N_SESF65B 0700_SU 에스까다 선글라스",
-        price: "235,000원",
-        img: "assets/images/escada_03.png"
-      },
-      {
-        brand: "ESCADA",
-        name: "N_SESF66B 0700_SU 에스까다 선글라스",
-        price: "235,000원",
-        img: "assets/images/escada_04.png"
-      }
-    ];
-
-    const oakleyProducts = [
-      {
-        brand: "OAKLEY",
-        name: "오클리 하이퍼링크 아시안핏 안경테 OX8051-0354",
-        price: "160,000원",
-        img: "assets/images/oakley_01.png"
-      },
-      {
-        brand: "OAKLEY",
-        name: "오클리 크로스링크 제로 안경테 OX8080-0458 아시안핏",
-        price: "160,000원",
-        img: "assets/images/oakley_02.png"
-      },
-      {
-        brand: "OAKLEY",
-        name: "오클리 크로스링크 제로 안경테 OX8080-0758 아시안핏",
-        price: "일시품절",
-        img: "assets/images/oakley_03.png"
-      },
-      {
-        brand: "OAKLEY",
-        name: "오클리 홀브룩 아시안핏 편광 프리즘 선글라스 OO9244-25",
-        price: "일시품절",
-        img: "assets/images/oakley_04.png"
-      }
-    ];
-
-    const policeProducts = [
-      {
-        brand: "POLICE",
-        name: "블랙&블랙 메탈 SPLT59K 0700 폴리스 선글라스",
-        price: "오프라인 전용 상품",
-        img: "assets/images/police_01.png"
-      },
-      {
-        brand: "POLICE",
-        name: "블랙 SPLT54K 700K 폴리스 선글라스",
-        price: "오프라인 전용 상품",
-        img: "assets/images/police_02.png"
-      },
-      {
-        brand: "POLICE",
-        name: "실버 메탈 SPLT55K 0568 폴리스 선글라스",
-        price: "오프라인 전용 상품",
-        img: "assets/images/police_03.png"
-      },
-      {
-        brand: "POLICE",
-        name: "그린 그레이 투명&실버 메탈 SPLT59K 09RM 폴리스 선글라스",
-        price: "오프라인 전용 상품",
-        img: "assets/images/police_04.png"
-      }
-    ];
-
-    const oliverPeoplesProducts = [
-      {
-        brand: "OLIVER PEOPLES",
-        name: "올리버피플스 피어시 안경테 OV1281 5145 48mm",
-        price: "314,400원",
-        img: "assets/images/oliver_peoples_01.png"
-      },
-      {
-        brand: "OLIVER PEOPLES",
-        name: "올리버피플스 하일디 안경테 OV5457U 1178 52mm",
-        price: "398,400원",
-        img: "assets/images/oliver_peoples_02.png"
-      },
-      {
-        brand: "OLIVER PEOPLES",
-        name: "올리버피플스 그레고리팩 안경테 OV5186 1011 50mm",
-        price: "일시품절",
-        img: "assets/images/oliver_peoples_03.png"
-      },
-      {
-        brand: "OLIVER PEOPLES",
-        name: "올리버피플스 그레고리팩 투명 안경테 OV5186 1484 50mm",
-        price: "364,000원",
-        img: "assets/images/oliver_peoples_04.png"
-      }
-    ];
-
-    const chipsArray = Array.from(filterChips);
     let newProductSwiper = null;
+    const chipsArray = Array.from(filterChips);
+    const targetBrands = ["PUBLIC BEACON", "OAKLEY", "Ray-Ban", "FAKEME", "PRADA"];
 
-    function getRandomAllProducts() {
-      const allPool = [
-        ...publicBeaconProducts,
-        ...escadaProducts,
-        ...oakleyProducts,
-        ...policeProducts,
-        ...oliverPeoplesProducts
-      ];
-      const shuffled = [...allPool].sort(() => 0.5 - Math.random());
-      return shuffled.slice(0, 4);
+    // Helper functions
+    function getBrandProducts(allProducts, brandName) {
+      return allProducts
+        .filter(p => p.brand && p.brand.toLowerCase() === brandName.toLowerCase())
+        .slice(0, 4)
+        .map(p => ({
+          brand: p.brand,
+          name: p.title,
+          price: Number(p.price?.final || 0).toLocaleString() + '원',
+          img: p.images?.thumbnail || ''
+        }));
+    }
+
+    function getMixAllProducts(allProducts) {
+      const pool = [];
+      targetBrands.forEach(brand => {
+        const list = allProducts.filter(p => p.brand && p.brand.toLowerCase() === brand.toLowerCase());
+        if (list.length > 0) {
+          pool.push(list[0]);
+        }
+      });
+      // Fallback if we don't have enough
+      if (pool.length < 4) {
+        const fallbacks = allProducts.filter(p => p.brand && targetBrands.map(b => b.toLowerCase()).includes(p.brand.toLowerCase()));
+        for (const item of fallbacks) {
+          if (pool.length >= 4) break;
+          if (!pool.includes(item)) pool.push(item);
+        }
+      }
+      return pool.slice(0, 4).map(p => ({
+        brand: p.brand,
+        name: p.title,
+        price: Number(p.price?.final || 0).toLocaleString() + '원',
+        img: p.images?.thumbnail || ''
+      }));
     }
 
     function createCardHTML(product) {
@@ -1340,14 +1399,14 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     }
 
-    function renderSlides() {
+    function renderSlides(allProducts) {
       const slidesData = [
-        getRandomAllProducts(),
-        publicBeaconProducts,
-        escadaProducts,
-        oakleyProducts,
-        policeProducts,
-        oliverPeoplesProducts
+        getMixAllProducts(allProducts),
+        getBrandProducts(allProducts, "PUBLIC BEACON"),
+        getBrandProducts(allProducts, "OAKLEY"),
+        getBrandProducts(allProducts, "Ray-Ban"),
+        getBrandProducts(allProducts, "FAKEME"),
+        getBrandProducts(allProducts, "PRADA")
       ];
 
       newProductSwiperWrapper.innerHTML = slidesData.map(productsList => `
@@ -1394,15 +1453,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function initSwiper() {
-      newProductSwiper = new Swiper(newProductSliderWrapper, {
+      newProductSwiper = new Swiper('.new-product-slider-wrapper', {
         slidesPerView: 1,
         spaceBetween: 0,
         speed: 600,
         observer: true,
         observeParents: true,
         navigation: {
-          prevEl: newPrevBtn,
-          nextEl: newNextBtn
+          prevEl: '.new-product .ctrl-prev',
+          nextEl: '.new-product .ctrl-next'
         },
         on: {
           slideChange(swiper) {
@@ -1419,10 +1478,16 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Run
-    renderSlides();
-    initDots();
-    initSwiper();
+    // Fetch products dynamically on init
+    fetch("./data/products.json")
+      .then(res => res.json())
+      .then(data => {
+        const allProducts = Array.isArray(data) ? data : data.products;
+        renderSlides(allProducts);
+        initDots();
+        initSwiper();
+      })
+      .catch(err => console.error("Error loading new products:", err));
   }
 
 });

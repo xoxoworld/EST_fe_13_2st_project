@@ -15,6 +15,7 @@ const prevBtn = document.querySelector(".prev-btn");
 const nextBtn = document.querySelector(".next-btn");
 const isDesktop = window.innerWidth >= 1272;
 const bannerImages = [
+  "../assets/images/promotion_banner_1.png",
   "../assets/images/promotion_banner_2.png",
   "../assets/images/promotion_banner_3.png",
   "../assets/images/promotion_banner_4.png",
@@ -99,17 +100,33 @@ sortButtons.forEach(button => {
 // 상품 리스트
 function renderProducts(products) {
   const productList = document.querySelector(".sunglasses-page");
-  const bannerImage = bannerImages[(currentPage - 1) % bannerImages.length];
+  // 배너 랜덤
+const randomIndex1 =
+  Math.floor(Math.random() * bannerImages.length);
+let randomIndex2;
+do {
+  randomIndex2 =
+    Math.floor(Math.random() * bannerImages.length);
+} while (randomIndex1 === randomIndex2);
 
-  const start = (currentPage - 1) * countPerPage;
-  const end = start + countPerPage;
+const bannerImage1 = bannerImages[randomIndex1];
+const bannerImage2 = bannerImages[randomIndex2];
 
-  const html = products
-    .slice(start, end)
+  let visibleProducts;
+
+  if (isDesktop) {
+    const start = (currentPage - 1) * countPerPage;
+    const end = start + countPerPage;
+    visibleProducts = products.slice(start, end);
+  } else {
+    visibleProducts = products.slice(0, currentCount);
+  }
+
+  const html = visibleProducts
     .map((product, index) => {
       let card = `
       <article class="product-list-card">
-        <a href="./productDetail.html?id=${product.id}" class="product-list-link">
+        <a href="../html/product.html?id=${product.id}" class="product-list-link">
           <div class="product-list-image">
             <div class="product-list-image">
               <img
@@ -150,7 +167,7 @@ function renderProducts(products) {
       if ((isDesktop && index === 9) || (!isDesktop && index === 11)) {
         card += `
           <article class="promotion-banner">
-            <img src="${bannerImage}" alt="">
+            <img src="${bannerImage2}" alt="">
           </article>
         `;
       }
@@ -160,7 +177,10 @@ function renderProducts(products) {
     .join("");
 
   productList.innerHTML = html;
-  renderPagination();
+
+  if (isDesktop) {
+    renderPagination();
+  }
 }
 
 // 데스크 탑 필터
@@ -298,6 +318,7 @@ moreButtons.forEach(button => {
   });
 });
 
+// 데스크탑 페이지네이션
 function renderPagination() {
   const totalPages = Math.ceil(filteredData.length / countPerPage);
   pageList.innerHTML = "";
@@ -323,19 +344,26 @@ function renderPagination() {
 prevBtn.addEventListener("click", () => {
   if (currentPage > 1) {
     currentPage--;
-
     renderProducts(filteredData);
     renderPagination();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }
 });
+
 nextBtn.addEventListener("click", () => {
   const totalPages = Math.ceil(filteredData.length / countPerPage);
 
   if (currentPage < totalPages) {
     currentPage++;
-
     renderProducts(filteredData);
     renderPagination();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }
 });
 

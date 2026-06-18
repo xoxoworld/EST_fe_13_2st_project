@@ -925,10 +925,17 @@ img {
 }
 
 .bottom-buttons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   height: 58px;
+  box-sizing: border-box;
   border-radius: 8px;
   font-size: 18px;
   font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
 }
 
 .cart-btn {
@@ -1175,12 +1182,12 @@ img {
   .thumb-wrap {
     display: block;
     height: 143px;
-    padding-top: 25px;
-    overflow: hidden;
+    padding-top: 24px;
+    overflow: visible;
   }
 
-  .thumb-wrap .swiper-wrapper {
-    height: 116px;
+  .thumb-wrap.swiper {
+    overflow: hidden;
   }
 
   .thumb {
