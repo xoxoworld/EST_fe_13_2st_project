@@ -997,20 +997,6 @@ button {
   color: var(--primary-btn-color);
 }
 
-/* 호버 상태 (비활성화가 아닐 때) */
-.primary-btn:hover:not(:disabled) {
-  /* 그라디언트 버튼에 호버 시 단색으로 변하게 하거나 투명도 조절 */
-  background: rgba(26, 26, 26, 1);
-}
-
-/* 비활성화 상태 */
-.primary-btn:disabled {
-  /* !important 제거 */
-  background: var(--primary-btn-disabled-bg);
-  color: var(--primary-btn-color);
-  cursor: not-allowed;
-}
-
 #app-container {
   display: flex;
   flex-direction: column;
@@ -1059,3 +1045,5 @@ button {
     display: none;
   }
 }
+
+/* 로그인 및 회원가입 공통*/

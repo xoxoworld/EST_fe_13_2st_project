@@ -2085,6 +2085,30 @@
   border-radius: 4px;
 }
 
+/* ALL Active Layout for Recommended Brands */
+.brand-carousel-container.all-active {
+  height: auto !important;
+  aspect-ratio: auto !important;
+}
+
+.brand-carousel-track.all-active {
+  transform: none !important;
+  cursor: default !important;
+  gap: 24px !important;
+}
+
+.brand-carousel-track.all-active .carousel-slide {
+  width: calc((100% - 48px) / 3) !important;
+  max-width: 392px;
+  transform: scale(1) !important;
+  cursor: default !important;
+  opacity: 1 !important;
+}
+
+.brand-carousel-track.all-active .carousel-slide img {
+  opacity: 1 !important;
+}
+
 /* Responsive Styles */
 @media (width <= 1200px) {
   .brand-carousel-container {
@@ -2115,6 +2139,12 @@
   }
   .brand-carousel-track {
     gap: 16px;
+  }
+  .brand-carousel-track.all-active {
+    gap: 16px !important;
+  }
+  .brand-carousel-track.all-active .carousel-slide {
+    width: calc((100% - 32px) / 3) !important;
   }
   .carousel-slide.active {
     width: 400px;
@@ -2158,6 +2188,12 @@
     justify-content: center;
     gap: 0;
     padding: 10px 0;
+  }
+  .brand-carousel-track.all-active {
+    gap: 8px !important;
+  }
+  .brand-carousel-track.all-active .carousel-slide {
+    width: calc((100% - 16px) / 3) !important;
   }
   .carousel-slide.prev,
   .carousel-slide.next {

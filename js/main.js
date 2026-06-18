@@ -182,6 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleDragStart(e) {
 
+      if (carouselTrack.classList.contains('all-active')) return;
+
       if (isTransitioning) return;
 
       isDragging = true;
@@ -308,13 +310,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-      if (e.key === 'ArrowLeft') {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
 
-        rotateCarousel('prev');
+        const chips = Array.from(brandChips);
 
-      } else if (e.key === 'ArrowRight') {
+        const currentActiveIdx = chips.findIndex(chip => chip.classList.contains('active'));
 
-        rotateCarousel('next');
+        if (currentActiveIdx === -1) return;
+
+
+
+        e.preventDefault();
+
+
+
+        let nextIdx;
+
+        if (e.key === 'ArrowRight') {
+
+          nextIdx = (currentActiveIdx + 1) % chips.length;
+
+        } else {
+
+          nextIdx = (currentActiveIdx - 1 + chips.length) % chips.length;
+
+        }
+
+
+
+        chips[nextIdx].click();
 
       }
 
@@ -389,9 +413,47 @@ document.addEventListener('DOMContentLoaded', () => {
         const text = chip.textContent.trim();
 
         if (text === 'ALL') {
+          // Sort slides to original order: prev (museum), active (59 hysteric), next (rayban)
+          const slides = Array.from(carouselTrack.children);
+          slides.sort((a, b) => {
+            const getOrder = (slide) => {
+              const src = slide.querySelector('img')?.getAttribute('src') || '';
+              if (src.includes('brand_banner_museum.png')) return 1;
+              if (src.includes('brand_banner.png')) return 2;
+              if (src.includes('brand_banner_rayban.png')) return 3;
+              return 4;
+            };
+            return getOrder(a) - getOrder(b);
+          });
 
+          slides[0].className = 'carousel-slide prev';
+          slides[1].className = 'carousel-slide active';
+          slides[2].className = 'carousel-slide next';
+          slides.forEach(slide => carouselTrack.appendChild(slide));
+
+          // Enable all-active layout
+          carouselTrack.classList.add('all-active');
+          const carouselContainer = document.querySelector('.brand-carousel-container');
+          if (carouselContainer) {
+            carouselContainer.classList.add('all-active');
+          }
+
+          // Highlight ALL chip and deactivate others
+          brandChips.forEach(c => {
+            if (c.textContent.trim() === 'ALL') {
+              c.classList.add('active');
+            } else {
+              c.classList.remove('active');
+            }
+          });
           return;
+        }
 
+        // Disable all-active layout when specific brand is selected
+        carouselTrack.classList.remove('all-active');
+        const carouselContainer = document.querySelector('.brand-carousel-container');
+        if (carouselContainer) {
+          carouselContainer.classList.remove('all-active');
         }
 
         if (isTransitioning) return;
