@@ -4,16 +4,16 @@ const eyewearData = {
     brand: "RAY-BAN",
     name: "아리스타 보잉 RB6489 2500 58mm",
     price: 194000,
-    image: "../assets/images/brand_product_02.png",
-    detailUrl: "./detail/rb6489.html",
+    image: "../assets/images/brand_product_01.png",
+    detailUrl: "./product.html",
   },
   2: {
     id: 2,
     brand: "RAY-BAN",
     name: "웨이페어러 RX5121 2000",
     price: 218000,
-    image: "../assets/images/brand_product_01.png",
-    detailUrl: "./detail/rx5121.html",
+    image: "../assets/images/brand_product_02.png",
+    detailUrl: "./product.html",
   },
   3: {
     id: 3,
@@ -21,16 +21,16 @@ const eyewearData = {
     name: "GG0935O 001",
     price: 325000,
     image: "../assets/images/brand_product_03.png",
-    detailUrl: "./detail/gg0935o.html",
+    detailUrl: "./product.html",
   },
-  4: {
-    id: 4,
-    brand: "TOM FORD",
-    name: "FT5783-B 001",
-    price: 389000,
-    image: "../assets/images/brand_product_04.png",
-    detailUrl: "./detail/ft5783.html",
-  },
+  // 4: {
+  //   id: 4,
+  //   brand: "TOM FORD",
+  //   name: "FT5783-B 001",
+  //   price: 389000,
+  //   image: "../assets/images/brand_product_04.png",
+  //   detailUrl: "./product.html",
+  // },
 };
 
 // 현재 선택된 상품 ID 상태 관리
@@ -38,6 +38,7 @@ let selectedEyewear = {
   0: 1,
   1: 2,
   2: 3,
+  // 3: 4,
 };
 
 // 가격 포맷팅
@@ -113,7 +114,16 @@ function handleBuy(productId) {
 
 // 더 알아보기: 상품 ID를 URL 파라미터로 전달하여 상세 페이지로 이동
 function handleMore(productId) {
-  window.location.href = `../../html/product.html?id=${productId}`;
+  const product = eyewearData[productId];
+
+  if (product && product.detailUrl) {
+    // 1. eyewearData에 정의된 경로로 이동
+    window.location.href = product.detailUrl + `?id=${productId}`;
+  } else {
+    // 2. 정의된 경로가 없을 경우에 대한 예외 처리
+    console.error("해당 상품의 상세 페이지 경로가 없습니다.");
+    alert("상세 페이지를 준비 중입니다.");
+  }
 }
 
 // 이벤트 바인딩
@@ -150,3 +160,22 @@ document.addEventListener("DOMContentLoaded", () => {
   renderComparePage(); // 1. 화면 먼저 그리기
   bindEvents(); // 2. 이벤트 붙이기
 });
+
+// products.json 변환
+async function fetchProducts() {
+  try {
+    const res = await fetch("../data/products.json");
+    const data = await res.json();
+
+    products = data.products;
+
+    console.log(products.filter(item => item.gender === "women").length);
+    console.log([...new Set(products.map(item => item.gender))]);
+
+    filteredData = [...products];
+
+    renderProducts(filteredData);
+  } catch (error) {
+    console.error(error);
+  }
+}
