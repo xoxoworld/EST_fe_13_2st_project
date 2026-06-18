@@ -19,7 +19,7 @@ async function fetchProduct() {
 
   if (!productID) {
     alert("잘못된 접근입니다. 홈으로 이동.");
-    location.href = "../index.html";
+    location.href = "./index.html";
     return;
   }
 
@@ -601,6 +601,8 @@ const cartButtons = document.querySelectorAll(".cart-btn");
 
 cartButtons.forEach(cartButton => {
   cartButton.addEventListener("click", () => {
+    if (!product || !product.id)
+      return alert("상품 정보를 불러오는 중입니다. 잠시만 기다려주세요.");
     addToCart(product, currentQty);
   });
 });
@@ -610,6 +612,8 @@ const compareModelButtons = document.querySelectorAll(".compare-model");
 
 compareModelButtons.forEach(compareModel => {
   compareModel.addEventListener("click", () => {
+    if (!product || !product.id)
+      return alert("상품 정보를 불러오는 중입니다. 잠시만 기다려주세요.");
     addToCompare(product);
     location.href = "./compare.html";
   });
