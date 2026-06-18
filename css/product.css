@@ -125,7 +125,7 @@ img {
   color: var(--white-1);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 5%;
+  letter-spacing: 0.05em;
 }
 
 /* 브랜드명 경로와 상품명 영역입니다. */
@@ -1329,7 +1329,7 @@ img {
   .face-banner-content strong {
     width: 170px;
     font-size: 12px;
-    letter-spacing: -2%;
+    letter-spacing: -0.02em;
     line-height: 22px;
   }
 

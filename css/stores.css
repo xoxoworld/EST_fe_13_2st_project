@@ -123,6 +123,9 @@ main > section {
   font-size: 12px;
   line-height: 22px;
 }
+.info-card .info-card-sub > br {
+  display: block;
+}
 
 .info-card > img {
   position: absolute;
@@ -551,12 +554,18 @@ main > section {
   display: none;
 }
 
-.detail-map-placeholder,
-.map {
+.detail-map-placeholder {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: var(--secondary);
+  color: var(--gray-2);
+}
+
+.map {
   width: 100%;
   height: 100%;
   background: var(--secondary);
@@ -574,6 +583,18 @@ main > section {
   font-size: 14px;
   font-weight: 700;
   line-height: 22px;
+}
+
+.map-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  height: 100%;
+  color: var(--gray-2);
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
 }
 
 .detail-content {
@@ -813,7 +834,7 @@ main > section {
   .info-card .info-card-sub {
     font-size: 12px;
     line-height: 16px;
-    letter-spacing: -2%;
+    letter-spacing: -0.02em;
   }
 
   .info-card > img {

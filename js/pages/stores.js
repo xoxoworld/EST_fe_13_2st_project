@@ -14,11 +14,13 @@ let stores = [];
 let currentStores = [];
 let visibleCount = 9;
 const pageSize = 9;
+const KAKAO_MAP_APP_KEY = "67f8f6f1d9641a1e9e51cadd68120bd0";
 const regionSelects = document.querySelectorAll(".select-group select");
 const sidoSelect = regionSelects[0];
 const sigunguSelect = regionSelects[1];
 let selectedSido = "";
 let selectedSigungu = "";
+let kakaoMapLoader = null;
 
 // 안경원 조회
 async function fetchStores() {
@@ -102,8 +104,8 @@ storesGrid.addEventListener("click", event => {
 
   storeDetail(selectedStore);
   storeDetailLayer.classList.add("open");
-  requestAnimationFrame(() => {
-    renderStoreMap(selectedStore);
+  requestAnimationFrame(async () => {
+    await renderStoreMap(selectedStore);
   });
 });
 
@@ -209,31 +211,77 @@ function storeDetail(store) {
 }
 
 // 매장 상세 지도
-function renderStoreMap(store) {
+function loadKakaoMapSdk() {
+  if (window.kakao?.maps) {
+    return new Promise(resolve => {
+      window.kakao.maps.load(resolve);
+    });
+  }
+
+  if (kakaoMapLoader) return kakaoMapLoader;
+
+  kakaoMapLoader = new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_MAP_APP_KEY}&libraries=services&autoload=false`;
+    script.async = true;
+    script.onload = () => {
+      if (!window.kakao?.maps) {
+        reject(new Error("Kakao Maps SDK가 초기화되지 않았습니다."));
+        return;
+      }
+
+      window.kakao.maps.load(resolve);
+    };
+    script.onerror = () => reject(new Error("Kakao Maps SDK를 불러오지 못했습니다."));
+    document.head.append(script);
+  });
+
+  return kakaoMapLoader;
+}
+
+function showMapMessage(container, message) {
+  container.innerHTML = `<p class="map-message">${message}</p>`;
+}
+
+async function renderStoreMap(store) {
   const container = document.getElementById("map");
 
-  if (!container || !window.kakao?.maps) return;
+  if (!container) return;
+
+  showMapMessage(container, "지도를 불러오는 중입니다.");
+
+  try {
+    await loadKakaoMapSdk();
+  } catch (error) {
+    console.error(error);
+    showMapMessage(container, "지도를 불러오지 못했습니다. Kakao 앱키와 등록 도메인을 확인해 주세요.");
+    return;
+  }
 
   const defaultPosition = new kakao.maps.LatLng(37.497952, 127.027619);
-  const map = new kakao.maps.Map(container, {
-    center: defaultPosition,
-    level: 2,
-  });
-  const marker = new kakao.maps.Marker({
-    position: defaultPosition,
-  });
+  const map = new kakao.maps.Map(container, { center: defaultPosition, level: 2 });
+  const marker = new kakao.maps.Marker({ position: defaultPosition });
 
   marker.setMap(map);
+  map.relayout();
+  map.setCenter(defaultPosition);
 
-  if (!store.address || !kakao.maps.services) return;
+  if (!store.address || !kakao.maps.services) {
+    console.warn("매장 주소 또는 Kakao Maps services 라이브러리를 찾을 수 없습니다.", store);
+    return;
+  }
 
   const geocoder = new kakao.maps.services.Geocoder();
 
   geocoder.addressSearch(store.address, (result, status) => {
-    if (status !== kakao.maps.services.Status.OK || result.length === 0) return;
+    if (status !== kakao.maps.services.Status.OK || result.length === 0) {
+      console.warn("주소 좌표 변환에 실패했습니다.", { status, address: store.address });
+      return;
+    }
 
     const position = new kakao.maps.LatLng(result[0].y, result[0].x);
 
+    map.relayout();
     map.setCenter(position);
     marker.setPosition(position);
   });
@@ -266,6 +314,7 @@ function renderFilterOptions() {
   sigunguSelect.value = selectedSigungu;
 }
 
+// store 필터 적용
 function applyStoreFilter() {
   visibleCount = 9;
   stores = getFilteredStores(currentStores, selectedSido, selectedSigungu);

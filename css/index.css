@@ -1230,6 +1230,10 @@
   /* flex-wrap: wrap; */
 }
 
+.new-product-filters .filter-chip {
+  font-size: 16px;
+}
+
 .filter-chip {
   background-color: var(--white-1);
   border: 1px solid var(--primary);
@@ -2079,6 +2083,30 @@
   border-radius: 4px;
 }
 
+/* ALL Active Layout for Recommended Brands */
+.brand-carousel-container.all-active {
+  height: auto !important;
+  aspect-ratio: auto !important;
+}
+
+.brand-carousel-track.all-active {
+  transform: none !important;
+  cursor: default !important;
+  gap: 24px !important;
+}
+
+.brand-carousel-track.all-active .carousel-slide {
+  width: calc((100% - 48px) / 3) !important;
+  max-width: 392px;
+  transform: scale(1) !important;
+  cursor: default !important;
+  opacity: 1 !important;
+}
+
+.brand-carousel-track.all-active .carousel-slide img {
+  opacity: 1 !important;
+}
+
 /* Responsive Styles */
 @media (width <= 1200px) {
   .brand-carousel-container {
@@ -2109,6 +2137,12 @@
   }
   .brand-carousel-track {
     gap: 16px;
+  }
+  .brand-carousel-track.all-active {
+    gap: 16px !important;
+  }
+  .brand-carousel-track.all-active .carousel-slide {
+    width: calc((100% - 32px) / 3) !important;
   }
   .carousel-slide.active {
     width: 400px;
@@ -2152,6 +2186,12 @@
     justify-content: center;
     gap: 0;
     padding: 10px 0;
+  }
+  .brand-carousel-track.all-active {
+    gap: 8px !important;
+  }
+  .brand-carousel-track.all-active .carousel-slide {
+    width: calc((100% - 16px) / 3) !important;
   }
   .carousel-slide.prev,
   .carousel-slide.next {
@@ -2489,31 +2529,8 @@
   }
 
   .about-us-more-btn {
-    position: absolute;
     top: 8px;
     right: 24px;
-    width: auto;
-    height: auto;
-    background-color: transparent;
-    padding: 0;
-    margin: 0;
-  }
-  .about-us-more-btn:hover {
-    background-color: transparent;
-    transform: none;
-  }
-  .about-us-more-btn svg {
-    display: none;
-  }
-  .about-us-more-btn .more-text {
-    display: block;
-    font-size: 13px;
-    font-weight: 500;
-    color: #888;
-    letter-spacing: -0.2px;
-  }
-  .about-us-more-btn:hover .more-text {
-    color: var(--primary);
   }
   .about-us-grid {
     grid-template-columns: 1fr;
@@ -2543,9 +2560,6 @@
     top: 6px;
   }
 
-  .about-us-more-btn .more-text {
-    font-size: 12px;
-  }
   .about-us-grid {
     display: flex;
     flex-direction: row;
