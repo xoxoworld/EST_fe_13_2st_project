@@ -7,7 +7,8 @@
   <title>상품 목록</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=favorite" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=favorite" />
   <link rel="stylesheet" href="../css/common.css" />
   <link rel="stylesheet" href="../css/flex-utility.css" />
   <link rel="stylesheet" href="../css/productList.css" />
@@ -116,6 +117,9 @@
         <!-- 브랜드 -->
         <div class="filter-group brand d-flex flex-column g-20">
           <p class="filter-sub-title text-subtitle-xs">브랜드</p>
+          <label for="brand-search" class="sr-only">
+            브랜드 검색
+          </label>
           <input type="text" class="brand-search text-small-m" placeholder="브랜드 검색" />
           <ul class="filter-list text-medium-r">
             <li class="filter-item">
@@ -230,6 +234,9 @@
           <p class="filter-sub-title text-subtitle-xs">
             가격대
           </p>
+          <label for="price-range">
+            가격대
+          </label>
           <input type="range" min="0" max="500000" value="200000">
           <div class="price-label text-medium-r">
             <span class="current-price">200,000원</span>
@@ -521,7 +528,7 @@
           </button>
         </nav>
   </main>
-   <footer class="footer"></footer>
+  <footer class="footer"></footer>
   <script type="module" src="../js/pages/productList.js"></script>
 </body>
 
