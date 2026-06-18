@@ -4,7 +4,13 @@ export function renderHeader(){
 
   if(!header) return;
 
+  // 현재 실행되는 HTML 파일의 위치가 html/ 서브디렉토리 내부인지 여부를 판별합니다.
+  const isSubPage = window.location.pathname.includes('/html/');
+  const homeLink = isSubPage ? "../index.html" : "./index.html";
+  const loginLink = isSubPage ? "./login.html" : "./html/login.html";
+  const cartLink = isSubPage ? "./cart.html" : "./html/cart.html";
 
+  // 글로벌 스코프에 노출하여 아래 chunk에서 사용할 수 있도록 설정하거나 내부 변수를 직접 사용합니다.
   header.innerHTML = `
   <div class="header-container d-flex justify-content-between">
         <nav class="header-left d-flex align-items-center justify-content-between g-10">
@@ -36,7 +42,7 @@ export function renderHeader(){
             </svg>
           </button>
           <h1 class="header-logo">
-            <a href="" aria-label="홈으로 이동">
+            <a href="${homeLink}" aria-label="홈으로 이동">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="80"
@@ -127,7 +133,7 @@ export function renderHeader(){
             </svg>
           </button>
 
-          <a href="html/login.html" class="header-btn header-btn-account" aria-label="로그인으로 이동">
+          <a href="${isSubPage ? "./login.html" : "./html/login.html"}" class="header-btn header-btn-account" aria-label="로그인으로 이동">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -155,7 +161,7 @@ export function renderHeader(){
             </svg>
           </a>
 
-          <a href="html/cart.html" class="header-btn header-btn-cart" aria-label="장바구니로 이동">
+          <a href="${isSubPage ? "./cart.html" : "./html/cart.html"}" class="header-btn header-btn-cart" aria-label="장바구니로 이동">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

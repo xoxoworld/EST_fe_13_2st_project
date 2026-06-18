@@ -3,12 +3,21 @@ export function renderFooter() {
 
   if (!footer) return;
 
+  // 현재 실행되는 HTML 파일의 위치가 html/ 서브디렉토리 내부인지 여부를 판별합니다.
+  const isSubPage = window.location.pathname.includes('/html/');
+  
+  // GitHub Pages 배포 환경일 경우, 저장소 이름을 포함한 절대 경로를 사용해 경로 깨짐을 방지합니다.
+  const isGithubPages = window.location.hostname.includes('github.io');
+  const basePath = isGithubPages ? '/EST_fe_13_2st_project' : (isSubPage ? ".." : ".");
+  
+  const storeLink = isSubPage ? "./stores.html" : "./html/stores.html";
+
   footer.innerHTML = `
       <div class="footer-inner">
         <div class="footer-top">
-          <a href="html/stores.html" class="store-link">라운즈 플래그십 스토어</a>
+          <a href="${storeLink}" class="store-link">라운즈 플래그십 스토어</a>
           <span class="vertical-bar" aria-hidden="true">|</span>
-          <a href="html/stores.html" class="store-link">라운즈 파트너 안경원</a>
+          <a href="${storeLink}" class="store-link">라운즈 파트너 안경원</a>
         </div>
 
         <nav class="footer-nav">
@@ -77,14 +86,5 @@ export function renderFooter() {
           </div>
 
           <ul class="social-links">
-            <li><img src="../assets/icons/bg_blog.png" alt="라운즈 블로그" loading="lazy" /></li>
-            <li><img src="../assets/icons/bg_fb.png" alt="라운즈 페이스북" loading="lazy" /></li>
-            <li>
-              <img src="../assets/icons/bg_insta.png" alt="라운즈 인스타그램" loading="lazy" />
-            </li>
-            <li><img src="../assets/icons/btn_kcp.png" alt="KCP 인증 마크" loading="lazy" /></li>
-          </ul>
-        </div>
-      </div>
-  `;
-}
+            <li><img src="${basePath}/assets/icons/bg_blog.png" alt="라운즈 블로그" loading="lazy" /></li>
+            <li><img src="${basePath}/assets/icons/bg_fb.png" alt="라운즈 페이스북" loading="lazy"
