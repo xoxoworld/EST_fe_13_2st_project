@@ -58,13 +58,8 @@ async function fetchProducts() {
 
     products = data.products;
 
-
-    console.log(
-      products.filter(item => item.gender === "women").length
-    );
-    console.log(
-      [...new Set(products.map(item => item.gender))]
-    );
+    console.log(products.filter(item => item.gender === "women").length);
+    console.log([...new Set(products.map(item => item.gender))]);
 
     filteredData = [...products];
 
@@ -86,31 +81,24 @@ sortButtons.forEach(button => {
 
       // 인기순 likeCount
       case "popular":
-        filteredData = [...products].sort(
-          (a, b) => b.likeCount - a.likeCount
-        );
+        filteredData = [...products].sort((a, b) => b.likeCount - a.likeCount);
         break;
 
       // 추천순 releaseDate
       case "recommend":
         filteredData = [...products].sort(
-          (a, b) =>
-            new Date(b.releaseDate) - new Date(a.releaseDate)
+          (a, b) => new Date(b.releaseDate) - new Date(a.releaseDate),
         );
         break;
 
       // 가격순 price.final
       case "price":
       case "price-low":
-        filteredData = [...products].sort(
-          (a, b) => a.price.final - b.price.final
-        );
+        filteredData = [...products].sort((a, b) => a.price.final - b.price.final);
         break;
 
       case "price-high":
-        filteredData = [...products].sort(
-          (a, b) => b.price.final - a.price.final
-        );
+        filteredData = [...products].sort((a, b) => b.price.final - a.price.final);
         break;
     }
     renderProducts(filteredData);
@@ -178,16 +166,13 @@ function renderProducts(products) {
     `;
       if (index === 5) {
         card += `
-          <article class="promotion-banner">
-            <img src="${bannerImage1}" alt="">
-          </article>
-        `;
+        <article class="promotion-banner">
+          <img src="../assets/images/promotion_banner_1.webp" alt="">
+        </article>
+          `;
       }
 
-      if (
-        (isDesktop && index === 9) ||
-        (!isDesktop && index === 11)
-      ) {
+      if ((isDesktop && index === 9) || (!isDesktop && index === 11)) {
         card += `
           <article class="promotion-banner">
             <img src="${bannerImage2}" alt="">
@@ -199,7 +184,6 @@ function renderProducts(products) {
     })
     .join("");
 
-
   productList.innerHTML = html;
 
   if (isDesktop) {
@@ -207,16 +191,12 @@ function renderProducts(products) {
   }
 }
 
-
 // 데스크 탑 필터
 function applyFilter() {
   let result = [...products];
 
   // 카테고리
-  if (
-    selectedCategories.length > 0 &&
-    !selectedCategories.includes("all")
-  ) {
+  if (selectedCategories.length > 0 && !selectedCategories.includes("all")) {
     result = result.filter(product =>
       selectedCategories.some(value => {
         if (value === "goggle") {
@@ -224,53 +204,37 @@ function applyFilter() {
         }
 
         return product.category === value;
-      })
+      }),
     );
   }
 
   // 브랜드
   if (selectedBrands.length > 0) {
-    result = result.filter(product =>
-      selectedBrands.includes(product.brand)
-    );
+    result = result.filter(product => selectedBrands.includes(product.brand));
   }
 
   // 렌즈 색상
   if (selectedColors.length > 0) {
     result = result.filter(product => {
-      const text = [
-        product.title,
-        ...(product.otherColors || []).map(
-          item => item.model
-        ),
-      ].join(" ");
-
-      return selectedColors.some(color =>
-        text.includes(color)
+      const text = [product.title, ...(product.otherColors || []).map(item => item.model)].join(
+        " ",
       );
+
+      return selectedColors.some(color => text.includes(color));
     });
   }
 
   // 가격대
-  result = result.filter(
-    product => product.price.final <= selectedPrice
-  );
+  result = result.filter(product => product.price.final <= selectedPrice);
 
-  // 프레임 
+  // 프레임
   if (selectedFrames.length > 0) {
-    result = result.filter(product =>
-      selectedFrames.includes(product["frame-shape"])
-    );
+    result = result.filter(product => selectedFrames.includes(product["frame-shape"]));
   }
 
   // 성별
-  if (
-    selectedGenders.length > 0 &&
-    !selectedGenders.includes("all")
-  ) {
-    result = result.filter(product =>
-      selectedGenders.includes(product.gender)
-    );
+  if (selectedGenders.length > 0 && !selectedGenders.includes("all")) {
+    result = result.filter(product => selectedGenders.includes(product.gender));
   }
 
   // 필터 결과 저장
@@ -284,9 +248,7 @@ function applyFilter() {
 // 카테고리 필터
 categoryInputs.forEach(input => {
   input.addEventListener("change", () => {
-    selectedCategories = [...categoryInputs]
-      .filter(item => item.checked)
-      .map(item => item.value);
+    selectedCategories = [...categoryInputs].filter(item => item.checked).map(item => item.value);
 
     applyFilter();
   });
@@ -295,9 +257,7 @@ categoryInputs.forEach(input => {
 // 브랜드 필터
 brandInputs.forEach(input => {
   input.addEventListener("change", () => {
-    selectedBrands = [...brandInputs]
-      .filter(item => item.checked)
-      .map(item => item.value);
+    selectedBrands = [...brandInputs].filter(item => item.checked).map(item => item.value);
 
     applyFilter();
   });
@@ -306,9 +266,7 @@ brandInputs.forEach(input => {
 // 렌즈 색상 필터
 colorInputs.forEach(input => {
   input.addEventListener("change", () => {
-    selectedColors = [...colorInputs]
-      .filter(item => item.checked)
-      .map(item => item.value);
+    selectedColors = [...colorInputs].filter(item => item.checked).map(item => item.value);
 
     applyFilter();
   });
@@ -318,8 +276,7 @@ colorInputs.forEach(input => {
 priceRange.addEventListener("input", () => {
   selectedPrice = Number(priceRange.value);
 
-  currentPrice.textContent =
-    selectedPrice.toLocaleString("ko-KR") + "원";
+  currentPrice.textContent = selectedPrice.toLocaleString("ko-KR") + "원";
 
   applyFilter();
 });
@@ -330,9 +287,7 @@ shapeImages.forEach(img => {
     const shape = img.dataset.shape;
 
     if (selectedFrames.includes(shape)) {
-      selectedFrames = selectedFrames.filter(
-        item => item !== shape
-      );
+      selectedFrames = selectedFrames.filter(item => item !== shape);
       img.classList.remove("active");
     } else {
       selectedFrames.push(shape);
@@ -346,9 +301,7 @@ shapeImages.forEach(img => {
 // 성별 필터
 genderInputs.forEach(input => {
   input.addEventListener("change", () => {
-    selectedGenders = [...genderInputs]
-      .filter(item => item.checked)
-      .map(item => item.value);
+    selectedGenders = [...genderInputs].filter(item => item.checked).map(item => item.value);
 
     applyFilter();
   });
@@ -359,16 +312,13 @@ moreButtons.forEach(button => {
   button.addEventListener("click", () => {
     const filterGroup = button.closest(".filter-group");
 
-    const hiddenItems =
-      filterGroup.querySelectorAll(".hidden-item");
+    const hiddenItems = filterGroup.querySelectorAll(".hidden-item");
 
     hiddenItems.forEach(item => {
       item.classList.toggle("show");
     });
 
-    if (
-      button.textContent.includes("더보기")
-    ) {
+    if (button.textContent.includes("더보기")) {
       button.textContent = "접기 -";
     } else {
       button.textContent = "더보기 +";
@@ -378,41 +328,27 @@ moreButtons.forEach(button => {
 
 // 데스크탑 페이지네이션
 function renderPagination() {
-  const totalPages = Math.ceil(
-    filteredData.length / countPerPage
-  );
+  const totalPages = Math.ceil(filteredData.length / countPerPage);
   pageList.innerHTML = "";
   for (let i = 1; i <= totalPages; i++) {
     pageList.innerHTML += `
       <button
-        class="page-number ${i === currentPage ? "active" : ""
-      }"
+        class="page-number ${i === currentPage ? "active" : ""}"
         data-page="${i}"
       >
         ${i}
       </button>
     `;
   }
-  // 페이지 숫자
-  document
-    .querySelectorAll(".page-number")
-    .forEach(btn => {
-      btn.addEventListener("click", () => {
-        currentPage = Number(btn.dataset.page);
+  document.querySelectorAll(".page-number").forEach(btn => {
+    btn.addEventListener("click", () => {
+      currentPage = Number(btn.dataset.page);
 
-        renderProducts(filteredData);
-        renderPagination();
-
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      });
+      renderProducts(filteredData);
+      renderPagination();
     });
-
-
+  });
 }
-
 prevBtn.addEventListener("click", () => {
   if (currentPage > 1) {
     currentPage--;
@@ -426,9 +362,8 @@ prevBtn.addEventListener("click", () => {
 });
 
 nextBtn.addEventListener("click", () => {
-  const totalPages = Math.ceil(
-    filteredData.length / countPerPage
-  );
+  const totalPages = Math.ceil(filteredData.length / countPerPage);
+
   if (currentPage < totalPages) {
     currentPage++;
     renderProducts(filteredData);

@@ -62,12 +62,15 @@
           </div>
 
           <div class="step-section">
-            <h2>비밀번호를 입력 해주세요.</h2>
+            <h2>비밀번호를 입력하세요</h2>
             <div class="input-row">
-              <input type="password" placeholder="비밀번호 입력" />
-              <input type="password" placeholder="비밀번호 확인" />
+              <input type="password" id="pw1" name="password" placeholder="비밀번호" />
+              <input type="password" id="pw2" name="password_confirm" placeholder="비밀번호 확인" />
+              <span class="error-message" id="pw-error">비밀번호가 일치하지 않습니다.</span>
             </div>
-            <button type="button" class="primary-btn next-btn">설정 완료</button>
+            <button type="button" class="primary-btn next-btn" id="step4-next" disabled>
+              설정 완료
+            </button>
           </div>
 
           <div class="step-section">

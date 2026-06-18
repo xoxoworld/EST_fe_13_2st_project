@@ -12,7 +12,10 @@
     <link rel="stylesheet" href="./css/index.css" />
   </head>
   <body>
+    <!-- 헤더 -->
     <header class="header d-flex align-items-center"></header>
+
+    <!-- sidebar -->
     <div class="sidebar-overlay"></div>
     <aside class="sidebar">
       <div class="sidebar-header">
@@ -50,15 +53,14 @@
 
         <ul class="sidebar-menu-list-right d-flex flex-column">
           <li>
-            <a href="#">전 제품보기<img src="./assets/icons/sidebar_arrow_right.svg" alt="" /></a>
+            <a href="html/productList.html"
+              >전 제품보기<img src="./assets/icons/sidebar_arrow_right.svg" alt=""
+            /></a>
           </li>
-          <li class="sidebar_event-img d-flex flex-column">
+          <li class="sidebar_event-img d-flex flex-column g-10">
             <strong class="text-subtitle-s">WELCOME BENEFITS</strong>
             <a href="#"
-              ><img
-                class="event-banner"
-                src="./assets/images/sidebar_event.png"
-                alt="웰컴 혜택 배너"
+              ><img class="event-banner" src="./assets/images/sidebar_event.png" alt=""
             /></a>
           </li>
         </ul>
@@ -66,16 +68,18 @@
     </aside>
 
     <main>
+      <!-- 메인 배너 섹션 -->
       <section class="banner" aria-label="프로모션 배너">
-        <section
+        <div
           class="banner-carousel swiper banner-swiper"
+          role="region"
           aria-roledescription="carousel"
           aria-label="주요 프로모션 슬라이드"
         >
           <div class="banner-viewport swiper-wrapper">
             <div class="swiper-slide">
               <img src="./assets/images/banner_02.jpg" alt="" />
-              <div class="banner-text-box">
+              <figcaption class="banner-text-box">
                 <div class="banner-logo">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -100,10 +104,10 @@
                 <h2 class="banner-description is-narrow">
                   세상에 없던 안경 쇼핑,실시간 가상피팅으로 완성하는 나만의 안경
                 </h2>
-                <a href="#" class="link">자세히보기</a>
+                <a href="html/productList.html" class="link">자세히보기</a>
                 <div class="banner-btn-box">
-                  <button
-                    type="button"
+                  <a
+                    href="#"
                     class="banner-btn banner__btn--primary d-flex justify-content-center align-items-center g-10"
                     aria-label="전제품보기 페이지로 이동"
                   >
@@ -121,9 +125,9 @@
                         /></svg
                     ></span>
                     <span class="banner-btn-text text-medium-r">가상피팅 시작하기</span>
-                  </button>
-                  <button
-                    type="button"
+                  </a>
+                  <a
+                    href="html/productList.html"
                     class="banner-btn banner__btn--secondary d-flex justify-content-center align-items-center g-10"
                     aria-label="자세히 보기"
                   >
@@ -141,20 +145,20 @@
                           fill="white"
                         /></svg
                     ></span>
-                  </button>
+                  </a>
                 </div>
-              </div>
+              </figcaption>
             </div>
             <div class="swiper-slide">
               <img src="./assets/images/banner_01.jpg" alt="" />
-              <div class="banner-text-box">
+              <figcaption class="banner-text-box">
                 <p class="banner-badge">최대 71% 할인</p>
                 <h2 class="banner-title">스포츠 선글라스 최저가 특가</h2>
                 <p class="banner-description">지금 가장 좋은 혜택으로 준비하세요!</p>
                 <a href="#" class="link">자세히보기</a>
                 <div class="banner-btn-box">
-                  <button
-                    type="button"
+                  <a
+                    href="#"
                     class="banner-btn banner__btn--primary d-flex justify-content-center align-items-center g-10"
                     aria-label="전제품보기 페이지로 이동"
                   >
@@ -172,9 +176,9 @@
                         /></svg
                     ></span>
                     <span class="banner-btn-text text-medium-r">가상피팅 시작하기</span>
-                  </button>
-                  <button
-                    type="button"
+                  </a>
+                  <a
+                    href="html/productList.html"
                     class="banner-btn banner__btn--secondary d-flex justify-content-center align-items-center g-10"
                     aria-label="자세히 보기"
                   >
@@ -192,20 +196,20 @@
                           fill="white"
                         /></svg
                     ></span>
-                  </button>
+                  </a>
                 </div>
-              </div>
+              </figcaption>
             </div>
             <div class="swiper-slide">
               <img src="./assets/images/banner_03.jpg" alt="" />
-              <div class="banner-text-box">
+              <figcaption class="banner-text-box">
                 <p class="banner-badge">6월 한정 특별 혜택</p>
                 <h2 class="banner-title">여름 선글라스 특가전</h2>
                 <p class="banner-description">6월 한정 특별 혜택 지금 바로 확인해보세요</p>
                 <a href="#" class="link">자세히보기</a>
                 <div class="banner-btn-box">
-                  <button
-                    type="button"
+                  <a
+                    href="#"
                     class="banner-btn banner__btn--primary d-flex justify-content-center align-items-center g-10"
                     aria-label="전제품보기 페이지로 이동"
                   >
@@ -223,9 +227,9 @@
                         /></svg
                     ></span>
                     <span class="banner-btn-text text-medium-r">가상피팅 시작하기</span>
-                  </button>
-                  <button
-                    type="button"
+                  </a>
+                  <a
+                    href="html/productList.html"
                     class="banner-btn banner__btn--secondary d-flex justify-content-center align-items-center g-10"
                     aria-label="자세히 보기"
                   >
@@ -243,13 +247,13 @@
                           fill="white"
                         /></svg
                     ></span>
-                  </button>
+                  </a>
                 </div>
-              </div>
+              </figcaption>
             </div>
           </div>
 
-          <div class="banner__pagination" role="group" aria-label="슬라이드 진행률">
+          <div class="banner__pagination" aria-label="슬라이드 진행률">
             <button
               class="banner__pagination-btn banner__pagination-btn--active"
               type="button"
@@ -260,8 +264,9 @@
 
             <button class="banner__pagination-btn" type="button" aria-label="슬라이드 3"></button>
           </div>
-        </section>
+        </div>
       </section>
+      <!-- 카테고리 섹션 -->
       <section class="category" aria-labelledby="category-heading">
         <div class="container category__inner">
           <h2 id="category-heading" class="category__title hidden">서비스 카테고리</h2>
@@ -315,6 +320,7 @@
           </ul>
         </div>
       </section>
+      <!-- 타임세일 섹션 -->
       <section class="timesale" aria-labelledby="timesale-heading">
         <div class="container timesale__container">
           <header class="timesale__header">
@@ -336,7 +342,7 @@
                   alt="타임세일 상품 이미지"
                 />
               </div>
-              <button type="button" class="arrow-right" aria-label="타임세일 다음 상품 보기">
+              <button class="arrow-right">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="29"
@@ -351,16 +357,15 @@
                 </svg>
               </button>
             </div>
-            <a
-              href="#"
-              class="more-button d-flex justify-content-center align-items-center m-link text-small-r text-center"
-              aria-label="타임세일 전체보기"
-            >
-              타임세일 전체보기 &gt;
-            </a>
+            <button class="more-button d-flex justify-content-center align-items-center">
+              <a href="#" class="m-link text-small-r text-center" aria-label="타임세일 전체보기"
+                >타임세일 전체보기 &gt;</a
+              >
+            </button>
           </div>
         </div>
       </section>
+      <!-- 제니 컬렉션 섹션 -->
       <section class="jenny-collection" aria-labelledby="jenny-collection-heading">
         <div class="container jenny-collection__container">
           <header
@@ -371,12 +376,20 @@
           </header>
           <div class="jenny-contents">
             <figure class="jenny-collection__figure">
-              <video src="./assets/video/jenny_col.mp4" muted loop playsinline></video>
+              <video
+                src="./assets/video/jenny_col.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+                width="100%"
+              ></video>
             </figure>
 
             <div class="product-contents">
               <div class="product-swiper swiper">
                 <div class="product-wrapper swiper-wrapper">
+                  <!-- Slide 1: 3 items -->
                   <div class="swiper-slide">
                     <ul class="product-slide-list"></ul>
                   </div>
@@ -392,6 +405,7 @@
           </div>
         </div>
       </section>
+      <!-- 베스트 상품 섹션 -->
       <section class="best-product" aria-labelledby="best-product-title">
         <div class="best-product-container container d-flex g-16 flex-column">
           <header
@@ -403,12 +417,12 @@
 
           <div class="filter-more-btn d-flex justify-content-between">
             <div class="filter d-flex g-10">
-              <button type="button" class="filter-btn active">ALL</button>
-              <button type="button" class="filter-btn">라운즈ONLY</button>
-              <button type="button" class="filter-btn">안경</button>
-              <button type="button" class="filter-btn">선글라스</button>
-              <button type="button" class="filter-btn">스포츠고글</button>
-              <button type="button" class="filter-btn">블루라이트 차단</button>
+              <button class="filter-btn active">ALL</button>
+              <button class="filter-btn">라운즈ONLY</button>
+              <button class="filter-btn">안경</button>
+              <button class="filter-btn">선글라스</button>
+              <button class="filter-btn">스포츠고글</button>
+              <button class="filter-btn">블루라이트 차단</button>
             </div>
             <div class="control-btn d-flex g-10">
               <button
@@ -447,12 +461,52 @@
                   />
                 </svg>
               </button>
-              <a
-                href="#"
-                class="more-web-btn d-flex justify-content-center align-items-center"
-                aria-label="베스트 상품 더보기"
-              >
-                <svg
+              <button class="more-web-btn d-flex justify-content-center align-items-center">
+                <a href="#"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="17"
+                    height="17"
+                    viewBox="0 0 17 17"
+                    fill="none"
+                  >
+                    <path
+                      d="M7.75 17V9.25H0V7.75H7.75V0H9.25V7.75H17V9.25H9.25V17H7.75Z"
+                      fill="white"
+                    /></svg
+                ></a>
+              </button>
+            </div>
+          </div>
+
+          <div class="product-contents">
+            <div class="product-swiper swiper">
+              <div class="product-wrapper swiper-wrapper">
+                <!-- Slide 1: 3 items -->
+              </div>
+            </div>
+            <!-- Pagination Dots -->
+            <div class="new-product-pagination">
+              <button type="button" class="dot active" aria-label="1페이지"></button>
+              <button type="button" class="dot" aria-label="2페이지"></button>
+              <button type="button" class="dot" aria-label="3페이지"></button>
+            </div>
+          </div>
+
+          <button class="more-button d-flex justify-content-center align-items-center">
+            <a href="#" class="m-link text-small-r text-center" aria-label="더보기">더보기</a>
+          </button>
+        </div>
+      </section>
+
+      <!-- STYLE MAGAZINE 섹션: 최신 아이웨어 트렌드 및 스타일 매거진 컨텐츠 카드 노출 -->
+      <section class="style-magazine">
+        <div class="style-magazine-container">
+          <div class="style-magazine-header">
+            <h2 class="style-magazine-title">STYLE MAGAZINE</h2>
+            <button class="more-web-btn d-flex justify-content-center align-items-center">
+              <a href="#"
+                ><svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="17"
                   height="17"
@@ -462,51 +516,12 @@
                   <path
                     d="M7.75 17V9.25H0V7.75H7.75V0H9.25V7.75H17V9.25H9.25V17H7.75Z"
                     fill="white"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <div class="product-contents">
-            <div class="product-swiper swiper">
-              <div class="product-wrapper swiper-wrapper"></div>
-            </div>
-          </div>
-
-          <a
-            href="#"
-            class="more-button m-link d-flex justify-content-center align-items-center text-small-r text-center"
-            aria-label="더보기"
-          >
-            더보기
-          </a>
-        </div>
-      </section>
-      <section class="style-magazine">
-        <div class="style-magazine-container">
-          <div class="style-magazine-header">
-            <h2 class="style-magazine-title">STYLE MAGAZINE</h2>
-            <a
-              href="#"
-              class="more-web-btn d-flex justify-content-center align-items-center"
-              aria-label="스타일 매거진 더보기"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="17"
-                height="17"
-                viewBox="0 0 17 17"
-                fill="none"
-              >
-                <path
-                  d="M7.75 17V9.25H0V7.75H7.75V0H9.25V7.75H17V9.25H9.25V17H7.75Z"
-                  fill="white"
-                />
-              </svg>
-            </a>
+                  /></svg
+              ></a>
+            </button>
           </div>
           <div class="style-magazine-grid">
+            <!-- 여름 선글라스 추천 -->
             <a href="#" class="magazine-card">
               <div class="card-image-wrapper">
                 <img
@@ -520,6 +535,7 @@
                 <p class="card-tags">#선글라스 #여름코디 #트렌드</p>
               </div>
             </a>
+            <!-- 직장인 안경 스타일링 -->
             <a href="#" class="magazine-card">
               <div class="card-image-wrapper">
                 <img
@@ -533,6 +549,7 @@
                 <p class="card-tags">#데일리룩 #안경코디 #남자안경</p>
               </div>
             </a>
+            <!-- 얼굴형별 안경 스타일 -->
             <a href="#" class="magazine-card">
               <div class="card-image-wrapper">
                 <img
@@ -549,6 +566,8 @@
           </div>
         </div>
       </section>
+
+      <!-- NEW PRODUCT 섹션: 신상품 슬라이더 및 필터(브랜드별) 칩 제공 -->
       <section class="new-product">
         <div class="new-product-container">
           <div class="new-product-title-area">
@@ -557,67 +576,76 @@
           <div class="new-product-sub-header d-flex">
             <div class="new-product-filters">
               <button type="button" class="filter-chip active">ALL</button>
-              <button type="button" class="filter-chip">PUBLIC BEACON</button>
+              <button type="button" class="filter-chip">public beacon</button>
+              <button type="button" class="filter-chip">ESCADA</button>
               <button type="button" class="filter-chip">OAKLEY</button>
-              <button type="button" class="filter-chip">Ray-Ban</button>
-              <button type="button" class="filter-chip">FAKEME</button>
-              <button type="button" class="filter-chip">PRADA</button>
+              <button type="button" class="filter-chip">POLICE</button>
+              <button type="button" class="filter-chip">OLIVER PEOPLES</button>
             </div>
-            <div class="new-product-controls">
-              <button type="button" class="ctrl-btn ctrl-prev" aria-label="이전 상품 보기">
+            <div class="control-btn d-flex g-10">
+              <button
+                type="button"
+                class="ctrl-btn ctrl-prev d-flex align-items-center justify-content-center"
+                aria-label="이전 상품 보기"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="20"
+                  width="12"
                   height="20"
-                  viewBox="0 0 24 24"
+                  viewBox="0 0 12 20"
                   fill="none"
                 >
                   <path
-                    d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z"
-                    fill="#666"
+                    d="M9.65375 19.3075L0 9.65375L9.65375 0L11.073 1.41925L2.83825 9.65375L11.073 17.8883L9.65375 19.3075Z"
+                    fill="#9CA3AF"
                   />
                 </svg>
               </button>
-
-              <button type="button" class="ctrl-btn ctrl-next" aria-label="다음 상품 보기">
+              <button
+                type="button"
+                class="ctrl-btn ctrl-next d-flex align-items-center justify-content-center"
+                aria-label="다음 상품 보기"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="20"
+                  width="12"
                   height="20"
-                  viewBox="0 0 24 24"
+                  viewBox="0 0 12 20"
                   fill="none"
                 >
                   <path
-                    d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z"
-                    fill="#666"
+                    d="M1.41925 19.3075L0 17.8883L8.2345 9.65375L0 1.41925L1.41925 0L11.073 9.65375L1.41925 19.3075Z"
+                    fill="#9CA3AF"
                   />
                 </svg>
               </button>
-
-              <a href="#" class="new-product-more-btn" aria-label="신상품 더보기">
-                <span class="more-text">전체보기</span>
-
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path d="M11 13H5V11H11V5H13V11H19V13H13V19H11V13Z" fill="white" />
-                </svg>
-              </a>
+              <button class="more-web-btn d-flex justify-content-center align-items-center">
+                <a href="#"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="17"
+                    height="17"
+                    viewBox="0 0 17 17"
+                    fill="none"
+                  >
+                    <path
+                      d="M7.75 17V9.25H0V7.75H7.75V0H9.25V7.75H17V9.25H9.25V17H7.75Z"
+                      fill="white"
+                    /></svg
+                ></a>
+              </button>
             </div>
           </div>
           <div class="new-product-slider-wrapper swiper">
             <div class="new-product-swiper-wrapper swiper-wrapper">
               <div class="swiper-slide">
                 <div class="new-product-grid">
+                  <!-- Product Card 1 -->
                   <div class="product-card">
                     <a href="#" class="product-link">
                       <div class="product-image-box">
                         <img
-                          src="assets/images/new_product_03.png"
+                          src="assets/images/new_product_01.png"
                           alt="PUBLIC BEACON 블랙 캣아이 BUCKLE C1 퍼블릭비컨 버클 선글라스"
                           class="product-img"
                           loading="lazy"
@@ -630,6 +658,8 @@
                       </div>
                     </a>
                   </div>
+
+                  <!-- Product Card 2 -->
                   <div class="product-card">
                     <a href="#" class="product-link">
                       <div class="product-image-box">
@@ -647,6 +677,8 @@
                       </div>
                     </a>
                   </div>
+
+                  <!-- Product Card 3 -->
                   <div class="product-card">
                     <a href="#" class="product-link">
                       <div class="product-image-box">
@@ -664,6 +696,7 @@
                       </div>
                     </a>
                   </div>
+                  <!-- Product Card 4 -->
                   <div class="product-card">
                     <a href="#" class="product-link">
                       <div class="product-image-box">
@@ -685,14 +718,18 @@
               </div>
             </div>
           </div>
+          <!-- Pagination Dots -->
           <div class="new-product-pagination">
             <button type="button" class="dot active" aria-label="1페이지"></button>
             <button type="button" class="dot" aria-label="2페이지"></button>
             <button type="button" class="dot" aria-label="3페이지"></button>
           </div>
+          <!-- Load More Button (Mobile Only) -->
           <button type="button" class="new-product-load-more-btn">더보기</button>
         </div>
       </section>
+
+      <!-- AI CTA 섹션: 라운즈 AI 가상피팅 및 얼굴형 분석 서비스 홍보 및 예약 유도 -->
       <section class="ai-cta">
         <div class="ai-cta-container">
           <div class="ai-cta-content">
@@ -705,7 +742,7 @@
           </div>
           <div class="ai-cta-visual">
             <img
-              src="assets/images/ai_cta_phone.png"
+              src="assets/images/ai_cta.png"
               alt="AI 가상 피팅 스마트폰 데모"
               class="ai-cta-phone-img"
               loading="lazy"
@@ -713,10 +750,27 @@
           </div>
         </div>
       </section>
+
+      <!-- RECOMMENDED BRAND 섹션: 추천 브랜드 대표 배너 캐러셀 및 상품 슬라이더 -->
       <section class="recommended-brand">
         <div class="recommended-brand-container">
           <div class="recommended-brand-title-area">
             <h2 class="recommended-brand-title">ROUNZ 추천 브랜드</h2>
+            <button class="more-web-btn d-flex justify-content-center align-items-center">
+              <a href="#"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="17"
+                  height="17"
+                  viewBox="0 0 17 17"
+                  fill="none"
+                >
+                  <path
+                    d="M7.75 17V9.25H0V7.75H7.75V0H9.25V7.75H17V9.25H9.25V17H7.75Z"
+                    fill="white"
+                  /></svg
+              ></a>
+            </button>
             <a href="#" class="brand-more-btn">전체보기</a>
           </div>
           <div class="recommended-brand-sub-header">
@@ -727,8 +781,10 @@
               <button type="button" class="filter-chip">ACCRUE</button>
             </div>
           </div>
+          <!-- Carousel Banners -->
           <div class="brand-carousel-container">
             <div class="brand-carousel-track">
+              <!-- Slide 1 (Left) -->
               <div class="carousel-slide prev">
                 <img
                   src="assets/images/brand_banner_museum.png"
@@ -736,6 +792,7 @@
                   loading="lazy"
                 />
               </div>
+              <!-- Slide 2 (Center) -->
               <div class="carousel-slide active">
                 <img
                   src="assets/images/brand_banner.png"
@@ -743,6 +800,7 @@
                   loading="lazy"
                 />
               </div>
+              <!-- Slide 3 (Right) -->
               <div class="carousel-slide next">
                 <img
                   src="assets/images/brand_banner_rayban.png"
@@ -752,41 +810,146 @@
               </div>
             </div>
           </div>
+          <!-- Product Slider Wrapper -->
           <div class="brand-product-slider-wrapper">
-            <div class="brand-product-grid"></div>
+            <!-- Product Grid (5 columns, sliding on desktop) -->
+            <div class="brand-product-grid">
+              <!-- Product Card 1 -->
+              <div class="brand-product-card">
+                <a href="#" class="brand-product-link">
+                  <div class="brand-product-image-box">
+                    <img
+                      src="assets/images/brand_product_01.png"
+                      alt="STYLE:WORK 매트블랙 고글 STYLE19 BK 스타일워크 스포츠 선글라스"
+                      class="brand-product-img"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="brand-product-info">
+                    <span class="brand-product-brand">STYLE:WORK</span>
+                    <p class="brand-product-name">
+                      매트블랙 고글 STYLE19 BK 스타일워크 스포츠 선글라스
+                    </p>
+                    <span class="brand-product-price">69,000원</span>
+                  </div>
+                </a>
+              </div>
+              <!-- Product Card 2 -->
+              <div class="brand-product-card">
+                <a href="#" class="brand-product-link">
+                  <div class="brand-product-image-box">
+                    <img
+                      src="assets/images/brand_product_02.png"
+                      alt="RAY-BAN 블랙 RB0832SF 601/31 55mm 레이밴 메가 웨이페어러 선글라스"
+                      class="brand-product-img"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="brand-product-info">
+                    <span class="brand-product-brand">RAY-BAN</span>
+                    <p class="brand-product-name">
+                      블랙 RB0832SF 601/31 55mm 레이밴 메가 웨이페어러 선글라스
+                    </p>
+                    <span class="brand-product-price">272,000원</span>
+                  </div>
+                </a>
+              </div>
+              <!-- Product Card 3 -->
+              <div class="brand-product-card">
+                <a href="#" class="brand-product-link">
+                  <div class="brand-product-image-box">
+                    <img
+                      src="assets/images/brand_product_03.png"
+                      alt="TART OPTICAL 브라운 페이드 ARNEL HERITAGE BROWN FADE 42mm 타르트옵티컬 안경"
+                      class="brand-product-img"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="brand-product-info">
+                    <span class="brand-product-brand">TART OPTICAL</span>
+                    <p class="brand-product-name">
+                      브라운 페이드 ARNEL HERITAGE BROWN FADE 42mm 타르트옵티컬 안경
+                    </p>
+                    <span class="brand-product-price">395,000원</span>
+                  </div>
+                </a>
+              </div>
+              <!-- Product Card 4 -->
+              <div class="brand-product-card">
+                <a href="#" class="brand-product-link">
+                  <div class="brand-product-image-box">
+                    <img
+                      src="assets/images/brand_product_04.png"
+                      alt="NINE ACCORD 투명 HORN ELISA C4 48mm 나인어코드 혼 엘리사 안경테"
+                      class="brand-product-img"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="brand-product-info">
+                    <span class="brand-product-brand">NINE ACCORD</span>
+                    <p class="brand-product-name">
+                      투명 HORN ELISA C4 48mm 나인어코드 혼 엘리사 안경테
+                    </p>
+                    <span class="brand-product-price">218,000원</span>
+                  </div>
+                </a>
+              </div>
+              <!-- Product Card 5 -->
+              <div class="brand-product-card">
+                <a href="#" class="brand-product-link">
+                  <div class="brand-product-image-box">
+                    <img
+                      src="assets/images/brand_product_05.png"
+                      alt="OAKLEY 오클리 수트로 스포츠 고글 선글라스 OO9406A-04"
+                      class="brand-product-img"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="brand-product-info">
+                    <span class="brand-product-brand">OAKLEY</span>
+                    <p class="brand-product-name">오클리 수트로 스포츠 고글 선글라스 OO9406A-04</p>
+                    <span class="brand-product-price">229,000원</span>
+                  </div>
+                </a>
+              </div>
+            </div>
           </div>
+          <!-- Pagination Dots -->
           <div class="recommended-brand-pagination">
             <button type="button" class="dot active" aria-label="1페이지"></button>
+
             <button type="button" class="dot" aria-label="2페이지"></button>
+
             <button type="button" class="dot" aria-label="3페이지"></button>
           </div>
+          <!-- Load More Button (Mobile Only) -->
           <button type="button" class="brand-load-more-btn">더보기</button>
         </div>
       </section>
+
+      <!-- ABOUT US 섹션: 브랜드 미션 및 아이웨어 쇼핑 가치 소개 카드 -->
       <section class="about-us">
         <div class="about-us-container">
           <div class="about-us-header">
             <h2 class="about-us-title">ABOUT US</h2>
-            <a
-              href="#"
-              class="more-web-btn d-flex justify-content-center align-items-center"
-              aria-label="ABOUT US 더보기"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="17"
-                height="17"
-                viewBox="0 0 17 17"
-                fill="none"
-              >
-                <path
-                  d="M7.75 17V9.25H0V7.75H7.75V0H9.25V7.75H17V9.25H9.25V17H7.75Z"
-                  fill="white"
-                />
-              </svg>
-            </a>
+            <button class="more-web-btn d-flex justify-content-center align-items-center">
+              <a href="#"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="17"
+                  height="17"
+                  viewBox="0 0 17 17"
+                  fill="none"
+                >
+                  <path
+                    d="M7.75 17V9.25H0V7.75H7.75V0H9.25V7.75H17V9.25H9.25V17H7.75Z"
+                    fill="white"
+                  /></svg
+              ></a>
+            </button>
           </div>
           <div class="about-us-grid">
+            <!-- Card 1 -->
             <a href="#" class="about-us-card">
               <div class="about-us-image-wrapper">
                 <img
@@ -802,6 +965,7 @@
                 <p class="about-us-card-subtitle">새로운 경험, 실시간 가상피팅</p>
               </div>
             </a>
+            <!-- Card 2 -->
             <a href="#" class="about-us-card">
               <div class="about-us-image-wrapper">
                 <img
@@ -816,6 +980,7 @@
                 <p class="about-us-card-subtitle">A.I 딥러닝, AR 증강현실</p>
               </div>
             </a>
+            <!-- Card 3 -->
             <a href="#" class="about-us-card">
               <div class="about-us-image-wrapper">
                 <img
@@ -831,11 +996,14 @@
               </div>
             </a>
           </div>
+          <!-- Horizontal Scroll Progress Indicator (Mobile Only) -->
           <div class="about-us-progress-container">
             <div class="about-us-progress-bar"></div>
           </div>
         </div>
       </section>
+
+      <!-- ROUNZ STORE 섹션: 지역별 라운즈 매장 검색 기능 및 매장 상세 정보 카드 -->
       <section class="rounz-store">
         <div class="rounz-store-container">
           <div class="rounz-store-title-area">
@@ -844,14 +1012,14 @@
               라운즈 플래그십 스토어와 파트너 안경원에서 아이웨어 쇼핑을 즐겨보세요.
             </p>
           </div>
+
+          <!-- Filter Dropdowns -->
           <div class="rounz-store-filters">
             <div
               class="store-filter-box"
               id="sido-filter-box"
-              role="combobox"
-              tabindex="0"
+              role="button"
               aria-haspopup="listbox"
-              aria-controls="sido-dropdown"
               aria-expanded="false"
             >
               <span class="filter-placeholder">시/도(24)</span>
@@ -864,6 +1032,7 @@
               >
                 <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="#111" />
               </svg>
+              <!-- Sido Dropdown Popup -->
               <div class="filter-dropdown-menu" id="sido-dropdown">
                 <ul class="filter-dropdown-list"></ul>
               </div>
@@ -871,10 +1040,8 @@
             <div
               class="store-filter-box"
               id="sigungu-filter-box"
-              role="combobox"
-              tabindex="0"
+              role="button"
               aria-haspopup="listbox"
-              aria-controls="sigungu-dropdown"
               aria-expanded="false"
             >
               <span class="filter-placeholder">시/군/구</span>
@@ -887,12 +1054,16 @@
               >
                 <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="#111" />
               </svg>
+              <!-- Sigungu Dropdown Popup -->
               <div class="filter-dropdown-menu" id="sigungu-dropdown">
                 <ul class="filter-dropdown-list"></ul>
               </div>
             </div>
           </div>
+
+          <!-- Store Card Details -->
           <div class="store-detail-card">
+            <!-- Left: Store storefront image -->
             <div class="store-detail-image-box">
               <img
                 src="./assets/images/store_rounz_000.png"
@@ -901,13 +1072,14 @@
                 loading="lazy"
               />
             </div>
+            <!-- Right: Store information text -->
             <div class="store-detail-info">
               <div class="store-info-content">
                 <h3 class="store-name">라운즈 강남점</h3>
                 <address class="store-address">
                   <span>서울특별시 강남구 역삼로 109 1층</span>
                   <span>(강남역 4번출구 365m, 우성아파트사거리)</span>
-                  <a href="tel:02-3454-1006" class="store-phone">02&#8209;3454&#8209;1006</a>
+                  <a href="tel:02-3454-1006" class="store-phone">02-3454-1006</a>
                 </address>
                 <div class="store-tag">
                   <span class="tag-icon">
@@ -942,7 +1114,7 @@
                   </svg>
                   <span>전화걸기</span>
                 </a>
-                <a href="#" class="action-btn reserve-action">
+                <a href="html/stores.html" class="action-btn reserve-action">
                   <span>라운즈 방문 예약</span>
                 </a>
               </div>
@@ -951,6 +1123,7 @@
         </div>
       </section>
     </main>
+    <!-- 푸터 영역: 매장 찾기 링크, 약관/개인정보 처리방침, 사업자 정보 노출 -->
     <footer class="footer"></footer>
     <script type="module" src="js/main.js"></script>
   </body>

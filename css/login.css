@@ -1,4 +1,4 @@
-/* 로그인 페이지 uses shared .auth-wrapper from sign.css */
+/* 로그인 섹션 컨테이너 */
 .login-section {
   width: 100%;
   display: flex;
@@ -7,6 +7,7 @@
   align-items: center;
 }
 
+/* 입력 필드 그룹 */
 .input-group {
   width: 100%;
   display: flex;
@@ -15,6 +16,7 @@
   margin-bottom: 20px;
 }
 
+/* 기본 입력창 스타일 */
 input[type="text"],
 input[type="password"] {
   width: 100%;
@@ -38,6 +40,27 @@ input[type="password"]:focus {
   border-color: var(--primary-btn-bg, #6732e2);
 }
 
+/* [추가] 유효성 검사 실패 스타일 */
+input.is-invalid {
+  border-color: var(--sale, #ff3300) !important;
+}
+
+.error-message {
+  display: block;
+  font-size: 12px;
+  color: var(--sale, #ff3300);
+  margin-top: -8px; /* 입력 필드와 간격 조절 */
+  margin-bottom: 8px;
+  padding-left: 4px;
+  visibility: hidden; /* 기본적으로는 숨김 상태 */
+  text-align: left;
+}
+
+input.is-invalid + .error-message {
+  visibility: visible;
+}
+
+/* 로그인 헤더 */
 .login-header {
   text-align: center;
   width: 100%;
@@ -56,6 +79,7 @@ input[type="password"]:focus {
   margin: 0;
 }
 
+/* 페이지 타이틀 */
 .page-title-box {
   width: 100%;
   text-align: center;
@@ -68,6 +92,7 @@ input[type="password"]:focus {
   margin: 0;
 }
 
+/* 텍스트 링크 */
 .text-links {
   display: flex;
   justify-content: center;
@@ -94,6 +119,7 @@ input[type="password"]:focus {
   text-decoration: underline;
 }
 
+/* 구분선 */
 .divider {
   display: flex;
   align-items: center;
@@ -113,6 +139,7 @@ input[type="password"]:focus {
   padding: 0 12px;
 }
 
+/* 소셜 로그인 컨테이너 */
 #social-container {
   display: flex;
   flex-direction: row;
@@ -152,6 +179,7 @@ input[type="password"]:focus {
   border: 1px solid var(--radius-color, #dedede);
 }
 
+/* 버튼 */
 .primary-btn {
   width: 100%;
   height: 52px;

@@ -1332,7 +1332,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const newProductSwiperWrapper = document.querySelector('.new-product-swiper-wrapper');
   const newPrevBtn = document.querySelector('.new-product .control-btn .ctrl-prev');
   const newNextBtn = document.querySelector('.new-product .control-btn .ctrl-next');
-  const newDotsContainer = document.querySelector('.new-product-pagination');
+  const newDotsContainer = document.querySelector('.new-product .new-product-pagination');
   const filterChips = document.querySelectorAll('.new-product-filters .filter-chip');
 
   if (newProductSliderWrapper && newProductSwiperWrapper && newPrevBtn && newNextBtn && newDotsContainer && filterChips.length > 0) {
@@ -1773,210 +1773,248 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* 베스트상품 */
-document.addEventListener("DOMContentLoaded",()=>{
+document.addEventListener("DOMContentLoaded", () => {
 
-  const bestSection=document.querySelector(".best-product");
-  if(!bestSection)return;
+  const bestSection = document.querySelector(".best-product");
+  if (!bestSection) return;
 
-  const swiperEl=bestSection.querySelector(".product-swiper");
-  const productWrapper=bestSection.querySelector(".swiper-wrapper");
-  const filterBtns=bestSection.querySelectorAll(".filter-btn");
-  const prevBtn=bestSection.querySelector(".ctrl-prev");
-  const nextBtn=bestSection.querySelector(".ctrl-next");
-  let swiper=null;
-  let products=[];
+  const swiperEl = bestSection.querySelector(".product-swiper");
+  const productWrapper = bestSection.querySelector(".swiper-wrapper");
+  const filterBtns = bestSection.querySelectorAll(".filter-btn");
+  const prevBtn = bestSection.querySelector(".ctrl-prev");
+  const nextBtn = bestSection.querySelector(".ctrl-next");
+  const paginationEl = bestSection.querySelector(".new-product-pagination");
+
+  let swiper = null;
+  let products = [];
 
   // 스켈레톤
-  function createSkeleton(){
-
-    return Array.from({length:8}).map(()=>`
-
+  function createSkeleton() {
+    return Array.from({ length: 8 }).map(() => `
       <li class="product-product-item">
-
         <article class="product-card">
-
           <figure class="product-card__figure skeleton-box"></figure>
-
           <div class="product-card-text-box">
-
             <span class="skeleton-text"></span>
             <p class="skeleton-text"></p>
             <strong class="skeleton-text"></strong>
-
           </div>
-
         </article>
-
       </li>
-
     `).join("");
-
   }
 
   // 상품 카드
-  function createCard(item){
+  function createCard(item) {
+    return `
+      <li class="product-product-item">
+        <article class="product-card">
+          <figure class="product-card__figure">
+            <img
+              class="product-card__img"
+              src="${item.images.thumbnail}"
+              alt="${item.title}"
+            >
+          </figure>
 
-  return `
+          <div class="product-card-text-box d-flex flex-column">
+            <span class="product-card__brand text-small-b">
+              ${item.brand}
+            </span>
 
-  <li class="product-product-item">
-    <article class="product-card">
-      <figure class="product-card__figure">
-        <img
-          class="product-card__img"
-          src="${item.images.thumbnail}"
-          alt="${item.title}"
-        >
-      </figure>
+            <p class="product-card__name">
+              ${item.title}
+            </p>
 
-      <div class="product-card-text-box d-flex flex-column">
-        <span class="product-card__brand text-small-b">
-          ${item.brand}
-        </span>
-
-        <p class="product-card__name">
-          ${item.title}
-        </p>
-        <strong class="product-card__price">
-          ${Number(item.price.final).toLocaleString()}
-          <span>원</span>
-        </strong>
-      </div>
-    </article>
-  </li>
-  `;
-}
-
-
-  function renderProducts(list){
-    if(swiper){
-      swiper.destroy(true,true);
-      swiper=null;
-
-    }
-    let html="";
-    for(let i=0;i<list.length;i+=8){
-      const slide=list.slice(i,i+8);
-      html+=`
-      <div class="swiper-slide">
-        <ul class="product-slide-list">
-          ${slide.map(createCard).join("")}
-        </ul>
-      </div>
-      `;
-    }
-
-    productWrapper.innerHTML=html;
-    initSwiper();
+            <strong class="product-card__price">
+              ${Number(item.price.final).toLocaleString()}
+              <span>원</span>
+            </strong>
+          </div>
+        </article>
+      </li>
+    `;
   }
 
+  // 페이지네이션 생성
+function createPagination(totalSlides) {
+  if (!paginationEl) return;
+  paginationEl.innerHTML = "";
+  const maxPagination = Math.min(totalSlides, 4);
+  for (let i = 0; i < maxPagination; i++) {
+    paginationEl.innerHTML += `
+      <button
+        type="button"
+        class="dot ${i === 0 ? "active" : ""}"
+        aria-label="${i + 1}페이지">
+      </button>
+    `;
+  }
 
-  function initSwiper(){
-    swiper=new Swiper(swiperEl,{
-      slidesPerView:1,
-      spaceBetween:20,
+  const dots = paginationEl.querySelectorAll(".dot");
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      if (swiper) {
+        swiper.slideTo(index);
+      }
+    });
 
-      navigation:{
-        prevEl:prevBtn,
-        nextEl:nextBtn
-      },
-      observer:true,
-      observeParents:true
+  });
+}
+
+  // 페이지네이션 active 변경
+  function updatePagination(activeIndex) {
+
+    if (!paginationEl) return;
+
+    const dots = paginationEl.querySelectorAll(".dot");
+
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("active", index === activeIndex);
     });
   }
 
-  async function loadProducts(){
-    productWrapper.innerHTML=`
-    <div class="swiper-slide">
-      <ul class="product-slide-list">
-        ${createSkeleton()}
-      </ul>
-    </div>
+  // 상품 렌더링
+  function renderProducts(list) {
+
+    if (swiper) {
+      swiper.destroy(true, true);
+      swiper = null;
+    }
+
+    let html = "";
+
+    for (let i = 0; i < list.length; i += 8) {
+
+      const slide = list.slice(i, i + 8);
+
+      html += `
+        <div class="swiper-slide">
+          <ul class="product-slide-list">
+            ${slide.map(createCard).join("")}
+          </ul>
+        </div>
+      `;
+    }
+
+    productWrapper.innerHTML = html;
+
+    const totalSlides = Math.ceil(list.length / 8);
+
+    createPagination(totalSlides);
+
+    initSwiper();
+  }
+
+  // Swiper 초기화
+  function initSwiper() {
+
+    swiper = new Swiper(swiperEl, {
+      slidesPerView: 1,
+      spaceBetween: 20,
+
+      navigation: {
+        prevEl: prevBtn,
+        nextEl: nextBtn
+      },
+
+      observer: true,
+      observeParents: true,
+
+      on: {
+        init(swiper) {
+          updatePagination(swiper.activeIndex);
+        },
+
+        slideChange(swiper) {
+          updatePagination(swiper.activeIndex);
+        }
+      }
+    });
+  }
+
+  // 상품 로드
+  async function loadProducts() {
+
+    productWrapper.innerHTML = `
+      <div class="swiper-slide">
+        <ul class="product-slide-list">
+          ${createSkeleton()}
+        </ul>
+      </div>
     `;
 
-    try{
+    try {
 
+      const res = await fetch("./data/products.json");
+      const data = await res.json();
 
-      const res=await fetch("./data/products.json");
+      products = Array.isArray(data)
+        ? data
+        : data.products;
 
-      const data=await res.json();
-
-
-      products =
-      Array.isArray(data)
-      ? data
-      : data.products;
-
-
-
-      setTimeout(()=>{
-
+      setTimeout(() => {
         renderProducts(products);
+      }, 700);
 
-      },700);
-
-
-
-    }catch(err){
+    } catch (err) {
       console.error(err);
     }
   }
 
   // 필터
-  filterBtns.forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    filterBtns.forEach(el=>{
-      el.classList.remove("active");
-    });
-    btn.classList.add("active");
+  filterBtns.forEach(btn => {
 
-    const text = btn.textContent.trim();
+    btn.addEventListener("click", () => {
 
-    const categoryMap={
-      "선글라스":"sunglasses",
-      "안경":"frame",
-      "블루라이트 차단":"frame",
-      "스포츠고글":"sunglasses"
-    };
-
-    const brandMap={
-      "라운즈ONLY":[
-        "ROUNZ BASIC",
-        "STYLE:WORK",
-        "TART OPTICAL",
-        "1.618",
-        "ROUNZ STANDARD",
-        "ROUNZ ABSOLUTE"
-      ]
-    };
-
-    const category =
-    categoryMap[text] || text.toLowerCase();
-
-    const brand =
-    brandMap[text] || null;
-
-    const filtered =
-    category === "all"
-    ? products
-    : products.filter(item=>{
-
-        if(brand){
-            return brand.includes(item.brand);
-          }
-
-        return item.category === category;
+      filterBtns.forEach(el => {
+        el.classList.remove("active");
       });
 
-    console.log("버튼:", text);
-    console.log("카테고리:", category);
-    console.log("브랜드:", brand);
-    console.log("결과:", filtered.length);
+      btn.classList.add("active");
 
-    renderProducts(filtered);
+      const text = btn.textContent.trim();
+
+      const categoryMap = {
+        "선글라스": "sunglasses",
+        "안경": "frame",
+        "블루라이트 차단": "frame",
+        "스포츠고글": "sunglasses"
+      };
+
+      const brandMap = {
+        "라운즈ONLY": [
+          "ROUNZ BASIC",
+          "STYLE:WORK",
+          "TART OPTICAL",
+          "1.618",
+          "ROUNZ STANDARD",
+          "ROUNZ ABSOLUTE"
+        ]
+      };
+
+      const category =
+        categoryMap[text] || text.toLowerCase();
+
+      const brand =
+        brandMap[text] || null;
+
+      const filtered =
+        category === "all"
+          ? products
+          : products.filter(item => {
+
+              if (brand) {
+                return brand.includes(item.brand);
+              }
+
+              return item.category === category;
+            });
+
+      renderProducts(filtered);
+    });
 
   });
-
-});
 
   loadProducts();
 
