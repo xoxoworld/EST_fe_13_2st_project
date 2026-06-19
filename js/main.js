@@ -479,7 +479,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <div class="brand-product-card">
 
-          <a href="#" class="brand-product-link">
+          <a href="./html/product.html?id=${p.id}" class="brand-product-link">
 
             <div class="brand-product-image-box">
 
@@ -1012,6 +1012,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .filter(p => p.brand && p.brand.toLowerCase() === brandName.toLowerCase())
         .slice(0, 4)
         .map(p => ({
+          id: p.id,
           brand: p.brand,
           name: p.title,
           price: Number(p.price?.final || 0).toLocaleString() + "원",
@@ -1040,6 +1041,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
       return pool.slice(0, 4).map(p => ({
+        id: p.id,
         brand: p.brand,
         name: p.title,
         price: Number(p.price?.final || 0).toLocaleString() + "원",
@@ -1050,7 +1052,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function createCardHTML(product) {
       return `
         <div class="product-card">
-          <a href="#" class="product-link">
+          <a href="./html/product.html?id=${product.id}" class="product-link">
             <div class="product-image-box">
               <img
                 src="${product.img}"
