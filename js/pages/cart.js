@@ -57,6 +57,7 @@ function saveCart() {
   updateTotalAmount();
 }
 
+// 오른쪽 상품 계산
 function updateTotalAmount() {
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 

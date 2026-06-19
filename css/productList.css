@@ -252,9 +252,8 @@ body {
   }
   .w-card {
     flex: 1;
-    height: 200px;
-    min-width: 220px;
-    max-width: 400px;
+    min-width: 170px;
+    height: 110px;
   }
   .w-card img {
     width: 100%;

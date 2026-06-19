@@ -60,13 +60,14 @@ async function fetchProducts() {
     const data = await res.json();
 
     products = data.products;
-
-    console.log(products.filter(item => item.gender === "women").length);
-    console.log([...new Set(products.map(item => item.gender))]);
-
     filteredData = [...products];
 
     renderProducts(filteredData);
+
+    requestAnimationFrame(() => {
+      renderProducts(filteredData);
+    });
+
   } catch (error) {
     console.error(error);
   }
