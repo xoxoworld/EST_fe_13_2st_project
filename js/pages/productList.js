@@ -63,6 +63,8 @@ async function fetchProducts() {
     products = data.products;
     filteredData = [...products];
 
+    updateProductCount();
+
     renderProducts(filteredData);
 
     requestAnimationFrame(() => {
