@@ -23,6 +23,7 @@ const genderInputs = document.querySelectorAll(".gender input[type='checkbox']")
 const pageList = document.querySelector(".page-list");
 const prevBtn = document.querySelector(".prev-btn");
 const nextBtn = document.querySelector(".next-btn");
+const filterCount = document.querySelector(".w-filter-count");
 const isDesktop = window.innerWidth >= 1272;
 const bannerImages = [
   "../assets/images/promotion_banner_1.png",
@@ -108,6 +109,12 @@ sortButtons.forEach(button => {
     renderProducts(filteredData);
   });
 });
+
+// 상품 개수 업데이트
+function updateProductCount() {
+  filterCount.textContent =
+    `${filteredData.length.toLocaleString("ko-KR")}개의 상품이 있습니다.`;
+}
 
 // 상품 리스트
 function renderProducts(products) {
@@ -256,8 +263,13 @@ function applyFilter() {
 
   // 필터 결과 저장
   filteredData = result;
+
+  // 상품 개수 변경
+  updateProductCount();
+
   // 필터 적용하면 1페이지로 이동
   currentPage = 1;
+
   // 다시 렌더링
   renderProducts(filteredData);
 }
