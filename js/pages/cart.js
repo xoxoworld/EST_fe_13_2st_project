@@ -2,6 +2,7 @@ import { getFilteredStores, getSidoList, getSigunguList } from "../common.js";
 import { renderHeader } from "../modules/header.js";
 import { renderFooter } from "../modules/footer.js";
 import { initSidebar } from "../modules/menuToggle.js";
+import { initSidebar } from "../common.js";
 document.addEventListener("DOMContentLoaded", () => {
   renderHeader();
   initSidebar();
