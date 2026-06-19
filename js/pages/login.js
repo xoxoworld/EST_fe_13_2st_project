@@ -92,15 +92,15 @@ if (loginForm) {
       const data = Object.fromEntries(formData.entries());
 
       console.log("로그인 데이터 전송:", data);
-
-      // 실제 서버 연동 시 아래와 같이 사용하세요.
-      /*
-        fetch('/login-process', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        }).then(res => console.log(res));
-        */
     }
   });
 }
+
+// 실제 서버 연동 시 아래와 같이 사용하세요.
+/*
+  fetch('/login-process', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).then(res => console.log(res));
+  */
