@@ -12,8 +12,8 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: 1px; /* 간격을 약간 늘려 아이디/비밀번호 사이 여유 확보 */
+  margin-bottom: 8px;
 }
 
 /* 기본 입력창 스타일 */
@@ -77,6 +77,15 @@ input.is-invalid + .error-message {
   font-size: 13px;
   color: var(--gray-2, #767676);
   margin: 0;
+}
+
+/* 헤더 아래 보조 구분선 (login.html의 .header-underline) */
+.header-underline {
+  width: 100%; /* 입력창과 동일한 너비를 가짐 */
+  height: 2px; /* 얇은 회색 라인으로 변경 */
+  background: var(--radius-color, #e5e5e5); /* 회색 톤 */
+  border-radius: 2px;
+  margin: 5px 0 10px; /* 위/아래 간격 조정 */
 }
 
 /* 페이지 타이틀 */
