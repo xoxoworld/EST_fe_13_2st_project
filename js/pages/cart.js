@@ -32,6 +32,7 @@ function readCart() {
   }
 }
 
+// 상품 저장
 function writeCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
@@ -237,6 +238,7 @@ function updateTotalAmount() {
     updateSelectState();
   });
 
+  // 전체 선택 / 선택 관리
   function getCheckedIds() {
     const checkbox = getCheckBoxes();
     return checkbox
@@ -250,6 +252,7 @@ function updateTotalAmount() {
     }
   });
 
+  // 상품 목록 출력
   async function fetchProducts() {
     try {
       const res = await fetch("../data/products.json");
